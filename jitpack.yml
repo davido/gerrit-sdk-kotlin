@@ -1,0 +1,5 @@
+# JitPack builds this repo's git tag into a Maven artifact on demand
+# (com.github.davido:gerrit-sdk-kotlin:<tag>). It's a Gradle project (maven-publish);
+# pin the JDK to our jvmTarget (21) -- JitPack ships openjdk21, so it just works.
+jdk:
+  - openjdk21

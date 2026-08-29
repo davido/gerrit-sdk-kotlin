@@ -1,0 +1,18 @@
+
+# NoMergeBaseReason
+
+## Enum
+
+
+    * `HISTORIC_DATA_WITHOUT_BASE` (value: `"HISTORIC_DATA_WITHOUT_BASE"`)
+
+    * `NO_COMMON_ANCESTOR` (value: `"NO_COMMON_ANCESTOR"`)
+
+    * `COMPUTED_BASE` (value: `"COMPUTED_BASE"`)
+
+    * `ONE_SIDED_MERGE_STRATEGY` (value: `"ONE_SIDED_MERGE_STRATEGY"`)
+
+    * `NO_MERGE_PERFORMED` (value: `"NO_MERGE_PERFORMED"`)
+
+
+

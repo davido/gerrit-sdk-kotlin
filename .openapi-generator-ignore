@@ -1,0 +1,13 @@
+README.md
+LICENSE.txt
+.gitignore
+jitpack.yml
+build.gradle
+settings.gradle
+gradlew
+gradlew.bat
+gradle/**
+GerritXssiInterceptor.kt
+src/main/kotlin/com/google/gerrit/client/GerritXssiInterceptor.kt
+docs/**
+src/test/**
