@@ -61,11 +61,19 @@ The spec is consumed as-is, and **no generated code is patched**:
 The case-colliding `O`/`o` query params and the enums are handled correctly by the
 generator on its own — no query patch (unlike Rust) and no enum flag (unlike Go).
 
-## Build
+## Build & test — no global Gradle needed
+
+The repo ships the Gradle **wrapper** (`./gradlew` + `gradle/wrapper/gradle-wrapper.jar`,
+both committed), which **downloads and runs the pinned Gradle 8.14.5 automatically** on
+first use. You do **not** need Gradle installed -- only a JDK 21+.
 
 ```bash
-./gradlew build        # requires JDK 21+
+./gradlew build                # compile + jar (bootstraps Gradle 8.14.5 on first run)
+./gradlew publishToMavenLocal  # install to ~/.m2 for a local consumer
 ```
+
+This is exactly how JitPack builds the tag -- it runs `./gradlew`. (Verified: the SDK
+builds locally via the wrapper and on JitPack.)
 
 ## Consume it
 
