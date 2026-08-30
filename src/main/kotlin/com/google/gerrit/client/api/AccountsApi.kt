@@ -44,9 +44,12 @@ import com.google.gerrit.client.model.EditPreferencesInfo
 import com.google.gerrit.client.model.EmailInfo
 import com.google.gerrit.client.model.EmailInput
 import com.google.gerrit.client.model.GeneralPreferencesInfo
+import com.google.gerrit.client.model.GpgKeyInfo
+import com.google.gerrit.client.model.GpgKeysInput
 import com.google.gerrit.client.model.GroupInfo
 import com.google.gerrit.client.model.HttpPasswordInput
 import com.google.gerrit.client.model.NameInput
+import com.google.gerrit.client.model.OAuthTokenInfo
 import com.google.gerrit.client.model.ProjectWatchInfo
 import com.google.gerrit.client.model.SshKeyInfo
 import com.google.gerrit.client.model.StatusInput
@@ -289,6 +292,80 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
         return RequestConfig(
             method = RequestMethod.DELETE,
             path = "/accounts/{account-id}/emails/{email-id}".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())).replace("{"+"email-id"+"}", encodeURIComponent(emailId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /accounts/{account-id}/gpgkeys/{gpg-key-id}
+     * Delete GPG Key
+     * Deletes a GPG key of a user.
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun deleteAccountsAccountIdGpgkeysGpgKeyId(accountId: kotlin.String, gpgKeyId: kotlin.String) : Unit {
+        val localVarResponse = deleteAccountsAccountIdGpgkeysGpgKeyIdWithHttpInfo(accountId = accountId, gpgKeyId = gpgKeyId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /accounts/{account-id}/gpgkeys/{gpg-key-id}
+     * Delete GPG Key
+     * Deletes a GPG key of a user.
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun deleteAccountsAccountIdGpgkeysGpgKeyIdWithHttpInfo(accountId: kotlin.String, gpgKeyId: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = deleteAccountsAccountIdGpgkeysGpgKeyIdRequestConfig(accountId = accountId, gpgKeyId = gpgKeyId)
+
+        return request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteAccountsAccountIdGpgkeysGpgKeyId
+     *
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return RequestConfig
+     */
+    fun deleteAccountsAccountIdGpgkeysGpgKeyIdRequestConfig(accountId: kotlin.String, gpgKeyId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/accounts/{account-id}/gpgkeys/{gpg-key-id}".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())).replace("{"+"gpg-key-id"+"}", encodeURIComponent(gpgKeyId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1600,6 +1677,155 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * GET /accounts/{account-id}/gpgkeys
+     * List GPG Keys
+     * Returns the GPG keys of an account.
+     * @param accountId 
+     * @return kotlin.collections.Map<kotlin.String, GpgKeyInfo>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getAccountsAccountIdGpgkeys(accountId: kotlin.String) : kotlin.collections.Map<kotlin.String, GpgKeyInfo> {
+        val localVarResponse = getAccountsAccountIdGpgkeysWithHttpInfo(accountId = accountId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, GpgKeyInfo>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /accounts/{account-id}/gpgkeys
+     * List GPG Keys
+     * Returns the GPG keys of an account.
+     * @param accountId 
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, GpgKeyInfo>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getAccountsAccountIdGpgkeysWithHttpInfo(accountId: kotlin.String) : ApiResponse<kotlin.collections.Map<kotlin.String, GpgKeyInfo>?> {
+        val localVariableConfig = getAccountsAccountIdGpgkeysRequestConfig(accountId = accountId)
+
+        return request<Unit, kotlin.collections.Map<kotlin.String, GpgKeyInfo>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getAccountsAccountIdGpgkeys
+     *
+     * @param accountId 
+     * @return RequestConfig
+     */
+    fun getAccountsAccountIdGpgkeysRequestConfig(accountId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/accounts/{account-id}/gpgkeys".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /accounts/{account-id}/gpgkeys/{gpg-key-id}
+     * Get GPG Key
+     * Retrieves a GPG key of a user.
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return GpgKeyInfo
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getAccountsAccountIdGpgkeysGpgKeyId(accountId: kotlin.String, gpgKeyId: kotlin.String) : GpgKeyInfo {
+        val localVarResponse = getAccountsAccountIdGpgkeysGpgKeyIdWithHttpInfo(accountId = accountId, gpgKeyId = gpgKeyId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GpgKeyInfo
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /accounts/{account-id}/gpgkeys/{gpg-key-id}
+     * Get GPG Key
+     * Retrieves a GPG key of a user.
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return ApiResponse<GpgKeyInfo?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getAccountsAccountIdGpgkeysGpgKeyIdWithHttpInfo(accountId: kotlin.String, gpgKeyId: kotlin.String) : ApiResponse<GpgKeyInfo?> {
+        val localVariableConfig = getAccountsAccountIdGpgkeysGpgKeyIdRequestConfig(accountId = accountId, gpgKeyId = gpgKeyId)
+
+        return request<Unit, GpgKeyInfo>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getAccountsAccountIdGpgkeysGpgKeyId
+     *
+     * @param accountId 
+     * @param gpgKeyId 
+     * @return RequestConfig
+     */
+    fun getAccountsAccountIdGpgkeysGpgKeyIdRequestConfig(accountId: kotlin.String, gpgKeyId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/accounts/{account-id}/gpgkeys/{gpg-key-id}".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())).replace("{"+"gpg-key-id"+"}", encodeURIComponent(gpgKeyId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * GET /accounts/{account-id}/groups
      * List Groups
      * Lists all groups that contain the specified user as a member.
@@ -1738,6 +1964,79 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/accounts/{account-id}/name".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /accounts/{account-id}/oauthtoken
+     * Get OAuth Access Token
+     * Returns a previously obtained OAuth access token.
+     * @param accountId 
+     * @return OAuthTokenInfo
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getAccountsAccountIdOauthtoken(accountId: kotlin.String) : OAuthTokenInfo {
+        val localVarResponse = getAccountsAccountIdOauthtokenWithHttpInfo(accountId = accountId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as OAuthTokenInfo
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /accounts/{account-id}/oauthtoken
+     * Get OAuth Access Token
+     * Returns a previously obtained OAuth access token.
+     * @param accountId 
+     * @return ApiResponse<OAuthTokenInfo?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getAccountsAccountIdOauthtokenWithHttpInfo(accountId: kotlin.String) : ApiResponse<OAuthTokenInfo?> {
+        val localVariableConfig = getAccountsAccountIdOauthtokenRequestConfig(accountId = accountId)
+
+        return request<Unit, OAuthTokenInfo>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getAccountsAccountIdOauthtoken
+     *
+     * @param accountId 
+     * @return RequestConfig
+     */
+    fun getAccountsAccountIdOauthtokenRequestConfig(accountId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/accounts/{account-id}/oauthtoken".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -2696,6 +2995,83 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/accounts/{account-id}/external.ids:delete".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /accounts/{account-id}/gpgkeys
+     * Add/Delete GPG Keys
+     * Add or delete one or more GPG keys for a user.
+     * @param accountId 
+     * @param gpgKeysInput  (optional)
+     * @return kotlin.collections.Map<kotlin.String, GpgKeyInfo>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun postAccountsAccountIdGpgkeys(accountId: kotlin.String, gpgKeysInput: GpgKeysInput? = null) : kotlin.collections.Map<kotlin.String, GpgKeyInfo> {
+        val localVarResponse = postAccountsAccountIdGpgkeysWithHttpInfo(accountId = accountId, gpgKeysInput = gpgKeysInput)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, GpgKeyInfo>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /accounts/{account-id}/gpgkeys
+     * Add/Delete GPG Keys
+     * Add or delete one or more GPG keys for a user.
+     * @param accountId 
+     * @param gpgKeysInput  (optional)
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, GpgKeyInfo>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun postAccountsAccountIdGpgkeysWithHttpInfo(accountId: kotlin.String, gpgKeysInput: GpgKeysInput?) : ApiResponse<kotlin.collections.Map<kotlin.String, GpgKeyInfo>?> {
+        val localVariableConfig = postAccountsAccountIdGpgkeysRequestConfig(accountId = accountId, gpgKeysInput = gpgKeysInput)
+
+        return request<GpgKeysInput, kotlin.collections.Map<kotlin.String, GpgKeyInfo>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation postAccountsAccountIdGpgkeys
+     *
+     * @param accountId 
+     * @param gpgKeysInput  (optional)
+     * @return RequestConfig
+     */
+    fun postAccountsAccountIdGpgkeysRequestConfig(accountId: kotlin.String, gpgKeysInput: GpgKeysInput?) : RequestConfig<GpgKeysInput> {
+        val localVariableBody = gpgKeysInput
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/accounts/{account-id}/gpgkeys".replace("{"+"account-id"+"}", encodeURIComponent(accountId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

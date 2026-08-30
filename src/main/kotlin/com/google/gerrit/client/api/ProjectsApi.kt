@@ -50,6 +50,7 @@ import com.google.gerrit.client.model.DeleteChangesInput
 import com.google.gerrit.client.model.DeleteTagsInput
 import com.google.gerrit.client.model.DiffInfo
 import com.google.gerrit.client.model.GarbageCollectInput
+import com.google.gerrit.client.model.GetProjectsDefaultResponse
 import com.google.gerrit.client.model.HeadInput
 import com.google.gerrit.client.model.IncludedInInfo
 import com.google.gerrit.client.model.IndexProjectInput
@@ -546,7 +547,21 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * GET /projects
      * List projects
      * Lists the projects accessible by the caller, optionally filtered by prefix, regex, or substring.
-     * @return kotlin.Any
+     * @param all  (optional)
+     * @param description  (optional)
+     * @param format  (optional)
+     * @param hasAclFor  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param prefix  (optional)
+     * @param query  (optional)
+     * @param r  (optional)
+     * @param showBranch  (optional)
+     * @param start  (optional)
+     * @param state  (optional)
+     * @param tree  (optional)
+     * @param type  (optional)
+     * @return GetProjectsDefaultResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -555,11 +570,11 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getProjects() : kotlin.Any {
-        val localVarResponse = getProjectsWithHttpInfo()
+    fun getProjects(all: kotlin.Boolean? = null, description: kotlin.Boolean? = null, format: kotlin.String? = null, hasAclFor: kotlin.String? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, prefix: kotlin.String? = null, query: kotlin.String? = null, r: kotlin.String? = null, showBranch: kotlin.collections.List<kotlin.String>? = null, start: kotlin.Int? = null, state: kotlin.String? = null, tree: kotlin.Boolean? = null, type: kotlin.String? = null) : GetProjectsDefaultResponse {
+        val localVarResponse = getProjectsWithHttpInfo(all = all, description = description, format = format, hasAclFor = hasAclFor, limit = limit, match = match, prefix = prefix, query = query, r = r, showBranch = showBranch, start = start, state = state, tree = tree, type = type)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetProjectsDefaultResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -577,16 +592,30 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * GET /projects
      * List projects
      * Lists the projects accessible by the caller, optionally filtered by prefix, regex, or substring.
-     * @return ApiResponse<kotlin.Any?>
+     * @param all  (optional)
+     * @param description  (optional)
+     * @param format  (optional)
+     * @param hasAclFor  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param prefix  (optional)
+     * @param query  (optional)
+     * @param r  (optional)
+     * @param showBranch  (optional)
+     * @param start  (optional)
+     * @param state  (optional)
+     * @param tree  (optional)
+     * @param type  (optional)
+     * @return ApiResponse<GetProjectsDefaultResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getProjectsWithHttpInfo() : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getProjectsRequestConfig()
+    fun getProjectsWithHttpInfo(all: kotlin.Boolean?, description: kotlin.Boolean?, format: kotlin.String?, hasAclFor: kotlin.String?, limit: kotlin.Int?, match: kotlin.String?, prefix: kotlin.String?, query: kotlin.String?, r: kotlin.String?, showBranch: kotlin.collections.List<kotlin.String>?, start: kotlin.Int?, state: kotlin.String?, tree: kotlin.Boolean?, type: kotlin.String?) : ApiResponse<GetProjectsDefaultResponse?> {
+        val localVariableConfig = getProjectsRequestConfig(all = all, description = description, format = format, hasAclFor = hasAclFor, limit = limit, match = match, prefix = prefix, query = query, r = r, showBranch = showBranch, start = start, state = state, tree = tree, type = type)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, GetProjectsDefaultResponse>(
             localVariableConfig
         )
     }
@@ -594,11 +623,69 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     /**
      * To obtain the request config of the operation getProjects
      *
+     * @param all  (optional)
+     * @param description  (optional)
+     * @param format  (optional)
+     * @param hasAclFor  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param prefix  (optional)
+     * @param query  (optional)
+     * @param r  (optional)
+     * @param showBranch  (optional)
+     * @param start  (optional)
+     * @param state  (optional)
+     * @param tree  (optional)
+     * @param type  (optional)
      * @return RequestConfig
      */
-    fun getProjectsRequestConfig() : RequestConfig<Unit> {
+    fun getProjectsRequestConfig(all: kotlin.Boolean?, description: kotlin.Boolean?, format: kotlin.String?, hasAclFor: kotlin.String?, limit: kotlin.Int?, match: kotlin.String?, prefix: kotlin.String?, query: kotlin.String?, r: kotlin.String?, showBranch: kotlin.collections.List<kotlin.String>?, start: kotlin.Int?, state: kotlin.String?, tree: kotlin.Boolean?, type: kotlin.String?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (all != null) {
+                    put("all", listOf(all.toString()))
+                }
+                if (description != null) {
+                    put("description", listOf(description.toString()))
+                }
+                if (format != null) {
+                    put("format", listOf(format.toString()))
+                }
+                if (hasAclFor != null) {
+                    put("has-acl-for", listOf(hasAclFor.toString()))
+                }
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (match != null) {
+                    put("match", listOf(match.toString()))
+                }
+                if (prefix != null) {
+                    put("prefix", listOf(prefix.toString()))
+                }
+                if (query != null) {
+                    put("query", listOf(query.toString()))
+                }
+                if (r != null) {
+                    put("r", listOf(r.toString()))
+                }
+                if (showBranch != null) {
+                    put("show-branch", toMultiValue(showBranch.toList(), "multi"))
+                }
+                if (start != null) {
+                    put("start", listOf(start.toString()))
+                }
+                if (state != null) {
+                    put("state", listOf(state.toString()))
+                }
+                if (tree != null) {
+                    put("tree", listOf(tree.toString()))
+                }
+                if (type != null) {
+                    put("type", listOf(type.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
@@ -940,12 +1027,13 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
-     * GET /projects/{project-id}/branches/{branch-id}/files
-     * 
-     * 
+     * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/content
+     * Get Content
+     * Gets the content of a file from the HEAD revision of a certain branch.
      * @param projectId 
      * @param branchId 
-     * @return kotlin.Any
+     * @param fileId 
+     * @return java.io.File
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -954,11 +1042,11 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getProjectsProjectIdBranchesBranchIdFiles(projectId: kotlin.String, branchId: kotlin.String) : kotlin.Any {
-        val localVarResponse = getProjectsProjectIdBranchesBranchIdFilesWithHttpInfo(projectId = projectId, branchId = branchId)
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdContent(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String) : java.io.File {
+        val localVarResponse = getProjectsProjectIdBranchesBranchIdFilesFileIdContentWithHttpInfo(projectId = projectId, branchId = branchId, fileId = fileId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as java.io.File
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -973,41 +1061,142 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
-     * GET /projects/{project-id}/branches/{branch-id}/files
-     * 
-     * 
+     * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/content
+     * Get Content
+     * Gets the content of a file from the HEAD revision of a certain branch.
      * @param projectId 
      * @param branchId 
-     * @return ApiResponse<kotlin.Any?>
+     * @param fileId 
+     * @return ApiResponse<java.io.File?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getProjectsProjectIdBranchesBranchIdFilesWithHttpInfo(projectId: kotlin.String, branchId: kotlin.String) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getProjectsProjectIdBranchesBranchIdFilesRequestConfig(projectId = projectId, branchId = branchId)
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdContentWithHttpInfo(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String) : ApiResponse<java.io.File?> {
+        val localVariableConfig = getProjectsProjectIdBranchesBranchIdFilesFileIdContentRequestConfig(projectId = projectId, branchId = branchId, fileId = fileId)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, java.io.File>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation getProjectsProjectIdBranchesBranchIdFiles
+     * To obtain the request config of the operation getProjectsProjectIdBranchesBranchIdFilesFileIdContent
      *
      * @param projectId 
      * @param branchId 
+     * @param fileId 
      * @return RequestConfig
      */
-    fun getProjectsProjectIdBranchesBranchIdFilesRequestConfig(projectId: kotlin.String, branchId: kotlin.String) : RequestConfig<Unit> {
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdContentRequestConfig(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/octet-stream"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/projects/{project-id}/branches/{branch-id}/files/{file-id}/content".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"branch-id"+"}", encodeURIComponent(branchId.toString())).replace("{"+"file-id"+"}", encodeURIComponent(fileId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/diff
+     * 
+     * 
+     * @param projectId 
+     * @param branchId 
+     * @param fileId 
+     * @param base  (optional)
+     * @param intraline  (optional)
+     * @param whitespace  (optional)
+     * @return DiffInfo
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdDiff(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String, base: kotlin.String? = null, intraline: kotlin.Boolean? = null, whitespace: kotlin.String? = null) : DiffInfo {
+        val localVarResponse = getProjectsProjectIdBranchesBranchIdFilesFileIdDiffWithHttpInfo(projectId = projectId, branchId = branchId, fileId = fileId, base = base, intraline = intraline, whitespace = whitespace)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as DiffInfo
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/diff
+     * 
+     * 
+     * @param projectId 
+     * @param branchId 
+     * @param fileId 
+     * @param base  (optional)
+     * @param intraline  (optional)
+     * @param whitespace  (optional)
+     * @return ApiResponse<DiffInfo?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdDiffWithHttpInfo(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String, base: kotlin.String?, intraline: kotlin.Boolean?, whitespace: kotlin.String?) : ApiResponse<DiffInfo?> {
+        val localVariableConfig = getProjectsProjectIdBranchesBranchIdFilesFileIdDiffRequestConfig(projectId = projectId, branchId = branchId, fileId = fileId, base = base, intraline = intraline, whitespace = whitespace)
+
+        return request<Unit, DiffInfo>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getProjectsProjectIdBranchesBranchIdFilesFileIdDiff
+     *
+     * @param projectId 
+     * @param branchId 
+     * @param fileId 
+     * @param base  (optional)
+     * @param intraline  (optional)
+     * @param whitespace  (optional)
+     * @return RequestConfig
+     */
+    fun getProjectsProjectIdBranchesBranchIdFilesFileIdDiffRequestConfig(projectId: kotlin.String, branchId: kotlin.String, fileId: kotlin.String, base: kotlin.String?, intraline: kotlin.Boolean?, whitespace: kotlin.String?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (base != null) {
+                    put("base", listOf(base.toString()))
+                }
+                if (intraline != null) {
+                    put("intraline", listOf(intraline.toString()))
+                }
+                if (whitespace != null) {
+                    put("whitespace", listOf(whitespace.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/projects/{project-id}/branches/{branch-id}/files".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"branch-id"+"}", encodeURIComponent(branchId.toString())),
+            path = "/projects/{project-id}/branches/{branch-id}/files/{file-id}/diff".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"branch-id"+"}", encodeURIComponent(branchId.toString())).replace("{"+"file-id"+"}", encodeURIComponent(fileId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1634,79 +1823,6 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/projects/{project-id}/children/{child-project-id}".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"child-project-id"+"}", encodeURIComponent(childProjectId.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * GET /projects/{project-id}/commits
-     * 
-     * 
-     * @param projectId 
-     * @return kotlin.Any
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getProjectsProjectIdCommits(projectId: kotlin.String) : kotlin.Any {
-        val localVarResponse = getProjectsProjectIdCommitsWithHttpInfo(projectId = projectId)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /projects/{project-id}/commits
-     * 
-     * 
-     * @param projectId 
-     * @return ApiResponse<kotlin.Any?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun getProjectsProjectIdCommitsWithHttpInfo(projectId: kotlin.String) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getProjectsProjectIdCommitsRequestConfig(projectId = projectId)
-
-        return request<Unit, kotlin.Any>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation getProjectsProjectIdCommits
-     *
-     * @param projectId 
-     * @return RequestConfig
-     */
-    fun getProjectsProjectIdCommitsRequestConfig(projectId: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/projects/{project-id}/commits".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

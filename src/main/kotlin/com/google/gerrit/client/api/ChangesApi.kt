@@ -44,6 +44,7 @@ import com.google.gerrit.client.model.CommitInfo
 import com.google.gerrit.client.model.CommitMessageInfo
 import com.google.gerrit.client.model.CommitMessageInput
 import com.google.gerrit.client.model.CommonDescriptionInput
+import com.google.gerrit.client.model.CommonFileInfo
 import com.google.gerrit.client.model.CustomKeyedValuesInput
 import com.google.gerrit.client.model.DeleteChangeMessageInput
 import com.google.gerrit.client.model.DeleteCommentInput
@@ -626,6 +627,157 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
         return RequestConfig(
             method = RequestMethod.DELETE,
             path = "/changes/{change-id}/private".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /changes/{change-id}/reviewers/{reviewer-id}
+     * Delete Reviewer
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/delete&#39; --
+     * @param changeId 
+     * @param reviewerId 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun deleteChangesChangeIdReviewersReviewerId(changeId: kotlin.String, reviewerId: kotlin.String) : Unit {
+        val localVarResponse = deleteChangesChangeIdReviewersReviewerIdWithHttpInfo(changeId = changeId, reviewerId = reviewerId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /changes/{change-id}/reviewers/{reviewer-id}
+     * Delete Reviewer
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/delete&#39; --
+     * @param changeId 
+     * @param reviewerId 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun deleteChangesChangeIdReviewersReviewerIdWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = deleteChangesChangeIdReviewersReviewerIdRequestConfig(changeId = changeId, reviewerId = reviewerId)
+
+        return request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteChangesChangeIdReviewersReviewerId
+     *
+     * @param changeId 
+     * @param reviewerId 
+     * @return RequestConfig
+     */
+    fun deleteChangesChangeIdReviewersReviewerIdRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/changes/{change-id}/reviewers/{reviewer-id}".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * DELETE /changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}
+     * Delete Vote
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/votes/\\{label-id\\}/delete&#39; --
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun deleteChangesChangeIdReviewersReviewerIdVotesVoteId(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String) : Unit {
+        val localVarResponse = deleteChangesChangeIdReviewersReviewerIdVotesVoteIdWithHttpInfo(changeId = changeId, reviewerId = reviewerId, voteId = voteId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * DELETE /changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}
+     * Delete Vote
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/votes/\\{label-id\\}/delete&#39; --
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun deleteChangesChangeIdReviewersReviewerIdVotesVoteIdWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String) : ApiResponse<Unit?> {
+        val localVariableConfig = deleteChangesChangeIdReviewersReviewerIdVotesVoteIdRequestConfig(changeId = changeId, reviewerId = reviewerId, voteId = voteId)
+
+        return request<Unit, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation deleteChangesChangeIdReviewersReviewerIdVotesVoteId
+     *
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @return RequestConfig
+     */
+    fun deleteChangesChangeIdReviewersReviewerIdVotesVoteIdRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        
+
+        return RequestConfig(
+            method = RequestMethod.DELETE,
+            path = "/changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())).replace("{"+"vote-id"+"}", encodeURIComponent(voteId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -3125,11 +3277,12 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /changes/{change-id}/revisions
-     * 
-     * 
+     * GET /changes/{change-id}/reviewers/{reviewer-id}
+     * Get Reviewer
+     * Retrieves a reviewer of a change.
      * @param changeId 
-     * @return kotlin.Any
+     * @param reviewerId 
+     * @return kotlin.collections.List<ReviewerInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -3138,11 +3291,11 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getChangesChangeIdRevisions(changeId: kotlin.String) : kotlin.Any {
-        val localVarResponse = getChangesChangeIdRevisionsWithHttpInfo(changeId = changeId)
+    fun getChangesChangeIdReviewersReviewerId(changeId: kotlin.String, reviewerId: kotlin.String) : kotlin.collections.List<ReviewerInfo> {
+        val localVarResponse = getChangesChangeIdReviewersReviewerIdWithHttpInfo(changeId = changeId, reviewerId = reviewerId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ReviewerInfo>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -3157,31 +3310,33 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /changes/{change-id}/revisions
-     * 
-     * 
+     * GET /changes/{change-id}/reviewers/{reviewer-id}
+     * Get Reviewer
+     * Retrieves a reviewer of a change.
      * @param changeId 
-     * @return ApiResponse<kotlin.Any?>
+     * @param reviewerId 
+     * @return ApiResponse<kotlin.collections.List<ReviewerInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getChangesChangeIdRevisionsWithHttpInfo(changeId: kotlin.String) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getChangesChangeIdRevisionsRequestConfig(changeId = changeId)
+    fun getChangesChangeIdReviewersReviewerIdWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String) : ApiResponse<kotlin.collections.List<ReviewerInfo>?> {
+        val localVariableConfig = getChangesChangeIdReviewersReviewerIdRequestConfig(changeId = changeId, reviewerId = reviewerId)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, kotlin.collections.List<ReviewerInfo>>(
             localVariableConfig
         )
     }
 
     /**
-     * To obtain the request config of the operation getChangesChangeIdRevisions
+     * To obtain the request config of the operation getChangesChangeIdReviewersReviewerId
      *
      * @param changeId 
+     * @param reviewerId 
      * @return RequestConfig
      */
-    fun getChangesChangeIdRevisionsRequestConfig(changeId: kotlin.String) : RequestConfig<Unit> {
+    fun getChangesChangeIdReviewersReviewerIdRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -3189,7 +3344,83 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/changes/{change-id}/revisions".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())),
+            path = "/changes/{change-id}/reviewers/{reviewer-id}".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /changes/{change-id}/reviewers/{reviewer-id}/votes
+     * List Votes
+     * Lists the votes for a specific reviewer of the change.
+     * @param changeId 
+     * @param reviewerId 
+     * @return kotlin.collections.Map<kotlin.String, kotlin.Int>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getChangesChangeIdReviewersReviewerIdVotes(changeId: kotlin.String, reviewerId: kotlin.String) : kotlin.collections.Map<kotlin.String, kotlin.Int> {
+        val localVarResponse = getChangesChangeIdReviewersReviewerIdVotesWithHttpInfo(changeId = changeId, reviewerId = reviewerId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.Int>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /changes/{change-id}/reviewers/{reviewer-id}/votes
+     * List Votes
+     * Lists the votes for a specific reviewer of the change.
+     * @param changeId 
+     * @param reviewerId 
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.Int>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getChangesChangeIdReviewersReviewerIdVotesWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String) : ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.Int>?> {
+        val localVariableConfig = getChangesChangeIdReviewersReviewerIdVotesRequestConfig(changeId = changeId, reviewerId = reviewerId)
+
+        return request<Unit, kotlin.collections.Map<kotlin.String, kotlin.Int>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getChangesChangeIdReviewersReviewerIdVotes
+     *
+     * @param changeId 
+     * @param reviewerId 
+     * @return RequestConfig
+     */
+    fun getChangesChangeIdReviewersReviewerIdVotesRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/changes/{change-id}/reviewers/{reviewer-id}/votes".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -3913,7 +4144,7 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * @param parent  (optional)
      * @param q  (optional)
      * @param reviewed  (optional)
-     * @return kotlin.Any
+     * @return kotlin.collections.Map<kotlin.String, CommonFileInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -3922,11 +4153,11 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getChangesChangeIdRevisionsRevisionIdFiles(changeId: kotlin.String, revisionId: kotlin.String, base: kotlin.String? = null, parent: kotlin.Int? = null, q: kotlin.String? = null, reviewed: kotlin.Boolean? = null) : kotlin.Any {
+    fun getChangesChangeIdRevisionsRevisionIdFiles(changeId: kotlin.String, revisionId: kotlin.String, base: kotlin.String? = null, parent: kotlin.Int? = null, q: kotlin.String? = null, reviewed: kotlin.Boolean? = null) : kotlin.collections.Map<kotlin.String, CommonFileInfo> {
         val localVarResponse = getChangesChangeIdRevisionsRevisionIdFilesWithHttpInfo(changeId = changeId, revisionId = revisionId, base = base, parent = parent, q = q, reviewed = reviewed)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, CommonFileInfo>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -3950,16 +4181,16 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      * @param parent  (optional)
      * @param q  (optional)
      * @param reviewed  (optional)
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, CommonFileInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getChangesChangeIdRevisionsRevisionIdFilesWithHttpInfo(changeId: kotlin.String, revisionId: kotlin.String, base: kotlin.String?, parent: kotlin.Int?, q: kotlin.String?, reviewed: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
+    fun getChangesChangeIdRevisionsRevisionIdFilesWithHttpInfo(changeId: kotlin.String, revisionId: kotlin.String, base: kotlin.String?, parent: kotlin.Int?, q: kotlin.String?, reviewed: kotlin.Boolean?) : ApiResponse<kotlin.collections.Map<kotlin.String, CommonFileInfo>?> {
         val localVariableConfig = getChangesChangeIdRevisionsRevisionIdFilesRequestConfig(changeId = changeId, revisionId = revisionId, base = base, parent = parent, q = q, reviewed = reviewed)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, kotlin.collections.Map<kotlin.String, CommonFileInfo>>(
             localVariableConfig
         )
     }
@@ -4376,82 +4607,6 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/changes/{change-id}/revisions/{revision-id}/files/{file-id}/download".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"revision-id"+"}", encodeURIComponent(revisionId.toString())).replace("{"+"file-id"+"}", encodeURIComponent(fileId.toString())),
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
-     * GET /changes/{change-id}/revisions/{revision-id}/fixes
-     * 
-     * 
-     * @param changeId 
-     * @param revisionId 
-     * @return kotlin.Any
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getChangesChangeIdRevisionsRevisionIdFixes(changeId: kotlin.String, revisionId: kotlin.String) : kotlin.Any {
-        val localVarResponse = getChangesChangeIdRevisionsRevisionIdFixesWithHttpInfo(changeId = changeId, revisionId = revisionId)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * GET /changes/{change-id}/revisions/{revision-id}/fixes
-     * 
-     * 
-     * @param changeId 
-     * @param revisionId 
-     * @return ApiResponse<kotlin.Any?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun getChangesChangeIdRevisionsRevisionIdFixesWithHttpInfo(changeId: kotlin.String, revisionId: kotlin.String) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getChangesChangeIdRevisionsRevisionIdFixesRequestConfig(changeId = changeId, revisionId = revisionId)
-
-        return request<Unit, kotlin.Any>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation getChangesChangeIdRevisionsRevisionIdFixes
-     *
-     * @param changeId 
-     * @param revisionId 
-     * @return RequestConfig
-     */
-    fun getChangesChangeIdRevisionsRevisionIdFixesRequestConfig(changeId: kotlin.String, revisionId: kotlin.String) : RequestConfig<Unit> {
-        val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.GET,
-            path = "/changes/{change-id}/revisions/{revision-id}/fixes".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"revision-id"+"}", encodeURIComponent(revisionId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -7923,6 +8078,242 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/changes/{change-id}/revert_submission".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers
+     * Add Reviewer
+     * Adds one user or all members of one group as reviewer to the change.
+     * @param changeId 
+     * @param reviewerInput  (optional)
+     * @return ReviewerResult
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun postChangesChangeIdReviewers(changeId: kotlin.String, reviewerInput: ReviewerInput? = null) : ReviewerResult {
+        val localVarResponse = postChangesChangeIdReviewersWithHttpInfo(changeId = changeId, reviewerInput = reviewerInput)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as ReviewerResult
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers
+     * Add Reviewer
+     * Adds one user or all members of one group as reviewer to the change.
+     * @param changeId 
+     * @param reviewerInput  (optional)
+     * @return ApiResponse<ReviewerResult?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun postChangesChangeIdReviewersWithHttpInfo(changeId: kotlin.String, reviewerInput: ReviewerInput?) : ApiResponse<ReviewerResult?> {
+        val localVariableConfig = postChangesChangeIdReviewersRequestConfig(changeId = changeId, reviewerInput = reviewerInput)
+
+        return request<ReviewerInput, ReviewerResult>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation postChangesChangeIdReviewers
+     *
+     * @param changeId 
+     * @param reviewerInput  (optional)
+     * @return RequestConfig
+     */
+    fun postChangesChangeIdReviewersRequestConfig(changeId: kotlin.String, reviewerInput: ReviewerInput?) : RequestConfig<ReviewerInput> {
+        val localVariableBody = reviewerInput
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/changes/{change-id}/reviewers".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers/{reviewer-id}/delete
+     * Delete Reviewer
+     * Deletes a reviewer from a change. Deleting a reviewer also removes that user from the attention set.
+     * @param changeId 
+     * @param reviewerId 
+     * @param deleteReviewerInput  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun postChangesChangeIdReviewersReviewerIdDelete(changeId: kotlin.String, reviewerId: kotlin.String, deleteReviewerInput: DeleteReviewerInput? = null) : Unit {
+        val localVarResponse = postChangesChangeIdReviewersReviewerIdDeleteWithHttpInfo(changeId = changeId, reviewerId = reviewerId, deleteReviewerInput = deleteReviewerInput)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers/{reviewer-id}/delete
+     * Delete Reviewer
+     * Deletes a reviewer from a change. Deleting a reviewer also removes that user from the attention set.
+     * @param changeId 
+     * @param reviewerId 
+     * @param deleteReviewerInput  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun postChangesChangeIdReviewersReviewerIdDeleteWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String, deleteReviewerInput: DeleteReviewerInput?) : ApiResponse<Unit?> {
+        val localVariableConfig = postChangesChangeIdReviewersReviewerIdDeleteRequestConfig(changeId = changeId, reviewerId = reviewerId, deleteReviewerInput = deleteReviewerInput)
+
+        return request<DeleteReviewerInput, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation postChangesChangeIdReviewersReviewerIdDelete
+     *
+     * @param changeId 
+     * @param reviewerId 
+     * @param deleteReviewerInput  (optional)
+     * @return RequestConfig
+     */
+    fun postChangesChangeIdReviewersReviewerIdDeleteRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String, deleteReviewerInput: DeleteReviewerInput?) : RequestConfig<DeleteReviewerInput> {
+        val localVariableBody = deleteReviewerInput
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/changes/{change-id}/reviewers/{reviewer-id}/delete".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}/delete
+     * Delete Vote
+     * Deletes a single vote from a change. Note, that even when the last vote of a reviewer is removed the reviewer itself is still listed on the change.
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @param deleteVoteInput  (optional)
+     * @return void
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun postChangesChangeIdReviewersReviewerIdVotesVoteIdDelete(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String, deleteVoteInput: DeleteVoteInput? = null) : Unit {
+        val localVarResponse = postChangesChangeIdReviewersReviewerIdVotesVoteIdDeleteWithHttpInfo(changeId = changeId, reviewerId = reviewerId, voteId = voteId, deleteVoteInput = deleteVoteInput)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> Unit
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}/delete
+     * Delete Vote
+     * Deletes a single vote from a change. Note, that even when the last vote of a reviewer is removed the reviewer itself is still listed on the change.
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @param deleteVoteInput  (optional)
+     * @return ApiResponse<Unit?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Throws(IllegalStateException::class, IOException::class)
+    fun postChangesChangeIdReviewersReviewerIdVotesVoteIdDeleteWithHttpInfo(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String, deleteVoteInput: DeleteVoteInput?) : ApiResponse<Unit?> {
+        val localVariableConfig = postChangesChangeIdReviewersReviewerIdVotesVoteIdDeleteRequestConfig(changeId = changeId, reviewerId = reviewerId, voteId = voteId, deleteVoteInput = deleteVoteInput)
+
+        return request<DeleteVoteInput, Unit>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation postChangesChangeIdReviewersReviewerIdVotesVoteIdDelete
+     *
+     * @param changeId 
+     * @param reviewerId 
+     * @param voteId 
+     * @param deleteVoteInput  (optional)
+     * @return RequestConfig
+     */
+    fun postChangesChangeIdReviewersReviewerIdVotesVoteIdDeleteRequestConfig(changeId: kotlin.String, reviewerId: kotlin.String, voteId: kotlin.String, deleteVoteInput: DeleteVoteInput?) : RequestConfig<DeleteVoteInput> {
+        val localVariableBody = deleteVoteInput
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/changes/{change-id}/reviewers/{reviewer-id}/votes/{vote-id}/delete".replace("{"+"change-id"+"}", encodeURIComponent(changeId.toString())).replace("{"+"reviewer-id"+"}", encodeURIComponent(reviewerId.toString())).replace("{"+"vote-id"+"}", encodeURIComponent(voteId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

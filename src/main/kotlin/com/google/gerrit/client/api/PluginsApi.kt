@@ -236,9 +236,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /plugins/{plugin-id}/status
-     * 
-     * 
+     * GET /plugins/{plugin-id}/gerrit~status
+     * Get Plugin Status
+     * Retrieves the status of a plugin on the Gerrit server.
      * @param pluginId 
      * @return PluginInfo
      * @throws IllegalStateException If the request is not correctly configured
@@ -249,8 +249,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getPluginsPluginIdStatus(pluginId: kotlin.String) : PluginInfo {
-        val localVarResponse = getPluginsPluginIdStatusWithHttpInfo(pluginId = pluginId)
+    fun getPluginsPluginIdGerritStatus(pluginId: kotlin.String) : PluginInfo {
+        val localVarResponse = getPluginsPluginIdGerritStatusWithHttpInfo(pluginId = pluginId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PluginInfo
@@ -268,9 +268,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /plugins/{plugin-id}/status
-     * 
-     * 
+     * GET /plugins/{plugin-id}/gerrit~status
+     * Get Plugin Status
+     * Retrieves the status of a plugin on the Gerrit server.
      * @param pluginId 
      * @return ApiResponse<PluginInfo?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -278,8 +278,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getPluginsPluginIdStatusWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
-        val localVariableConfig = getPluginsPluginIdStatusRequestConfig(pluginId = pluginId)
+    fun getPluginsPluginIdGerritStatusWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
+        val localVariableConfig = getPluginsPluginIdGerritStatusRequestConfig(pluginId = pluginId)
 
         return request<Unit, PluginInfo>(
             localVariableConfig
@@ -287,12 +287,12 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * To obtain the request config of the operation getPluginsPluginIdStatus
+     * To obtain the request config of the operation getPluginsPluginIdGerritStatus
      *
      * @param pluginId 
      * @return RequestConfig
      */
-    fun getPluginsPluginIdStatusRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
+    fun getPluginsPluginIdGerritStatusRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -300,7 +300,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/plugins/{plugin-id}/status".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
+            path = "/plugins/{plugin-id}/gerrit~status".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -309,8 +309,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/disable
-     * 
+     * POST /plugins/{plugin-id}/gerrit~disable
+     * Disable Plugin
      * 
      * @param pluginId 
      * @return PluginInfo
@@ -322,8 +322,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun postPluginsPluginIdDisable(pluginId: kotlin.String) : PluginInfo {
-        val localVarResponse = postPluginsPluginIdDisableWithHttpInfo(pluginId = pluginId)
+    fun postPluginsPluginIdGerritDisable(pluginId: kotlin.String) : PluginInfo {
+        val localVarResponse = postPluginsPluginIdGerritDisableWithHttpInfo(pluginId = pluginId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PluginInfo
@@ -341,8 +341,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/disable
-     * 
+     * POST /plugins/{plugin-id}/gerrit~disable
+     * Disable Plugin
      * 
      * @param pluginId 
      * @return ApiResponse<PluginInfo?>
@@ -351,8 +351,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun postPluginsPluginIdDisableWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
-        val localVariableConfig = postPluginsPluginIdDisableRequestConfig(pluginId = pluginId)
+    fun postPluginsPluginIdGerritDisableWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
+        val localVariableConfig = postPluginsPluginIdGerritDisableRequestConfig(pluginId = pluginId)
 
         return request<Unit, PluginInfo>(
             localVariableConfig
@@ -360,12 +360,12 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * To obtain the request config of the operation postPluginsPluginIdDisable
+     * To obtain the request config of the operation postPluginsPluginIdGerritDisable
      *
      * @param pluginId 
      * @return RequestConfig
      */
-    fun postPluginsPluginIdDisableRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
+    fun postPluginsPluginIdGerritDisableRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -373,7 +373,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.POST,
-            path = "/plugins/{plugin-id}/disable".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
+            path = "/plugins/{plugin-id}/gerrit~disable".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -382,9 +382,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/enable
-     * 
-     * 
+     * POST /plugins/{plugin-id}/gerrit~enable
+     * Enable Plugin
+     * Enables a plugin on the Gerrit server.
      * @param pluginId 
      * @return PluginInfo
      * @throws IllegalStateException If the request is not correctly configured
@@ -395,8 +395,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun postPluginsPluginIdEnable(pluginId: kotlin.String) : PluginInfo {
-        val localVarResponse = postPluginsPluginIdEnableWithHttpInfo(pluginId = pluginId)
+    fun postPluginsPluginIdGerritEnable(pluginId: kotlin.String) : PluginInfo {
+        val localVarResponse = postPluginsPluginIdGerritEnableWithHttpInfo(pluginId = pluginId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PluginInfo
@@ -414,9 +414,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/enable
-     * 
-     * 
+     * POST /plugins/{plugin-id}/gerrit~enable
+     * Enable Plugin
+     * Enables a plugin on the Gerrit server.
      * @param pluginId 
      * @return ApiResponse<PluginInfo?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -424,8 +424,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun postPluginsPluginIdEnableWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
-        val localVariableConfig = postPluginsPluginIdEnableRequestConfig(pluginId = pluginId)
+    fun postPluginsPluginIdGerritEnableWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
+        val localVariableConfig = postPluginsPluginIdGerritEnableRequestConfig(pluginId = pluginId)
 
         return request<Unit, PluginInfo>(
             localVariableConfig
@@ -433,12 +433,12 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * To obtain the request config of the operation postPluginsPluginIdEnable
+     * To obtain the request config of the operation postPluginsPluginIdGerritEnable
      *
      * @param pluginId 
      * @return RequestConfig
      */
-    fun postPluginsPluginIdEnableRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
+    fun postPluginsPluginIdGerritEnableRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -446,7 +446,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.POST,
-            path = "/plugins/{plugin-id}/enable".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
+            path = "/plugins/{plugin-id}/gerrit~enable".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -455,9 +455,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/reload
-     * 
-     * 
+     * POST /plugins/{plugin-id}/gerrit~reload
+     * Reload Plugin
+     * Reloads a plugin on the Gerrit server.
      * @param pluginId 
      * @return PluginInfo
      * @throws IllegalStateException If the request is not correctly configured
@@ -468,8 +468,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun postPluginsPluginIdReload(pluginId: kotlin.String) : PluginInfo {
-        val localVarResponse = postPluginsPluginIdReloadWithHttpInfo(pluginId = pluginId)
+    fun postPluginsPluginIdGerritReload(pluginId: kotlin.String) : PluginInfo {
+        val localVarResponse = postPluginsPluginIdGerritReloadWithHttpInfo(pluginId = pluginId)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as PluginInfo
@@ -487,9 +487,9 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * POST /plugins/{plugin-id}/reload
-     * 
-     * 
+     * POST /plugins/{plugin-id}/gerrit~reload
+     * Reload Plugin
+     * Reloads a plugin on the Gerrit server.
      * @param pluginId 
      * @return ApiResponse<PluginInfo?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -497,8 +497,8 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun postPluginsPluginIdReloadWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
-        val localVariableConfig = postPluginsPluginIdReloadRequestConfig(pluginId = pluginId)
+    fun postPluginsPluginIdGerritReloadWithHttpInfo(pluginId: kotlin.String) : ApiResponse<PluginInfo?> {
+        val localVariableConfig = postPluginsPluginIdGerritReloadRequestConfig(pluginId = pluginId)
 
         return request<Unit, PluginInfo>(
             localVariableConfig
@@ -506,12 +506,12 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * To obtain the request config of the operation postPluginsPluginIdReload
+     * To obtain the request config of the operation postPluginsPluginIdGerritReload
      *
      * @param pluginId 
      * @return RequestConfig
      */
-    fun postPluginsPluginIdReloadRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
+    fun postPluginsPluginIdGerritReloadRequestConfig(pluginId: kotlin.String) : RequestConfig<Unit> {
         val localVariableBody = null
         val localVariableQuery: MultiValueMap = mutableMapOf()
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
@@ -519,7 +519,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.POST,
-            path = "/plugins/{plugin-id}/reload".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
+            path = "/plugins/{plugin-id}/gerrit~reload".replace("{"+"plugin-id"+"}", encodeURIComponent(pluginId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

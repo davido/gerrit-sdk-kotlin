@@ -31,6 +31,7 @@ import com.google.gerrit.client.model.AccountInfo
 import com.google.gerrit.client.model.AddMembersInput
 import com.google.gerrit.client.model.AddSubgroupsInput
 import com.google.gerrit.client.model.CommonDescriptionInput
+import com.google.gerrit.client.model.GetGroupsDefaultResponse
 import com.google.gerrit.client.model.GroupAuditEventInfo
 import com.google.gerrit.client.model.GroupInfo
 import com.google.gerrit.client.model.GroupInput
@@ -364,7 +365,21 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /groups
      * List groups
      * Lists the internal groups visible to the caller.
-     * @return kotlin.Any
+     * @param O  (optional)
+     * @param group  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param o  (optional)
+     * @param owned  (optional)
+     * @param ownedBy  (optional)
+     * @param project  (optional)
+     * @param query  (optional)
+     * @param regex  (optional)
+     * @param start  (optional)
+     * @param suggest  (optional)
+     * @param user  (optional)
+     * @param visibleToAll  (optional)
+     * @return GetGroupsDefaultResponse
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -373,11 +388,11 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getGroups() : kotlin.Any {
-        val localVarResponse = getGroupsWithHttpInfo()
+    fun getGroups(O: kotlin.String? = null, group: kotlin.collections.List<kotlin.String>? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, o: kotlin.collections.List<kotlin.String>? = null, owned: kotlin.Boolean? = null, ownedBy: kotlin.String? = null, project: kotlin.collections.List<kotlin.String>? = null, query: kotlin.String? = null, regex: kotlin.String? = null, start: kotlin.Int? = null, suggest: kotlin.String? = null, user: kotlin.String? = null, visibleToAll: kotlin.Boolean? = null) : GetGroupsDefaultResponse {
+        val localVarResponse = getGroupsWithHttpInfo(O = O, group = group, limit = limit, match = match, o = o, owned = owned, ownedBy = ownedBy, project = project, query = query, regex = regex, start = start, suggest = suggest, user = user, visibleToAll = visibleToAll)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetGroupsDefaultResponse
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -395,16 +410,30 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /groups
      * List groups
      * Lists the internal groups visible to the caller.
-     * @return ApiResponse<kotlin.Any?>
+     * @param O  (optional)
+     * @param group  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param o  (optional)
+     * @param owned  (optional)
+     * @param ownedBy  (optional)
+     * @param project  (optional)
+     * @param query  (optional)
+     * @param regex  (optional)
+     * @param start  (optional)
+     * @param suggest  (optional)
+     * @param user  (optional)
+     * @param visibleToAll  (optional)
+     * @return ApiResponse<GetGroupsDefaultResponse?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getGroupsWithHttpInfo() : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = getGroupsRequestConfig()
+    fun getGroupsWithHttpInfo(O: kotlin.String?, group: kotlin.collections.List<kotlin.String>?, limit: kotlin.Int?, match: kotlin.String?, o: kotlin.collections.List<kotlin.String>?, owned: kotlin.Boolean?, ownedBy: kotlin.String?, project: kotlin.collections.List<kotlin.String>?, query: kotlin.String?, regex: kotlin.String?, start: kotlin.Int?, suggest: kotlin.String?, user: kotlin.String?, visibleToAll: kotlin.Boolean?) : ApiResponse<GetGroupsDefaultResponse?> {
+        val localVariableConfig = getGroupsRequestConfig(O = O, group = group, limit = limit, match = match, o = o, owned = owned, ownedBy = ownedBy, project = project, query = query, regex = regex, start = start, suggest = suggest, user = user, visibleToAll = visibleToAll)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, GetGroupsDefaultResponse>(
             localVariableConfig
         )
     }
@@ -412,11 +441,69 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation getGroups
      *
+     * @param O  (optional)
+     * @param group  (optional)
+     * @param limit  (optional)
+     * @param match  (optional)
+     * @param o  (optional)
+     * @param owned  (optional)
+     * @param ownedBy  (optional)
+     * @param project  (optional)
+     * @param query  (optional)
+     * @param regex  (optional)
+     * @param start  (optional)
+     * @param suggest  (optional)
+     * @param user  (optional)
+     * @param visibleToAll  (optional)
      * @return RequestConfig
      */
-    fun getGroupsRequestConfig() : RequestConfig<Unit> {
+    fun getGroupsRequestConfig(O: kotlin.String?, group: kotlin.collections.List<kotlin.String>?, limit: kotlin.Int?, match: kotlin.String?, o: kotlin.collections.List<kotlin.String>?, owned: kotlin.Boolean?, ownedBy: kotlin.String?, project: kotlin.collections.List<kotlin.String>?, query: kotlin.String?, regex: kotlin.String?, start: kotlin.Int?, suggest: kotlin.String?, user: kotlin.String?, visibleToAll: kotlin.Boolean?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (O != null) {
+                    put("O", listOf(O.toString()))
+                }
+                if (group != null) {
+                    put("group", toMultiValue(group.toList(), "multi"))
+                }
+                if (limit != null) {
+                    put("limit", listOf(limit.toString()))
+                }
+                if (match != null) {
+                    put("match", listOf(match.toString()))
+                }
+                if (o != null) {
+                    put("o", toMultiValue(o.toList(), "multi"))
+                }
+                if (owned != null) {
+                    put("owned", listOf(owned.toString()))
+                }
+                if (ownedBy != null) {
+                    put("owned-by", listOf(ownedBy.toString()))
+                }
+                if (project != null) {
+                    put("project", toMultiValue(project.toList(), "multi"))
+                }
+                if (query != null) {
+                    put("query", listOf(query.toString()))
+                }
+                if (regex != null) {
+                    put("regex", listOf(regex.toString()))
+                }
+                if (start != null) {
+                    put("start", listOf(start.toString()))
+                }
+                if (suggest != null) {
+                    put("suggest", listOf(suggest.toString()))
+                }
+                if (user != null) {
+                    put("user", listOf(user.toString()))
+                }
+                if (visibleToAll != null) {
+                    put("visible-to-all", listOf(visibleToAll.toString()))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 

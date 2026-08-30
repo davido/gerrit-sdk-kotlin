@@ -38,9 +38,13 @@ import com.google.gerrit.client.model.DiffPreferencesInfo
 import com.google.gerrit.client.model.EditPreferencesInfo
 import com.google.gerrit.client.model.ExperimentInfo
 import com.google.gerrit.client.model.GeneralPreferencesInfo
+import com.google.gerrit.client.model.GetConfigServerCaches200Response
+import com.google.gerrit.client.model.GetConfigServerIndexes200ResponseInner
+import com.google.gerrit.client.model.GetConfigServerVersion200Response
 import com.google.gerrit.client.model.IndexChangesInput
 import com.google.gerrit.client.model.LabelDefinitionInfo
 import com.google.gerrit.client.model.MenuEntry
+import com.google.gerrit.client.model.MetricJson
 import com.google.gerrit.client.model.MigratePasswordsToTokensInput
 import com.google.gerrit.client.model.PostCachesInput
 import com.google.gerrit.client.model.ReduceMaxTokenLifetimeInput
@@ -154,7 +158,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Lists the caches of the server. Caches defined by plugins are included.
      * @param format  (optional)
      * @param includeDiskstats  (optional)
-     * @return kotlin.Any
+     * @return GetConfigServerCaches200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -163,11 +167,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerCaches(format: kotlin.String? = null, includeDiskstats: kotlin.Boolean? = null) : kotlin.Any {
+    fun getConfigServerCaches(format: kotlin.String? = null, includeDiskstats: kotlin.Boolean? = null) : GetConfigServerCaches200Response {
         val localVarResponse = getConfigServerCachesWithHttpInfo(format = format, includeDiskstats = includeDiskstats)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetConfigServerCaches200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -187,16 +191,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Lists the caches of the server. Caches defined by plugins are included.
      * @param format  (optional)
      * @param includeDiskstats  (optional)
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<GetConfigServerCaches200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerCachesWithHttpInfo(format: kotlin.String?, includeDiskstats: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
+    fun getConfigServerCachesWithHttpInfo(format: kotlin.String?, includeDiskstats: kotlin.Boolean?) : ApiResponse<GetConfigServerCaches200Response?> {
         val localVariableConfig = getConfigServerCachesRequestConfig(format = format, includeDiskstats = includeDiskstats)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, GetConfigServerCaches200Response>(
             localVariableConfig
         )
     }
@@ -220,7 +224,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
                 }
             }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Accept"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json, text/plain"
 
         return RequestConfig(
             method = RequestMethod.GET,
@@ -530,7 +534,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /config/server/indexes
      * List Indexes
      * Lists the indexes used by Gerrit. It provides details about the index versions, which index version is used to search and which versions are written to.
-     * @return kotlin.Any
+     * @return kotlin.collections.List<GetConfigServerIndexes200ResponseInner>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -539,11 +543,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerIndexes() : kotlin.Any {
+    fun getConfigServerIndexes() : kotlin.collections.List<GetConfigServerIndexes200ResponseInner> {
         val localVarResponse = getConfigServerIndexesWithHttpInfo()
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<GetConfigServerIndexes200ResponseInner>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -561,16 +565,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /config/server/indexes
      * List Indexes
      * Lists the indexes used by Gerrit. It provides details about the index versions, which index version is used to search and which versions are written to.
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<kotlin.collections.List<GetConfigServerIndexes200ResponseInner>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerIndexesWithHttpInfo() : ApiResponse<kotlin.Any?> {
+    fun getConfigServerIndexesWithHttpInfo() : ApiResponse<kotlin.collections.List<GetConfigServerIndexes200ResponseInner>?> {
         val localVariableConfig = getConfigServerIndexesRequestConfig()
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, kotlin.collections.List<GetConfigServerIndexes200ResponseInner>>(
             localVariableConfig
         )
     }
@@ -951,6 +955,171 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
         return RequestConfig(
             method = RequestMethod.GET,
             path = "/config/server/labels",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /config/server/metrics
+     * 
+     * 
+     * @param dataOnly  (optional)
+     * @param prefix  (optional)
+     * @return kotlin.collections.Map<kotlin.String, MetricJson>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getConfigServerMetrics(dataOnly: kotlin.Boolean? = null, prefix: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.Map<kotlin.String, MetricJson> {
+        val localVarResponse = getConfigServerMetricsWithHttpInfo(dataOnly = dataOnly, prefix = prefix)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, MetricJson>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /config/server/metrics
+     * 
+     * 
+     * @param dataOnly  (optional)
+     * @param prefix  (optional)
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, MetricJson>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getConfigServerMetricsWithHttpInfo(dataOnly: kotlin.Boolean?, prefix: kotlin.collections.List<kotlin.String>?) : ApiResponse<kotlin.collections.Map<kotlin.String, MetricJson>?> {
+        val localVariableConfig = getConfigServerMetricsRequestConfig(dataOnly = dataOnly, prefix = prefix)
+
+        return request<Unit, kotlin.collections.Map<kotlin.String, MetricJson>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getConfigServerMetrics
+     *
+     * @param dataOnly  (optional)
+     * @param prefix  (optional)
+     * @return RequestConfig
+     */
+    fun getConfigServerMetricsRequestConfig(dataOnly: kotlin.Boolean?, prefix: kotlin.collections.List<kotlin.String>?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (dataOnly != null) {
+                    put("data-only", listOf(dataOnly.toString()))
+                }
+                if (prefix != null) {
+                    put("prefix", toMultiValue(prefix.toList(), "multi"))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/config/server/metrics",
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /config/server/metrics/{metric-id}
+     * 
+     * 
+     * @param metricId 
+     * @param dataOnly  (optional)
+     * @return MetricJson
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getConfigServerMetricsMetricId(metricId: kotlin.String, dataOnly: kotlin.Boolean? = null) : MetricJson {
+        val localVarResponse = getConfigServerMetricsMetricIdWithHttpInfo(metricId = metricId, dataOnly = dataOnly)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as MetricJson
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /config/server/metrics/{metric-id}
+     * 
+     * 
+     * @param metricId 
+     * @param dataOnly  (optional)
+     * @return ApiResponse<MetricJson?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getConfigServerMetricsMetricIdWithHttpInfo(metricId: kotlin.String, dataOnly: kotlin.Boolean?) : ApiResponse<MetricJson?> {
+        val localVariableConfig = getConfigServerMetricsMetricIdRequestConfig(metricId = metricId, dataOnly = dataOnly)
+
+        return request<Unit, MetricJson>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getConfigServerMetricsMetricId
+     *
+     * @param metricId 
+     * @param dataOnly  (optional)
+     * @return RequestConfig
+     */
+    fun getConfigServerMetricsMetricIdRequestConfig(metricId: kotlin.String, dataOnly: kotlin.Boolean?) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (dataOnly != null) {
+                    put("data-only", listOf(dataOnly.toString()))
+                }
+            }
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/config/server/metrics/{metric-id}".replace("{"+"metric-id"+"}", encodeURIComponent(metricId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,
@@ -1534,7 +1703,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get version
      * Returns the version of the Gerrit server.
      * @param verbose  (optional)
-     * @return kotlin.Any
+     * @return GetConfigServerVersion200Response
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1543,11 +1712,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerVersion(verbose: kotlin.Boolean? = null) : kotlin.Any {
+    fun getConfigServerVersion(verbose: kotlin.Boolean? = null) : GetConfigServerVersion200Response {
         val localVarResponse = getConfigServerVersionWithHttpInfo(verbose = verbose)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as GetConfigServerVersion200Response
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1566,16 +1735,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get version
      * Returns the version of the Gerrit server.
      * @param verbose  (optional)
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<GetConfigServerVersion200Response?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerVersionWithHttpInfo(verbose: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
+    fun getConfigServerVersionWithHttpInfo(verbose: kotlin.Boolean?) : ApiResponse<GetConfigServerVersion200Response?> {
         val localVariableConfig = getConfigServerVersionRequestConfig(verbose = verbose)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, GetConfigServerVersion200Response>(
             localVariableConfig
         )
     }
