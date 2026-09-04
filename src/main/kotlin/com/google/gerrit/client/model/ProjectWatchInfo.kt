@@ -29,40 +29,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param project 
- * @param filter 
- * @param problem 
- * @param notifyNewChanges 
- * @param notifyNewPatchSets 
- * @param notifyAllComments 
- * @param notifySubmittedChanges 
- * @param notifyAbandonedChanges 
+ * @param project The name of the project.
+ * @param filter A filter string to be applied to the project.
+ * @param problem An error message when project is for example hidden or deleted.
+ * @param notifyNewChanges Notify on new changes.
+ * @param notifyNewPatchSets Notify on new patch sets.
+ * @param notifyAllComments Notify on comments.
+ * @param notifySubmittedChanges Notify on submitted changes.
+ * @param notifyAbandonedChanges Notify on abandoned changes.
  */
 
 
 data class ProjectWatchInfo (
 
+    /* The name of the project. */
     @SerializedName("project")
     val project: kotlin.String? = null,
 
+    /* A filter string to be applied to the project. */
     @SerializedName("filter")
     val filter: kotlin.String? = null,
 
+    /* An error message when project is for example hidden or deleted. */
     @SerializedName("problem")
     val problem: kotlin.String? = null,
 
+    /* Notify on new changes. */
     @SerializedName("notify_new_changes")
     val notifyNewChanges: kotlin.Boolean? = null,
 
+    /* Notify on new patch sets. */
     @SerializedName("notify_new_patch_sets")
     val notifyNewPatchSets: kotlin.Boolean? = null,
 
+    /* Notify on comments. */
     @SerializedName("notify_all_comments")
     val notifyAllComments: kotlin.Boolean? = null,
 
+    /* Notify on submitted changes. */
     @SerializedName("notify_submitted_changes")
     val notifySubmittedChanges: kotlin.Boolean? = null,
 
+    /* Notify on abandoned changes. */
     @SerializedName("notify_abandoned_changes")
     val notifyAbandonedChanges: kotlin.Boolean? = null
 

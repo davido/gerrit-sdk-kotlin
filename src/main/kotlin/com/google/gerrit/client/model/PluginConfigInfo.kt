@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param hasAvatars 
- * @param jsResourcePaths 
+ * @param hasAvatars Whether an avatar provider is registered.
+ * @param jsResourcePaths A list of relative paths (strings). Each path points to a frontend plugin that should be loaded, e.g. plugins/codemirror_editor/static/codemirror_editor.js.
  */
 
 
 data class PluginConfigInfo (
 
+    /* Whether an avatar provider is registered. */
     @SerializedName("has_avatars")
     val hasAvatars: kotlin.Boolean? = null,
 
+    /* A list of relative paths (strings). Each path points to a frontend plugin that should be loaded, e.g. plugins/codemirror_editor/static/codemirror_editor.js. */
     @SerializedName("js_resource_paths")
     val jsResourcePaths: kotlin.collections.List<kotlin.String>? = null
 

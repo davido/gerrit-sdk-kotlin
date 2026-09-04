@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param checkAccounts 
- * @param checkAccountExternalIds 
- * @param checkGroups 
+ * @param checkAccounts Input for the account consistency check as CheckAccountsInput entity.
+ * @param checkAccountExternalIds Input for the account external ID consistency check as CheckAccountExternalIdsInput entity.
+ * @param checkGroups Input for the group consistency check as CheckGroupsInput entity.
  */
 
 
 data class ConsistencyCheckInput (
 
+    /* Input for the account consistency check as CheckAccountsInput entity. */
     @SerializedName("check_accounts")
     val checkAccounts: kotlin.Any? = null,
 
+    /* Input for the account external ID consistency check as CheckAccountExternalIdsInput entity. */
     @SerializedName("check_account_external_ids")
     val checkAccountExternalIds: kotlin.Any? = null,
 
+    /* Input for the group consistency check as CheckGroupsInput entity. */
     @SerializedName("check_groups")
     val checkGroups: kotlin.Any? = null
 

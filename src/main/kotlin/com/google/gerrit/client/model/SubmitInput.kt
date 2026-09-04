@@ -32,9 +32,9 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param waitForMerge 
- * @param onBehalfOf 
- * @param notify 
- * @param notifyDetails 
+ * @param onBehalfOf If set, submit the change on behalf of the given user. The value may take any format accepted by the accounts REST API. Using this option requires Submit (On Behalf Of) permission on the branch.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the change is submitted. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. + Ignored if a post approval diff is present (i.e.
+ * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
  */
 
 
@@ -43,12 +43,15 @@ data class SubmitInput (
     @SerializedName("wait_for_merge")
     val waitForMerge: kotlin.Boolean? = null,
 
+    /* If set, submit the change on behalf of the given user. The value may take any format accepted by the accounts REST API. Using this option requires Submit (On Behalf Of) permission on the branch. */
     @SerializedName("on_behalf_of")
     val onBehalfOf: kotlin.String? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the change is submitted. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. + Ignored if a post approval diff is present (i.e. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null
 

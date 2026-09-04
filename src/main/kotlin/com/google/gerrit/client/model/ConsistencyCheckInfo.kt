@@ -32,20 +32,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param checkAccountsResult 
- * @param checkAccountExternalIdsResult 
- * @param checkGroupsResult 
+ * @param checkAccountsResult The result of running the account consistency check as a CheckAccountsResultInfo entity.
+ * @param checkAccountExternalIdsResult The result of running the account external ID consistency check as a CheckAccountExternalIdsResultInfo entity.
+ * @param checkGroupsResult The result of running the group consistency check as a CheckGroupsResultInfo entity.
  */
 
 
 data class ConsistencyCheckInfo (
 
+    /* The result of running the account consistency check as a CheckAccountsResultInfo entity. */
     @SerializedName("check_accounts_result")
     val checkAccountsResult: CheckAccountsResultInfo? = null,
 
+    /* The result of running the account external ID consistency check as a CheckAccountExternalIdsResultInfo entity. */
     @SerializedName("check_account_external_ids_result")
     val checkAccountExternalIdsResult: CheckAccountExternalIdsResultInfo? = null,
 
+    /* The result of running the group consistency check as a CheckGroupsResultInfo entity. */
     @SerializedName("check_groups_result")
     val checkGroupsResult: CheckGroupsResultInfo? = null
 

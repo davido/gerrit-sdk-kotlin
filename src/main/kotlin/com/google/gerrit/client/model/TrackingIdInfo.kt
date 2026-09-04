@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param system 
- * @param id 
+ * @param system The name of the external tracking system.
+ * @param id The tracking id.
  */
 
 
 data class TrackingIdInfo (
 
+    /* The name of the external tracking system. */
     @SerializedName("system")
     val system: kotlin.String? = null,
 
+    /* The tracking id. */
     @SerializedName("id")
     val id: kotlin.String? = null
 

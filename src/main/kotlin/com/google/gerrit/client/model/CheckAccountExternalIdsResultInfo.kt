@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param problems 
+ * @param problems A list of ConsistencyProblemInfo entities.
  */
 
 
 data class CheckAccountExternalIdsResultInfo (
 
+    /* A list of ConsistencyProblemInfo entities. */
     @SerializedName("problems")
     val problems: kotlin.collections.List<ConsistencyProblemInfo>? = null
 

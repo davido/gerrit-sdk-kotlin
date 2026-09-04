@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param match 
- * @param link 
- * @param prefix 
- * @param suffix 
- * @param text 
- * @param enabled 
+ * @param match A JavaScript regular expression to match positions to be replaced with a hyperlink, as documented in commentlink.name.match.
+ * @param link The URL to direct the user to whenever the regular expression is matched, as documented in commentlink.name.link.
+ * @param prefix Text inserted before the link.
+ * @param suffix Text inserted after the link.
+ * @param text Text of the link.
+ * @param enabled Whether the commentlink is enabled, as documented in commentlink.name.enabled. If not set the commentlink is enabled.
  */
 
 
 data class CommentLinkInput (
 
+    /* A JavaScript regular expression to match positions to be replaced with a hyperlink, as documented in commentlink.name.match. */
     @SerializedName("match")
     val match: kotlin.String? = null,
 
+    /* The URL to direct the user to whenever the regular expression is matched, as documented in commentlink.name.link. */
     @SerializedName("link")
     val link: kotlin.String? = null,
 
+    /* Text inserted before the link. */
     @SerializedName("prefix")
     val prefix: kotlin.String? = null,
 
+    /* Text inserted after the link. */
     @SerializedName("suffix")
     val suffix: kotlin.String? = null,
 
+    /* Text of the link. */
     @SerializedName("text")
     val text: kotlin.String? = null,
 
+    /* Whether the commentlink is enabled, as documented in commentlink.name.enabled. If not set the commentlink is enabled. */
     @SerializedName("enabled")
     val enabled: kotlin.Boolean? = null
 

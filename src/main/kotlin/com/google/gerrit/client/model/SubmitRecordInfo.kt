@@ -32,28 +32,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param ruleName 
- * @param status 
- * @param labels 
- * @param requirements 
- * @param errorMessage 
+ * @param ruleName The name of the submit rule that created this submit record. The submit rule is specified in the form of \"$plugin~$rule\" where $plugin is the plugin name and $rule is the name of the class that implemented the submit rule.
+ * @param status OK, the change can be submitted. + NOT_READY, additional labels are required before submit. + CLOSED, closed changes cannot be submitted. + FORCED, the change was submitted bypassing the submit rule. + RULE_ERROR, rule code failed with an error.
+ * @param labels A list of labels, each containing the following fields. + * label: the label name. + * status: the label status: {OK, REJECT, MAY, NEED, IMPOSSIBLE}. + * appliedBy: the AccountInfo that applied the vote to the label.
+ * @param requirements List of the requirements to be met before this change can be submitted.
+ * @param errorMessage When status is RULE_ERROR this message provides some text describing the failure of the rule predicate.
  */
 
 
 data class SubmitRecordInfo (
 
+    /* The name of the submit rule that created this submit record. The submit rule is specified in the form of \"$plugin~$rule\" where $plugin is the plugin name and $rule is the name of the class that implemented the submit rule. */
     @SerializedName("rule_name")
     val ruleName: kotlin.String? = null,
 
+    /* OK, the change can be submitted. + NOT_READY, additional labels are required before submit. + CLOSED, closed changes cannot be submitted. + FORCED, the change was submitted bypassing the submit rule. + RULE_ERROR, rule code failed with an error. */
     @SerializedName("status")
     val status: SubmitRecordInfoStatus? = null,
 
+    /* A list of labels, each containing the following fields. + * label: the label name. + * status: the label status: {OK, REJECT, MAY, NEED, IMPOSSIBLE}. + * appliedBy: the AccountInfo that applied the vote to the label. */
     @SerializedName("labels")
     val labels: kotlin.collections.List<Label>? = null,
 
+    /* List of the requirements to be met before this change can be submitted. */
     @SerializedName("requirements")
     val requirements: kotlin.collections.List<LegacySubmitRequirementInfo>? = null,
 
+    /* When status is RULE_ERROR this message provides some text describing the failure of the rule predicate. */
     @SerializedName("error_message")
     val errorMessage: kotlin.String? = null
 

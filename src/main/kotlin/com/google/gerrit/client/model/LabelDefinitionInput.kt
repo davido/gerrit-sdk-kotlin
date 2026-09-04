@@ -29,56 +29,68 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
- * @param function 
- * @param propertyValues 
- * @param defaultValue 
- * @param branches 
- * @param canOverride 
- * @param copyCondition 
- * @param unsetCopyCondition 
- * @param allowPostSubmit 
- * @param ignoreSelfApproval 
- * @param commitMessage 
+ * @param name The new name of the label.+ For label creation the name is required if this LabelDefinitionInput entity is contained in a BatchLabelInput entity.
+ * @param description The new description for the label.
+ * @param function The new function of the label (can be NoOp/NoBlock and PatchSetLock). By default NoOp when creating new labels.
+ * @param propertyValues The new values of the label as a map of label value to value description. The label values are formatted strings, e.g. \"+1\" instead of \"1\", \" 0\" instead of \"0\".
+ * @param defaultValue The new default value of the label (as integer).
+ * @param branches The new branches for which the label applies as a list of branches. A branch can be a ref, a ref pattern or a regular expression. If not set, the label applies for all branches.
+ * @param canOverride Whether this label can be overridden by child projects.
+ * @param copyCondition See copyCondition.
+ * @param unsetCopyCondition If true, clears the value stored in copy_condition.
+ * @param allowPostSubmit Whether allowPostSubmit is set on the label.
+ * @param ignoreSelfApproval Whether ignoreSelfApproval is set on the label.
+ * @param commitMessage Message that should be used to commit the change of the label in the project.config file to the refs/meta/config branch.+ Must not be set if this LabelDefinitionInput entity is contained in a BatchLabelInput entity.
  */
 
 
 data class LabelDefinitionInput (
 
+    /* The new name of the label.+ For label creation the name is required if this LabelDefinitionInput entity is contained in a BatchLabelInput entity. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The new description for the label. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The new function of the label (can be NoOp/NoBlock and PatchSetLock). By default NoOp when creating new labels. */
     @SerializedName("function")
     val function: kotlin.String? = null,
 
+    /* The new values of the label as a map of label value to value description. The label values are formatted strings, e.g. \"+1\" instead of \"1\", \" 0\" instead of \"0\". */
     @SerializedName("values")
     val propertyValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The new default value of the label (as integer). */
     @SerializedName("default_value")
     val defaultValue: kotlin.Int? = null,
 
+    /* The new branches for which the label applies as a list of branches. A branch can be a ref, a ref pattern or a regular expression. If not set, the label applies for all branches. */
     @SerializedName("branches")
     val branches: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether this label can be overridden by child projects. */
     @SerializedName("can_override")
     val canOverride: kotlin.Boolean? = null,
 
+    /* See copyCondition. */
     @SerializedName("copy_condition")
     val copyCondition: kotlin.String? = null,
 
+    /* If true, clears the value stored in copy_condition. */
     @SerializedName("unset_copy_condition")
     val unsetCopyCondition: kotlin.Boolean? = null,
 
+    /* Whether allowPostSubmit is set on the label. */
     @SerializedName("allow_post_submit")
     val allowPostSubmit: kotlin.Boolean? = null,
 
+    /* Whether ignoreSelfApproval is set on the label. */
     @SerializedName("ignore_self_approval")
     val ignoreSelfApproval: kotlin.Boolean? = null,
 
+    /* Message that should be used to commit the change of the label in the project.config file to the refs/meta/config branch.+ Must not be set if this LabelDefinitionInput entity is contained in a BatchLabelInput entity. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null
 

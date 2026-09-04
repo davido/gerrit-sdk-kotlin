@@ -36,6 +36,7 @@ import com.google.gerrit.client.model.AgreementInfo
 import com.google.gerrit.client.model.AgreementInput
 import com.google.gerrit.client.model.AuthTokenInfo
 import com.google.gerrit.client.model.AuthTokenInput
+import com.google.gerrit.client.model.ChangeInfo
 import com.google.gerrit.client.model.DeleteDraftCommentsInput
 import com.google.gerrit.client.model.DeletedDraftCommentInfo
 import com.google.gerrit.client.model.DiffPreferencesInfo
@@ -2414,10 +2415,10 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * GET /accounts/{account-id}/starred.changes
-     * Get Changes With Default Star
-     * Gets the changes that were starred with the default star by the identified user account. This URL endpoint is functionally identical to the changes query GET /changes/?q&#x3D;is:starred. The result is a list of ChangeInfo entities.
+     * Get changes with default star
+     * Gets the changes that were starred with the default star by the identified user account.
      * @param accountId 
-     * @return kotlin.Any
+     * @return kotlin.collections.List<ChangeInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -2426,11 +2427,11 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getAccountsAccountIdStarredChanges(accountId: kotlin.String) : kotlin.Any {
+    fun getAccountsAccountIdStarredChanges(accountId: kotlin.String) : kotlin.collections.List<ChangeInfo> {
         val localVarResponse = getAccountsAccountIdStarredChangesWithHttpInfo(accountId = accountId)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<ChangeInfo>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -2446,19 +2447,19 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * GET /accounts/{account-id}/starred.changes
-     * Get Changes With Default Star
-     * Gets the changes that were starred with the default star by the identified user account. This URL endpoint is functionally identical to the changes query GET /changes/?q&#x3D;is:starred. The result is a list of ChangeInfo entities.
+     * Get changes with default star
+     * Gets the changes that were starred with the default star by the identified user account.
      * @param accountId 
-     * @return ApiResponse<kotlin.Any?>
+     * @return ApiResponse<kotlin.collections.List<ChangeInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getAccountsAccountIdStarredChangesWithHttpInfo(accountId: kotlin.String) : ApiResponse<kotlin.Any?> {
+    fun getAccountsAccountIdStarredChangesWithHttpInfo(accountId: kotlin.String) : ApiResponse<kotlin.collections.List<ChangeInfo>?> {
         val localVariableConfig = getAccountsAccountIdStarredChangesRequestConfig(accountId = accountId)
 
-        return request<Unit, kotlin.Any>(
+        return request<Unit, kotlin.collections.List<ChangeInfo>>(
             localVariableConfig
         )
     }

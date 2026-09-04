@@ -31,40 +31,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commit 
- * @param parents 
- * @param author 
- * @param committer 
- * @param subject 
- * @param message 
- * @param webLinks 
- * @param resolveConflictsWebLinks 
+ * @param commit The commit ID. Not set if included in a RevisionInfo entity that is contained in a map which has the commit ID as key.
+ * @param parents The parent commits of this commit as a list of CommitInfo entities. In each parent only the commit and subject fields are populated.
+ * @param author The author of the commit as a GitPersonInfo entity.
+ * @param committer The committer of the commit as a GitPersonInfo entity.
+ * @param subject The subject of the commit (header line of the commit message).
+ * @param message The commit message.
+ * @param webLinks Links to the patch set in external sites as a list of WebLinkInfo entities.
+ * @param resolveConflictsWebLinks Links to the commit in external sites for resolving conflicts as a list of WebLinkInfo entities.
  */
 
 
 data class CommitInfo (
 
+    /* The commit ID. Not set if included in a RevisionInfo entity that is contained in a map which has the commit ID as key. */
     @SerializedName("commit")
     val commit: kotlin.String? = null,
 
+    /* The parent commits of this commit as a list of CommitInfo entities. In each parent only the commit and subject fields are populated. */
     @SerializedName("parents")
     val parents: kotlin.collections.List<CommitInfo>? = null,
 
+    /* The author of the commit as a GitPersonInfo entity. */
     @SerializedName("author")
     val author: GitPerson? = null,
 
+    /* The committer of the commit as a GitPersonInfo entity. */
     @SerializedName("committer")
     val committer: GitPerson? = null,
 
+    /* The subject of the commit (header line of the commit message). */
     @SerializedName("subject")
     val subject: kotlin.String? = null,
 
+    /* The commit message. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Links to the patch set in external sites as a list of WebLinkInfo entities. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null,
 
+    /* Links to the commit in external sites for resolving conflicts as a list of WebLinkInfo entities. */
     @SerializedName("resolve_conflicts_web_links")
     val resolveConflictsWebLinks: kotlin.collections.List<WebLinkInfo>? = null
 

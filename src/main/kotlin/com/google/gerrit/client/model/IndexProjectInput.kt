@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param indexChildren 
- * @param async 
+ * @param indexChildren If children should be indexed recursively.
+ * @param async If projects should be indexed asynchronously.
  */
 
 
 data class IndexProjectInput (
 
+    /* If children should be indexed recursively. */
     @SerializedName("index_children")
     val indexChildren: kotlin.Boolean? = null,
 
+    /* If projects should be indexed asynchronously. */
     @SerializedName("async")
     val async: kotlin.Boolean? = null
 

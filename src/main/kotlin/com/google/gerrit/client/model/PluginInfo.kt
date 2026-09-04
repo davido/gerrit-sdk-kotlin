@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param version 
- * @param apiVersion 
- * @param indexUrl 
- * @param filename 
- * @param disabled 
+ * @param id The ID of the plugin.
+ * @param version The version of the plugin.
+ * @param apiVersion The version of the Gerrit Api used by the plugin.
+ * @param indexUrl URL of the plugin's default page.
+ * @param filename The plugin's filename.
+ * @param disabled Whether the plugin is disabled.
  */
 
 
 data class PluginInfo (
 
+    /* The ID of the plugin. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The version of the plugin. */
     @SerializedName("version")
     val version: kotlin.String? = null,
 
+    /* The version of the Gerrit Api used by the plugin. */
     @SerializedName("api_version")
     val apiVersion: kotlin.String? = null,
 
+    /* URL of the plugin's default page. */
     @SerializedName("index_url")
     val indexUrl: kotlin.String? = null,
 
+    /* The plugin's filename. */
     @SerializedName("filename")
     val filename: kotlin.String? = null,
 
+    /* Whether the plugin is disabled. */
     @SerializedName("disabled")
     val disabled: kotlin.Boolean? = null
 

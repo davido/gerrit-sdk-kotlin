@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param query 
+ * @param name The title of the section.
+ * @param query The query of the section. + Tokens such as ${project} are not resolved.
  */
 
 
 data class DashboardSectionInfo (
 
+    /* The title of the section. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The query of the section. + Tokens such as ${project} are not resolved. */
     @SerializedName("query")
     val query: kotlin.String? = null
 

@@ -30,40 +30,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param username 
- * @param name 
- * @param displayName 
- * @param email 
- * @param sshKey 
- * @param httpPassword 
- * @param tokens 
- * @param groups 
+ * @param username The user name. If provided, must match the user name from the URL.
+ * @param name The full name of the user.
+ * @param displayName The display name of the user.
+ * @param email The email address of the user.
+ * @param sshKey The public SSH key of the user.
+ * @param httpPassword The HTTP password of the user. (deprecated)
+ * @param tokens A list of tokens in the form of AuthTokenInputs to assign to the user.
+ * @param groups A list of group IDs that identify the groups to which the user should be added.
  */
 
 
 data class AccountInput (
 
+    /* The user name. If provided, must match the user name from the URL. */
     @SerializedName("username")
     val username: kotlin.String? = null,
 
+    /* The full name of the user. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The display name of the user. */
     @SerializedName("display_name")
     val displayName: kotlin.String? = null,
 
+    /* The email address of the user. */
     @SerializedName("email")
     val email: kotlin.String? = null,
 
+    /* The public SSH key of the user. */
     @SerializedName("ssh_key")
     val sshKey: kotlin.String? = null,
 
+    /* The HTTP password of the user. (deprecated) */
     @SerializedName("http_password")
     val httpPassword: kotlin.String? = null,
 
+    /* A list of tokens in the form of AuthTokenInputs to assign to the user. */
     @SerializedName("tokens")
     val tokens: kotlin.collections.List<AuthTokenInput>? = null,
 
+    /* A list of group IDs that identify the groups to which the user should be added. */
     @SerializedName("groups")
     val groups: kotlin.collections.List<kotlin.String>? = null
 

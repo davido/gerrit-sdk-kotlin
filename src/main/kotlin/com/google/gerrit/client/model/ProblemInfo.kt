@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
- * @param status 
- * @param outcome 
+ * @param message Plaintext message describing the problem with the change.
+ * @param status The status of fixing the problem (FIXED, FIX_FAILED). Only set if a fix was attempted.
+ * @param outcome If status is set, an additional plaintext message describing the outcome of the fix.
  */
 
 
 data class ProblemInfo (
 
+    /* Plaintext message describing the problem with the change. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* The status of fixing the problem (FIXED, FIX_FAILED). Only set if a fix was attempted. */
     @SerializedName("status")
     val status: ProblemInfoStatus? = null,
 
+    /* If status is set, an additional plaintext message describing the outcome of the fix. */
     @SerializedName("outcome")
     val outcome: kotlin.String? = null
 

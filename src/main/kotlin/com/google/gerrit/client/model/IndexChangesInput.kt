@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param changes 
- * @param deleteMissing 
+ * @param changes List of change-ids. When delete_missing is true, each entry must be in project~changeNumber format.
+ * @param deleteMissing Delete changes which are missing in NoteDb from the index. This can be used to get rid of stale index entries. Possible values are true and false. By default set to false.
  */
 
 
 data class IndexChangesInput (
 
+    /* List of change-ids. When delete_missing is true, each entry must be in project~changeNumber format. */
     @SerializedName("changes")
     val changes: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Delete changes which are missing in NoteDb from the index. This can be used to get rid of stale index entries. Possible values are true and false. By default set to false. */
     @SerializedName("delete_missing")
     val deleteMissing: kotlin.Boolean? = null
 

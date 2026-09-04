@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param topic 
+ * @param topic The topic. + The topic will be deleted if not set. Topic can't contain quotation marks.
  */
 
 
 data class TopicInput (
 
+    /* The topic. + The topic will be deleted if not set. Topic can't contain quotation marks. */
     @SerializedName("topic")
     val topic: kotlin.String? = null
 

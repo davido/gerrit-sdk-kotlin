@@ -44,240 +44,296 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param tripletId 
- * @param project 
- * @param branch 
- * @param fullBranch 
- * @param topic 
- * @param attentionSet 
- * @param removedFromAttentionSet 
- * @param customKeyedValues 
- * @param hashtags 
- * @param changeId 
- * @param subject 
- * @param status 
- * @param created 
- * @param updated 
- * @param submitted 
- * @param submitter 
- * @param starred 
+ * @param id The ID of the change. The format is \"'<project>\\~<_number>'\". 'project' and '_number' are URL encoded. The callers must not rely on the format.
+ * @param tripletId The ID of the change in the format \"'<project>\\~<branch>~<Change-Id>'\", where 'project' and 'branch' are URL encoded. For 'branch' the refs/heads/ prefix is omitted.
+ * @param project The name of the project.
+ * @param branch The name of the target branch. + The refs/heads/ prefix is omitted.
+ * @param fullBranch The full name of the target branch. + Always starts with refs/.
+ * @param topic The topic to which this change belongs.
+ * @param attentionSet The map that maps account IDs to AttentionSetInfo of that account. Those are all accounts that are currently in the attention set.
+ * @param removedFromAttentionSet The map that maps account IDs to AttentionSetInfo of that account. Those are all accounts that were in the attention set but were removed. The AttentionSetInfo is the latest and most recent removal of the account from the attention set.
+ * @param customKeyedValues A map that maps custom keys to custom values that are tied to a specific change, both in the form of strings. Only set if custom keyed values are requested.
+ * @param hashtags List of hashtags that are set on the change.
+ * @param changeId The Change-Id of the change.
+ * @param subject The subject of the change (header line of the commit message).
+ * @param status The status of the change (NEW, MERGED, ABANDONED).
+ * @param created The timestamp of when the change was created.
+ * @param updated The timestamp of when the change was last updated.
+ * @param submitted The timestamp of when the change was submitted.
+ * @param submitter The user who submitted the change, as an AccountInfo entity.
+ * @param starred Whether the calling user has starred this change. Only set if requested.
  * @param stars 
- * @param reviewed 
- * @param submitType 
- * @param mergeable 
- * @param submittable 
- * @param insertions 
- * @param deletions 
- * @param totalCommentCount 
- * @param unresolvedCommentCount 
- * @param isPrivate 
- * @param workInProgress 
- * @param hasReviewStarted 
- * @param revertOf 
- * @param submissionId 
- * @param cherryPickOfChange 
- * @param cherryPickOfPatchSet 
- * @param metaRevId 
- * @param containsGitConflicts 
- * @param number 
- * @param virtualIdNumber 
- * @param owner 
- * @param actions 
- * @param labels 
- * @param permittedLabels 
- * @param removableLabels 
- * @param removableReviewers 
- * @param reviewers 
- * @param pendingReviewers 
- * @param reviewerUpdates 
- * @param messages 
- * @param currentRevisionNumber 
- * @param currentRevision 
- * @param revisions 
- * @param moreChanges 
- * @param problems 
+ * @param reviewed Whether the change was reviewed by the calling user. Only set if reviewed is requested.
+ * @param submitType The submit type of the change. + Not set for merged changes.
+ * @param mergeable Whether the change is mergeable. + Only set for open changes if change.mergeabilityComputationBehavior is API_REF_UPDATED_AND_CHANGE_REINDEX.
+ * @param submittable Whether the change has been approved by the project submit rules. + Only set if requested.
+ * @param insertions Number of inserted lines.
+ * @param deletions Number of deleted lines.
+ * @param totalCommentCount Total number of inline comments across all patch sets.
+ * @param unresolvedCommentCount Number of unresolved inline comment threads across all patch sets.
+ * @param isPrivate When present, change is marked as private.
+ * @param workInProgress When present, change is marked as Work In Progress.
+ * @param hasReviewStarted When present, change has been marked Ready at some point in time.
+ * @param revertOf The change number of the change that this change reverts.
+ * @param submissionId ID of the submission of this change. Only set if the status is MERGED. This ID is equal to the change number of the change that triggered the submission. If the change that triggered the submission also has a topic, it will be \"<id>-<topic>\" of the change that triggered the submission.
+ * @param cherryPickOfChange The change number of the change that this change was cherry-picked from. Only set if the cherry-pick has been done through the Gerrit REST API (and not if a cherry-picked commit was pushed).
+ * @param cherryPickOfPatchSet The patchset number of the change that this change was cherry-picked from. Only set if the cherry-pick has been done through the Gerrit REST API (and not if a cherry-picked commit was pushed).
+ * @param metaRevId The SHA-1 of the NoteDb meta ref.
+ * @param containsGitConflicts Whether the change contains conflicts. + If true, some of the file contents of the change contain git conflict markers to indicate the conflicts. + Only set if this change info is returned in response to a request that creates a new change or patch set and conflicts are allowed.
+ * @param number The change number. (The underscore is just a relict of a prior attempt to deprecate the change number.)
+ * @param virtualIdNumber The virtual id number is globally unique. For local changes, it is equal to the _number attribute. For imported changes, the original _number is processed through a function designed to prevent conflicts with local change numbers.
+ * @param owner The owner of the change as an AccountInfo entity.
+ * @param actions Actions the caller might be able to perform on this revision. The information is a map of view name to ActionInfo entities.
+ * @param labels The labels of the change as a map that maps the label names to LabelInfo entries. + Only set if labels or detailed labels are requested.
+ * @param permittedLabels A map of the permitted labels that maps a label name to the list of values that the current user can vote on. + Only set if detailed labels are requested.
+ * @param removableLabels A map of the removable labels that maps a label name to the map of values and reviewers ( AccountInfo entities) that are allowed to be removed from the change. + Only set if labels or detailed labels are requested.
+ * @param removableReviewers The reviewers that can be removed by the calling user as a list of AccountInfo entities. + Only set if labels or detailed labels are requested.
+ * @param reviewers The reviewers as a map that maps a reviewer state to a list of AccountInfo entities. Possible reviewer states are REVIEWER, CC. + REVIEWER: Users with at least one non-zero vote on the change. + CC: Users that were added to the change, but have not voted.
+ * @param pendingReviewers Updates to reviewers that have been made while the change was in the WIP state. Only present on WIP changes and only if there are pending reviewer updates to report. These are reviewers who have not yet been notified about being added to or removed from the change.
+ * @param reviewerUpdates Updates to reviewers set for the change as ReviewerUpdateInfo entities. Only set if reviewer updates are requested.
+ * @param messages Messages associated with the change as a list of ChangeMessageInfo entities. + Only set if messages are requested.
+ * @param currentRevisionNumber The number of the current patch set of this change. +
+ * @param currentRevision The commit ID of the current patch set of this change. + Only set if the current revision is requested or if all revisions are requested.
+ * @param revisions All patch sets of this change as a map that maps the commit ID of the patch set to a RevisionInfo entity. + Only set if the current revision is requested (in which case it will only contain a key for the current revision) or if all revisions are requested.
+ * @param moreChanges Whether the query would deliver more results if not limited. + Only set on the last change that is returned.
+ * @param problems A list of ProblemInfo entities describing potential problems with this change. Only set if CHECK is set.
  * @param plugins 
- * @param trackingIds 
- * @param requirements 
- * @param submitRecords 
- * @param submitRequirements 
+ * @param trackingIds A list of TrackingIdInfo entities describing references to external tracking systems. Only set if tracking ids are requested.
+ * @param requirements List of the requirements to be met before this change can be submitted. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested.
+ * @param submitRecords List of the SubmitRecordInfo containing the submit records for the change at the latest patchset. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested.
+ * @param submitRequirements List of the SubmitRequirementResultInfo containing the evaluated submit requirements for the change. Only set if SUBMIT_REQUIREMENTS is requested.
  */
 
 
 data class ChangeInfo (
 
+    /* The ID of the change. The format is \"'<project>\\~<_number>'\". 'project' and '_number' are URL encoded. The callers must not rely on the format. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The ID of the change in the format \"'<project>\\~<branch>~<Change-Id>'\", where 'project' and 'branch' are URL encoded. For 'branch' the refs/heads/ prefix is omitted. */
     @SerializedName("triplet_id")
     val tripletId: kotlin.String? = null,
 
+    /* The name of the project. */
     @SerializedName("project")
     val project: kotlin.String? = null,
 
+    /* The name of the target branch. + The refs/heads/ prefix is omitted. */
     @SerializedName("branch")
     val branch: kotlin.String? = null,
 
+    /* The full name of the target branch. + Always starts with refs/. */
     @SerializedName("full_branch")
     val fullBranch: kotlin.String? = null,
 
+    /* The topic to which this change belongs. */
     @SerializedName("topic")
     val topic: kotlin.String? = null,
 
+    /* The map that maps account IDs to AttentionSetInfo of that account. Those are all accounts that are currently in the attention set. */
     @SerializedName("attention_set")
     val attentionSet: kotlin.collections.Map<kotlin.String, AttentionSetInfo>? = null,
 
+    /* The map that maps account IDs to AttentionSetInfo of that account. Those are all accounts that were in the attention set but were removed. The AttentionSetInfo is the latest and most recent removal of the account from the attention set. */
     @SerializedName("removed_from_attention_set")
     val removedFromAttentionSet: kotlin.collections.Map<kotlin.String, AttentionSetInfo>? = null,
 
+    /* A map that maps custom keys to custom values that are tied to a specific change, both in the form of strings. Only set if custom keyed values are requested. */
     @SerializedName("custom_keyed_values")
     val customKeyedValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* List of hashtags that are set on the change. */
     @SerializedName("hashtags")
     val hashtags: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The Change-Id of the change. */
     @SerializedName("change_id")
     val changeId: kotlin.String? = null,
 
+    /* The subject of the change (header line of the commit message). */
     @SerializedName("subject")
     val subject: kotlin.String? = null,
 
+    /* The status of the change (NEW, MERGED, ABANDONED). */
     @SerializedName("status")
     val status: ChangeStatus? = null,
 
+    /* The timestamp of when the change was created. */
     @SerializedName("created")
     val created: kotlin.String? = null,
 
+    /* The timestamp of when the change was last updated. */
     @SerializedName("updated")
     val updated: kotlin.String? = null,
 
+    /* The timestamp of when the change was submitted. */
     @SerializedName("submitted")
     val submitted: kotlin.String? = null,
 
+    /* The user who submitted the change, as an AccountInfo entity. */
     @SerializedName("submitter")
     val submitter: AccountInfo? = null,
 
+    /* Whether the calling user has starred this change. Only set if requested. */
     @SerializedName("starred")
     val starred: kotlin.Boolean? = null,
 
     @SerializedName("stars")
     val stars: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether the change was reviewed by the calling user. Only set if reviewed is requested. */
     @SerializedName("reviewed")
     val reviewed: kotlin.Boolean? = null,
 
+    /* The submit type of the change. + Not set for merged changes. */
     @SerializedName("submit_type")
     val submitType: SubmitType? = null,
 
+    /* Whether the change is mergeable. + Only set for open changes if change.mergeabilityComputationBehavior is API_REF_UPDATED_AND_CHANGE_REINDEX. */
     @SerializedName("mergeable")
     val mergeable: kotlin.Boolean? = null,
 
+    /* Whether the change has been approved by the project submit rules. + Only set if requested. */
     @SerializedName("submittable")
     val submittable: kotlin.Boolean? = null,
 
+    /* Number of inserted lines. */
     @SerializedName("insertions")
     val insertions: kotlin.Int? = null,
 
+    /* Number of deleted lines. */
     @SerializedName("deletions")
     val deletions: kotlin.Int? = null,
 
+    /* Total number of inline comments across all patch sets. */
     @SerializedName("total_comment_count")
     val totalCommentCount: kotlin.Int? = null,
 
+    /* Number of unresolved inline comment threads across all patch sets. */
     @SerializedName("unresolved_comment_count")
     val unresolvedCommentCount: kotlin.Int? = null,
 
+    /* When present, change is marked as private. */
     @SerializedName("is_private")
     val isPrivate: kotlin.Boolean? = null,
 
+    /* When present, change is marked as Work In Progress. */
     @SerializedName("work_in_progress")
     val workInProgress: kotlin.Boolean? = null,
 
+    /* When present, change has been marked Ready at some point in time. */
     @SerializedName("has_review_started")
     val hasReviewStarted: kotlin.Boolean? = null,
 
+    /* The change number of the change that this change reverts. */
     @SerializedName("revert_of")
     val revertOf: kotlin.Int? = null,
 
+    /* ID of the submission of this change. Only set if the status is MERGED. This ID is equal to the change number of the change that triggered the submission. If the change that triggered the submission also has a topic, it will be \"<id>-<topic>\" of the change that triggered the submission. */
     @SerializedName("submission_id")
     val submissionId: kotlin.String? = null,
 
+    /* The change number of the change that this change was cherry-picked from. Only set if the cherry-pick has been done through the Gerrit REST API (and not if a cherry-picked commit was pushed). */
     @SerializedName("cherry_pick_of_change")
     val cherryPickOfChange: kotlin.Int? = null,
 
+    /* The patchset number of the change that this change was cherry-picked from. Only set if the cherry-pick has been done through the Gerrit REST API (and not if a cherry-picked commit was pushed). */
     @SerializedName("cherry_pick_of_patch_set")
     val cherryPickOfPatchSet: kotlin.Int? = null,
 
+    /* The SHA-1 of the NoteDb meta ref. */
     @SerializedName("meta_rev_id")
     val metaRevId: kotlin.String? = null,
 
+    /* Whether the change contains conflicts. + If true, some of the file contents of the change contain git conflict markers to indicate the conflicts. + Only set if this change info is returned in response to a request that creates a new change or patch set and conflicts are allowed. */
     @SerializedName("contains_git_conflicts")
     val containsGitConflicts: kotlin.Boolean? = null,
 
+    /* The change number. (The underscore is just a relict of a prior attempt to deprecate the change number.) */
     @SerializedName("_number")
     val number: kotlin.Int? = null,
 
+    /* The virtual id number is globally unique. For local changes, it is equal to the _number attribute. For imported changes, the original _number is processed through a function designed to prevent conflicts with local change numbers. */
     @SerializedName("virtual_id_number")
     val virtualIdNumber: kotlin.Int? = null,
 
+    /* The owner of the change as an AccountInfo entity. */
     @SerializedName("owner")
     val owner: AccountInfo? = null,
 
+    /* Actions the caller might be able to perform on this revision. The information is a map of view name to ActionInfo entities. */
     @SerializedName("actions")
     val actions: kotlin.collections.Map<kotlin.String, ActionInfo>? = null,
 
+    /* The labels of the change as a map that maps the label names to LabelInfo entries. + Only set if labels or detailed labels are requested. */
     @SerializedName("labels")
     val labels: kotlin.collections.Map<kotlin.String, LabelInfo>? = null,
 
+    /* A map of the permitted labels that maps a label name to the list of values that the current user can vote on. + Only set if detailed labels are requested. */
     @SerializedName("permitted_labels")
     val permittedLabels: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>? = null,
 
+    /* A map of the removable labels that maps a label name to the map of values and reviewers ( AccountInfo entities) that are allowed to be removed from the change. + Only set if labels or detailed labels are requested. */
     @SerializedName("removable_labels")
     val removableLabels: kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, kotlin.collections.List<AccountInfo>>>? = null,
 
+    /* The reviewers that can be removed by the calling user as a list of AccountInfo entities. + Only set if labels or detailed labels are requested. */
     @SerializedName("removable_reviewers")
     val removableReviewers: kotlin.collections.List<AccountInfo>? = null,
 
+    /* The reviewers as a map that maps a reviewer state to a list of AccountInfo entities. Possible reviewer states are REVIEWER, CC. + REVIEWER: Users with at least one non-zero vote on the change. + CC: Users that were added to the change, but have not voted. */
     @SerializedName("reviewers")
     val reviewers: kotlin.collections.Map<kotlin.String, kotlin.collections.List<AccountInfo>>? = null,
 
+    /* Updates to reviewers that have been made while the change was in the WIP state. Only present on WIP changes and only if there are pending reviewer updates to report. These are reviewers who have not yet been notified about being added to or removed from the change. */
     @SerializedName("pending_reviewers")
     val pendingReviewers: kotlin.collections.Map<kotlin.String, kotlin.collections.List<AccountInfo>>? = null,
 
+    /* Updates to reviewers set for the change as ReviewerUpdateInfo entities. Only set if reviewer updates are requested. */
     @SerializedName("reviewer_updates")
     val reviewerUpdates: kotlin.collections.List<ReviewerUpdateInfo>? = null,
 
+    /* Messages associated with the change as a list of ChangeMessageInfo entities. + Only set if messages are requested. */
     @SerializedName("messages")
     val messages: kotlin.collections.List<ChangeMessageInfo>? = null,
 
+    /* The number of the current patch set of this change. + */
     @SerializedName("current_revision_number")
     val currentRevisionNumber: kotlin.Int? = null,
 
+    /* The commit ID of the current patch set of this change. + Only set if the current revision is requested or if all revisions are requested. */
     @SerializedName("current_revision")
     val currentRevision: kotlin.String? = null,
 
+    /* All patch sets of this change as a map that maps the commit ID of the patch set to a RevisionInfo entity. + Only set if the current revision is requested (in which case it will only contain a key for the current revision) or if all revisions are requested. */
     @SerializedName("revisions")
     val revisions: kotlin.collections.Map<kotlin.String, RevisionInfo>? = null,
 
+    /* Whether the query would deliver more results if not limited. + Only set on the last change that is returned. */
     @SerializedName("_more_changes")
     val moreChanges: kotlin.Boolean? = null,
 
+    /* A list of ProblemInfo entities describing potential problems with this change. Only set if CHECK is set. */
     @SerializedName("problems")
     val problems: kotlin.collections.List<ProblemInfo>? = null,
 
     @SerializedName("plugins")
     val plugins: kotlin.collections.List<PluginDefinedInfo>? = null,
 
+    /* A list of TrackingIdInfo entities describing references to external tracking systems. Only set if tracking ids are requested. */
     @SerializedName("tracking_ids")
     val trackingIds: kotlin.collections.List<TrackingIdInfo>? = null,
 
+    /* List of the requirements to be met before this change can be submitted. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested. */
     @SerializedName("requirements")
     val requirements: kotlin.collections.List<LegacySubmitRequirementInfo>? = null,
 
+    /* List of the SubmitRecordInfo containing the submit records for the change at the latest patchset. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested. */
     @SerializedName("submit_records")
     val submitRecords: kotlin.collections.List<SubmitRecordInfo>? = null,
 
+    /* List of the SubmitRequirementResultInfo containing the evaluated submit requirements for the change. Only set if SUBMIT_REQUIREMENTS is requested. */
     @SerializedName("submit_requirements")
     val submitRequirements: kotlin.collections.List<SubmitRequirementResultInfo>? = null
 

@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
+ * @param status The status of the migration. Takes one of the following values: MIGRATED, HAS_PROLOG, PREVIOUSLY_MIGRATED, NO_CHANGE
  */
 
 
 data class MigrateLabelsInfo (
 
+    /* The status of the migration. Takes one of the following values: MIGRATED, HAS_PROLOG, PREVIOUSLY_MIGRATED, NO_CHANGE */
     @SerializedName("status")
     val status: SchemaMigrateLabelFunctionsToSubmitRequirementStatus? = null
 

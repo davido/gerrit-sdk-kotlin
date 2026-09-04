@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param action 
- * @param force 
- * @param min 
- * @param max 
+ * @param action The action of this rule. For normal permissions this can be ALLOW, DENY or BLOCK. Special values for global capabilities are INTERACTIVE and BATCH.
+ * @param force Whether the force flag is set.
+ * @param min The min value of the permission range.
+ * @param max The max value of the permission range.
  */
 
 
 data class PermissionRuleInfo (
 
+    /* The action of this rule. For normal permissions this can be ALLOW, DENY or BLOCK. Special values for global capabilities are INTERACTIVE and BATCH. */
     @SerializedName("action")
     val action: Action? = null,
 
+    /* Whether the force flag is set. */
     @SerializedName("force")
     val force: kotlin.Boolean? = null,
 
+    /* The min value of the permission range. */
     @SerializedName("min")
     val min: kotlin.Int? = null,
 
+    /* The max value of the permission range. */
     @SerializedName("max")
     val max: kotlin.Int? = null
 

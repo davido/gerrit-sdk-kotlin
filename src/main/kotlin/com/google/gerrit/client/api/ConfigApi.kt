@@ -38,9 +38,7 @@ import com.google.gerrit.client.model.DiffPreferencesInfo
 import com.google.gerrit.client.model.EditPreferencesInfo
 import com.google.gerrit.client.model.ExperimentInfo
 import com.google.gerrit.client.model.GeneralPreferencesInfo
-import com.google.gerrit.client.model.GetConfigServerCaches200Response
 import com.google.gerrit.client.model.GetConfigServerIndexes200ResponseInner
-import com.google.gerrit.client.model.GetConfigServerVersion200Response
 import com.google.gerrit.client.model.IndexChangesInput
 import com.google.gerrit.client.model.LabelDefinitionInfo
 import com.google.gerrit.client.model.MenuEntry
@@ -158,7 +156,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Lists the caches of the server. Caches defined by plugins are included.
      * @param format  (optional)
      * @param includeDiskstats  (optional)
-     * @return GetConfigServerCaches200Response
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -167,11 +165,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerCaches(format: kotlin.String? = null, includeDiskstats: kotlin.Boolean? = null) : GetConfigServerCaches200Response {
+    fun getConfigServerCaches(format: kotlin.String? = null, includeDiskstats: kotlin.Boolean? = null) : kotlin.Any {
         val localVarResponse = getConfigServerCachesWithHttpInfo(format = format, includeDiskstats = includeDiskstats)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as GetConfigServerCaches200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -191,16 +189,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Lists the caches of the server. Caches defined by plugins are included.
      * @param format  (optional)
      * @param includeDiskstats  (optional)
-     * @return ApiResponse<GetConfigServerCaches200Response?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerCachesWithHttpInfo(format: kotlin.String?, includeDiskstats: kotlin.Boolean?) : ApiResponse<GetConfigServerCaches200Response?> {
+    fun getConfigServerCachesWithHttpInfo(format: kotlin.String?, includeDiskstats: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getConfigServerCachesRequestConfig(format = format, includeDiskstats = includeDiskstats)
 
-        return request<Unit, GetConfigServerCaches200Response>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }
@@ -1703,7 +1701,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get version
      * Returns the version of the Gerrit server.
      * @param verbose  (optional)
-     * @return GetConfigServerVersion200Response
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1712,11 +1710,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerVersion(verbose: kotlin.Boolean? = null) : GetConfigServerVersion200Response {
+    fun getConfigServerVersion(verbose: kotlin.Boolean? = null) : kotlin.Any {
         val localVarResponse = getConfigServerVersionWithHttpInfo(verbose = verbose)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as GetConfigServerVersion200Response
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1735,16 +1733,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Get version
      * Returns the version of the Gerrit server.
      * @param verbose  (optional)
-     * @return ApiResponse<GetConfigServerVersion200Response?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerVersionWithHttpInfo(verbose: kotlin.Boolean?) : ApiResponse<GetConfigServerVersion200Response?> {
+    fun getConfigServerVersionWithHttpInfo(verbose: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getConfigServerVersionRequestConfig(verbose = verbose)
 
-        return request<Unit, GetConfigServerVersion200Response>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }

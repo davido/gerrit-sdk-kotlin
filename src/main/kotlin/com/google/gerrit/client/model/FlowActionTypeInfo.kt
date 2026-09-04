@@ -29,13 +29,14 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
+ * @param name The name of the action.
  * @param parametersPlaceholder 
  */
 
 
 data class FlowActionTypeInfo (
 
+    /* The name of the action. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 

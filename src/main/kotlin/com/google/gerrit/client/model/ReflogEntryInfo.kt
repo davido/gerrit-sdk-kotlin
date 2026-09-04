@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param oldId 
- * @param newId 
- * @param who 
- * @param comment 
+ * @param oldId The old commit ID.
+ * @param newId The new commit ID.
+ * @param who The user performing the change as a GitPersonInfo entity.
+ * @param comment Comment of the reflog entry.
  */
 
 
 data class ReflogEntryInfo (
 
+    /* The old commit ID. */
     @SerializedName("old_id")
     val oldId: kotlin.String? = null,
 
+    /* The new commit ID. */
     @SerializedName("new_id")
     val newId: kotlin.String? = null,
 
+    /* The user performing the change as a GitPersonInfo entity. */
     @SerializedName("who")
     val who: GitPerson? = null,
 
+    /* Comment of the reflog entry. */
     @SerializedName("comment")
     val comment: kotlin.String? = null
 

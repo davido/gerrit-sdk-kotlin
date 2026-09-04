@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param min 
- * @param max 
+ * @param min The minimum voting value.
+ * @param max The maximum voting value.
  */
 
 
 data class VotingRangeInfo (
 
+    /* The minimum voting value. */
     @SerializedName("min")
     val min: kotlin.Int? = null,
 
+    /* The maximum voting value. */
     @SerializedName("max")
     val max: kotlin.Int? = null
 

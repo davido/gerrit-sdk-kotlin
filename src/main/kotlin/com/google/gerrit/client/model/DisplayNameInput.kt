@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param displayName 
+ * @param displayName The new display name of the account.
  */
 
 
 data class DisplayNameInput (
 
+    /* The new display name of the account. */
     @SerializedName("display_name")
     val displayName: kotlin.String? = null
 

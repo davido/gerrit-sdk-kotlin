@@ -31,40 +31,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param `object` 
- * @param message 
- * @param tagger 
- * @param created 
- * @param webLinks 
- * @param ref 
- * @param revision 
- * @param canDelete 
+ * @param `object` The revision of the object to which the tag points.
+ * @param message The tag message. For signed tags, includes the signature.
+ * @param tagger The tagger as a GitPersonInfo entity.
+ * @param created The timestamp of when the tag was created. For annotated and signed tags, this is the timestamp of the tag object and is the same as the date field in the tagger. For lightweight tags, it is the commit timestamp of the commit to which the tag points, when the object is a commit.
+ * @param webLinks Links to the tag in external sites as a list of WebLinkInfo entries.
+ * @param ref The ref of the tag.
+ * @param revision For lightweight tags, the revision of the commit to which the tag points. For annotated tags, the revision of the tag object.
+ * @param canDelete Whether the calling user can delete this tag.
  */
 
 
 data class TagInfo (
 
+    /* The revision of the object to which the tag points. */
     @SerializedName("object")
     val `object`: kotlin.String? = null,
 
+    /* The tag message. For signed tags, includes the signature. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* The tagger as a GitPersonInfo entity. */
     @SerializedName("tagger")
     val tagger: GitPerson? = null,
 
+    /* The timestamp of when the tag was created. For annotated and signed tags, this is the timestamp of the tag object and is the same as the date field in the tagger. For lightweight tags, it is the commit timestamp of the commit to which the tag points, when the object is a commit. */
     @SerializedName("created")
     val created: kotlin.String? = null,
 
+    /* Links to the tag in external sites as a list of WebLinkInfo entries. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null,
 
+    /* The ref of the tag. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* For lightweight tags, the revision of the commit to which the tag points. For annotated tags, the revision of the tag object. */
     @SerializedName("revision")
     val revision: kotlin.String? = null,
 
+    /* Whether the calling user can delete this tag. */
     @SerializedName("can_delete")
     val canDelete: kotlin.Boolean? = null
 

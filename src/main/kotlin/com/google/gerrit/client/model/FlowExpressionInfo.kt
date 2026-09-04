@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param condition 
- * @param action 
+ * @param condition The condition which must be satisfied for the action to be triggered. Can contain multiple conditions separated by comma. The syntax of the condition depends on the flow service implementation.
+ * @param action The action that should be triggered when the condition is satisfied as a FlowActionInfo entity.
  */
 
 
 data class FlowExpressionInfo (
 
+    /* The condition which must be satisfied for the action to be triggered. Can contain multiple conditions separated by comma. The syntax of the condition depends on the flow service implementation. */
     @SerializedName("condition")
     val condition: kotlin.String? = null,
 
+    /* The action that should be triggered when the condition is satisfied as a FlowActionInfo entity. */
     @SerializedName("action")
     val action: FlowActionInfo? = null
 

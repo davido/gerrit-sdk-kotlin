@@ -33,24 +33,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param taskSummary 
- * @param memSummary 
- * @param threadSummary 
- * @param jvmSummary 
+ * @param taskSummary Summary about current tasks as a TaskSummaryInfo entity.
+ * @param memSummary Summary about current memory usage as a MemSummaryInfo entity.
+ * @param threadSummary Summary about current threads as a ThreadSummaryInfo entity.
+ * @param jvmSummary Summary about the JVM JvmSummaryInfo entity. Only set if the jvm option was set.
  */
 
 
 data class SummaryInfo (
 
+    /* Summary about current tasks as a TaskSummaryInfo entity. */
     @SerializedName("task_summary")
     val taskSummary: TaskSummaryInfo? = null,
 
+    /* Summary about current memory usage as a MemSummaryInfo entity. */
     @SerializedName("mem_summary")
     val memSummary: MemSummaryInfo? = null,
 
+    /* Summary about current threads as a ThreadSummaryInfo entity. */
     @SerializedName("thread_summary")
     val threadSummary: ThreadSummaryInfo? = null,
 
+    /* Summary about the JVM JvmSummaryInfo entity. Only set if the jvm option was set. */
     @SerializedName("jvm_summary")
     val jvmSummary: JvmSummaryInfo? = null
 

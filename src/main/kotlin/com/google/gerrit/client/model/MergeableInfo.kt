@@ -30,36 +30,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param submitType 
- * @param strategy 
- * @param mergeable 
- * @param commitMerged 
- * @param contentMerged 
- * @param conflicts 
- * @param mergeableInto 
+ * @param submitType Submit type used for this change, can be MERGE_IF_NECESSARY, FAST_FORWARD_ONLY, REBASE_IF_NECESSARY, REBASE_ALWAYS, MERGE_ALWAYS or CHERRY_PICK.
+ * @param strategy The strategy of the merge, can be recursive, resolve, simple-two-way-in-core, ours or theirs.
+ * @param mergeable true if this change is cleanly mergeable or already merged, false otherwise
+ * @param commitMerged true if this change is already merged, false otherwise
+ * @param contentMerged true if the content of this change is already merged, false otherwise
+ * @param conflicts A list of paths with conflicts
+ * @param mergeableInto A list of other branch names where this change could merge cleanly
  */
 
 
 data class MergeableInfo (
 
+    /* Submit type used for this change, can be MERGE_IF_NECESSARY, FAST_FORWARD_ONLY, REBASE_IF_NECESSARY, REBASE_ALWAYS, MERGE_ALWAYS or CHERRY_PICK. */
     @SerializedName("submit_type")
     val submitType: SubmitType? = null,
 
+    /* The strategy of the merge, can be recursive, resolve, simple-two-way-in-core, ours or theirs. */
     @SerializedName("strategy")
     val strategy: kotlin.String? = null,
 
+    /* true if this change is cleanly mergeable or already merged, false otherwise */
     @SerializedName("mergeable")
     val mergeable: kotlin.Boolean? = null,
 
+    /* true if this change is already merged, false otherwise */
     @SerializedName("commit_merged")
     val commitMerged: kotlin.Boolean? = null,
 
+    /* true if the content of this change is already merged, false otherwise */
     @SerializedName("content_merged")
     val contentMerged: kotlin.Boolean? = null,
 
+    /* A list of paths with conflicts */
     @SerializedName("conflicts")
     val conflicts: kotlin.collections.List<kotlin.String>? = null,
 
+    /* A list of other branch names where this change could merge cleanly */
     @SerializedName("mergeable_into")
     val mergeableInto: kotlin.collections.List<kotlin.String>? = null
 

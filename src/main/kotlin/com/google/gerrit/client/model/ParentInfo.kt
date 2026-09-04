@@ -29,36 +29,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param branchName 
- * @param commitId 
- * @param isMergedInTargetBranch 
- * @param changeId 
- * @param changeNumber 
- * @param patchSetNumber 
- * @param changeStatus 
+ * @param branchName Name of the target branch into which the parent commit is merged.
+ * @param commitId The commit SHA-1 of the parent commit, or null if the current commit is root.
+ * @param isMergedInTargetBranch Set to true if the parent commit is merged into the target branch.
+ * @param changeId If the parent commit is a patch-set of another gerrit change, this field will hold the change ID of the parent change. Otherwise, will be null.
+ * @param changeNumber If the parent commit is a patch-set of another gerrit change, this field will hold the change number of the parent change. Otherwise, will be null.
+ * @param patchSetNumber If the parent commit is a patch-set of another gerrit change, this field will hold the patch-set number of the parent change. Otherwise, will be null.
+ * @param changeStatus If the parent commit is a patch-set of another gerrit change, this field will hold the change status of the parent change. Otherwise, will be null.
  */
 
 
 data class ParentInfo (
 
+    /* Name of the target branch into which the parent commit is merged. */
     @SerializedName("branch_name")
     val branchName: kotlin.String? = null,
 
+    /* The commit SHA-1 of the parent commit, or null if the current commit is root. */
     @SerializedName("commit_id")
     val commitId: kotlin.String? = null,
 
+    /* Set to true if the parent commit is merged into the target branch. */
     @SerializedName("is_merged_in_target_branch")
     val isMergedInTargetBranch: kotlin.Boolean? = null,
 
+    /* If the parent commit is a patch-set of another gerrit change, this field will hold the change ID of the parent change. Otherwise, will be null. */
     @SerializedName("change_id")
     val changeId: kotlin.String? = null,
 
+    /* If the parent commit is a patch-set of another gerrit change, this field will hold the change number of the parent change. Otherwise, will be null. */
     @SerializedName("change_number")
     val changeNumber: kotlin.Int? = null,
 
+    /* If the parent commit is a patch-set of another gerrit change, this field will hold the patch-set number of the parent change. Otherwise, will be null. */
     @SerializedName("patch_set_number")
     val patchSetNumber: kotlin.Int? = null,
 
+    /* If the parent commit is a patch-set of another gerrit change, this field will hold the change status of the parent change. Otherwise, will be null. */
     @SerializedName("change_status")
     val changeStatus: kotlin.String? = null
 

@@ -29,48 +29,58 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param vmVendor 
- * @param vmName 
- * @param vmVersion 
- * @param osName 
- * @param osVersion 
- * @param osArch 
- * @param user 
- * @param host 
- * @param currentWorkingDirectory 
- * @param site 
+ * @param vmVendor The vendor of the virtual machine.
+ * @param vmName The name of the virtual machine.
+ * @param vmVersion The version of the virtual machine.
+ * @param osName The name of the operating system.
+ * @param osVersion The version of the operating system.
+ * @param osArch The architecture of the operating system.
+ * @param user The user that is running Gerrit.
+ * @param host The host on which Gerrit is running.
+ * @param currentWorkingDirectory The current working directory.
+ * @param site The path to the review site.
  */
 
 
 data class JvmSummaryInfo (
 
+    /* The vendor of the virtual machine. */
     @SerializedName("vm_vendor")
     val vmVendor: kotlin.String? = null,
 
+    /* The name of the virtual machine. */
     @SerializedName("vm_name")
     val vmName: kotlin.String? = null,
 
+    /* The version of the virtual machine. */
     @SerializedName("vm_version")
     val vmVersion: kotlin.String? = null,
 
+    /* The name of the operating system. */
     @SerializedName("os_name")
     val osName: kotlin.String? = null,
 
+    /* The version of the operating system. */
     @SerializedName("os_version")
     val osVersion: kotlin.String? = null,
 
+    /* The architecture of the operating system. */
     @SerializedName("os_arch")
     val osArch: kotlin.String? = null,
 
+    /* The user that is running Gerrit. */
     @SerializedName("user")
     val user: kotlin.String? = null,
 
+    /* The host on which Gerrit is running. */
     @SerializedName("host")
     val host: kotlin.String? = null,
 
+    /* The current working directory. */
     @SerializedName("current_working_directory")
     val currentWorkingDirectory: kotlin.String? = null,
 
+    /* The path to the review site. */
     @SerializedName("site")
     val site: kotlin.String? = null
 

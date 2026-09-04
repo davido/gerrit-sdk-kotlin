@@ -31,20 +31,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param expression 
- * @param state 
- * @param message 
+ * @param expression The expression defining the condition and the action of this stage as a FlowExpressionInfo entity.
+ * @param state The state for this stage. Can be PENDING (the condition of the stage is not satisfied yet or the action has not been executed yet), DONE (the condition of the stage is satisfied and the action has been executed), FAILED (the stage has a non-recoverable error, e.g.
+ * @param message Optional message for the stage.
  */
 
 
 data class FlowStageInfo (
 
+    /* The expression defining the condition and the action of this stage as a FlowExpressionInfo entity. */
     @SerializedName("expression")
     val expression: FlowExpressionInfo? = null,
 
+    /* The state for this stage. Can be PENDING (the condition of the stage is not satisfied yet or the action has not been executed yet), DONE (the condition of the stage is satisfied and the action has been executed), FAILED (the stage has a non-recoverable error, e.g. */
     @SerializedName("state")
     val state: FlowStageState? = null,
 
+    /* Optional message for the stage. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

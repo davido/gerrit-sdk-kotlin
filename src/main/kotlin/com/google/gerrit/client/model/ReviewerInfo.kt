@@ -30,8 +30,8 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param approvals 
- * @param accountId 
+ * @param approvals The approvals of the reviewer as a map that maps the label names to the approval values (\"-2\", \"-1\", \"0\", \"+1\", \"+2\").
+ * @param accountId This field is inherited from AccountInfo but is optional here if an unregistered reviewer was added by email. See add-reviewer for details.
  * @param name 
  * @param displayName 
  * @param email 
@@ -48,9 +48,11 @@ import com.google.gson.annotations.SerializedName
 
 data class ReviewerInfo (
 
+    /* The approvals of the reviewer as a map that maps the label names to the approval values (\"-2\", \"-1\", \"0\", \"+1\", \"+2\"). */
     @SerializedName("approvals")
     val approvals: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* This field is inherited from AccountInfo but is optional here if an unregistered reviewer was added by email. See add-reviewer for details. */
     @SerializedName("_account_id")
     val accountId: kotlin.Int? = null,
 

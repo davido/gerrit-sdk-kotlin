@@ -35,44 +35,53 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param metaA 
- * @param metaB 
- * @param intralineStatus 
- * @param changeType 
- * @param diffHeader 
- * @param content 
- * @param webLinks 
- * @param editWebLinks 
- * @param binary 
+ * @param metaA Meta information about the file on side A as a DiffFileMetaInfo entity.
+ * @param metaB Meta information about the file on side B as a DiffFileMetaInfo entity.
+ * @param intralineStatus Intraline status (OK, ERROR, TIMEOUT).
+ * @param changeType The type of change (ADDED, MODIFIED, DELETED, RENAMED COPIED, REWRITE).
+ * @param diffHeader A list of strings representing the patch set diff header.
+ * @param content The content differences in the file as a list of DiffContent entities.
+ * @param webLinks Links to the file diff in external sites as a list of DiffWebLinkInfo entries.
+ * @param editWebLinks Links to edit the file in external sites as a list of WebLinkInfo entries.
+ * @param binary Whether the file is binary.
  */
 
 
 data class DiffInfo (
 
+    /* Meta information about the file on side A as a DiffFileMetaInfo entity. */
     @SerializedName("meta_a")
     val metaA: FileMeta? = null,
 
+    /* Meta information about the file on side B as a DiffFileMetaInfo entity. */
     @SerializedName("meta_b")
     val metaB: FileMeta? = null,
 
+    /* Intraline status (OK, ERROR, TIMEOUT). */
     @SerializedName("intraline_status")
     val intralineStatus: IntraLineStatus? = null,
 
+    /* The type of change (ADDED, MODIFIED, DELETED, RENAMED COPIED, REWRITE). */
     @SerializedName("change_type")
     val changeType: ChangeType? = null,
 
+    /* A list of strings representing the patch set diff header. */
     @SerializedName("diff_header")
     val diffHeader: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The content differences in the file as a list of DiffContent entities. */
     @SerializedName("content")
     val content: kotlin.collections.List<ContentEntry>? = null,
 
+    /* Links to the file diff in external sites as a list of DiffWebLinkInfo entries. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<DiffWebLinkInfo>? = null,
 
+    /* Links to edit the file in external sites as a list of WebLinkInfo entries. */
     @SerializedName("edit_web_links")
     val editWebLinks: kotlin.collections.List<WebLinkInfo>? = null,
 
+    /* Whether the file is binary. */
     @SerializedName("binary")
     val binary: kotlin.Boolean? = null
 

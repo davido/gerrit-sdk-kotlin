@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param mem 
- * @param disk 
+ * @param mem Hit ratio for cache entries that are held in memory (0 \\<= value \\<= 100).
+ * @param disk Hit ratio for cache entries that are held on disk (0 \\<= value \\<= 100). Only set for disk caches.
  */
 
 
 data class HitRatioInfo (
 
+    /* Hit ratio for cache entries that are held in memory (0 \\<= value \\<= 100). */
     @SerializedName("mem")
     val mem: kotlin.Int? = null,
 
+    /* Hit ratio for cache entries that are held on disk (0 \\<= value \\<= 100). Only set for disk caches. */
     @SerializedName("disk")
     val disk: kotlin.Int? = null
 

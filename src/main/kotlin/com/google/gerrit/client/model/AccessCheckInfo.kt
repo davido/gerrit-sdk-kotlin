@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
- * @param status 
- * @param debugLogs 
+ * @param message A clarifying message if status is not 200.
+ * @param status The HTTP status code for the access. 200 means success and 403 means denied.
+ * @param debugLogs Debug logs that may help to understand why a permission is denied or allowed.
  */
 
 
 data class AccessCheckInfo (
 
+    /* A clarifying message if status is not 200. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* The HTTP status code for the access. 200 means success and 403 means denied. */
     @SerializedName("status")
     val status: kotlin.Int? = null,
 
+    /* Debug logs that may help to understand why a permission is denied or allowed. */
     @SerializedName("debug_logs")
     val debugLogs: kotlin.collections.List<kotlin.String>? = null
 

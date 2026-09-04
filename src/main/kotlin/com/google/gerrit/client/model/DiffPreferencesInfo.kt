@@ -31,78 +31,93 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param context 
- * @param tabSize 
- * @param fontSize 
- * @param lineLength 
- * @param cursorBlinkRate 
- * @param expandAllComments 
- * @param intralineDifference 
- * @param manualReview 
- * @param showLineEndings 
- * @param showTabs 
- * @param showWhitespaceErrors 
- * @param syntaxHighlighting 
- * @param hideTopMenu 
- * @param autoHideDiffTableHeader 
- * @param hideLineNumbers 
+ * @param context The number of lines of context when viewing a patch.
+ * @param tabSize Number of spaces that should be used to display one tab.
+ * @param fontSize Default font size in pixels for change to be displayed in the diff view.
+ * @param lineLength Number of characters that should be displayed in one line.
+ * @param cursorBlinkRate Half-period in milliseconds used for cursor blinking. Setting it to 0 disables cursor blinking.
+ * @param expandAllComments Whether all inline comments should be automatically expanded.
+ * @param intralineDifference Whether intraline differences should be highlighted.
+ * @param manualReview Whether the 'Reviewed' flag should not be set automatically on a patch when it is viewed.
+ * @param showLineEndings Whether Windows EOL/Cr-Lf should be displayed as '\\r' in a dotted-line box.
+ * @param showTabs Whether tabs should be shown.
+ * @param showWhitespaceErrors Whether whitespace errors should be shown.
+ * @param syntaxHighlighting Whether syntax highlighting should be enabled.
+ * @param hideTopMenu If true the top menu header and site header are hidden.
+ * @param autoHideDiffTableHeader If true the diff table header is automatically hidden when scrolling down more than half of a page.
+ * @param hideLineNumbers If true the line numbers are hidden.
  * @param renderEntireFile 
  * @param hideEmptyPane 
- * @param matchBrackets 
- * @param lineWrapping 
+ * @param matchBrackets Whether matching brackets should be highlighted.
+ * @param lineWrapping Whether to enable line wrapping or not.
  * @param responsiveMode 
- * @param ignoreWhitespace 
- * @param retainHeader 
- * @param skipDeleted 
+ * @param ignoreWhitespace Whether whitespace changes should be ignored and if yes, which whitespace changes should be ignored. + Allowed values are IGNORE_NONE, IGNORE_TRAILING, IGNORE_LEADING_AND_TRAILING, IGNORE_ALL.
+ * @param retainHeader Whether the header that is displayed above the patch (that either shows the commit message, the diff preferences, the patch sets or the files) should be retained on file switch.
+ * @param skipDeleted Whether deleted files should be skipped on file switch.
  * @param skipUnchanged 
- * @param skipUncommented 
+ * @param skipUncommented Whether uncommented files should be skipped on file switch.
  */
 
 
 data class DiffPreferencesInfo (
 
+    /* The number of lines of context when viewing a patch. */
     @SerializedName("context")
     val context: kotlin.Int? = null,
 
+    /* Number of spaces that should be used to display one tab. */
     @SerializedName("tab_size")
     val tabSize: kotlin.Int? = null,
 
+    /* Default font size in pixels for change to be displayed in the diff view. */
     @SerializedName("font_size")
     val fontSize: kotlin.Int? = null,
 
+    /* Number of characters that should be displayed in one line. */
     @SerializedName("line_length")
     val lineLength: kotlin.Int? = null,
 
+    /* Half-period in milliseconds used for cursor blinking. Setting it to 0 disables cursor blinking. */
     @SerializedName("cursor_blink_rate")
     val cursorBlinkRate: kotlin.Int? = null,
 
+    /* Whether all inline comments should be automatically expanded. */
     @SerializedName("expand_all_comments")
     val expandAllComments: kotlin.Boolean? = null,
 
+    /* Whether intraline differences should be highlighted. */
     @SerializedName("intraline_difference")
     val intralineDifference: kotlin.Boolean? = null,
 
+    /* Whether the 'Reviewed' flag should not be set automatically on a patch when it is viewed. */
     @SerializedName("manual_review")
     val manualReview: kotlin.Boolean? = null,
 
+    /* Whether Windows EOL/Cr-Lf should be displayed as '\\r' in a dotted-line box. */
     @SerializedName("show_line_endings")
     val showLineEndings: kotlin.Boolean? = null,
 
+    /* Whether tabs should be shown. */
     @SerializedName("show_tabs")
     val showTabs: kotlin.Boolean? = null,
 
+    /* Whether whitespace errors should be shown. */
     @SerializedName("show_whitespace_errors")
     val showWhitespaceErrors: kotlin.Boolean? = null,
 
+    /* Whether syntax highlighting should be enabled. */
     @SerializedName("syntax_highlighting")
     val syntaxHighlighting: kotlin.Boolean? = null,
 
+    /* If true the top menu header and site header are hidden. */
     @SerializedName("hide_top_menu")
     val hideTopMenu: kotlin.Boolean? = null,
 
+    /* If true the diff table header is automatically hidden when scrolling down more than half of a page. */
     @SerializedName("auto_hide_diff_table_header")
     val autoHideDiffTableHeader: kotlin.Boolean? = null,
 
+    /* If true the line numbers are hidden. */
     @SerializedName("hide_line_numbers")
     val hideLineNumbers: kotlin.Boolean? = null,
 
@@ -112,27 +127,33 @@ data class DiffPreferencesInfo (
     @SerializedName("hide_empty_pane")
     val hideEmptyPane: kotlin.Boolean? = null,
 
+    /* Whether matching brackets should be highlighted. */
     @SerializedName("match_brackets")
     val matchBrackets: kotlin.Boolean? = null,
 
+    /* Whether to enable line wrapping or not. */
     @SerializedName("line_wrapping")
     val lineWrapping: kotlin.Boolean? = null,
 
     @SerializedName("responsive_mode")
     val responsiveMode: ResponsiveMode? = null,
 
+    /* Whether whitespace changes should be ignored and if yes, which whitespace changes should be ignored. + Allowed values are IGNORE_NONE, IGNORE_TRAILING, IGNORE_LEADING_AND_TRAILING, IGNORE_ALL. */
     @SerializedName("ignore_whitespace")
     val ignoreWhitespace: Whitespace? = null,
 
+    /* Whether the header that is displayed above the patch (that either shows the commit message, the diff preferences, the patch sets or the files) should be retained on file switch. */
     @SerializedName("retain_header")
     val retainHeader: kotlin.Boolean? = null,
 
+    /* Whether deleted files should be skipped on file switch. */
     @SerializedName("skip_deleted")
     val skipDeleted: kotlin.Boolean? = null,
 
     @SerializedName("skip_unchanged")
     val skipUnchanged: kotlin.Boolean? = null,
 
+    /* Whether uncommented files should be skipped on file switch. */
     @SerializedName("skip_uncommented")
     val skipUncommented: kotlin.Boolean? = null
 

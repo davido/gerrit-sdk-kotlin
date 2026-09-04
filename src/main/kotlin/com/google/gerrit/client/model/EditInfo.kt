@@ -32,36 +32,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commit 
- * @param basePatchSetNumber 
- * @param baseRevision 
- * @param ref 
- * @param fetch 
- * @param files 
- * @param containsGitConflicts 
+ * @param commit The commit of change edit as CommitInfo entity.
+ * @param basePatchSetNumber The patch set number of the patch set the change edit is based on.
+ * @param baseRevision The revision of the patch set the change edit is based on.
+ * @param ref The ref of the change edit.
+ * @param fetch Information about how to fetch this patch set. The fetch information is provided as a map that maps the protocol name (\"git\", \"http\", \"ssh\") to FetchInfo entities.
+ * @param files The files of the change edit as a map that maps the file names to FileInfo entities.
+ * @param containsGitConflicts Whether the change edit contains conflicts. + If true, some of the file contents of the change edit contain git conflict markers to indicate the conflicts. + Only set if this edit info is returned in response to a request that rebases the change edit and conflicts are allowed.
  */
 
 
 data class EditInfo (
 
+    /* The commit of change edit as CommitInfo entity. */
     @SerializedName("commit")
     val commit: CommitInfo? = null,
 
+    /* The patch set number of the patch set the change edit is based on. */
     @SerializedName("base_patch_set_number")
     val basePatchSetNumber: kotlin.Int? = null,
 
+    /* The revision of the patch set the change edit is based on. */
     @SerializedName("base_revision")
     val baseRevision: kotlin.String? = null,
 
+    /* The ref of the change edit. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* Information about how to fetch this patch set. The fetch information is provided as a map that maps the protocol name (\"git\", \"http\", \"ssh\") to FetchInfo entities. */
     @SerializedName("fetch")
     val fetch: kotlin.collections.Map<kotlin.String, FetchInfo>? = null,
 
+    /* The files of the change edit as a map that maps the file names to FileInfo entities. */
     @SerializedName("files")
     val files: kotlin.collections.Map<kotlin.String, CommonFileInfo>? = null,
 
+    /* Whether the change edit contains conflicts. + If true, some of the file contents of the change edit contain git conflict markers to indicate the conflicts. + Only set if this edit info is returned in response to a request that rebases the change edit and conflicts are allowed. */
     @SerializedName("contains_git_conflicts")
     val containsGitConflicts: kotlin.Boolean? = null
 

@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param fix 
- * @param branch 
- * @param skipCommits 
- * @param maxCommits 
+ * @param fix Whether auto-closeable changes should be closed automatically.
+ * @param branch The branch for which the AutoCloseableChangesCheck should be performed. The 'refs/heads/' prefix for the branch name can be omitted.
+ * @param skipCommits Number of commits that should be skipped when walking the commits of the branch.
+ * @param maxCommits Maximum number of commits to walk. If not specified this defaults to 10,000 commits. 10,000 is also the maximum that can be set. Auto-closing changes is an expensive operation and the more commits are walked the slower it gets. This is why you should avoid walking too many commits.
  */
 
 
 data class AutoCloseableChangesCheckInput (
 
+    /* Whether auto-closeable changes should be closed automatically. */
     @SerializedName("fix")
     val fix: kotlin.Boolean? = null,
 
+    /* The branch for which the AutoCloseableChangesCheck should be performed. The 'refs/heads/' prefix for the branch name can be omitted. */
     @SerializedName("branch")
     val branch: kotlin.String? = null,
 
+    /* Number of commits that should be skipped when walking the commits of the branch. */
     @SerializedName("skip_commits")
     val skipCommits: kotlin.Int? = null,
 
+    /* Maximum number of commits to walk. If not specified this defaults to 10,000 commits. 10,000 is also the maximum that can be set. Auto-closing changes is an expensive operation and the more commits are walked the slower it gets. This is why you should avoid walking too many commits. */
     @SerializedName("max_commits")
     val maxCommits: kotlin.Int? = null
 

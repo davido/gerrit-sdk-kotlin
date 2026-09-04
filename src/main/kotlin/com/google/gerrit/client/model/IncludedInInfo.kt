@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param branches 
- * @param tags 
- * @param `external` 
+ * @param branches The list of branches this change was merged into. Each branch is listed without the 'refs/head/' prefix.
+ * @param tags The list of tags this change was tagged with. Each tag is listed without the 'refs/tags/' prefix.
+ * @param `external` A map that maps a name to a list of external systems that include this change, e.g. a list of servers on which this change is deployed.
  */
 
 
 data class IncludedInInfo (
 
+    /* The list of branches this change was merged into. Each branch is listed without the 'refs/head/' prefix. */
     @SerializedName("branches")
     val branches: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The list of tags this change was tagged with. Each tag is listed without the 'refs/tags/' prefix. */
     @SerializedName("tags")
     val tags: kotlin.collections.List<kotlin.String>? = null,
 
+    /* A map that maps a name to a list of external systems that include this change, e.g. a list of servers on which this change is deployed. */
     @SerializedName("external")
     val `external`: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>? = null
 

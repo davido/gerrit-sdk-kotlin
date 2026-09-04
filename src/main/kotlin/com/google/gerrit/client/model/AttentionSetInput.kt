@@ -31,24 +31,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param user 
- * @param reason 
- * @param notify 
- * @param notifyDetails 
+ * @param user ID of the account that should be added to the attention set. For removals, this field should be empty or the same as the field in the request header.
+ * @param reason The reason of for adding or removing the user.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the change is created. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER.
+ * @param notifyDetails Additional information about whom to notify about the change creation as a map of recipient type to NotifyInfo entity.
  */
 
 
 data class AttentionSetInput (
 
+    /* ID of the account that should be added to the attention set. For removals, this field should be empty or the same as the field in the request header. */
     @SerializedName("user")
     val user: kotlin.String? = null,
 
+    /* The reason of for adding or removing the user. */
     @SerializedName("reason")
     val reason: kotlin.String? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the change is created. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the change creation as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null
 

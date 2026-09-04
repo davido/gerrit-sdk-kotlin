@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
- * @param applicabilityExpression 
- * @param submittabilityExpression 
- * @param overrideExpression 
- * @param allowOverrideInChildProjects 
+ * @param name The submit requirement name.
+ * @param description Description of the submit requirement.
+ * @param applicabilityExpression Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is then applicable for this change. If not specified, the submit requirement is applicable for all changes.
+ * @param submittabilityExpression Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is fulfilled and not blocking change submission.
+ * @param overrideExpression Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is overridden and not blocking change submission.
+ * @param allowOverrideInChildProjects Whether this submit requirement can be overridden in child projects. Default is true.
  */
 
 
 data class SubmitRequirementInput (
 
+    /* The submit requirement name. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Description of the submit requirement. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is then applicable for this change. If not specified, the submit requirement is applicable for all changes. */
     @SerializedName("applicability_expression")
     val applicabilityExpression: kotlin.String? = null,
 
+    /* Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is fulfilled and not blocking change submission. */
     @SerializedName("submittability_expression")
     val submittabilityExpression: kotlin.String? = null,
 
+    /* Query expression that can be evaluated on any change. If evaluated to true on a change, the submit requirement is overridden and not blocking change submission. */
     @SerializedName("override_expression")
     val overrideExpression: kotlin.String? = null,
 
+    /* Whether this submit requirement can be overridden in child projects. Default is true. */
     @SerializedName("allow_override_in_child_projects")
     val allowOverrideInChildProjects: kotlin.Boolean? = null
 

@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param total 
- * @param used 
- * @param free 
- * @param buffers 
- * @param max 
- * @param openFiles 
+ * @param total The total size of the memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes).
+ * @param used The size of used memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes).
+ * @param free The size of free memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes).
+ * @param buffers The size of memory used for JGit buffers. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes).
+ * @param max The maximal memory size. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes).
+ * @param openFiles The number of open files.
  */
 
 
 data class MemSummaryInfo (
 
+    /* The total size of the memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). */
     @SerializedName("total")
     val total: kotlin.String? = null,
 
+    /* The size of used memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). */
     @SerializedName("used")
     val used: kotlin.String? = null,
 
+    /* The size of free memory. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). */
     @SerializedName("free")
     val free: kotlin.String? = null,
 
+    /* The size of memory used for JGit buffers. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). */
     @SerializedName("buffers")
     val buffers: kotlin.String? = null,
 
+    /* The maximal memory size. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). */
     @SerializedName("max")
     val max: kotlin.String? = null,
 
+    /* The number of open files. */
     @SerializedName("open_files")
     val openFiles: kotlin.Int? = null
 

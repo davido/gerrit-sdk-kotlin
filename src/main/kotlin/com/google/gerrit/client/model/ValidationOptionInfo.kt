@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
+ * @param name The name of the validation option.
+ * @param description The description of the validation option.
  */
 
 
 data class ValidationOptionInfo (
 
+    /* The name of the validation option. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The description of the validation option. */
     @SerializedName("description")
     val description: kotlin.String? = null
 

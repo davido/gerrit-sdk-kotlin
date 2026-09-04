@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param schemes 
- * @param archives 
+ * @param schemes The supported download schemes as a map which maps the scheme name to a of DownloadSchemeInfo entity.
+ * @param archives List of supported archive formats. Possible values are tgz, tar, tbz2 and txz.
  */
 
 
 data class DownloadInfo (
 
+    /* The supported download schemes as a map which maps the scheme name to a of DownloadSchemeInfo entity. */
     @SerializedName("schemes")
     val schemes: kotlin.collections.Map<kotlin.String, DownloadSchemeInfo>? = null,
 
+    /* List of supported archive formats. Possible values are tgz, tar, tbz2 and txz. */
     @SerializedName("archives")
     val archives: kotlin.collections.List<kotlin.String>? = null
 

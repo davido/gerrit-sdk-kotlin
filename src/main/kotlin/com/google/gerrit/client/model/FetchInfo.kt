@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param url 
- * @param ref 
- * @param commands 
+ * @param url The URL of the project.
+ * @param ref The ref of the patch set.
+ * @param commands The download commands for this patch set as a map that maps the command names to the commands. + Only set if download commands are requested.
  */
 
 
 data class FetchInfo (
 
+    /* The URL of the project. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* The ref of the patch set. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* The download commands for this patch set as a map that maps the command names to the commands. + Only set if download commands are requested. */
     @SerializedName("commands")
     val commands: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 

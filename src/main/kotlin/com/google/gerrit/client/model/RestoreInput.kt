@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
+ * @param message Message to be added as review comment to the change when restoring the change.
  */
 
 
 data class RestoreInput (
 
+    /* Message to be added as review comment to the change when restoring the change. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

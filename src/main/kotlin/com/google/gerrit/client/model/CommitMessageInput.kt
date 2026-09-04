@@ -31,24 +31,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
- * @param notify 
- * @param notifyDetails 
- * @param committerEmail 
+ * @param message New commit message.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the commit message was updated. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER for WIP changes and ALL otherwise.
+ * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
+ * @param committerEmail New message is committed using this email address. Only the registered emails of the calling user are considered valid.
  */
 
 
 data class CommitMessageInput (
 
+    /* New commit message. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the commit message was updated. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER for WIP changes and ALL otherwise. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null,
 
+    /* New message is committed using this email address. Only the registered emails of the calling user are considered valid. */
     @SerializedName("committer_email")
     val committerEmail: kotlin.String? = null
 

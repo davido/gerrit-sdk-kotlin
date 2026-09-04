@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param httpPassword 
- * @param generate 
+ * @param httpPassword The new HTTP password. Only Gerrit administrators may set the HTTP password directly. + If empty or not set and generate is false or not set, the HTTP password is deleted.
+ * @param generate Whether a new HTTP password should be generated
  */
 
 
 data class HttpPasswordInput (
 
+    /* The new HTTP password. Only Gerrit administrators may set the HTTP password directly. + If empty or not set and generate is false or not set, the HTTP password is deleted. */
     @SerializedName("http_password")
     val httpPassword: kotlin.String? = null,
 
+    /* Whether a new HTTP password should be generated */
     @SerializedName("generate")
     val generate: kotlin.Boolean? = null
 

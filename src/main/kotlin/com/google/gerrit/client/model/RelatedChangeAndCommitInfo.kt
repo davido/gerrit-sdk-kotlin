@@ -30,44 +30,53 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param project 
- * @param changeId 
- * @param commit 
- * @param changeNumber 
- * @param revisionNumber 
- * @param currentRevisionNumber 
- * @param status 
- * @param submittable 
- * @param workInProgress 
+ * @param project The project of the change or commit.
+ * @param changeId The Change-Id of the change.
+ * @param commit The commit as a CommitInfo entity.
+ * @param changeNumber The change number.
+ * @param revisionNumber The revision number.
+ * @param currentRevisionNumber The current revision number.
+ * @param status The status of the change. The status of the change is one of (NEW, MERGED, ABANDONED).
+ * @param submittable Boolean indicating whether the change is submittable. + Only populated if requested.
+ * @param workInProgress Boolean indicating whether the change is work in progress.
  */
 
 
 data class RelatedChangeAndCommitInfo (
 
+    /* The project of the change or commit. */
     @SerializedName("project")
     val project: kotlin.String? = null,
 
+    /* The Change-Id of the change. */
     @SerializedName("change_id")
     val changeId: kotlin.String? = null,
 
+    /* The commit as a CommitInfo entity. */
     @SerializedName("commit")
     val commit: CommitInfo? = null,
 
+    /* The change number. */
     @SerializedName("_change_number")
     val changeNumber: kotlin.Int? = null,
 
+    /* The revision number. */
     @SerializedName("_revision_number")
     val revisionNumber: kotlin.Int? = null,
 
+    /* The current revision number. */
     @SerializedName("_current_revision_number")
     val currentRevisionNumber: kotlin.Int? = null,
 
+    /* The status of the change. The status of the change is one of (NEW, MERGED, ABANDONED). */
     @SerializedName("status")
     val status: kotlin.String? = null,
 
+    /* Boolean indicating whether the change is submittable. + Only populated if requested. */
     @SerializedName("submittable")
     val submittable: kotlin.Boolean? = null,
 
+    /* Boolean indicating whether the change is work in progress. */
     @SerializedName("work_in_progress")
     val workInProgress: kotlin.Boolean? = null
 

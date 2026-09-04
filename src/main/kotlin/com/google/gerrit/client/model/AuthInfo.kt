@@ -34,18 +34,18 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param authType 
- * @param useContributorAgreements 
- * @param contributorAgreements 
- * @param editableAccountFields 
- * @param loginUrl 
- * @param loginText 
- * @param switchAccountUrl 
- * @param registerUrl 
- * @param registerText 
- * @param editFullNameUrl 
- * @param httpPasswordUrl 
- * @param gitBasicAuthPolicy 
- * @param maxTokenLifetime 
+ * @param useContributorAgreements Whether contributor agreements are required.
+ * @param contributorAgreements List of contributor agreements as ContributorAgreementInfo entities.
+ * @param editableAccountFields List of account fields that are editable. Possible values are FULL_NAME, USER_NAME and REGISTER_NEW_EMAIL.
+ * @param loginUrl The login URL. Only set if authentication type is HTTP or HTTP_LDAP.
+ * @param loginText The login text. Only set if authentication type is HTTP or HTTP_LDAP.
+ * @param switchAccountUrl The URL to switch accounts.
+ * @param registerUrl The register URL. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION.
+ * @param registerText The register text. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION.
+ * @param editFullNameUrl The URL to edit the full name. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION.
+ * @param httpPasswordUrl The URL to obtain an HTTP password. Only set if authentication type is CUSTOM_EXTENSION.
+ * @param gitBasicAuthPolicy The policy to authenticate Git over HTTP and REST API requests when authentication type is LDAP, LDAP_BIND or OAUTH. Can be HTTP, LDAP, HTTP_LDAP or OAUTH.
+ * @param maxTokenLifetime The maximum lifetime of authentication tokens.
  */
 
 
@@ -54,39 +54,51 @@ data class AuthInfo (
     @SerializedName("auth_type")
     val authType: AuthType? = null,
 
+    /* Whether contributor agreements are required. */
     @SerializedName("use_contributor_agreements")
     val useContributorAgreements: kotlin.Boolean? = null,
 
+    /* List of contributor agreements as ContributorAgreementInfo entities. */
     @SerializedName("contributor_agreements")
     val contributorAgreements: kotlin.collections.List<AgreementInfo>? = null,
 
+    /* List of account fields that are editable. Possible values are FULL_NAME, USER_NAME and REGISTER_NEW_EMAIL. */
     @SerializedName("editable_account_fields")
     val editableAccountFields: kotlin.collections.List<AccountFieldName>? = null,
 
+    /* The login URL. Only set if authentication type is HTTP or HTTP_LDAP. */
     @SerializedName("login_url")
     val loginUrl: kotlin.String? = null,
 
+    /* The login text. Only set if authentication type is HTTP or HTTP_LDAP. */
     @SerializedName("login_text")
     val loginText: kotlin.String? = null,
 
+    /* The URL to switch accounts. */
     @SerializedName("switch_account_url")
     val switchAccountUrl: kotlin.String? = null,
 
+    /* The register URL. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION. */
     @SerializedName("register_url")
     val registerUrl: kotlin.String? = null,
 
+    /* The register text. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION. */
     @SerializedName("register_text")
     val registerText: kotlin.String? = null,
 
+    /* The URL to edit the full name. Only set if authentication type is LDAP, LDAP_BIND or CUSTOM_EXTENSION. */
     @SerializedName("edit_full_name_url")
     val editFullNameUrl: kotlin.String? = null,
 
+    /* The URL to obtain an HTTP password. Only set if authentication type is CUSTOM_EXTENSION. */
     @SerializedName("http_password_url")
     val httpPasswordUrl: kotlin.String? = null,
 
+    /* The policy to authenticate Git over HTTP and REST API requests when authentication type is LDAP, LDAP_BIND or OAUTH. Can be HTTP, LDAP, HTTP_LDAP or OAUTH. */
     @SerializedName("git_basic_auth_policy")
     val gitBasicAuthPolicy: GitBasicAuthPolicy? = null,
 
+    /* The maximum lifetime of authentication tokens. */
     @SerializedName("max_token_lifetime")
     val maxTokenLifetime: kotlin.Int? = null
 

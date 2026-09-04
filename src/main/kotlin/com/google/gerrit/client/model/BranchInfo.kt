@@ -32,10 +32,10 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param actions 
- * @param webLinks 
- * @param ref 
- * @param revision 
- * @param canDelete 
+ * @param webLinks Links to the branch in external sites as a list of WebLinkInfo entries.
+ * @param ref The ref of the branch.
+ * @param revision The revision to which the branch points.
+ * @param canDelete Whether the calling user can delete this branch.
  */
 
 
@@ -44,15 +44,19 @@ data class BranchInfo (
     @SerializedName("actions")
     val actions: kotlin.collections.Map<kotlin.String, ActionInfo>? = null,
 
+    /* Links to the branch in external sites as a list of WebLinkInfo entries. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null,
 
+    /* The ref of the branch. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* The revision to which the branch points. */
     @SerializedName("revision")
     val revision: kotlin.String? = null,
 
+    /* Whether the calling user can delete this branch. */
     @SerializedName("can_delete")
     val canDelete: kotlin.Boolean? = null
 

@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param deletePatchSetIfCommitMissing 
- * @param expectMergedAs 
+ * @param deletePatchSetIfCommitMissing If true, delete patch sets from the database if they refer to missing commit options.
+ * @param expectMergedAs If set, check that the change is merged into the destination branch as this exact SHA-1. If not, insert a new patch set referring to this commit.
  */
 
 
 data class FixInput (
 
+    /* If true, delete patch sets from the database if they refer to missing commit options. */
     @SerializedName("delete_patch_set_if_commit_missing")
     val deletePatchSetIfCommitMissing: kotlin.Boolean? = null,
 
+    /* If set, check that the change is merged into the destination branch as this exact SHA-1. If not, insert a new patch set referring to this commit. */
     @SerializedName("expect_merged_as")
     val expectMergedAs: kotlin.String? = null
 

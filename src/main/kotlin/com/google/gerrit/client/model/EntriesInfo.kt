@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param mem 
- * @param disk 
- * @param space 
+ * @param mem Number of cache entries that are held in memory.
+ * @param disk Number of cache entries on the disk. For non-disk caches this value is not set; for disk caches it is only set if there are entries in the cache.
+ * @param space The space that is consumed by the cache on disk. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). Only set for disk caches.
  */
 
 
 data class EntriesInfo (
 
+    /* Number of cache entries that are held in memory. */
     @SerializedName("mem")
     val mem: kotlin.Int? = null,
 
+    /* Number of cache entries on the disk. For non-disk caches this value is not set; for disk caches it is only set if there are entries in the cache. */
     @SerializedName("disk")
     val disk: kotlin.Int? = null,
 
+    /* The space that is consumed by the cache on disk. The value is returned with a unit abbreviation (k: kilobytes, m: megabytes, g: gigabytes). Only set for disk caches. */
     @SerializedName("space")
     val space: kotlin.String? = null
 

@@ -31,24 +31,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param account 
- * @param group 
- * @param count 
- * @param confirm 
+ * @param account An AccountInfo entity, if the suggestion is an account.
+ * @param group A GroupBaseInfo entity, if the suggestion is a group.
+ * @param count The total number of accounts in the suggestion. This is 1 if account is present. If group is present, the total number of accounts that are members of the group is returned (this count includes members of nested groups).
+ * @param confirm True if group is present and count is above the threshold where the confirmed flag must be passed to add the group as a reviewer.
  */
 
 
 data class SuggestedReviewerInfo (
 
+    /* An AccountInfo entity, if the suggestion is an account. */
     @SerializedName("account")
     val account: AccountInfo? = null,
 
+    /* A GroupBaseInfo entity, if the suggestion is a group. */
     @SerializedName("group")
     val group: GroupBaseInfo? = null,
 
+    /* The total number of accounts in the suggestion. This is 1 if account is present. If group is present, the total number of accounts that are members of the group is returned (this count includes members of nested groups). */
     @SerializedName("count")
     val count: kotlin.Int? = null,
 
+    /* True if group is present and count is above the threshold where the confirmed flag must be passed to add the group as a reviewer. */
     @SerializedName("confirm")
     val confirm: kotlin.Boolean? = null
 

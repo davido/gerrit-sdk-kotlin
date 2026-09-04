@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param token 
- * @param lifetime 
+ * @param id Must be the same as the id used in the URL.
+ * @param token The new token. Only Gerrit administrators may set the token directly.
+ * @param lifetime Lifetime of the token. After the given duration the token will be invalid.
  */
 
 
 data class AuthTokenInput (
 
+    /* Must be the same as the id used in the URL. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The new token. Only Gerrit administrators may set the token directly. */
     @SerializedName("token")
     val token: kotlin.String? = null,
 
+    /* Lifetime of the token. After the given duration the token will be invalid. */
     @SerializedName("lifetime")
     val lifetime: kotlin.String? = null
 

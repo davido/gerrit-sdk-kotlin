@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commitMessage 
- * @param delete 
- * @param create 
- * @param update 
+ * @param commitMessage Message that should be used to commit the label updates in the project.config file to the refs/meta/config branch.
+ * @param delete List of labels that should be deleted.
+ * @param create List of LabelDefinitionInput entities that describe labels that should be created.
+ * @param update Map of label names to LabelDefinitionInput entities that describe the updates that should be done for the labels. The given inputs only need to set the properties that are being changed.
  */
 
 
 data class BatchLabelInput (
 
+    /* Message that should be used to commit the label updates in the project.config file to the refs/meta/config branch. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null,
 
+    /* List of labels that should be deleted. */
     @SerializedName("delete")
     val delete: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of LabelDefinitionInput entities that describe labels that should be created. */
     @SerializedName("create")
     val create: kotlin.collections.List<LabelDefinitionInput>? = null,
 
+    /* Map of label names to LabelDefinitionInput entities that describe the updates that should be done for the labels. The given inputs only need to set the properties that are being changed. */
     @SerializedName("update")
     val update: kotlin.collections.Map<kotlin.String, LabelDefinitionInput>? = null
 

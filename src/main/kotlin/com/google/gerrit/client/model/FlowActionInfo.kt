@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param parameters 
+ * @param name The name of the action. Which actions are supported depends on the flow service implementation.
+ * @param parameters Parameters for the action as list of strings. Which parameters are supported and their format depends on the flow service implementation.
  */
 
 
 data class FlowActionInfo (
 
+    /* The name of the action. Which actions are supported depends on the flow service implementation. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Parameters for the action as list of strings. Which parameters are supported and their format depends on the flow service implementation. */
     @SerializedName("parameters")
     val parameters: kotlin.collections.List<kotlin.String>? = null
 

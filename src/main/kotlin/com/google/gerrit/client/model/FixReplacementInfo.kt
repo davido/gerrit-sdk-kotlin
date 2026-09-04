@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param path 
- * @param range 
- * @param replacement 
+ * @param path The path of the file which should be modified. Any file in the repository may be modified. The commit message can be modified via the magic file /COMMIT_MSG though only the part below the generated header of that magic file can be modified.
+ * @param range A CommentRange indicating which content of the file should be replaced. Lines in the file are assumed to be separated by the line feed character.
+ * @param replacement The content which should be used instead of the current one.
  */
 
 
 data class FixReplacementInfo (
 
+    /* The path of the file which should be modified. Any file in the repository may be modified. The commit message can be modified via the magic file /COMMIT_MSG though only the part below the generated header of that magic file can be modified. */
     @SerializedName("path")
     val path: kotlin.String? = null,
 
+    /* A CommentRange indicating which content of the file should be replaced. Lines in the file are assumed to be separated by the line feed character. */
     @SerializedName("range")
     val range: Range? = null,
 
+    /* The content which should be used instead of the current one. */
     @SerializedName("replacement")
     val replacement: kotlin.String? = null
 

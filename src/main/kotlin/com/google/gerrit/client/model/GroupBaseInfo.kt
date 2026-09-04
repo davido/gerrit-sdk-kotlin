@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param name 
+ * @param id The UUID of the group.
+ * @param name The name of the group.
  */
 
 
 data class GroupBaseInfo (
 
+    /* The UUID of the group. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The name of the group. */
     @SerializedName("name")
     val name: kotlin.String? = null
 

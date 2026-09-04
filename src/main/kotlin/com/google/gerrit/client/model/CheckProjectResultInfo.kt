@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param autoCloseableChangesCheckResult 
+ * @param autoCloseableChangesCheckResult Results for the AutoCloseableChangesCheck as AutoCloseableChangesCheckResult entity.
  */
 
 
 data class CheckProjectResultInfo (
 
+    /* Results for the AutoCloseableChangesCheck as AutoCloseableChangesCheckResult entity. */
     @SerializedName("auto_closeable_changes_check_result")
     val autoCloseableChangesCheckResult: AutoCloseableChangesCheckResult? = null
 

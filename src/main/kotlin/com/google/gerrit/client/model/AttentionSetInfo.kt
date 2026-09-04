@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param account 
- * @param lastUpdate 
- * @param reason 
- * @param reasonAccount 
+ * @param account AccountInfo entity.
+ * @param lastUpdate The timestamp of the last update.
+ * @param reason The reason for adding or removing the user. If the update was caused by another user, that account is represented by account ID in reason as <GERRIT_ACCOUNT_18419> and the corresponding AccountInfo can be found in reason_account field.
+ * @param reasonAccount AccountInfo of the user who caused the update.
  */
 
 
 data class AttentionSetInfo (
 
+    /* AccountInfo entity. */
     @SerializedName("account")
     val account: AccountInfo? = null,
 
+    /* The timestamp of the last update. */
     @SerializedName("last_update")
     val lastUpdate: kotlin.String? = null,
 
+    /* The reason for adding or removing the user. If the update was caused by another user, that account is represented by account ID in reason as <GERRIT_ACCOUNT_18419> and the corresponding AccountInfo can be found in reason_account field. */
     @SerializedName("reason")
     val reason: kotlin.String? = null,
 
+    /* AccountInfo of the user who caused the update. */
     @SerializedName("reason_account")
     val reasonAccount: AccountInfo? = null
 

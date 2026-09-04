@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param start 
- * @param end 
+ * @param start First index.
+ * @param end Last index.
  */
 
 
 data class RangeInfo (
 
+    /* First index. */
     @SerializedName("start")
     val start: kotlin.Int? = null,
 
+    /* Last index. */
     @SerializedName("end")
     val end: kotlin.Int? = null
 

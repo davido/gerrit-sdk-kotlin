@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param base 
- * @param strategy 
- * @param allowConflicts 
- * @param onBehalfOfUploader 
- * @param validationOptions 
- * @param committerEmail 
+ * @param base The new parent revision. This can be a ref or a SHA-1 to a concrete patchset. + Alternatively, a change number can be specified, in which case the current patch set is inferred.
+ * @param strategy The strategy of the merge, can be recursive, resolve, simple-two-way-in-core, ours or theirs, default will use project settings.
+ * @param allowConflicts If true, the rebase also succeeds if there are conflicts. + If there are conflicts the file contents of the rebased patch set contain git conflict markers to indicate the conflicts.
+ * @param onBehalfOfUploader If true, the rebase is done on behalf of the uploader. + This means the uploader of the current patch set will also be the uploader of the rebased patch set. The calling user will be recorded as the real user. + Rebasing on behalf of the uploader is only supported for trivial rebases.
+ * @param validationOptions Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners.
+ * @param committerEmail Rebase is committed using this email address. Only the registered emails of the calling user or uploader (when on_behalf_of_uploader is true) are considered valid. This option is not supported when rebasing a chain.
  */
 
 
 data class RebaseInput (
 
+    /* The new parent revision. This can be a ref or a SHA-1 to a concrete patchset. + Alternatively, a change number can be specified, in which case the current patch set is inferred. */
     @SerializedName("base")
     val base: kotlin.String? = null,
 
+    /* The strategy of the merge, can be recursive, resolve, simple-two-way-in-core, ours or theirs, default will use project settings. */
     @SerializedName("strategy")
     val strategy: kotlin.String? = null,
 
+    /* If true, the rebase also succeeds if there are conflicts. + If there are conflicts the file contents of the rebased patch set contain git conflict markers to indicate the conflicts. */
     @SerializedName("allow_conflicts")
     val allowConflicts: kotlin.Boolean? = null,
 
+    /* If true, the rebase is done on behalf of the uploader. + This means the uploader of the current patch set will also be the uploader of the rebased patch set. The calling user will be recorded as the real user. + Rebasing on behalf of the uploader is only supported for trivial rebases. */
     @SerializedName("on_behalf_of_uploader")
     val onBehalfOfUploader: kotlin.Boolean? = null,
 
+    /* Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners. */
     @SerializedName("validation_options")
     val validationOptions: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* Rebase is committed using this email address. Only the registered emails of the calling user or uploader (when on_behalf_of_uploader is true) are considered valid. This option is not supported when rebasing a chain. */
     @SerializedName("committer_email")
     val committerEmail: kotlin.String? = null
 

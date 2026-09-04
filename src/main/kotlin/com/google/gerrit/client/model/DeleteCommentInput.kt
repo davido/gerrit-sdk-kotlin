@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param reason 
+ * @param reason The reason why the comment should be deleted. + If set, the comment's message will be replaced with \"Comment removed by: name; Reason: reason\", or just \"Comment removed by: name.\" if not set.
  */
 
 
 data class DeleteCommentInput (
 
+    /* The reason why the comment should be deleted. + If set, the comment's message will be replaced with \"Comment removed by: name; Reason: reason\", or just \"Comment removed by: name.\" if not set. */
     @SerializedName("reason")
     val reason: kotlin.String? = null
 

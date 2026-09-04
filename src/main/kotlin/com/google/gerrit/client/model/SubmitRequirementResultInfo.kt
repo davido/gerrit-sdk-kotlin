@@ -31,36 +31,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
- * @param status 
- * @param isLegacy 
- * @param applicabilityExpressionResult 
- * @param submittabilityExpressionResult 
- * @param overrideExpressionResult 
+ * @param name The submit requirement name.
+ * @param description Description of the submit requirement.
+ * @param status Status describing the result of evaluating the submit requirement. The status is one of (SATISFIED, UNSATISFIED, OVERRIDDEN, NOT_APPLICABLE, ERROR, FORCED, TIMEOUT).
+ * @param isLegacy If true, this submit requirement result was created from a legacy SubmitRecord. Otherwise, it was created by evaluating a submit requirement.
+ * @param applicabilityExpressionResult A SubmitRequirementExpressionInfo containing the result of evaluating the applicability expression. Not set if the submit requirement did not define an applicability expression. Note that fields expression, passing_atoms and failing_atoms are always omitted for the applicability_expression_result.
+ * @param submittabilityExpressionResult A SubmitRequirementExpressionInfo containing the result of evaluating the submittability expression. + If the submit requirement does not apply, the status field of the result will be set to NOT_EVALUATED.
+ * @param overrideExpressionResult A SubmitRequirementExpressionInfo containing the result of evaluating the override expression. + Not set if the submit requirement did not define an override expression. If the submit requirement does not apply, the status field of the result will be set to NOT_EVALUATED.
  */
 
 
 data class SubmitRequirementResultInfo (
 
+    /* The submit requirement name. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Description of the submit requirement. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Status describing the result of evaluating the submit requirement. The status is one of (SATISFIED, UNSATISFIED, OVERRIDDEN, NOT_APPLICABLE, ERROR, FORCED, TIMEOUT). */
     @SerializedName("status")
     val status: SubmitRequirementResultInfoStatus? = null,
 
+    /* If true, this submit requirement result was created from a legacy SubmitRecord. Otherwise, it was created by evaluating a submit requirement. */
     @SerializedName("is_legacy")
     val isLegacy: kotlin.Boolean? = null,
 
+    /* A SubmitRequirementExpressionInfo containing the result of evaluating the applicability expression. Not set if the submit requirement did not define an applicability expression. Note that fields expression, passing_atoms and failing_atoms are always omitted for the applicability_expression_result. */
     @SerializedName("applicability_expression_result")
     val applicabilityExpressionResult: SubmitRequirementExpressionInfo? = null,
 
+    /* A SubmitRequirementExpressionInfo containing the result of evaluating the submittability expression. + If the submit requirement does not apply, the status field of the result will be set to NOT_EVALUATED. */
     @SerializedName("submittability_expression_result")
     val submittabilityExpressionResult: SubmitRequirementExpressionInfo? = null,
 
+    /* A SubmitRequirementExpressionInfo containing the result of evaluating the override expression. + Not set if the submit requirement did not define an override expression. If the submit requirement does not apply, the status field of the result will be set to NOT_EVALUATED. */
     @SerializedName("override_expression_result")
     val overrideExpressionResult: SubmitRequirementExpressionInfo? = null
 

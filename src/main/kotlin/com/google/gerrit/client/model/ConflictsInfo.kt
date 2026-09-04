@@ -30,32 +30,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param base 
- * @param ours 
- * @param theirs 
- * @param mergeStrategy 
- * @param noBaseReason 
- * @param containsConflicts 
+ * @param base The SHA1 of the commit that was used as the base commit for the Git merge that created the revision. + A base is not set if: + - the merged commits do not have a common ancestor (in this case no_base_reason is NO_COMMON_ANCESTOR).
+ * @param ours The SHA1 of the commit that was used as \"ours\" for the Git merge that created the revision. + - For merge commits that are created by the Create Change REST endpoint \"ours\" is the SHA1 of the change's target branch (the branch that is specified as branch in the ChangeInput).
+ * @param theirs The SHA1 of the commit that was used as \"theirs\" for the Git merge that created the revision.
+ * @param mergeStrategy The merge strategy was used for the Git merge that created the revision. + Possible values: resolve, recursive, simple-two-way-in-core, ours and theirs.
+ * @param noBaseReason Reason why base is not set. + Only set if base is not set. + Possible values are: + - NO_COMMON_ANCESTOR: The merged commits do not have a common ancestor. + - COMPUTED_BASE: The merged commits have multiple merge bases (happens for criss-cross-merges) and the base was computed.
+ * @param containsConflicts Whether any of the files in the revision has a conflict due to merging \"ours\" and \"theirs\". + If \"true\" at least one of the files in the revision has a conflict and contains Git conflict markers. The conflicts occurred while performing a merge between \"ours\" and \"theirs\".
  */
 
 
 data class ConflictsInfo (
 
+    /* The SHA1 of the commit that was used as the base commit for the Git merge that created the revision. + A base is not set if: + - the merged commits do not have a common ancestor (in this case no_base_reason is NO_COMMON_ANCESTOR). */
     @SerializedName("base")
     val base: kotlin.String? = null,
 
+    /* The SHA1 of the commit that was used as \"ours\" for the Git merge that created the revision. + - For merge commits that are created by the Create Change REST endpoint \"ours\" is the SHA1 of the change's target branch (the branch that is specified as branch in the ChangeInput). */
     @SerializedName("ours")
     val ours: kotlin.String? = null,
 
+    /* The SHA1 of the commit that was used as \"theirs\" for the Git merge that created the revision. */
     @SerializedName("theirs")
     val theirs: kotlin.String? = null,
 
+    /* The merge strategy was used for the Git merge that created the revision. + Possible values: resolve, recursive, simple-two-way-in-core, ours and theirs. */
     @SerializedName("merge_strategy")
     val mergeStrategy: kotlin.String? = null,
 
+    /* Reason why base is not set. + Only set if base is not set. + Possible values are: + - NO_COMMON_ANCESTOR: The merged commits do not have a common ancestor. + - COMPUTED_BASE: The merged commits have multiple merge bases (happens for criss-cross-merges) and the base was computed. */
     @SerializedName("no_base_reason")
     val noBaseReason: NoMergeBaseReason? = null,
 
+    /* Whether any of the files in the revision has a conflict due to merging \"ours\" and \"theirs\". + If \"true\" at least one of the files in the revision has a conflict and contains Git conflict markers. The conflicts occurred while performing a merge between \"ours\" and \"theirs\". */
     @SerializedName("contains_conflicts")
     val containsConflicts: kotlin.Boolean? = null
 

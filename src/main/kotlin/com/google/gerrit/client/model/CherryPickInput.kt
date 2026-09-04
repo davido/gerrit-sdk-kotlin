@@ -31,56 +31,68 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
- * @param destination 
- * @param base 
- * @param parent 
- * @param notify 
- * @param notifyDetails 
- * @param keepReviewers 
- * @param allowConflicts 
- * @param topic 
- * @param allowEmpty 
- * @param validationOptions 
- * @param committerEmail 
+ * @param message Commit message for the cherry-pick change. If not set, the commit message of the cherry-picked commit is used.
+ * @param destination Destination branch
+ * @param base 40-hex digit SHA-1 of the commit which will be the parent commit of the newly created change. If set, it must be a merged commit or a change revision on the destination branch.
+ * @param parent Number of the parent relative to which the cherry-pick should be considered.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the cherry-pick. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL.
+ * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
+ * @param keepReviewers If true, carries reviewers and ccs over from original change to newly created one.
+ * @param allowConflicts If true, the cherry-pick uses content merge and succeeds also if there are conflicts. If there are conflicts the file contents of the created change contain git conflict markers to indicate the conflicts.
+ * @param topic The topic of the created cherry-picked change. If not set, the default depends on the source. If the source is a change with a topic, the resulting topic of the cherry-picked change will be {source_change_topic}-{destination_branch}.
+ * @param allowEmpty If true, the cherry-pick succeeds also if the created commit will be empty. If false, a cherry-pick that would create an empty commit fails without creating the commit.
+ * @param validationOptions Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners.
+ * @param committerEmail Cherry-pick is committed using this email address. Only the registered emails of the calling user are considered valid. Defaults to source commit's committer email if it is a registered email of the calling user, else defaults to calling user's preferred email.
  */
 
 
 data class CherryPickInput (
 
+    /* Commit message for the cherry-pick change. If not set, the commit message of the cherry-picked commit is used. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Destination branch */
     @SerializedName("destination")
     val destination: kotlin.String? = null,
 
+    /* 40-hex digit SHA-1 of the commit which will be the parent commit of the newly created change. If set, it must be a merged commit or a change revision on the destination branch. */
     @SerializedName("base")
     val base: kotlin.String? = null,
 
+    /* Number of the parent relative to which the cherry-pick should be considered. */
     @SerializedName("parent")
     val parent: kotlin.Int? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the cherry-pick. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null,
 
+    /* If true, carries reviewers and ccs over from original change to newly created one. */
     @SerializedName("keep_reviewers")
     val keepReviewers: kotlin.Boolean? = null,
 
+    /* If true, the cherry-pick uses content merge and succeeds also if there are conflicts. If there are conflicts the file contents of the created change contain git conflict markers to indicate the conflicts. */
     @SerializedName("allow_conflicts")
     val allowConflicts: kotlin.Boolean? = null,
 
+    /* The topic of the created cherry-picked change. If not set, the default depends on the source. If the source is a change with a topic, the resulting topic of the cherry-picked change will be {source_change_topic}-{destination_branch}. */
     @SerializedName("topic")
     val topic: kotlin.String? = null,
 
+    /* If true, the cherry-pick succeeds also if the created commit will be empty. If false, a cherry-pick that would create an empty commit fails without creating the commit. */
     @SerializedName("allow_empty")
     val allowEmpty: kotlin.Boolean? = null,
 
+    /* Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners. */
     @SerializedName("validation_options")
     val validationOptions: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* Cherry-pick is committed using this email address. Only the registered emails of the calling user are considered valid. Defaults to source commit's committer email if it is a registered email of the calling user, else defaults to calling user's preferred email. */
     @SerializedName("committer_email")
     val committerEmail: kotlin.String? = null
 

@@ -32,32 +32,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param reviewer 
- * @param confirmed 
- * @param state 
- * @param notify 
- * @param notifyDetails 
- * @param onBehalfOf 
+ * @param reviewer The ID of one account that should be added/removed as reviewer or the ID of one internal group for which all members should be added as reviewers. + If an ID identifies both an account and a group, only the account is added as reviewer to the change.
+ * @param confirmed Whether adding the reviewer is confirmed. + The Gerrit server may be configured to require a confirmation when adding a group as reviewer that has many members.
+ * @param state Add reviewer in this state. Possible reviewer states are REVIEWER, CC and REMOVED. If not given, defaults to REVIEWER.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the reviewer is added. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL.
+ * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
+ * @param onBehalfOf \\{account-id\\} the reviewer should be added on behalf of. To use this option the caller must have been granted RUN_AS permission. + If not set, the default is the caller.
  */
 
 
 data class ReviewerInput (
 
+    /* The ID of one account that should be added/removed as reviewer or the ID of one internal group for which all members should be added as reviewers. + If an ID identifies both an account and a group, only the account is added as reviewer to the change. */
     @SerializedName("reviewer")
     val reviewer: kotlin.String? = null,
 
+    /* Whether adding the reviewer is confirmed. + The Gerrit server may be configured to require a confirmation when adding a group as reviewer that has many members. */
     @SerializedName("confirmed")
     val confirmed: kotlin.Boolean? = null,
 
+    /* Add reviewer in this state. Possible reviewer states are REVIEWER, CC and REMOVED. If not given, defaults to REVIEWER. */
     @SerializedName("state")
     val state: ReviewerState? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the reviewer is added. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null,
 
+    /* \\{account-id\\} the reviewer should be added on behalf of. To use this option the caller must have been granted RUN_AS permission. + If not set, the default is the caller. */
     @SerializedName("on_behalf_of")
     val onBehalfOf: kotlin.String? = null
 

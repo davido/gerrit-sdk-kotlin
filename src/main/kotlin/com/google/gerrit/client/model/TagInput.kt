@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param ref 
- * @param revision 
- * @param message 
- * @param date 
+ * @param ref The name of the tag. The leading refs/tags/ is optional.
+ * @param revision The revision to which the tag should point. If not specified, the project's HEAD will be used.
+ * @param message The tag message. When set, the tag will be created as an annotated tag.
+ * @param date Creation timestamp for annotated tags. Must not be a date in the future.
  */
 
 
 data class TagInput (
 
+    /* The name of the tag. The leading refs/tags/ is optional. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* The revision to which the tag should point. If not specified, the project's HEAD will be used. */
     @SerializedName("revision")
     val revision: kotlin.String? = null,
 
+    /* The tag message. When set, the tag will be created as an annotated tag. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Creation timestamp for annotated tags. Must not be a date in the future. */
     @SerializedName("date")
     val date: kotlin.String? = null
 

@@ -31,28 +31,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param uuid 
- * @param owner 
- * @param created 
- * @param stages 
- * @param lastEvaluated 
+ * @param uuid The universally unique identifier that identifies the flow.
+ * @param owner The owner of the flow as an AccountInfo entity.
+ * @param created The timestamp of when the flow was created.
+ * @param stages The stages of this flow as a list of FlowStageInfo entities (sorted by execution order).
+ * @param lastEvaluated The timestamp of when the flow was last evaluated. Not set if the flow has not been evaluated yet.
  */
 
 
 data class FlowInfo (
 
+    /* The universally unique identifier that identifies the flow. */
     @SerializedName("uuid")
     val uuid: kotlin.String? = null,
 
+    /* The owner of the flow as an AccountInfo entity. */
     @SerializedName("owner")
     val owner: AccountInfo? = null,
 
+    /* The timestamp of when the flow was created. */
     @SerializedName("created")
     val created: kotlin.String? = null,
 
+    /* The stages of this flow as a list of FlowStageInfo entities (sorted by execution order). */
     @SerializedName("stages")
     val stages: kotlin.collections.List<FlowStageInfo>? = null,
 
+    /* The timestamp of when the flow was last evaluated. Not set if the flow has not been evaluated yet. */
     @SerializedName("last_evaluated")
     val lastEvaluated: kotlin.String? = null
 

@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param allowConflicts 
+ * @param allowConflicts If true, the rebase also succeeds if there are conflicts. + If there are conflicts the file contents of the rebased patch set contain git conflict markers to indicate the conflicts.
  */
 
 
 data class RebaseChangeEditInput (
 
+    /* If true, the rebase also succeeds if there are conflicts. + If there are conflicts the file contents of the rebased patch set contain git conflict markers to indicate the conflicts. */
     @SerializedName("allow_conflicts")
     val allowConflicts: kotlin.Boolean? = null
 

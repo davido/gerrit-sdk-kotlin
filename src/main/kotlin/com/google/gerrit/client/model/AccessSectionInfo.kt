@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param permissions 
+ * @param permissions The permissions assigned on the ref of this access section as a map that maps the permission names to PermissionInfo entities.
  */
 
 
 data class AccessSectionInfo (
 
+    /* The permissions assigned on the ref of this access section as a map that maps the permission names to PermissionInfo entities. */
     @SerializedName("permissions")
     val permissions: kotlin.collections.Map<kotlin.String, PermissionInfo>? = null
 

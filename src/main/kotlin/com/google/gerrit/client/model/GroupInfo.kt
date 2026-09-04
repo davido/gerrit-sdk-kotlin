@@ -31,56 +31,68 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param url 
- * @param options 
- * @param description 
- * @param groupId 
- * @param owner 
- * @param ownerId 
- * @param createdOn 
- * @param moreGroups 
- * @param members 
- * @param includes 
- * @param id 
- * @param name 
+ * @param url URL to information about the group. Typically a URL to a web page that permits users to apply to join the group, or manage their membership.
+ * @param options Options of the group
+ * @param description The description of the group.
+ * @param groupId The numeric ID of the group.
+ * @param owner The name of the owner group.
+ * @param ownerId The URL encoded UUID of the owner group.
+ * @param createdOn The timestamp of when the group was created.
+ * @param moreGroups Whether the query would deliver more results if not limited. + Only set on the last group that is returned by a group query.
+ * @param members A list of AccountInfo entities describing the direct members. + Only set if members are requested.
+ * @param includes A list of GroupInfo entities describing the direct subgroups. + Only set if subgroups are requested.
+ * @param id The URL encoded UUID of the group.
+ * @param name The name of the group. + For external groups the group name is missing if there is no group backend that can resolve the group UUID. E.g. this can happen when a plugin that provided a group backend was uninstalled.
  */
 
 
 data class GroupInfo (
 
+    /* URL to information about the group. Typically a URL to a web page that permits users to apply to join the group, or manage their membership. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* Options of the group */
     @SerializedName("options")
     val options: GroupOptionsInfo? = null,
 
+    /* The description of the group. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The numeric ID of the group. */
     @SerializedName("group_id")
     val groupId: kotlin.Int? = null,
 
+    /* The name of the owner group. */
     @SerializedName("owner")
     val owner: kotlin.String? = null,
 
+    /* The URL encoded UUID of the owner group. */
     @SerializedName("owner_id")
     val ownerId: kotlin.String? = null,
 
+    /* The timestamp of when the group was created. */
     @SerializedName("created_on")
     val createdOn: kotlin.String? = null,
 
+    /* Whether the query would deliver more results if not limited. + Only set on the last group that is returned by a group query. */
     @SerializedName("_more_groups")
     val moreGroups: kotlin.Boolean? = null,
 
+    /* A list of AccountInfo entities describing the direct members. + Only set if members are requested. */
     @SerializedName("members")
     val members: kotlin.collections.List<AccountInfo>? = null,
 
+    /* A list of GroupInfo entities describing the direct subgroups. + Only set if subgroups are requested. */
     @SerializedName("includes")
     val includes: kotlin.collections.List<GroupInfo>? = null,
 
+    /* The URL encoded UUID of the group. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The name of the group. + For external groups the group name is missing if there is no group backend that can resolve the group UUID. E.g. this can happen when a plugin that provided a group backend was uninstalled. */
     @SerializedName("name")
     val name: kotlin.String? = null
 

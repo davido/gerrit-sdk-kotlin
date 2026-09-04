@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param patch 
- * @param allowConflicts 
+ * @param patch The patch to be applied. Must be compatible with git diff output. For example, Get Patch output. The patch must be provided as UTF-8 text, either directly or base64-encoded.
+ * @param allowConflicts If true, tolerate conflicts and add conflict markers where required.
  */
 
 
 data class ApplyPatchInput (
 
+    /* The patch to be applied. Must be compatible with git diff output. For example, Get Patch output. The patch must be provided as UTF-8 text, either directly or base64-encoded. */
     @SerializedName("patch")
     val patch: kotlin.String? = null,
 
+    /* If true, tolerate conflicts and add conflict markers where required. */
     @SerializedName("allow_conflicts")
     val allowConflicts: kotlin.Boolean? = null
 

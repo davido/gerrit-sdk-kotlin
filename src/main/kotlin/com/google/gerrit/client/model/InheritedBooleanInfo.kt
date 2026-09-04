@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param `value` 
- * @param configuredValue 
- * @param inheritedValue 
+ * @param `value` The effective boolean value.
+ * @param configuredValue The configured value, can be TRUE, FALSE or INHERIT.
+ * @param inheritedValue The boolean value inherited from the parent. + Not set if there is no parent.
  */
 
 
 data class InheritedBooleanInfo (
 
+    /* The effective boolean value. */
     @SerializedName("value")
     val `value`: kotlin.Boolean? = null,
 
+    /* The configured value, can be TRUE, FALSE or INHERIT. */
     @SerializedName("configured_value")
     val configuredValue: InheritableBoolean? = null,
 
+    /* The boolean value inherited from the parent. + Not set if there is no parent. */
     @SerializedName("inherited_value")
     val inheritedValue: kotlin.Boolean? = null
 

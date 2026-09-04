@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param add 
- * @param remove 
+ * @param add The map of custom keyed values to be added to the change.
+ * @param remove The list of custom keys to be removed from the change.
  */
 
 
 data class CustomKeyedValuesInput (
 
+    /* The map of custom keyed values to be added to the change. */
     @SerializedName("add")
     val add: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The list of custom keys to be removed from the change. */
     @SerializedName("remove")
     val remove: kotlin.collections.List<kotlin.String>? = null
 

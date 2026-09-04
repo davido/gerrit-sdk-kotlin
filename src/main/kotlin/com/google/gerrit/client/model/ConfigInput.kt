@@ -34,25 +34,25 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param description 
- * @param useContributorAgreements 
- * @param useContentMerge 
- * @param useSignedOffBy 
- * @param createNewChangeForAllNotInTarget 
- * @param requireChangeId 
+ * @param description The new description of the project. + If not set, the description is removed.
+ * @param useContributorAgreements Whether authors must complete a contributor agreement on the site before pushing any commits or changes to this project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param useContentMerge Whether Gerrit will try to perform a 3-way merge of text file content when a file has been modified by both the destination branch and the change being submitted. This option only takes effect if submit type is not FAST_FORWARD_ONLY. + Can be TRUE, FALSE or INHERIT.
+ * @param useSignedOffBy Whether each change must contain a Signed-off-by line from either the author or the uploader in the commit message. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param createNewChangeForAllNotInTarget Whether a new change will be created for every commit not in target branch. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param requireChangeId Whether a valid Change-Id footer in any commit uploaded for review is required. This does not apply to commits pushed directly to a branch or tag. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. This property is deprecated and will be removed in a future release.
  * @param enableSignedPush 
  * @param requireSignedPush 
- * @param rejectImplicitMerges 
+ * @param rejectImplicitMerges Whether a check for implicit merges will be performed when changes are pushed for review or submitted. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param privateByDefault 
  * @param workInProgressByDefault 
  * @param enableReviewerByEmail 
  * @param matchAuthorToCommitterDate 
- * @param rejectEmptyCommit 
+ * @param rejectEmptyCommit Whether empty commits should be rejected when a change is merged. Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param skipAddingAuthorAndCommitterAsReviewers 
- * @param maxObjectSizeLimit 
- * @param submitType 
- * @param state 
- * @param pluginConfigValues 
+ * @param maxObjectSizeLimit The max object size limit of this project as a MaxObjectSizeLimitInfo entity. + If set to 0, the max object size limit is removed. + If not set, this setting is not updated.
+ * @param submitType The default submit type of the project, can be MERGE_IF_NECESSARY, FAST_FORWARD_ONLY, REBASE_IF_NECESSARY, REBASE_ALWAYS, MERGE_ALWAYS or CHERRY_PICK. + If not set, the submit type is not updated.
+ * @param state The state of the project, can be ACTIVE, READ_ONLY or HIDDEN. + Not set if the project state is ACTIVE. + If not set, the project state is not updated.
+ * @param pluginConfigValues Plugin configuration values as map which maps the plugin name to a map of parameter names to values.
  * @param commentLinks 
  * @param commitMessage 
  */
@@ -60,21 +60,27 @@ import com.google.gson.annotations.SerializedName
 
 data class ConfigInput (
 
+    /* The new description of the project. + If not set, the description is removed. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Whether authors must complete a contributor agreement on the site before pushing any commits or changes to this project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("use_contributor_agreements")
     val useContributorAgreements: InheritableBoolean? = null,
 
+    /* Whether Gerrit will try to perform a 3-way merge of text file content when a file has been modified by both the destination branch and the change being submitted. This option only takes effect if submit type is not FAST_FORWARD_ONLY. + Can be TRUE, FALSE or INHERIT. */
     @SerializedName("use_content_merge")
     val useContentMerge: InheritableBoolean? = null,
 
+    /* Whether each change must contain a Signed-off-by line from either the author or the uploader in the commit message. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("use_signed_off_by")
     val useSignedOffBy: InheritableBoolean? = null,
 
+    /* Whether a new change will be created for every commit not in target branch. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("create_new_change_for_all_not_in_target")
     val createNewChangeForAllNotInTarget: InheritableBoolean? = null,
 
+    /* Whether a valid Change-Id footer in any commit uploaded for review is required. This does not apply to commits pushed directly to a branch or tag. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. This property is deprecated and will be removed in a future release. */
     @SerializedName("require_change_id")
     val requireChangeId: InheritableBoolean? = null,
 
@@ -84,6 +90,7 @@ data class ConfigInput (
     @SerializedName("require_signed_push")
     val requireSignedPush: InheritableBoolean? = null,
 
+    /* Whether a check for implicit merges will be performed when changes are pushed for review or submitted. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("reject_implicit_merges")
     val rejectImplicitMerges: InheritableBoolean? = null,
 
@@ -99,21 +106,26 @@ data class ConfigInput (
     @SerializedName("match_author_to_committer_date")
     val matchAuthorToCommitterDate: InheritableBoolean? = null,
 
+    /* Whether empty commits should be rejected when a change is merged. Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("reject_empty_commit")
     val rejectEmptyCommit: InheritableBoolean? = null,
 
     @SerializedName("skip_adding_author_and_committer_as_reviewers")
     val skipAddingAuthorAndCommitterAsReviewers: InheritableBoolean? = null,
 
+    /* The max object size limit of this project as a MaxObjectSizeLimitInfo entity. + If set to 0, the max object size limit is removed. + If not set, this setting is not updated. */
     @SerializedName("max_object_size_limit")
     val maxObjectSizeLimit: kotlin.String? = null,
 
+    /* The default submit type of the project, can be MERGE_IF_NECESSARY, FAST_FORWARD_ONLY, REBASE_IF_NECESSARY, REBASE_ALWAYS, MERGE_ALWAYS or CHERRY_PICK. + If not set, the submit type is not updated. */
     @SerializedName("submit_type")
     val submitType: SubmitType? = null,
 
+    /* The state of the project, can be ACTIVE, READ_ONLY or HIDDEN. + Not set if the project state is ACTIVE. + If not set, the project state is not updated. */
     @SerializedName("state")
     val state: ProjectState? = null,
 
+    /* Plugin configuration values as map which maps the plugin name to a map of parameter names to values. */
     @SerializedName("plugin_config_values")
     val pluginConfigValues: kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, ConfigValue>>? = null,
 

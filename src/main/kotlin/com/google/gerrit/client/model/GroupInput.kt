@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param uuid 
- * @param description 
- * @param visibleToAll 
- * @param ownerId 
- * @param members 
+ * @param name The name of the group (not encoded). + If set, must match the group name in the URL.
+ * @param uuid The UUID of the group.
+ * @param description The description of the group.
+ * @param visibleToAll Whether the group is visible to all registered users. + false if not set.
+ * @param ownerId The URL encoded ID of the owner group. + This can be a group UUID, a legacy numeric group ID or a unique group name. + If not set, the new group will be self-owned.
+ * @param members The initial members in a list of + account ids.
  */
 
 
 data class GroupInput (
 
+    /* The name of the group (not encoded). + If set, must match the group name in the URL. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The UUID of the group. */
     @SerializedName("uuid")
     val uuid: kotlin.String? = null,
 
+    /* The description of the group. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Whether the group is visible to all registered users. + false if not set. */
     @SerializedName("visible_to_all")
     val visibleToAll: kotlin.Boolean? = null,
 
+    /* The URL encoded ID of the owner group. + This can be a group UUID, a legacy numeric group ID or a unique group name. + If not set, the new group will be self-owned. */
     @SerializedName("owner_id")
     val ownerId: kotlin.String? = null,
 
+    /* The initial members in a list of + account ids. */
     @SerializedName("members")
     val members: kotlin.collections.List<kotlin.String>? = null
 

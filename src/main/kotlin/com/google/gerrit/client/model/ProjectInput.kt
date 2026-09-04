@@ -32,84 +32,103 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param parent 
- * @param description 
- * @param permissionsOnly 
- * @param createEmptyCommit 
- * @param submitType 
- * @param branches 
- * @param owners 
- * @param useContributorAgreements 
- * @param useSignedOffBy 
- * @param useContentMerge 
- * @param requireChangeId 
- * @param createNewChangeForAllNotInTarget 
- * @param rejectEmptyCommit 
- * @param enableSignedPush 
- * @param requireSignedPush 
- * @param maxObjectSizeLimit 
- * @param pluginConfigValues 
- * @param initOnly 
+ * @param name The name of the project (not encoded). + If set, must match the project name in the URL. + If name ends with .git the suffix will be automatically removed.
+ * @param parent The name of the parent project. + If not set, the All-Projects project will be the parent project.
+ * @param description The description of the project.
+ * @param permissionsOnly Whether a permission-only project should be created.
+ * @param createEmptyCommit Whether an empty initial commit should be created.
+ * @param submitType The submit type that should be set for the project (MERGE_IF_NECESSARY, REBASE_IF_NECESSARY, REBASE_ALWAYS, FAST_FORWARD_ONLY, MERGE_ALWAYS, CHERRY_PICK). + If not set, MERGE_IF_NECESSARY is set as submit type unless repository.<name>.defaultSubmitType is set to a different value.
+ * @param branches A list of branches that should be initially created. + For the branch names the refs/heads/ prefix can be omitted. + The first entry of the list will be the default branch. + If the list is empty, host-level default is used.
+ * @param owners A list of groups that should be assigned as project owner. + Each group in the list must be specified as group-id. + If not set, the groups that are configured as default owners are set as project owners.
+ * @param useContributorAgreements Whether contributor agreements should be used for the project (TRUE, FALSE, INHERIT).
+ * @param useSignedOffBy Whether the usage of 'Signed-Off-By' footers is required for the project (TRUE, FALSE, INHERIT).
+ * @param useContentMerge Whether content merge should be enabled for the project (TRUE, FALSE, INHERIT). + FALSE, if the submit_type is FAST_FORWARD_ONLY.
+ * @param requireChangeId Whether the usage of Change-Ids is required for the project (TRUE, FALSE, INHERIT). This property is deprecated and will be removed in a future release.
+ * @param createNewChangeForAllNotInTarget Whether a new change is created for every commit not in target branch for the project (TRUE, FALSE, INHERIT).
+ * @param rejectEmptyCommit Whether empty commits should be rejected when a change is merged (TRUE, FALSE, INHERIT).
+ * @param enableSignedPush Whether signed push validation is enabled on the project (TRUE, FALSE, INHERIT).
+ * @param requireSignedPush Whether signed push validation is required on the project (TRUE, FALSE, INHERIT).
+ * @param maxObjectSizeLimit Max allowed Git object size for this project. Common unit suffixes of 'k', 'm', or 'g' are supported.
+ * @param pluginConfigValues Plugin configuration values as map which maps the plugin name to a map of parameter names to values.
+ * @param initOnly If set, only the project initialization is being (re-)done and the repository creation is skipped. The project initialization consists out of setting HEAD, creating the project.config file in refs/meta/config and creating initial branches with empty commits.
  */
 
 
 data class ProjectInput (
 
+    /* The name of the project (not encoded). + If set, must match the project name in the URL. + If name ends with .git the suffix will be automatically removed. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The name of the parent project. + If not set, the All-Projects project will be the parent project. */
     @SerializedName("parent")
     val parent: kotlin.String? = null,
 
+    /* The description of the project. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Whether a permission-only project should be created. */
     @SerializedName("permissions_only")
     val permissionsOnly: kotlin.Boolean? = null,
 
+    /* Whether an empty initial commit should be created. */
     @SerializedName("create_empty_commit")
     val createEmptyCommit: kotlin.Boolean? = null,
 
+    /* The submit type that should be set for the project (MERGE_IF_NECESSARY, REBASE_IF_NECESSARY, REBASE_ALWAYS, FAST_FORWARD_ONLY, MERGE_ALWAYS, CHERRY_PICK). + If not set, MERGE_IF_NECESSARY is set as submit type unless repository.<name>.defaultSubmitType is set to a different value. */
     @SerializedName("submit_type")
     val submitType: SubmitType? = null,
 
+    /* A list of branches that should be initially created. + For the branch names the refs/heads/ prefix can be omitted. + The first entry of the list will be the default branch. + If the list is empty, host-level default is used. */
     @SerializedName("branches")
     val branches: kotlin.collections.List<kotlin.String>? = null,
 
+    /* A list of groups that should be assigned as project owner. + Each group in the list must be specified as group-id. + If not set, the groups that are configured as default owners are set as project owners. */
     @SerializedName("owners")
     val owners: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether contributor agreements should be used for the project (TRUE, FALSE, INHERIT). */
     @SerializedName("use_contributor_agreements")
     val useContributorAgreements: InheritableBoolean? = null,
 
+    /* Whether the usage of 'Signed-Off-By' footers is required for the project (TRUE, FALSE, INHERIT). */
     @SerializedName("use_signed_off_by")
     val useSignedOffBy: InheritableBoolean? = null,
 
+    /* Whether content merge should be enabled for the project (TRUE, FALSE, INHERIT). + FALSE, if the submit_type is FAST_FORWARD_ONLY. */
     @SerializedName("use_content_merge")
     val useContentMerge: InheritableBoolean? = null,
 
+    /* Whether the usage of Change-Ids is required for the project (TRUE, FALSE, INHERIT). This property is deprecated and will be removed in a future release. */
     @SerializedName("require_change_id")
     val requireChangeId: InheritableBoolean? = null,
 
+    /* Whether a new change is created for every commit not in target branch for the project (TRUE, FALSE, INHERIT). */
     @SerializedName("create_new_change_for_all_not_in_target")
     val createNewChangeForAllNotInTarget: InheritableBoolean? = null,
 
+    /* Whether empty commits should be rejected when a change is merged (TRUE, FALSE, INHERIT). */
     @SerializedName("reject_empty_commit")
     val rejectEmptyCommit: InheritableBoolean? = null,
 
+    /* Whether signed push validation is enabled on the project (TRUE, FALSE, INHERIT). */
     @SerializedName("enable_signed_push")
     val enableSignedPush: InheritableBoolean? = null,
 
+    /* Whether signed push validation is required on the project (TRUE, FALSE, INHERIT). */
     @SerializedName("require_signed_push")
     val requireSignedPush: InheritableBoolean? = null,
 
+    /* Max allowed Git object size for this project. Common unit suffixes of 'k', 'm', or 'g' are supported. */
     @SerializedName("max_object_size_limit")
     val maxObjectSizeLimit: kotlin.String? = null,
 
+    /* Plugin configuration values as map which maps the plugin name to a map of parameter names to values. */
     @SerializedName("plugin_config_values")
     val pluginConfigValues: kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, ConfigValue>>? = null,
 
+    /* If set, only the project initialization is being (re-)done and the repository creation is skipped. The project initialization consists out of setting HEAD, creating the project.config file in refs/meta/config and creating initial branches with empty commits. */
     @SerializedName("init_only")
     val initOnly: kotlin.Boolean? = null
 

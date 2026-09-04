@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param anonymousCowardName 
+ * @param anonymousCowardName Username that is displayed in the Gerrit Web UI and in e-mail notifications if the full name of the user is not set.
  */
 
 
 data class UserConfigInfo (
 
+    /* Username that is displayed in the Gerrit Web UI and in e-mail notifications if the full name of the user is not set. */
     @SerializedName("anonymous_coward_name")
     val anonymousCowardName: kotlin.String? = null
 

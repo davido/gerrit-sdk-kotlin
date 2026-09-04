@@ -30,40 +30,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param state 
- * @param startTime 
- * @param delay 
- * @param command 
- * @param remoteName 
- * @param projectName 
- * @param queueName 
+ * @param id The ID of the task.
+ * @param state The state of the task, can be DONE, CANCELLED, RUNNING, READY, SLEEPING and OTHER.
+ * @param startTime The start time of the task.
+ * @param delay The remaining delay of the task.
+ * @param command The command of the task.
+ * @param remoteName The remote name. May only be set for tasks that are associated with a project.
+ * @param projectName The project the task is associated with.
+ * @param queueName The work queue the task is associated with.
  */
 
 
 data class TaskInfo (
 
+    /* The ID of the task. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The state of the task, can be DONE, CANCELLED, RUNNING, READY, SLEEPING and OTHER. */
     @SerializedName("state")
     val state: State? = null,
 
+    /* The start time of the task. */
     @SerializedName("start_time")
     val startTime: kotlin.String? = null,
 
+    /* The remaining delay of the task. */
     @SerializedName("delay")
     val delay: kotlin.Int? = null,
 
+    /* The command of the task. */
     @SerializedName("command")
     val command: kotlin.String? = null,
 
+    /* The remote name. May only be set for tasks that are associated with a project. */
     @SerializedName("remote_name")
     val remoteName: kotlin.String? = null,
 
+    /* The project the task is associated with. */
     @SerializedName("project_name")
     val projectName: kotlin.String? = null,
 
+    /* The work queue the task is associated with. */
     @SerializedName("queue_name")
     val queueName: kotlin.String? = null
 

@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commitMessage 
- * @param baseRevision 
- * @param files 
- * @param validationOptions 
+ * @param commitMessage The commit message. Must be non-empty.
+ * @param baseRevision The commit (SHA-1) the target branch is expected to point at: the request is rejected with \"409 Conflict\" if the branch tip is any other commit (optimistic concurrency).
+ * @param files A map of file path to FileChange describing the operation to apply at that path. Applied together as one commit.
+ * @param validationOptions Map with key-value pairs that are forwarded as options to the ref-operation and commit validation listeners (e.g. to skip certain validations). Which options are supported depends on the installed validation listeners; Gerrit core supports none. Unknown options are silently ignored.
  */
 
 
 data class CreateCommitInput (
 
+    /* The commit message. Must be non-empty. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null,
 
+    /* The commit (SHA-1) the target branch is expected to point at: the request is rejected with \"409 Conflict\" if the branch tip is any other commit (optimistic concurrency). */
     @SerializedName("base_revision")
     val baseRevision: kotlin.String? = null,
 
+    /* A map of file path to FileChange describing the operation to apply at that path. Applied together as one commit. */
     @SerializedName("files")
     val files: kotlin.collections.Map<kotlin.String, FileChange>? = null,
 
+    /* Map with key-value pairs that are forwarded as options to the ref-operation and commit validation listeners (e.g. to skip certain validations). Which options are supported depends on the installed validation listeners; Gerrit core supports none. Unknown options are silently ignored. */
     @SerializedName("validation_options")
     val validationOptions: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 

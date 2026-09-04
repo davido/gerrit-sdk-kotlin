@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param enabled 
+ * @param enabled Whether the experiment is enabled.
  */
 
 
 data class ExperimentInfo (
 
+    /* Whether the experiment is enabled. */
     @SerializedName("enabled")
     val enabled: kotlin.Boolean? = null
 

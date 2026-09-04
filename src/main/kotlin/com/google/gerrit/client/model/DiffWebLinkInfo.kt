@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param showOnSideBySideDiffView 
- * @param showOnUnifiedDiffView 
- * @param name 
- * @param tooltip 
- * @param imageUrl 
- * @param url 
+ * @param showOnSideBySideDiffView Whether the web link should be shown on the side-by-side diff screen.
+ * @param showOnUnifiedDiffView Whether the web link should be shown on the unified diff screen.
+ * @param name See WebLinkInfo
+ * @param tooltip See WebLinkInfo
+ * @param imageUrl See WebLinkInfo
+ * @param url See WebLinkInfo
  */
 
 
 data class DiffWebLinkInfo (
 
+    /* Whether the web link should be shown on the side-by-side diff screen. */
     @SerializedName("show_on_side_by_side_diff_view")
     val showOnSideBySideDiffView: kotlin.Boolean? = null,
 
+    /* Whether the web link should be shown on the unified diff screen. */
     @SerializedName("show_on_unified_diff_view")
     val showOnUnifiedDiffView: kotlin.Boolean? = null,
 
+    /* See WebLinkInfo */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* See WebLinkInfo */
     @SerializedName("tooltip")
     val tooltip: kotlin.String? = null,
 
+    /* See WebLinkInfo */
     @SerializedName("image_url")
     val imageUrl: kotlin.String? = null,
 
+    /* See WebLinkInfo */
     @SerializedName("url")
     val url: kotlin.String? = null
 

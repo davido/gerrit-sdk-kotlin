@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commitMessage 
- * @param delete 
- * @param create 
- * @param update 
+ * @param commitMessage Message that should be used to commit the submit requirements updates in the project.config file to the refs/meta/config branch.
+ * @param delete List of submit requirements that should be deleted.
+ * @param create List of SubmitRequirementInput entities that describe submit requirements that should be created.
+ * @param update Map of submit requirement names to SubmitRequirementInput entities that describe the updates that should be done for the submit requirements. The given inputs must set all properties (including those that are not being changed).
  */
 
 
 data class BatchSubmitRequirementInput (
 
+    /* Message that should be used to commit the submit requirements updates in the project.config file to the refs/meta/config branch. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null,
 
+    /* List of submit requirements that should be deleted. */
     @SerializedName("delete")
     val delete: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of SubmitRequirementInput entities that describe submit requirements that should be created. */
     @SerializedName("create")
     val create: kotlin.collections.List<SubmitRequirementInput>? = null,
 
+    /* Map of submit requirement names to SubmitRequirementInput entities that describe the updates that should be done for the submit requirements. The given inputs must set all properties (including those that are not being changed). */
     @SerializedName("update")
     val update: kotlin.collections.Map<kotlin.String, SubmitRequirementInput>? = null
 

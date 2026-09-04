@@ -36,80 +36,98 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param project 
- * @param branch 
- * @param subject 
- * @param topic 
- * @param status 
- * @param isPrivate 
- * @param workInProgress 
- * @param baseChange 
- * @param baseCommit 
- * @param newBranch 
- * @param validationOptions 
- * @param customKeyedValues 
- * @param merge 
- * @param patch 
- * @param author 
- * @param responseFormatOptions 
- * @param notify 
- * @param notifyDetails 
+ * @param project The name of the project.
+ * @param branch The name of the target branch. + The refs/heads/ prefix is omitted.
+ * @param subject The commit message of the change. Comment lines (beginning with #) will be removed. If the commit message contains a Change-Id (as a \"Change-Id: I...\" footer) that Change-Id will be used for the newly created changed.
+ * @param topic The topic to which this change belongs. Topic can't contain quotation marks.
+ * @param status The status of the change (only NEW accepted here).
+ * @param isPrivate Whether the new change should be marked as private.
+ * @param workInProgress Whether the new change should be set to work in progress.
+ * @param baseChange A \\{change-id\\} that identifies the base change for a create change operation. + Mutually exclusive with base_commit. + If neither base_commit nor base_change are set, the target branch tip will be used as the parent commit.
+ * @param baseCommit A 40-digit hex SHA-1 of the commit which will be the parent commit of the newly created change. If set, it must be a merged commit on the destination branch. + Mutually exclusive with base_change.
+ * @param newBranch Allow creating a new branch when set to true. Using this option is only possible for non-merge commits (if the merge field is not set).
+ * @param validationOptions Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners.
+ * @param customKeyedValues Custom keyed values as a map from custom keys to values.
+ * @param merge The detail of a merge commit as a MergeInput entity. If set, the target branch (see branch field) must exist (it is not possible to create it automatically by setting the new_branch field to true.
+ * @param patch The detail of a patch to be applied as an ApplyPatchInput entity.
+ * @param author The author of the commit to create. Must be an AccountInput entity with at least the name and email fields set. The caller needs \"Forge Author\" permission when using this field. This field does not affect the owner of the change, which will continue to use the identity of the caller.
+ * @param responseFormatOptions List of query options to format the response.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the change is created. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER for WIP changes and ALL otherwise.
+ * @param notifyDetails Additional information about whom to notify about the change creation as a map of recipient type to NotifyInfo entity.
  */
 
 
 data class ChangeInput (
 
+    /* The name of the project. */
     @SerializedName("project")
     val project: kotlin.String? = null,
 
+    /* The name of the target branch. + The refs/heads/ prefix is omitted. */
     @SerializedName("branch")
     val branch: kotlin.String? = null,
 
+    /* The commit message of the change. Comment lines (beginning with #) will be removed. If the commit message contains a Change-Id (as a \"Change-Id: I...\" footer) that Change-Id will be used for the newly created changed. */
     @SerializedName("subject")
     val subject: kotlin.String? = null,
 
+    /* The topic to which this change belongs. Topic can't contain quotation marks. */
     @SerializedName("topic")
     val topic: kotlin.String? = null,
 
+    /* The status of the change (only NEW accepted here). */
     @SerializedName("status")
     val status: ChangeStatus? = null,
 
+    /* Whether the new change should be marked as private. */
     @SerializedName("is_private")
     val isPrivate: kotlin.Boolean? = null,
 
+    /* Whether the new change should be set to work in progress. */
     @SerializedName("work_in_progress")
     val workInProgress: kotlin.Boolean? = null,
 
+    /* A \\{change-id\\} that identifies the base change for a create change operation. + Mutually exclusive with base_commit. + If neither base_commit nor base_change are set, the target branch tip will be used as the parent commit. */
     @SerializedName("base_change")
     val baseChange: kotlin.String? = null,
 
+    /* A 40-digit hex SHA-1 of the commit which will be the parent commit of the newly created change. If set, it must be a merged commit on the destination branch. + Mutually exclusive with base_change. */
     @SerializedName("base_commit")
     val baseCommit: kotlin.String? = null,
 
+    /* Allow creating a new branch when set to true. Using this option is only possible for non-merge commits (if the merge field is not set). */
     @SerializedName("new_branch")
     val newBranch: kotlin.Boolean? = null,
 
+    /* Map with key-value pairs that are forwarded as options to the commit validation listeners (e.g. can be used to skip certain validations). Which validation options are supported depends on the installed commit validation listeners. */
     @SerializedName("validation_options")
     val validationOptions: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* Custom keyed values as a map from custom keys to values. */
     @SerializedName("custom_keyed_values")
     val customKeyedValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The detail of a merge commit as a MergeInput entity. If set, the target branch (see branch field) must exist (it is not possible to create it automatically by setting the new_branch field to true. */
     @SerializedName("merge")
     val merge: MergeInput? = null,
 
+    /* The detail of a patch to be applied as an ApplyPatchInput entity. */
     @SerializedName("patch")
     val patch: ApplyPatchInput? = null,
 
+    /* The author of the commit to create. Must be an AccountInput entity with at least the name and email fields set. The caller needs \"Forge Author\" permission when using this field. This field does not affect the owner of the change, which will continue to use the identity of the caller. */
     @SerializedName("author")
     val author: AccountInput? = null,
 
+    /* List of query options to format the response. */
     @SerializedName("response_format_options")
     val responseFormatOptions: kotlin.collections.List<ListChangesOption>? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the change is created. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is OWNER for WIP changes and ALL otherwise. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the change creation as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null
 

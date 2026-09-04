@@ -30,32 +30,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param fingerprint 
- * @param userIds 
- * @param key 
- * @param status 
- * @param problems 
+ * @param id The 8-char hex GPG key ID.
+ * @param fingerprint The 40-char (plus spaces) hex GPG key fingerprint.
+ * @param userIds OpenPGP User IDs,role=external,window=_blank associated with the public key.
+ * @param key ASCII armored public key material.
+ * @param status The result of server-side checks on the key; one of BAD, OK, or TRUSTED. BAD keys have serious problems and should not be used. If a key is OK, inspecting only that key found no problems, but the system does not fully trust the key's origin.
+ * @param problems A list of human-readable problem strings found in the course of checking whether the key is valid and trusted.
  */
 
 
 data class GpgKeyInfo (
 
+    /* The 8-char hex GPG key ID. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The 40-char (plus spaces) hex GPG key fingerprint. */
     @SerializedName("fingerprint")
     val fingerprint: kotlin.String? = null,
 
+    /* OpenPGP User IDs,role=external,window=_blank associated with the public key. */
     @SerializedName("user_ids")
     val userIds: kotlin.collections.List<kotlin.String>? = null,
 
+    /* ASCII armored public key material. */
     @SerializedName("key")
     val key: kotlin.String? = null,
 
+    /* The result of server-side checks on the key; one of BAD, OK, or TRUSTED. BAD keys have serious problems and should not be used. If a key is OK, inspecting only that key found no problems, but the system does not fully trust the key's origin. */
     @SerializedName("status")
     val status: GpgKeyInfoStatus? = null,
 
+    /* A list of human-readable problem strings found in the course of checking whether the key is valid and trusted. */
     @SerializedName("problems")
     val problems: kotlin.collections.List<kotlin.String>? = null
 

@@ -33,28 +33,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param account 
- * @param capabilities 
- * @param groups 
- * @param externalIds 
- * @param metadata 
+ * @param account The account details as AccountDetailInfo entity.
+ * @param capabilities The global capabilities of the account as a CapabilityInfo entity. Not set if the permission backend doesn't use default capabilities.
+ * @param groups The groups that contain the account as a member as a list of GroupInfo entries.
+ * @param externalIds The external IDs of the account as a list of AccountExternalIdInfo entities.
+ * @param metadata Optional account metadata as a list of MetadataInfo entities. If and which metadata is provided depends on the Gerrit setup.
  */
 
 
 data class AccountStateInfo (
 
+    /* The account details as AccountDetailInfo entity. */
     @SerializedName("account")
     val account: AccountDetailInfo? = null,
 
+    /* The global capabilities of the account as a CapabilityInfo entity. Not set if the permission backend doesn't use default capabilities. */
     @SerializedName("capabilities")
     val capabilities: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
 
+    /* The groups that contain the account as a member as a list of GroupInfo entries. */
     @SerializedName("groups")
     val groups: kotlin.collections.List<GroupInfo>? = null,
 
+    /* The external IDs of the account as a list of AccountExternalIdInfo entities. */
     @SerializedName("external_ids")
     val externalIds: kotlin.collections.List<AccountExternalIdInfo>? = null,
 
+    /* Optional account metadata as a list of MetadataInfo entities. If and which metadata is provided depends on the Gerrit setup. */
     @SerializedName("metadata")
     val metadata: kotlin.collections.List<MetadataInfo>? = null
 

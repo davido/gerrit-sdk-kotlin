@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param autoCloseableChangesCheck 
+ * @param autoCloseableChangesCheck Parameters for the AutoCloseableChangesCheck as AutoCloseableChangesCheckInput entity.
  */
 
 
 data class CheckProjectInput (
 
+    /* Parameters for the AutoCloseableChangesCheck as AutoCloseableChangesCheckInput entity. */
     @SerializedName("auto_closeable_changes_check")
     val autoCloseableChangesCheck: AutoCloseableChangesCheckInput? = null
 

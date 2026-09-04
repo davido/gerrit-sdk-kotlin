@@ -50,7 +50,6 @@ import com.google.gerrit.client.model.DeleteChangesInput
 import com.google.gerrit.client.model.DeleteTagsInput
 import com.google.gerrit.client.model.DiffInfo
 import com.google.gerrit.client.model.GarbageCollectInput
-import com.google.gerrit.client.model.GetProjectsDefaultResponse
 import com.google.gerrit.client.model.HeadInput
 import com.google.gerrit.client.model.IncludedInInfo
 import com.google.gerrit.client.model.IndexProjectInput
@@ -561,7 +560,7 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param state  (optional)
      * @param tree  (optional)
      * @param type  (optional)
-     * @return GetProjectsDefaultResponse
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -570,11 +569,11 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getProjects(all: kotlin.Boolean? = null, description: kotlin.Boolean? = null, format: kotlin.String? = null, hasAclFor: kotlin.String? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, prefix: kotlin.String? = null, query: kotlin.String? = null, r: kotlin.String? = null, showBranch: kotlin.collections.List<kotlin.String>? = null, start: kotlin.Int? = null, state: kotlin.String? = null, tree: kotlin.Boolean? = null, type: kotlin.String? = null) : GetProjectsDefaultResponse {
+    fun getProjects(all: kotlin.Boolean? = null, description: kotlin.Boolean? = null, format: kotlin.String? = null, hasAclFor: kotlin.String? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, prefix: kotlin.String? = null, query: kotlin.String? = null, r: kotlin.String? = null, showBranch: kotlin.collections.List<kotlin.String>? = null, start: kotlin.Int? = null, state: kotlin.String? = null, tree: kotlin.Boolean? = null, type: kotlin.String? = null) : kotlin.Any {
         val localVarResponse = getProjectsWithHttpInfo(all = all, description = description, format = format, hasAclFor = hasAclFor, limit = limit, match = match, prefix = prefix, query = query, r = r, showBranch = showBranch, start = start, state = state, tree = tree, type = type)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as GetProjectsDefaultResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -606,16 +605,16 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
      * @param state  (optional)
      * @param tree  (optional)
      * @param type  (optional)
-     * @return ApiResponse<GetProjectsDefaultResponse?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getProjectsWithHttpInfo(all: kotlin.Boolean?, description: kotlin.Boolean?, format: kotlin.String?, hasAclFor: kotlin.String?, limit: kotlin.Int?, match: kotlin.String?, prefix: kotlin.String?, query: kotlin.String?, r: kotlin.String?, showBranch: kotlin.collections.List<kotlin.String>?, start: kotlin.Int?, state: kotlin.String?, tree: kotlin.Boolean?, type: kotlin.String?) : ApiResponse<GetProjectsDefaultResponse?> {
+    fun getProjectsWithHttpInfo(all: kotlin.Boolean?, description: kotlin.Boolean?, format: kotlin.String?, hasAclFor: kotlin.String?, limit: kotlin.Int?, match: kotlin.String?, prefix: kotlin.String?, query: kotlin.String?, r: kotlin.String?, showBranch: kotlin.collections.List<kotlin.String>?, start: kotlin.Int?, state: kotlin.String?, tree: kotlin.Boolean?, type: kotlin.String?) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getProjectsRequestConfig(all = all, description = description, format = format, hasAclFor = hasAclFor, limit = limit, match = match, prefix = prefix, query = query, r = r, showBranch = showBranch, start = start, state = state, tree = tree, type = type)
 
-        return request<Unit, GetProjectsDefaultResponse>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }

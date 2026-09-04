@@ -29,52 +29,63 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
- * @param projectName 
- * @param function 
- * @param propertyValues 
- * @param defaultValue 
- * @param branches 
- * @param canOverride 
- * @param copyCondition 
- * @param allowPostSubmit 
- * @param ignoreSelfApproval 
+ * @param name The name of the label.
+ * @param description The description of the label.
+ * @param projectName The name of the project in which this label is defined. Not set for globally defined labels.
+ * @param function The function of the label (can be MaxWithBlock, AnyWithBlock, MaxNoBlock, NoBlock, NoOp and PatchSetLock.
+ * @param propertyValues The values of the label as a map of label value to value description. The label values are formatted strings, e.g. \"+1\" instead of \"1\", \" 0\" instead of \"0\".
+ * @param defaultValue The default value of the label (as integer).
+ * @param branches A list of branches for which the label applies. A branch can be a ref, a ref pattern or a regular expression. If not set, the label applies for all branches.
+ * @param canOverride Whether this label can be overridden by child projects.
+ * @param copyCondition See copyCondition.
+ * @param allowPostSubmit Whether allowPostSubmit is set on the label.
+ * @param ignoreSelfApproval Whether ignoreSelfApproval is set on the label.
  */
 
 
 data class LabelDefinitionInfo (
 
+    /* The name of the label. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The description of the label. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The name of the project in which this label is defined. Not set for globally defined labels. */
     @SerializedName("project_name")
     val projectName: kotlin.String? = null,
 
+    /* The function of the label (can be MaxWithBlock, AnyWithBlock, MaxNoBlock, NoBlock, NoOp and PatchSetLock. */
     @SerializedName("function")
     val function: kotlin.String? = null,
 
+    /* The values of the label as a map of label value to value description. The label values are formatted strings, e.g. \"+1\" instead of \"1\", \" 0\" instead of \"0\". */
     @SerializedName("values")
     val propertyValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The default value of the label (as integer). */
     @SerializedName("default_value")
     val defaultValue: kotlin.Int? = null,
 
+    /* A list of branches for which the label applies. A branch can be a ref, a ref pattern or a regular expression. If not set, the label applies for all branches. */
     @SerializedName("branches")
     val branches: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether this label can be overridden by child projects. */
     @SerializedName("can_override")
     val canOverride: kotlin.Boolean? = null,
 
+    /* See copyCondition. */
     @SerializedName("copy_condition")
     val copyCondition: kotlin.String? = null,
 
+    /* Whether allowPostSubmit is set on the label. */
     @SerializedName("allow_post_submit")
     val allowPostSubmit: kotlin.Boolean? = null,
 
+    /* Whether ignoreSelfApproval is set on the label. */
     @SerializedName("ignore_self_approval")
     val ignoreSelfApproval: kotlin.Boolean? = null
 

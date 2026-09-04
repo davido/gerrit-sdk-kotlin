@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param configKey 
- * @param oldValue 
- * @param newValue 
+ * @param configKey The config key that contains the value.
+ * @param oldValue The old config value. + Missing if value was not previously configured.
+ * @param newValue The new config value, picked up after reload.
  */
 
 
 data class ConfigUpdateEntryInfo (
 
+    /* The config key that contains the value. */
     @SerializedName("config_key")
     val configKey: kotlin.String? = null,
 
+    /* The old config value. + Missing if value was not previously configured. */
     @SerializedName("old_value")
     val oldValue: kotlin.String? = null,
 
+    /* The new config value, picked up after reload. */
     @SerializedName("new_value")
     val newValue: kotlin.String? = null
 

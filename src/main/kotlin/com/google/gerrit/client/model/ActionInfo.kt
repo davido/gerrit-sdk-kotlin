@@ -29,28 +29,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param method 
- * @param label 
- * @param title 
- * @param enabled 
- * @param enabledOptions 
+ * @param method HTTP method to use with the action. Most actions use POST, PUT or DELETE to cause state changes.
+ * @param label Short title to display to a user describing the action. In the Gerrit web interface the label is used as the text on the button presented in the UI.
+ * @param title Longer text to display describing the action. In a web UI this should be the title attribute of the element, displaying when the user hovers the mouse.
+ * @param enabled If true the action is permitted at this time and the caller is likely allowed to execute it. This may change if state is updated at the server or permissions are modified. Not present if false.
+ * @param enabledOptions Optional list of enabled options. + See the list of suppported options below.
  */
 
 
 data class ActionInfo (
 
+    /* HTTP method to use with the action. Most actions use POST, PUT or DELETE to cause state changes. */
     @SerializedName("method")
     val method: kotlin.String? = null,
 
+    /* Short title to display to a user describing the action. In the Gerrit web interface the label is used as the text on the button presented in the UI. */
     @SerializedName("label")
     val label: kotlin.String? = null,
 
+    /* Longer text to display describing the action. In a web UI this should be the title attribute of the element, displaying when the user hovers the mouse. */
     @SerializedName("title")
     val title: kotlin.String? = null,
 
+    /* If true the action is permitted at this time and the caller is likely allowed to execute it. This may change if state is updated at the server or permissions are modified. Not present if false. */
     @SerializedName("enabled")
     val enabled: kotlin.Boolean? = null,
 
+    /* Optional list of enabled options. + See the list of suppported options below. */
     @SerializedName("enabled_options")
     val enabledOptions: kotlin.collections.List<kotlin.String>? = null
 

@@ -31,16 +31,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param change 
- * @param deleted 
+ * @param change ChangeInfo entity describing the change on which one or more comments was deleted. Populated with no change list options.
+ * @param deleted List of CommentInfo entities for each comment that was deleted.
  */
 
 
 data class DeletedDraftCommentInfo (
 
+    /* ChangeInfo entity describing the change on which one or more comments was deleted. Populated with no change list options. */
     @SerializedName("change")
     val change: ChangeInfo? = null,
 
+    /* List of CommentInfo entities for each comment that was deleted. */
     @SerializedName("deleted")
     val deleted: kotlin.collections.List<CommentInfo>? = null
 

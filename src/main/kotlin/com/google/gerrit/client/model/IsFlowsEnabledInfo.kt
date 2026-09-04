@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param enabled 
+ * @param enabled A boolean indicating whether the feature is enabled.
  */
 
 
 data class IsFlowsEnabledInfo (
 
+    /* A boolean indicating whether the feature is enabled. */
     @SerializedName("enabled")
     val enabled: kotlin.Boolean? = null
 

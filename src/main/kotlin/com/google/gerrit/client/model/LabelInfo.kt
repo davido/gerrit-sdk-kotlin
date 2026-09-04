@@ -31,52 +31,63 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param approved 
- * @param rejected 
- * @param recommended 
- * @param disliked 
- * @param all 
- * @param propertyValues 
- * @param description 
- * @param `value` 
- * @param defaultValue 
- * @param optional 
- * @param blocking 
+ * @param approved One user who approved this label on the change (voted the maximum value) as an AccountInfo entity.
+ * @param rejected One user who rejected this label on the change (voted the minimum value) as an AccountInfo entity.
+ * @param recommended One user who recommended this label on the change (voted positively, but not the maximum value) as an AccountInfo entity.
+ * @param disliked One user who disliked this label on the change (voted negatively, but not the minimum value) as an AccountInfo entity.
+ * @param all List of all approvals for this label as a list of ApprovalInfo entities. Items in this list may not represent actual votes cast by users; if a user votes on any label, a corresponding ApprovalInfo will appear in this list for all labels.
+ * @param propertyValues A map of all values that are allowed for this label. The map maps the values (\"-2\", \"-1\", \" 0\", \"+1\", \"+2\") to the value descriptions.
+ * @param description The description of the label.
+ * @param `value` The voting value of the user who recommended/disliked this label on the change if it is not \"+1\"/\"-1\".
+ * @param defaultValue The default voting value for the label. This value may be outside the range specified in permitted_labels.
+ * @param optional Whether the label is optional. Optional means the label may be set, but it's neither necessary for submission nor does it block submission if set.
+ * @param blocking If true, the label blocks submit operation. If not set, the default is false.
  */
 
 
 data class LabelInfo (
 
+    /* One user who approved this label on the change (voted the maximum value) as an AccountInfo entity. */
     @SerializedName("approved")
     val approved: AccountInfo? = null,
 
+    /* One user who rejected this label on the change (voted the minimum value) as an AccountInfo entity. */
     @SerializedName("rejected")
     val rejected: AccountInfo? = null,
 
+    /* One user who recommended this label on the change (voted positively, but not the maximum value) as an AccountInfo entity. */
     @SerializedName("recommended")
     val recommended: AccountInfo? = null,
 
+    /* One user who disliked this label on the change (voted negatively, but not the minimum value) as an AccountInfo entity. */
     @SerializedName("disliked")
     val disliked: AccountInfo? = null,
 
+    /* List of all approvals for this label as a list of ApprovalInfo entities. Items in this list may not represent actual votes cast by users; if a user votes on any label, a corresponding ApprovalInfo will appear in this list for all labels. */
     @SerializedName("all")
     val all: kotlin.collections.List<ApprovalInfo>? = null,
 
+    /* A map of all values that are allowed for this label. The map maps the values (\"-2\", \"-1\", \" 0\", \"+1\", \"+2\") to the value descriptions. */
     @SerializedName("values")
     val propertyValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The description of the label. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The voting value of the user who recommended/disliked this label on the change if it is not \"+1\"/\"-1\". */
     @SerializedName("value")
     val `value`: kotlin.Int? = null,
 
+    /* The default voting value for the label. This value may be outside the range specified in permitted_labels. */
     @SerializedName("default_value")
     val defaultValue: kotlin.Int? = null,
 
+    /* Whether the label is optional. Optional means the label may be set, but it's neither necessary for submission nor does it block submission if set. */
     @SerializedName("optional")
     val optional: kotlin.Boolean? = null,
 
+    /* If true, the label blocks submit operation. If not set, the default is false. */
     @SerializedName("blocking")
     val blocking: kotlin.Boolean? = null
 

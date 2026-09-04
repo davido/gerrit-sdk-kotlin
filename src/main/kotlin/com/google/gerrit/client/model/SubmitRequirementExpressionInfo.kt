@@ -30,36 +30,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param expression 
- * @param fulfilled 
- * @param status 
- * @param passingAtoms 
- * @param failingAtoms 
- * @param atomExplanations 
- * @param errorMessage 
+ * @param expression The submit requirement expression as a string, for example branch:refs/heads/foo and label:verified=+1.
+ * @param fulfilled True if the submit requirement is fulfilled for the change.
+ * @param status A string containing the status of evaluating the expression which can be one of the following: + * PASS - expression was evaluated and result is true. + * FAIL - expression was evaluated and result is false. + * ERROR - an error occurred while evaluating the expression.
+ * @param passingAtoms A list of passing atoms as strings. For the above expression, passing_atoms can contain [\"branch:refs/heads/foo\"] if the branch predicate is fulfilled for the change.
+ * @param failingAtoms A list of failing atoms. This is similar to passing_atoms except that it contains the list of predicates that are not fulfilled for the change.
+ * @param atomExplanations A map of atoms (as strings) to strings explaining the result. This field only contains atoms for which the explanation is available.
+ * @param errorMessage If the submit requirement fails during evaluation, this string will contain an error message describing why it failed.
  */
 
 
 data class SubmitRequirementExpressionInfo (
 
+    /* The submit requirement expression as a string, for example branch:refs/heads/foo and label:verified=+1. */
     @SerializedName("expression")
     val expression: kotlin.String? = null,
 
+    /* True if the submit requirement is fulfilled for the change. */
     @SerializedName("fulfilled")
     val fulfilled: kotlin.Boolean? = null,
 
+    /* A string containing the status of evaluating the expression which can be one of the following: + * PASS - expression was evaluated and result is true. + * FAIL - expression was evaluated and result is false. + * ERROR - an error occurred while evaluating the expression. */
     @SerializedName("status")
     val status: SubmitRequirementExpressionInfoStatus? = null,
 
+    /* A list of passing atoms as strings. For the above expression, passing_atoms can contain [\"branch:refs/heads/foo\"] if the branch predicate is fulfilled for the change. */
     @SerializedName("passing_atoms")
     val passingAtoms: kotlin.collections.List<kotlin.String>? = null,
 
+    /* A list of failing atoms. This is similar to passing_atoms except that it contains the list of predicates that are not fulfilled for the change. */
     @SerializedName("failing_atoms")
     val failingAtoms: kotlin.collections.List<kotlin.String>? = null,
 
+    /* A map of atoms (as strings) to strings explaining the result. This field only contains atoms for which the explanation is available. */
     @SerializedName("atom_explanations")
     val atomExplanations: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* If the submit requirement fails during evaluation, this string will contain an error message describing why it failed. */
     @SerializedName("error_message")
     val errorMessage: kotlin.String? = null
 

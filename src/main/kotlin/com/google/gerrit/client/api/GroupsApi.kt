@@ -31,7 +31,6 @@ import com.google.gerrit.client.model.AccountInfo
 import com.google.gerrit.client.model.AddMembersInput
 import com.google.gerrit.client.model.AddSubgroupsInput
 import com.google.gerrit.client.model.CommonDescriptionInput
-import com.google.gerrit.client.model.GetGroupsDefaultResponse
 import com.google.gerrit.client.model.GroupAuditEventInfo
 import com.google.gerrit.client.model.GroupInfo
 import com.google.gerrit.client.model.GroupInput
@@ -379,7 +378,7 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param suggest  (optional)
      * @param user  (optional)
      * @param visibleToAll  (optional)
-     * @return GetGroupsDefaultResponse
+     * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -388,11 +387,11 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getGroups(O: kotlin.String? = null, group: kotlin.collections.List<kotlin.String>? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, o: kotlin.collections.List<kotlin.String>? = null, owned: kotlin.Boolean? = null, ownedBy: kotlin.String? = null, project: kotlin.collections.List<kotlin.String>? = null, query: kotlin.String? = null, regex: kotlin.String? = null, start: kotlin.Int? = null, suggest: kotlin.String? = null, user: kotlin.String? = null, visibleToAll: kotlin.Boolean? = null) : GetGroupsDefaultResponse {
+    fun getGroups(O: kotlin.String? = null, group: kotlin.collections.List<kotlin.String>? = null, limit: kotlin.Int? = null, match: kotlin.String? = null, o: kotlin.collections.List<kotlin.String>? = null, owned: kotlin.Boolean? = null, ownedBy: kotlin.String? = null, project: kotlin.collections.List<kotlin.String>? = null, query: kotlin.String? = null, regex: kotlin.String? = null, start: kotlin.Int? = null, suggest: kotlin.String? = null, user: kotlin.String? = null, visibleToAll: kotlin.Boolean? = null) : kotlin.Any {
         val localVarResponse = getGroupsWithHttpInfo(O = O, group = group, limit = limit, match = match, o = o, owned = owned, ownedBy = ownedBy, project = project, query = query, regex = regex, start = start, suggest = suggest, user = user, visibleToAll = visibleToAll)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as GetGroupsDefaultResponse
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -424,16 +423,16 @@ open class GroupsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * @param suggest  (optional)
      * @param user  (optional)
      * @param visibleToAll  (optional)
-     * @return ApiResponse<GetGroupsDefaultResponse?>
+     * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getGroupsWithHttpInfo(O: kotlin.String?, group: kotlin.collections.List<kotlin.String>?, limit: kotlin.Int?, match: kotlin.String?, o: kotlin.collections.List<kotlin.String>?, owned: kotlin.Boolean?, ownedBy: kotlin.String?, project: kotlin.collections.List<kotlin.String>?, query: kotlin.String?, regex: kotlin.String?, start: kotlin.Int?, suggest: kotlin.String?, user: kotlin.String?, visibleToAll: kotlin.Boolean?) : ApiResponse<GetGroupsDefaultResponse?> {
+    fun getGroupsWithHttpInfo(O: kotlin.String?, group: kotlin.collections.List<kotlin.String>?, limit: kotlin.Int?, match: kotlin.String?, o: kotlin.collections.List<kotlin.String>?, owned: kotlin.Boolean?, ownedBy: kotlin.String?, project: kotlin.collections.List<kotlin.String>?, query: kotlin.String?, regex: kotlin.String?, start: kotlin.Int?, suggest: kotlin.String?, user: kotlin.String?, visibleToAll: kotlin.Boolean?) : ApiResponse<kotlin.Any?> {
         val localVariableConfig = getGroupsRequestConfig(O = O, group = group, limit = limit, match = match, o = o, owned = owned, ownedBy = ownedBy, project = project, query = query, regex = regex, start = start, suggest = suggest, user = user, visibleToAll = visibleToAll)
 
-        return request<Unit, GetGroupsDefaultResponse>(
+        return request<Unit, kotlin.Any>(
             localVariableConfig
         )
     }

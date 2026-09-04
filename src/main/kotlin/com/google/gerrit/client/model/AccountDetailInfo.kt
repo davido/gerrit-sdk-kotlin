@@ -30,7 +30,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param registeredOn 
+ * @param registeredOn The timestamp of when the account was registered.
  * @param accountId 
  * @param name 
  * @param displayName 
@@ -48,6 +48,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AccountDetailInfo (
 
+    /* The timestamp of when the account was registered. */
     @SerializedName("registered_on")
     val registeredOn: kotlin.String? = null,
 

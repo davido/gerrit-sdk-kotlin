@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
- * @param destinationBranch 
- * @param keepAllVotes 
+ * @param message A message to be posted in this change's comments
+ * @param destinationBranch Destination branch
+ * @param keepAllVotes By default, only veto votes that are blocking the change from submission are moved to the destination branch. Using this option is only allowed for administrators, because it can affect the submission behaviour of the change (depending on the label access configuration and submissions rules).
  */
 
 
 data class MoveInput (
 
+    /* A message to be posted in this change's comments */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Destination branch */
     @SerializedName("destination_branch")
     val destinationBranch: kotlin.String? = null,
 
+    /* By default, only veto votes that are blocking the change from submission are moved to the destination branch. Using this option is only allowed for administrators, because it can affect the submission behaviour of the change (depending on the label access configuration and submissions rules). */
     @SerializedName("keep_all_votes")
     val keepAllVotes: kotlin.Boolean? = null
 

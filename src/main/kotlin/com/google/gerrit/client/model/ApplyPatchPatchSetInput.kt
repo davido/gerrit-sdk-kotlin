@@ -32,32 +32,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param patch 
- * @param commitMessage 
- * @param base 
- * @param author 
- * @param responseFormatOptions 
- * @param amend 
+ * @param patch The details of the patch to be applied as a ApplyPatchInput entity.
+ * @param commitMessage The commit message for the new patch set. If not specified, the latest patch-set message will be used.
+ * @param base 40-hex digit SHA-1 of the commit which will be the parent commit of the newly created patch set. If set, it must be a merged commit or a change revision on the destination branch. Otherwise, the target change's branch tip will be used.
+ * @param author The author of the commit to create. Must be an AccountInput entity with at least the name and email fields set. The caller needs \"Forge Author\" permission when using this field, unless specifies their own details.
+ * @param responseFormatOptions List of query options to format the response.
+ * @param amend If true, the revision from the URL will be amended by the patch. This will use the tree of the revision, apply the patch and create a new commit whose tree is the resulting tree of the operation and whose parent(s) are the parent(s) of the revision. Cannot be used together with base.
  */
 
 
 data class ApplyPatchPatchSetInput (
 
+    /* The details of the patch to be applied as a ApplyPatchInput entity. */
     @SerializedName("patch")
     val patch: ApplyPatchInput? = null,
 
+    /* The commit message for the new patch set. If not specified, the latest patch-set message will be used. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null,
 
+    /* 40-hex digit SHA-1 of the commit which will be the parent commit of the newly created patch set. If set, it must be a merged commit or a change revision on the destination branch. Otherwise, the target change's branch tip will be used. */
     @SerializedName("base")
     val base: kotlin.String? = null,
 
+    /* The author of the commit to create. Must be an AccountInput entity with at least the name and email fields set. The caller needs \"Forge Author\" permission when using this field, unless specifies their own details. */
     @SerializedName("author")
     val author: AccountInput? = null,
 
+    /* List of query options to format the response. */
     @SerializedName("response_format_options")
     val responseFormatOptions: kotlin.collections.List<ListChangesOption>? = null,
 
+    /* If true, the revision from the URL will be amended by the patch. This will use the tree of the revision, apply the patch and create a new commit whose tree is the resulting tree of the operation and whose parent(s) are the parent(s) of the revision. Cannot be used together with base. */
     @SerializedName("amend")
     val amend: kotlin.Boolean? = null
 

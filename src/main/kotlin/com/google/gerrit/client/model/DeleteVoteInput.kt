@@ -31,28 +31,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param label 
- * @param notify 
- * @param notifyDetails 
- * @param ignoreAutomaticAttentionSetRules 
- * @param reason 
+ * @param label The label for which the vote should be deleted. + If set, must match the label in the URL.
+ * @param notify Notify handling that defines to whom email notifications should be sent after the vote is deleted. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL.
+ * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
+ * @param ignoreAutomaticAttentionSetRules If set to true, ignore all automatic attention set rules described in the attention set. When not set, the default is false.
+ * @param reason The reason why this vote is deleted. Will + go into the change message.
  */
 
 
 data class DeleteVoteInput (
 
+    /* The label for which the vote should be deleted. + If set, must match the label in the URL. */
     @SerializedName("label")
     val label: kotlin.String? = null,
 
+    /* Notify handling that defines to whom email notifications should be sent after the vote is deleted. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity. */
     @SerializedName("notify_details")
     val notifyDetails: kotlin.collections.Map<kotlin.String, NotifyInfo>? = null,
 
+    /* If set to true, ignore all automatic attention set rules described in the attention set. When not set, the default is false. */
     @SerializedName("ignore_automatic_attention_set_rules")
     val ignoreAutomaticAttentionSetRules: kotlin.Boolean? = null,
 
+    /* The reason why this vote is deleted. Will + go into the change message. */
     @SerializedName("reason")
     val reason: kotlin.String? = null
 

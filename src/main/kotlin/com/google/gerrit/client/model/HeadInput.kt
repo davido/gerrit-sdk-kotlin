@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param ref 
+ * @param ref The ref to which HEAD should be set, the refs/heads prefix can be omitted.
  */
 
 
 data class HeadInput (
 
+    /* The ref to which HEAD should be set, the refs/heads prefix can be omitted. */
     @SerializedName("ref")
     val ref: kotlin.String? = null
 

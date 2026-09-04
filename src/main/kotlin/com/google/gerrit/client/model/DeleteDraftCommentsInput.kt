@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param query 
+ * @param query A change query limiting results to changes matching this query; has:draft is implied and not necessary to list explicitly. If not set, matches all changes with drafts.
  */
 
 
 data class DeleteDraftCommentsInput (
 
+    /* A change query limiting results to changes matching this query; has:draft is implied and not necessary to list explicitly. If not set, matches all changes with drafts. */
     @SerializedName("query")
     val query: kotlin.String? = null
 

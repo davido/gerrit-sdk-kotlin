@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param certificate 
- * @param key 
+ * @param certificate Signed certificate payload and GPG signature block.
+ * @param key Information about the key that signed the push, along with any problems found while checking the signature or the key itself, as a GpgKeyInfo entity.
  */
 
 
 data class PushCertificateInfo (
 
+    /* Signed certificate payload and GPG signature block. */
     @SerializedName("certificate")
     val certificate: kotlin.String? = null,
 
+    /* Information about the key that signed the push, along with any problems found while checking the signature or the key itself, as a GpgKeyInfo entity. */
     @SerializedName("key")
     val key: GpgKeyInfo? = null
 

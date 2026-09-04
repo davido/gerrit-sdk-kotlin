@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param tooltip 
- * @param imageUrl 
- * @param url 
+ * @param name The text to be linkified.
+ * @param tooltip Tooltip to show when hovering over the link. Using \"Open in $NAME_OF_EXTERNAL_TOOL\" is a good option here.
+ * @param imageUrl URL to the icon of the link.
+ * @param url The link URL.
  */
 
 
 data class WebLinkInfo (
 
+    /* The text to be linkified. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Tooltip to show when hovering over the link. Using \"Open in $NAME_OF_EXTERNAL_TOOL\" is a good option here. */
     @SerializedName("tooltip")
     val tooltip: kotlin.String? = null,
 
+    /* URL to the icon of the link. */
     @SerializedName("image_url")
     val imageUrl: kotlin.String? = null,
 
+    /* The link URL. */
     @SerializedName("url")
     val url: kotlin.String? = null
 

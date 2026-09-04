@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param stageExpressions 
+ * @param stageExpressions The expressions for the stages of the flow (sorted by execution order) as a list of FlowExpressionInfo entities.
  */
 
 
 data class FlowInput (
 
+    /* The expressions for the stages of the flow (sorted by execution order) as a list of FlowExpressionInfo entities. */
     @SerializedName("stage_expressions")
     val stageExpressions: kotlin.collections.List<FlowExpressionInfo>? = null
 

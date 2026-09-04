@@ -31,14 +31,14 @@ import com.google.gson.annotations.SerializedName
  *
  * @param allProjects 
  * @param allUsers 
- * @param docSearch 
- * @param docUrl 
- * @param editGpgKeys 
- * @param reportBugUrl 
+ * @param docSearch Whether documentation search is available.
+ * @param docUrl Custom base URL where Gerrit server documentation is located. (Documentation may still be available at /Documentation relative to the Gerrit base path even if this value is unset.)
+ * @param editGpgKeys Whether to enable the web UI for editing GPG keys.
+ * @param reportBugUrl URL to report bugs.
  * @param primaryWeblinkName 
- * @param instanceId 
- * @param defaultBranch 
- * @param projectStatePredicateEnabled 
+ * @param instanceId Short identifier for this Gerrit installation.
+ * @param defaultBranch Name of the default branch to use on the project creation.
+ * @param projectStatePredicateEnabled Whether the instance supports filtering projects by state.
  */
 
 
@@ -50,27 +50,34 @@ data class GerritInfo (
     @SerializedName("all_users")
     val allUsers: kotlin.String? = null,
 
+    /* Whether documentation search is available. */
     @SerializedName("doc_search")
     val docSearch: kotlin.Boolean? = null,
 
+    /* Custom base URL where Gerrit server documentation is located. (Documentation may still be available at /Documentation relative to the Gerrit base path even if this value is unset.) */
     @SerializedName("doc_url")
     val docUrl: kotlin.String? = null,
 
+    /* Whether to enable the web UI for editing GPG keys. */
     @SerializedName("edit_gpg_keys")
     val editGpgKeys: kotlin.Boolean? = null,
 
+    /* URL to report bugs. */
     @SerializedName("report_bug_url")
     val reportBugUrl: kotlin.String? = null,
 
     @SerializedName("primary_weblink_name")
     val primaryWeblinkName: kotlin.String? = null,
 
+    /* Short identifier for this Gerrit installation. */
     @SerializedName("instance_id")
     val instanceId: kotlin.String? = null,
 
+    /* Name of the default branch to use on the project creation. */
     @SerializedName("default_branch")
     val defaultBranch: kotlin.String? = null,
 
+    /* Whether the instance supports filtering projects by state. */
     @SerializedName("project_state_predicate_enabled")
     val projectStatePredicateEnabled: kotlin.Boolean? = null
 

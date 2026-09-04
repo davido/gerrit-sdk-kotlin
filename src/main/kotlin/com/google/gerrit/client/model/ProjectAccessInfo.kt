@@ -33,56 +33,68 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param revision 
- * @param inheritsFrom 
- * @param local 
- * @param isOwner 
- * @param ownerOf 
- * @param canUpload 
- * @param canAdd 
- * @param canAddTags 
- * @param configVisible 
- * @param requireChangeForConfigUpdate 
- * @param groups 
- * @param configWebLinks 
+ * @param revision The revision of the refs/meta/config branch from which the access rights were loaded.
+ * @param inheritsFrom The parent project from which permissions are inherited as a ProjectInfo entity.
+ * @param local The local access rights of the project as a map that maps the refs to AccessSectionInfo entities.
+ * @param isOwner Whether the calling user owns this project.
+ * @param ownerOf The list of refs owned by the calling user.
+ * @param canUpload Whether the calling user can upload to any ref.
+ * @param canAdd Whether the calling user can add any ref.
+ * @param canAddTags Whether the calling user can add any tag ref.
+ * @param configVisible Whether the calling user can see the refs/meta/config branch of the project.
+ * @param requireChangeForConfigUpdate Whether the calling user must create a change for updating project config. If true, all API requests which directly update project config are rejected.
+ * @param groups A map of group UUID to GroupInfo objects, with names and URLs for the group UUIDs used in the local map. This will include names for groups that might be invisible to the caller.
+ * @param configWebLinks Links to the history of the configuration file governing this project's access rights as list of WebLinkInfo entities.
  */
 
 
 data class ProjectAccessInfo (
 
+    /* The revision of the refs/meta/config branch from which the access rights were loaded. */
     @SerializedName("revision")
     val revision: kotlin.String? = null,
 
+    /* The parent project from which permissions are inherited as a ProjectInfo entity. */
     @SerializedName("inherits_from")
     val inheritsFrom: ProjectInfo? = null,
 
+    /* The local access rights of the project as a map that maps the refs to AccessSectionInfo entities. */
     @SerializedName("local")
     val local: kotlin.collections.Map<kotlin.String, AccessSectionInfo>? = null,
 
+    /* Whether the calling user owns this project. */
     @SerializedName("is_owner")
     val isOwner: kotlin.Boolean? = null,
 
+    /* The list of refs owned by the calling user. */
     @SerializedName("owner_of")
     val ownerOf: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether the calling user can upload to any ref. */
     @SerializedName("can_upload")
     val canUpload: kotlin.Boolean? = null,
 
+    /* Whether the calling user can add any ref. */
     @SerializedName("can_add")
     val canAdd: kotlin.Boolean? = null,
 
+    /* Whether the calling user can add any tag ref. */
     @SerializedName("can_add_tags")
     val canAddTags: kotlin.Boolean? = null,
 
+    /* Whether the calling user can see the refs/meta/config branch of the project. */
     @SerializedName("config_visible")
     val configVisible: kotlin.Boolean? = null,
 
+    /* Whether the calling user must create a change for updating project config. If true, all API requests which directly update project config are rejected. */
     @SerializedName("require_change_for_config_update")
     val requireChangeForConfigUpdate: kotlin.Boolean? = null,
 
+    /* A map of group UUID to GroupInfo objects, with names and URLs for the group UUIDs used in the local map. This will include names for groups that might be invisible to the caller. */
     @SerializedName("groups")
     val groups: kotlin.collections.Map<kotlin.String, GroupInfo>? = null,
 
+    /* Links to the history of the configuration file governing this project's access rights as list of WebLinkInfo entities. */
     @SerializedName("config_web_links")
     val configWebLinks: kotlin.collections.List<WebLinkInfo>? = null
 

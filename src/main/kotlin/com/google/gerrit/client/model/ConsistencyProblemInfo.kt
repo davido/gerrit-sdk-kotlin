@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param message 
+ * @param status The status of the consistency problem. + Possible values are FATAL, ERROR and WARNING.
+ * @param message Message describing the consistency problem.
  */
 
 
 data class ConsistencyProblemInfo (
 
+    /* The status of the consistency problem. + Possible values are FATAL, ERROR and WARNING. */
     @SerializedName("status")
     val status: ConsistencyProblemInfoStatus? = null,
 
+    /* Message describing the consistency problem. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

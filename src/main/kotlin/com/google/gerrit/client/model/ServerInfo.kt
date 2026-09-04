@@ -40,72 +40,88 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param accounts 
- * @param auth 
- * @param change 
- * @param download 
- * @param gerrit 
- * @param groups 
- * @param noteDbEnabled 
- * @param plugin 
- * @param sshd 
- * @param suggest 
- * @param user 
- * @param receive 
- * @param defaultTheme 
- * @param submitRequirementDashboardColumns 
- * @param dashboardShowAllLabels 
- * @param metadata 
+ * @param accounts Information about the configuration from the accounts section as AccountsConfigInfo entity.
+ * @param auth Information about the authentication configuration as AuthInfo entity.
+ * @param change Information about the configuration from the change section as ChangeConfigInfo entity.
+ * @param download Information about the configured download options as DownloadInfo entity. information about Gerrit
+ * @param gerrit Information about the configuration from the gerrit section as GerritInfo entity.
+ * @param groups Information about the configuration from the groups section as GroupsConfigInfo entity.
+ * @param noteDbEnabled Whether the NoteDb storage backend is fully enabled.
+ * @param plugin Information about Gerrit extensions by plugins as PluginConfigInfo entity.
+ * @param sshd Information about the configuration from the sshd section as SshdInfo entity. Not set if SSHD is disabled.
+ * @param suggest Information about the configuration from the suggest section as SuggestInfo entity.
+ * @param user Information about the configuration from the user section as UserConfigInfo entity.
+ * @param receive Information about the receive-pack configuration as a ReceiveInfo entity.
+ * @param defaultTheme URL to a default Gerrit UI theme plugin, if available. Located in /static/gerrit-theme.js by default.
+ * @param submitRequirementDashboardColumns The list of submit requirement names that should be displayed as separate columns in the dashboard. If empty, the default is to display all submit requirements that are applicable for changes appearing in the dashboard.
+ * @param dashboardShowAllLabels Whether to show all labels in the dashboard, even if they are not submit requirements.
+ * @param metadata Optional server metadata as a list of MetadataInfo entities. If and which metadata is provided depends on the Gerrit setup.
  */
 
 
 data class ServerInfo (
 
+    /* Information about the configuration from the accounts section as AccountsConfigInfo entity. */
     @SerializedName("accounts")
     val accounts: AccountsInfo? = null,
 
+    /* Information about the authentication configuration as AuthInfo entity. */
     @SerializedName("auth")
     val auth: AuthInfo? = null,
 
+    /* Information about the configuration from the change section as ChangeConfigInfo entity. */
     @SerializedName("change")
     val change: ChangeConfigInfo? = null,
 
+    /* Information about the configured download options as DownloadInfo entity. information about Gerrit */
     @SerializedName("download")
     val download: DownloadInfo? = null,
 
+    /* Information about the configuration from the gerrit section as GerritInfo entity. */
     @SerializedName("gerrit")
     val gerrit: GerritInfo? = null,
 
+    /* Information about the configuration from the groups section as GroupsConfigInfo entity. */
     @SerializedName("groups")
     val groups: GroupsInfo? = null,
 
+    /* Whether the NoteDb storage backend is fully enabled. */
     @SerializedName("note_db_enabled")
     val noteDbEnabled: kotlin.Boolean? = null,
 
+    /* Information about Gerrit extensions by plugins as PluginConfigInfo entity. */
     @SerializedName("plugin")
     val plugin: PluginConfigInfo? = null,
 
+    /* Information about the configuration from the sshd section as SshdInfo entity. Not set if SSHD is disabled. */
     @SerializedName("sshd")
     val sshd: kotlin.Any? = null,
 
+    /* Information about the configuration from the suggest section as SuggestInfo entity. */
     @SerializedName("suggest")
     val suggest: SuggestInfo? = null,
 
+    /* Information about the configuration from the user section as UserConfigInfo entity. */
     @SerializedName("user")
     val user: UserConfigInfo? = null,
 
+    /* Information about the receive-pack configuration as a ReceiveInfo entity. */
     @SerializedName("receive")
     val receive: ReceiveInfo? = null,
 
+    /* URL to a default Gerrit UI theme plugin, if available. Located in /static/gerrit-theme.js by default. */
     @SerializedName("default_theme")
     val defaultTheme: kotlin.String? = null,
 
+    /* The list of submit requirement names that should be displayed as separate columns in the dashboard. If empty, the default is to display all submit requirements that are applicable for changes appearing in the dashboard. */
     @SerializedName("submit_requirement_dashboard_columns")
     val submitRequirementDashboardColumns: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether to show all labels in the dashboard, even if they are not submit requirements. */
     @SerializedName("dashboard_show_all_labels")
     val dashboardShowAllLabels: kotlin.Boolean? = null,
 
+    /* Optional server metadata as a list of MetadataInfo entities. If and which metadata is provided depends on the Gerrit setup. */
     @SerializedName("metadata")
     val metadata: kotlin.collections.List<MetadataInfo>? = null
 

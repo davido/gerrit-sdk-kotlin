@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param `value` 
- * @param configuredValue 
- * @param inheritedValue 
+ * @param `value` The effective submit type value. Never INHERIT.
+ * @param configuredValue The configured value, can be one of the submit types, or INHERIT to inherit from the parent project.
+ * @param inheritedValue The effective value that would be inherited from the parent. Never INHERIT.
  */
 
 
 data class SubmitTypeInfo (
 
+    /* The effective submit type value. Never INHERIT. */
     @SerializedName("value")
     val `value`: SubmitType? = null,
 
+    /* The configured value, can be one of the submit types, or INHERIT to inherit from the parent project. */
     @SerializedName("configured_value")
     val configuredValue: SubmitType? = null,
 
+    /* The effective value that would be inherited from the parent. Never INHERIT. */
     @SerializedName("inherited_value")
     val inheritedValue: SubmitType? = null
 

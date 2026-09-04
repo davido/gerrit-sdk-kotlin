@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param cpus 
- * @param threads 
- * @param counts 
+ * @param cpus The number of available processors.
+ * @param threads The total number of current threads.
+ * @param counts Detailed thread counts as a map that maps a thread kind to a map that maps a thread state to the thread count.
  */
 
 
 data class ThreadSummaryInfo (
 
+    /* The number of available processors. */
     @SerializedName("cpus")
     val cpus: kotlin.Int? = null,
 
+    /* The total number of current threads. */
     @SerializedName("threads")
     val threads: kotlin.Int? = null,
 
+    /* Detailed thread counts as a map that maps a thread kind to a map that maps a thread state to the thread count. */
     @SerializedName("counts")
     val counts: kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, kotlin.Int>>? = null
 

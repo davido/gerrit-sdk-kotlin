@@ -29,64 +29,78 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param tabSize 
- * @param lineLength 
- * @param indentUnit 
- * @param cursorBlinkRate 
- * @param hideTopMenu 
- * @param showTabs 
- * @param showWhitespaceErrors 
- * @param syntaxHighlighting 
- * @param hideLineNumbers 
- * @param matchBrackets 
- * @param lineWrapping 
- * @param indentWithTabs 
- * @param autoCloseBrackets 
- * @param showBase 
+ * @param tabSize Number of spaces that should be used to display one tab.
+ * @param lineLength Number of characters that should be displayed per line.
+ * @param indentUnit Number of spaces that should be used for auto-indent.
+ * @param cursorBlinkRate Half-period in milliseconds used for cursor blinking. Setting it to 0 disables cursor blinking.
+ * @param hideTopMenu If true the top menu header and site header is hidden.
+ * @param showTabs Whether tabs should be shown.
+ * @param showWhitespaceErrors Whether whitespace errors should be shown.
+ * @param syntaxHighlighting Whether syntax highlighting should be enabled.
+ * @param hideLineNumbers Whether line numbers should be hidden.
+ * @param matchBrackets Whether matching brackets should be highlighted.
+ * @param lineWrapping Whether to enable line wrapping or not.
+ * @param indentWithTabs Whether to indent with tabs or not.
+ * @param autoCloseBrackets Whether brackets and quotes should be auto-closed during typing.
+ * @param showBase Whether to show the inline edit base version or not.
  */
 
 
 data class EditPreferencesInfo (
 
+    /* Number of spaces that should be used to display one tab. */
     @SerializedName("tab_size")
     val tabSize: kotlin.Int? = null,
 
+    /* Number of characters that should be displayed per line. */
     @SerializedName("line_length")
     val lineLength: kotlin.Int? = null,
 
+    /* Number of spaces that should be used for auto-indent. */
     @SerializedName("indent_unit")
     val indentUnit: kotlin.Int? = null,
 
+    /* Half-period in milliseconds used for cursor blinking. Setting it to 0 disables cursor blinking. */
     @SerializedName("cursor_blink_rate")
     val cursorBlinkRate: kotlin.Int? = null,
 
+    /* If true the top menu header and site header is hidden. */
     @SerializedName("hide_top_menu")
     val hideTopMenu: kotlin.Boolean? = null,
 
+    /* Whether tabs should be shown. */
     @SerializedName("show_tabs")
     val showTabs: kotlin.Boolean? = null,
 
+    /* Whether whitespace errors should be shown. */
     @SerializedName("show_whitespace_errors")
     val showWhitespaceErrors: kotlin.Boolean? = null,
 
+    /* Whether syntax highlighting should be enabled. */
     @SerializedName("syntax_highlighting")
     val syntaxHighlighting: kotlin.Boolean? = null,
 
+    /* Whether line numbers should be hidden. */
     @SerializedName("hide_line_numbers")
     val hideLineNumbers: kotlin.Boolean? = null,
 
+    /* Whether matching brackets should be highlighted. */
     @SerializedName("match_brackets")
     val matchBrackets: kotlin.Boolean? = null,
 
+    /* Whether to enable line wrapping or not. */
     @SerializedName("line_wrapping")
     val lineWrapping: kotlin.Boolean? = null,
 
+    /* Whether to indent with tabs or not. */
     @SerializedName("indent_with_tabs")
     val indentWithTabs: kotlin.Boolean? = null,
 
+    /* Whether brackets and quotes should be auto-closed during typing. */
     @SerializedName("auto_close_brackets")
     val autoCloseBrackets: kotlin.Boolean? = null,
 
+    /* Whether to show the inline edit base version or not. */
     @SerializedName("show_base")
     val showBase: kotlin.Boolean? = null
 

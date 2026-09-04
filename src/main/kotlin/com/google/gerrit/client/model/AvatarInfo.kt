@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param url 
- * @param height 
+ * @param url The URL to the avatar image.
+ * @param height The height of the avatar image in pixels.
  */
 
 
 data class AvatarInfo (
 
+    /* The URL to the avatar image. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* The height of the avatar image in pixels. */
     @SerializedName("height")
     val height: kotlin.Int? = null
 

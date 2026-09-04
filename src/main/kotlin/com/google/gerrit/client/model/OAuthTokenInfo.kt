@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param username 
- * @param resourceHost 
- * @param accessToken 
- * @param providerId 
- * @param expiresAt 
- * @param type 
+ * @param username The owner of the OAuth access token.
+ * @param resourceHost The host of the Gerrit instance.
+ * @param accessToken The actual token value.
+ * @param providerId The identifier of the OAuth provider in the form plugin-name:provider-name.
+ * @param expiresAt Time of expiration of this token in milliseconds.
+ * @param type The type of the OAuth access token, always bearer.
  */
 
 
 data class OAuthTokenInfo (
 
+    /* The owner of the OAuth access token. */
     @SerializedName("username")
     val username: kotlin.String? = null,
 
+    /* The host of the Gerrit instance. */
     @SerializedName("resource_host")
     val resourceHost: kotlin.String? = null,
 
+    /* The actual token value. */
     @SerializedName("access_token")
     val accessToken: kotlin.String? = null,
 
+    /* The identifier of the OAuth provider in the form plugin-name:provider-name. */
     @SerializedName("provider_id")
     val providerId: kotlin.String? = null,
 
+    /* Time of expiration of this token in milliseconds. */
     @SerializedName("expires_at")
     val expiresAt: kotlin.String? = null,
 
+    /* The type of the OAuth access token, always bearer. */
     @SerializedName("type")
     val type: kotlin.String? = null
 

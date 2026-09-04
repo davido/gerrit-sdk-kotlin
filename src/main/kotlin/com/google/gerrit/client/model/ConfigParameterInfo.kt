@@ -30,52 +30,63 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param displayName 
- * @param description 
- * @param warning 
- * @param type 
- * @param `value` 
- * @param editable 
- * @param inheritable 
- * @param configuredValue 
- * @param inheritedValue 
- * @param permittedValues 
- * @param propertyValues 
+ * @param displayName The display name of the configuration parameter.
+ * @param description The description of the configuration parameter.
+ * @param warning Warning message for the configuration parameter.
+ * @param type The type of the configuration parameter. Can be STRING, INT, LONG, BOOLEAN, LIST or ARRAY.
+ * @param `value` The value of the configuration parameter as string. If the parameter is inheritable this is the effective value which is deduced from configured_value and inherited_value.
+ * @param editable Whether the value is editable.
+ * @param inheritable Whether the configuration parameter can be inherited.
+ * @param configuredValue The value of the configuration parameter that is configured on this project, only set if inheritable is true.
+ * @param inheritedValue The inherited value of the configuration parameter, only set if inheritable is true.
+ * @param permittedValues The list of permitted values. Only set if the type is LIST.
+ * @param propertyValues The list of values. Only set if the type is ARRAY.
  */
 
 
 data class ConfigParameterInfo (
 
+    /* The display name of the configuration parameter. */
     @SerializedName("display_name")
     val displayName: kotlin.String? = null,
 
+    /* The description of the configuration parameter. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Warning message for the configuration parameter. */
     @SerializedName("warning")
     val warning: kotlin.String? = null,
 
+    /* The type of the configuration parameter. Can be STRING, INT, LONG, BOOLEAN, LIST or ARRAY. */
     @SerializedName("type")
     val type: ProjectConfigEntryType? = null,
 
+    /* The value of the configuration parameter as string. If the parameter is inheritable this is the effective value which is deduced from configured_value and inherited_value. */
     @SerializedName("value")
     val `value`: kotlin.String? = null,
 
+    /* Whether the value is editable. */
     @SerializedName("editable")
     val editable: kotlin.Boolean? = null,
 
+    /* Whether the configuration parameter can be inherited. */
     @SerializedName("inheritable")
     val inheritable: kotlin.Boolean? = null,
 
+    /* The value of the configuration parameter that is configured on this project, only set if inheritable is true. */
     @SerializedName("configured_value")
     val configuredValue: kotlin.String? = null,
 
+    /* The inherited value of the configuration parameter, only set if inheritable is true. */
     @SerializedName("inherited_value")
     val inheritedValue: kotlin.String? = null,
 
+    /* The list of permitted values. Only set if the type is LIST. */
     @SerializedName("permitted_values")
     val permittedValues: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The list of values. Only set if the type is ARRAY. */
     @SerializedName("values")
     val propertyValues: kotlin.collections.List<kotlin.String>? = null
 

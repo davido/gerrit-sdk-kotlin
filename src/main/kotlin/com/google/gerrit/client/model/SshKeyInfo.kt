@@ -29,32 +29,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param seq 
- * @param sshPublicKey 
- * @param encodedKey 
- * @param algorithm 
- * @param comment 
- * @param valid 
+ * @param seq The sequence number of the SSH key.
+ * @param sshPublicKey The complete public SSH key.
+ * @param encodedKey The encoded key.
+ * @param algorithm The algorithm of the SSH key.
+ * @param comment The comment of the SSH key.
+ * @param valid Whether the SSH key is valid.
  */
 
 
 data class SshKeyInfo (
 
+    /* The sequence number of the SSH key. */
     @SerializedName("seq")
     val seq: kotlin.Int? = null,
 
+    /* The complete public SSH key. */
     @SerializedName("ssh_public_key")
     val sshPublicKey: kotlin.String? = null,
 
+    /* The encoded key. */
     @SerializedName("encoded_key")
     val encodedKey: kotlin.String? = null,
 
+    /* The algorithm of the SSH key. */
     @SerializedName("algorithm")
     val algorithm: kotlin.String? = null,
 
+    /* The comment of the SSH key. */
     @SerializedName("comment")
     val comment: kotlin.String? = null,
 
+    /* Whether the SSH key is valid. */
     @SerializedName("valid")
     val valid: kotlin.Boolean? = null
 

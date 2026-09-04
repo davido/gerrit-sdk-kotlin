@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param revertChanges 
+ * @param revertChanges A list of ChangeInfo that describes the revert changes. Each entity in that list is a revert change that was created in that revert submission.
  */
 
 
 data class RevertSubmissionInfo (
 
+    /* A list of ChangeInfo that describes the revert changes. Each entity in that list is a revert change that was created in that revert submission. */
     @SerializedName("revert_changes")
     val revertChanges: kotlin.collections.List<ChangeInfo>? = null
 

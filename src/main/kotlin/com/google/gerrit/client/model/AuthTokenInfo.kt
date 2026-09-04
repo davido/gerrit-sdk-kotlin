@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param token 
- * @param expiration 
+ * @param id The id of the token.
+ * @param token The token in plain text. Will only be returned once when creating the token.
+ * @param expiration The timestamp at which the token will expire or has been expired. If null, token lifetime is unlimited.
  */
 
 
 data class AuthTokenInfo (
 
+    /* The id of the token. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The token in plain text. Will only be returned once when creating the token. */
     @SerializedName("token")
     val token: kotlin.String? = null,
 
+    /* The timestamp at which the token will expire or has been expired. If null, token lifetime is unlimited. */
     @SerializedName("expiration")
     val expiration: kotlin.String? = null
 

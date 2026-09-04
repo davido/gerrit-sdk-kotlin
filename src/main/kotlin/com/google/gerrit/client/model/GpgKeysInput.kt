@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param add 
- * @param delete 
+ * @param add List of ASCII armored public key strings to add.
+ * @param delete List of \\{gpg-key-id\\}s to delete.
  */
 
 
 data class GpgKeysInput (
 
+    /* List of ASCII armored public key strings to add. */
     @SerializedName("add")
     val add: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of \\{gpg-key-id\\}s to delete. */
     @SerializedName("delete")
     val delete: kotlin.collections.List<kotlin.String>? = null
 

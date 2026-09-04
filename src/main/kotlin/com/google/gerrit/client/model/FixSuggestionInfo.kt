@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param fixId 
- * @param description 
- * @param replacements 
+ * @param fixId The UUID of the suggested fix. It will be generated automatically and hence will be ignored if it's set for input objects.
+ * @param description A description of the suggested fix.
+ * @param replacements A list of FixReplacementInfo entities indicating how the content of one or several files should be modified. Within a file, they should refer to non-overlapping regions.
  */
 
 
 data class FixSuggestionInfo (
 
+    /* The UUID of the suggested fix. It will be generated automatically and hence will be ignored if it's set for input objects. */
     @SerializedName("fix_id")
     val fixId: kotlin.String? = null,
 
+    /* A description of the suggested fix. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* A list of FixReplacementInfo entities indicating how the content of one or several files should be modified. Within a file, they should refer to non-overlapping regions. */
     @SerializedName("replacements")
     val replacements: kotlin.collections.List<FixReplacementInfo>? = null
 

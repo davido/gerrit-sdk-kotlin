@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param email 
- * @param preferred 
- * @param noConfirmation 
+ * @param email The email address. If provided, must match the email address from the URL.
+ * @param preferred Whether the new email address should become the preferred email address of the user (only supported if no_confirmation is set or if the authentication type is DEVELOPMENT_BECOME_ANY_ACCOUNT).
+ * @param noConfirmation Whether the email address should be added without confirmation. In this case no verification email is sent to the user. + Only Gerrit administrators are allowed to add email addresses without confirmation.
  */
 
 
 data class EmailInput (
 
+    /* The email address. If provided, must match the email address from the URL. */
     @SerializedName("email")
     val email: kotlin.String? = null,
 
+    /* Whether the new email address should become the preferred email address of the user (only supported if no_confirmation is set or if the authentication type is DEVELOPMENT_BECOME_ANY_ACCOUNT). */
     @SerializedName("preferred")
     val preferred: kotlin.Boolean? = null,
 
+    /* Whether the email address should be added without confirmation. In this case no verification email is sent to the user. + Only Gerrit administrators are allowed to add email addresses without confirmation. */
     @SerializedName("no_confirmation")
     val noConfirmation: kotlin.Boolean? = null
 

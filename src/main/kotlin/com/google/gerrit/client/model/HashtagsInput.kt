@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param add 
- * @param remove 
+ * @param add The list of hashtags to be added to the change.
+ * @param remove The list of hashtags to be removed from the change.
  */
 
 
 data class HashtagsInput (
 
+    /* The list of hashtags to be added to the change. */
     @SerializedName("add")
     val add: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The list of hashtags to be removed from the change. */
     @SerializedName("remove")
     val remove: kotlin.collections.List<kotlin.String>? = null
 

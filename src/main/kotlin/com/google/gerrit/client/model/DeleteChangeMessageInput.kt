@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param reason 
+ * @param reason The reason why the change message should be deleted. + If set, the change message will be replaced with \"Change message removed by: name\\nReason: reason\", or just \"Change message removed by: name.\" if not set.
  */
 
 
 data class DeleteChangeMessageInput (
 
+    /* The reason why the change message should be deleted. + If set, the change message will be replaced with \"Change message removed by: name\\nReason: reason\", or just \"Change message removed by: name.\" if not set. */
     @SerializedName("reason")
     val reason: kotlin.String? = null
 

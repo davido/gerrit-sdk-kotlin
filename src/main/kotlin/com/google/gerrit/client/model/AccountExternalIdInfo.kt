@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param identity 
- * @param emailAddress 
- * @param trusted 
- * @param canDelete 
+ * @param identity The account external id.
+ * @param emailAddress The email address for the external id.
+ * @param trusted Whether the external id is trusted.
+ * @param canDelete Whether the external id can be deleted by the calling user.
  */
 
 
 data class AccountExternalIdInfo (
 
+    /* The account external id. */
     @SerializedName("identity")
     val identity: kotlin.String? = null,
 
+    /* The email address for the external id. */
     @SerializedName("email_address")
     val emailAddress: kotlin.String? = null,
 
+    /* Whether the external id is trusted. */
     @SerializedName("trusted")
     val trusted: kotlin.Boolean? = null,
 
+    /* Whether the external id can be deleted by the calling user. */
     @SerializedName("can_delete")
     val canDelete: kotlin.Boolean? = null
 

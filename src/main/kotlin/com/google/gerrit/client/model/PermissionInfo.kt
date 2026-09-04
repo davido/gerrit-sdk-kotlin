@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param label 
- * @param exclusive 
- * @param rules 
+ * @param label The name of the label. Not set if it's not a label permission.
+ * @param exclusive Whether this permission is assigned exclusively.
+ * @param rules The rules assigned for this permission as a map that maps the UUIDs of the groups for which the permission are assigned to PermissionRuleInfo entities.
  */
 
 
 data class PermissionInfo (
 
+    /* The name of the label. Not set if it's not a label permission. */
     @SerializedName("label")
     val label: kotlin.String? = null,
 
+    /* Whether this permission is assigned exclusively. */
     @SerializedName("exclusive")
     val exclusive: kotlin.Boolean? = null,
 
+    /* The rules assigned for this permission as a map that maps the UUIDs of the groups for which the permission are assigned to PermissionRuleInfo entities. */
     @SerializedName("rules")
     val rules: kotlin.collections.Map<kotlin.String, PermissionRuleInfo>? = null
 

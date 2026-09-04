@@ -30,28 +30,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param author 
- * @param id 
- * @param time 
- * @param commitMsg 
- * @param ranges 
+ * @param author The author of the commit.
+ * @param id The id of the commit.
+ * @param time Commit time.
+ * @param commitMsg The commit message.
+ * @param ranges The blame row coordinates as RangeInfo entities.
  */
 
 
 data class BlameInfo (
 
+    /* The author of the commit. */
     @SerializedName("author")
     val author: kotlin.String? = null,
 
+    /* The id of the commit. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* Commit time. */
     @SerializedName("time")
     val time: kotlin.Int? = null,
 
+    /* The commit message. */
     @SerializedName("commit_msg")
     val commitMsg: kotlin.String? = null,
 
+    /* The blame row coordinates as RangeInfo entities. */
     @SerializedName("ranges")
     val ranges: kotlin.collections.List<RangeInfo>? = null
 

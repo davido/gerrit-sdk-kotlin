@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param visibleToAll 
+ * @param visibleToAll Whether the group is visible to all registered users.
  */
 
 
 data class GroupOptionsInfo (
 
+    /* Whether the group is visible to all registered users. */
     @SerializedName("visible_to_all")
     val visibleToAll: kotlin.Boolean? = null
 

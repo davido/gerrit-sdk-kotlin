@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param isPureRevert 
+ * @param isPureRevert Outcome of the check as boolean.
  */
 
 
 data class PureRevertInfo (
 
+    /* Outcome of the check as boolean. */
     @SerializedName("is_pure_revert")
     val isPureRevert: kotlin.Boolean? = null
 

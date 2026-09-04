@@ -29,36 +29,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param allowBlame 
- * @param disablePrivateChanges 
- * @param updateDelay 
- * @param submitWholeTopic 
- * @param mergeabilityComputationBehavior 
- * @param conflictsPredicateEnabled 
- * @param allowMarkdownBase64ImagesInComments 
+ * @param allowBlame Whether blame on side by side diff is allowed.
+ * @param disablePrivateChanges Returns true if private changes are disabled.
+ * @param updateDelay How often in seconds the web interface should poll for updates to the currently open change.
+ * @param submitWholeTopic A configuration if the whole topic is submitted.
+ * @param mergeabilityComputationBehavior Value of the configuration parameter that controls whether the mergeability bit in ChangeInfo will never be set and if the bit is indexed.
+ * @param conflictsPredicateEnabled Are conflicts enabled?.
+ * @param allowMarkdownBase64ImagesInComments Are markdown base64 images in comments allowed?.
  */
 
 
 data class ChangeConfigInfo (
 
+    /* Whether blame on side by side diff is allowed. */
     @SerializedName("allow_blame")
     val allowBlame: kotlin.Boolean? = null,
 
+    /* Returns true if private changes are disabled. */
     @SerializedName("disable_private_changes")
     val disablePrivateChanges: kotlin.Boolean? = null,
 
+    /* How often in seconds the web interface should poll for updates to the currently open change. */
     @SerializedName("update_delay")
     val updateDelay: kotlin.Int? = null,
 
+    /* A configuration if the whole topic is submitted. */
     @SerializedName("submit_whole_topic")
     val submitWholeTopic: kotlin.Boolean? = null,
 
+    /* Value of the configuration parameter that controls whether the mergeability bit in ChangeInfo will never be set and if the bit is indexed. */
     @SerializedName("mergeability_computation_behavior")
     val mergeabilityComputationBehavior: kotlin.String? = null,
 
+    /* Are conflicts enabled?. */
     @SerializedName("conflicts_predicate_enabled")
     val conflictsPredicateEnabled: kotlin.Boolean? = null,
 
+    /* Are markdown base64 images in comments allowed?. */
     @SerializedName("allow_markdown_base64_images_in_comments")
     val allowMarkdownBase64ImagesInComments: kotlin.Boolean? = null
 

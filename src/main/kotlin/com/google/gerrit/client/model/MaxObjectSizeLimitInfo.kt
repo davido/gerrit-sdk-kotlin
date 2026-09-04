@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param `value` 
- * @param configuredValue 
- * @param summary 
+ * @param `value` The effective value in bytes of the max object size limit. + Not set if there is no limit for the object size.
+ * @param configuredValue The max object size limit that is configured on the project as a formatted string. + Not set if there is no limit for the object size configured on project level.
+ * @param summary A string describing whether the value was inherited or overridden from the parent project or global config. + Not set if not inherited or overridden.
  */
 
 
 data class MaxObjectSizeLimitInfo (
 
+    /* The effective value in bytes of the max object size limit. + Not set if there is no limit for the object size. */
     @SerializedName("value")
     val `value`: kotlin.String? = null,
 
+    /* The max object size limit that is configured on the project as a formatted string. + Not set if there is no limit for the object size configured on project level. */
     @SerializedName("configured_value")
     val configuredValue: kotlin.String? = null,
 
+    /* A string describing whether the value was inherited or overridden from the parent project or global config. + Not set if not inherited or overridden. */
     @SerializedName("summary")
     val summary: kotlin.String? = null
 

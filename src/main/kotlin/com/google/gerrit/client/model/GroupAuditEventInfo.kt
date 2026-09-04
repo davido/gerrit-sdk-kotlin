@@ -31,20 +31,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param type 
- * @param user 
- * @param date 
+ * @param type The event type, can be: ADD_USER, REMOVE_USER, ADD_GROUP or REMOVE_GROUP. ADD_USER: A user was added as member to the group. REMOVE_USER: A user member was removed from the group. ADD_GROUP: A group was included as member in the group. REMOVE_GROUP: An included group was removed from the group.
+ * @param user The user that did the add/remove as detailed AccountInfo entity.
+ * @param date The timestamp of the event.
  */
 
 
 data class GroupAuditEventInfo (
 
+    /* The event type, can be: ADD_USER, REMOVE_USER, ADD_GROUP or REMOVE_GROUP. ADD_USER: A user was added as member to the group. REMOVE_USER: A user member was removed from the group. ADD_GROUP: A group was included as member in the group. REMOVE_GROUP: An included group was removed from the group. */
     @SerializedName("type")
     val type: Type? = null,
 
+    /* The user that did the add/remove as detailed AccountInfo entity. */
     @SerializedName("user")
     val user: AccountInfo? = null,
 
+    /* The timestamp of the event. */
     @SerializedName("date")
     val date: kotlin.String? = null
 

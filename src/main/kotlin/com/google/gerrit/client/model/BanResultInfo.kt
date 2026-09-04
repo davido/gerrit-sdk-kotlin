@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param newlyBanned 
- * @param alreadyBanned 
- * @param ignored 
+ * @param newlyBanned List of newly banned commits.
+ * @param alreadyBanned List of commits that were already banned.
+ * @param ignored List of object IDs that were ignored.
  */
 
 
 data class BanResultInfo (
 
+    /* List of newly banned commits. */
     @SerializedName("newly_banned")
     val newlyBanned: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of commits that were already banned. */
     @SerializedName("already_banned")
     val alreadyBanned: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of object IDs that were ignored. */
     @SerializedName("ignored")
     val ignored: kotlin.collections.List<kotlin.String>? = null
 

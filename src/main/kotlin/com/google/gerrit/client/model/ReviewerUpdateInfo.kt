@@ -31,28 +31,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param updated 
- * @param updatedBy 
- * @param realUpdatedBy 
- * @param reviewer 
- * @param state 
+ * @param updated Timestamp of the update.
+ * @param updatedBy The account which modified state of the reviewer in question as AccountInfo entity.
+ * @param realUpdatedBy The account which actually modified the state of the reviewer in question as AccountInfo entity. This will be different from updated_by in case of impersonation. For example, if Alice impersonates Bob and changes the state of a reviewer, updated_by will be Bob and real_updated_by will be Alice.
+ * @param reviewer The reviewer added or removed from the change as an AccountInfo entity. For reviewers by email the AccountInfo doesn't contain an account ID but only the email and optionally a name.
+ * @param state The reviewer state, one of REVIEWER, CC or REMOVED.
  */
 
 
 data class ReviewerUpdateInfo (
 
+    /* Timestamp of the update. */
     @SerializedName("updated")
     val updated: kotlin.String? = null,
 
+    /* The account which modified state of the reviewer in question as AccountInfo entity. */
     @SerializedName("updated_by")
     val updatedBy: AccountInfo? = null,
 
+    /* The account which actually modified the state of the reviewer in question as AccountInfo entity. This will be different from updated_by in case of impersonation. For example, if Alice impersonates Bob and changes the state of a reviewer, updated_by will be Bob and real_updated_by will be Alice. */
     @SerializedName("real_updated_by")
     val realUpdatedBy: AccountInfo? = null,
 
+    /* The reviewer added or removed from the change as an AccountInfo entity. For reviewers by email the AccountInfo doesn't contain an account ID but only the email and optionally a name. */
     @SerializedName("reviewer")
     val reviewer: AccountInfo? = null,
 
+    /* The reviewer state, one of REVIEWER, CC or REMOVED. */
     @SerializedName("state")
     val state: ReviewerState? = null
 

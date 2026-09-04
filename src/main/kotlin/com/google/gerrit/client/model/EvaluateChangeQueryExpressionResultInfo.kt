@@ -29,21 +29,24 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param passingAtoms 
- * @param failingAtoms 
+ * @param status Whether the change matches the change query expression.
+ * @param passingAtoms List of passing leaf atoms (atoms that match the change).
+ * @param failingAtoms List of failing leaf atoms (atoms that do not match the change).
  * @param atomExplanations 
  */
 
 
 data class EvaluateChangeQueryExpressionResultInfo (
 
+    /* Whether the change matches the change query expression. */
     @SerializedName("status")
     val status: kotlin.Boolean? = null,
 
+    /* List of passing leaf atoms (atoms that match the change). */
     @SerializedName("passing_atoms")
     val passingAtoms: kotlin.collections.List<kotlin.String>? = null,
 
+    /* List of failing leaf atoms (atoms that do not match the change). */
     @SerializedName("failing_atoms")
     val failingAtoms: kotlin.collections.List<kotlin.String>? = null,
 

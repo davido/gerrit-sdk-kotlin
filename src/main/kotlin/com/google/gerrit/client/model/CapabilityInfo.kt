@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param name 
+ * @param id capability ID
+ * @param name capability name
  */
 
 
 data class CapabilityInfo (
 
+    /* capability ID */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* capability name */
     @SerializedName("name")
     val name: kotlin.String? = null
 

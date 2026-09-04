@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param subject 
- * @param fullMessage 
- * @param footers 
+ * @param subject The subject of the change (first line of the commit message).
+ * @param fullMessage Full commit message of the change.
+ * @param footers The footers from the commit message as a map of key-value pairs. If there are multiple footers with the same key, only the last footer with that key is returned.
  */
 
 
 data class CommitMessageInfo (
 
+    /* The subject of the change (first line of the commit message). */
     @SerializedName("subject")
     val subject: kotlin.String? = null,
 
+    /* Full commit message of the change. */
     @SerializedName("full_message")
     val fullMessage: kotlin.String? = null,
 
+    /* The footers from the commit message as a map of key-value pairs. If there are multiple footers with the same key, only the last footer with that key is returned. */
     @SerializedName("footers")
     val footers: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 

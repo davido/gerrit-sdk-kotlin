@@ -30,52 +30,63 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param project 
- * @param definingProject 
- * @param ref 
- * @param path 
- * @param description 
- * @param foreach 
- * @param url 
- * @param isDefault 
- * @param title 
- * @param sections 
+ * @param id The ID of the dashboard. The ID has the format '<ref>:<path>', where ref and path are URL encoded.
+ * @param project The name of the project for which this dashboard is returned.
+ * @param definingProject The name of the project in which this dashboard is defined. This is different from project if the dashboard is inherited from a parent project.
+ * @param ref The name of the ref in which the dashboard is defined, without the refs/meta/dashboards/ prefix, which is common for all dashboard refs.
+ * @param path The path of the file in which the dashboard is defined.
+ * @param description The description of the dashboard.
+ * @param foreach Subquery that applies to all sections in the dashboard. + Tokens such as ${project} are not resolved.
+ * @param url The URL under which the dashboard can be opened in the Gerrit Web UI. + The URL is relative to the canonical web URL. + Tokens in the queries such as ${project} are resolved.
+ * @param isDefault Whether this is the default dashboard of the project.
+ * @param title The title of the dashboard.
+ * @param sections The list of sections in the dashboard.
  */
 
 
 data class DashboardInfo (
 
+    /* The ID of the dashboard. The ID has the format '<ref>:<path>', where ref and path are URL encoded. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The name of the project for which this dashboard is returned. */
     @SerializedName("project")
     val project: kotlin.String? = null,
 
+    /* The name of the project in which this dashboard is defined. This is different from project if the dashboard is inherited from a parent project. */
     @SerializedName("defining_project")
     val definingProject: kotlin.String? = null,
 
+    /* The name of the ref in which the dashboard is defined, without the refs/meta/dashboards/ prefix, which is common for all dashboard refs. */
     @SerializedName("ref")
     val ref: kotlin.String? = null,
 
+    /* The path of the file in which the dashboard is defined. */
     @SerializedName("path")
     val path: kotlin.String? = null,
 
+    /* The description of the dashboard. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* Subquery that applies to all sections in the dashboard. + Tokens such as ${project} are not resolved. */
     @SerializedName("foreach")
     val foreach: kotlin.String? = null,
 
+    /* The URL under which the dashboard can be opened in the Gerrit Web UI. + The URL is relative to the canonical web URL. + Tokens in the queries such as ${project} are resolved. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* Whether this is the default dashboard of the project. */
     @SerializedName("is_default")
     val isDefault: kotlin.Boolean? = null,
 
+    /* The title of the dashboard. */
     @SerializedName("title")
     val title: kotlin.String? = null,
 
+    /* The list of sections in the dashboard. */
     @SerializedName("sections")
     val sections: kotlin.collections.List<DashboardSectionInfo>? = null
 

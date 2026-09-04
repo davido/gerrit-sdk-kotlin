@@ -31,16 +31,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param change 
+ * @param status The status of the migration. Takes one of the following values: MIGRATED, HAS_PROLOG, PREVIOUSLY_MIGRATED, NO_CHANGE
+ * @param change The change created. It is a ChangeInfo entity and is set only when the status value is MIGRATED.
  */
 
 
 data class MigrateLabelsReviewInfo (
 
+    /* The status of the migration. Takes one of the following values: MIGRATED, HAS_PROLOG, PREVIOUSLY_MIGRATED, NO_CHANGE */
     @SerializedName("status")
     val status: MigrateLabelFunctionsToSubmitRequirementStatus? = null,
 
+    /* The change created. It is a ChangeInfo entity and is set only when the status value is MIGRATED. */
     @SerializedName("change")
     val change: ChangeInfo? = null
 

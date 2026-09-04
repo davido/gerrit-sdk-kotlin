@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param remove 
- * @param add 
- * @param parent 
- * @param message 
+ * @param remove A map of deductions to be applied to the project access, mapping refs to AccessSectionInfo entities.
+ * @param add A map of additions to be applied to the project access, mapping refs to AccessSectionInfo entities.
+ * @param parent A new parent for the project to inherit from. Changing the parent project requires administrative privileges.
+ * @param message A commit message for this change.
  */
 
 
 data class ProjectAccessInput (
 
+    /* A map of deductions to be applied to the project access, mapping refs to AccessSectionInfo entities. */
     @SerializedName("remove")
     val remove: kotlin.collections.Map<kotlin.String, AccessSectionInfo>? = null,
 
+    /* A map of additions to be applied to the project access, mapping refs to AccessSectionInfo entities. */
     @SerializedName("add")
     val add: kotlin.collections.Map<kotlin.String, AccessSectionInfo>? = null,
 
+    /* A new parent for the project to inherit from. Changing the parent project requires administrative privileges. */
     @SerializedName("parent")
     val parent: kotlin.String? = null,
 
+    /* A commit message for this change. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

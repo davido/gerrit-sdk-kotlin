@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param `value` 
- * @param description 
- * @param webLinks 
+ * @param name The metadata name. Not guaranteed to be unique, e.g. multiple metadata entries with the same name may be returned.
+ * @param `value` The metadata value.
+ * @param description A description of the metadata.
+ * @param webLinks A list of web links as WebLinkInfo entities.
  */
 
 
 data class MetadataInfo (
 
+    /* The metadata name. Not guaranteed to be unique, e.g. multiple metadata entries with the same name may be returned. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The metadata value. */
     @SerializedName("value")
     val `value`: kotlin.String? = null,
 
+    /* A description of the metadata. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* A list of web links as WebLinkInfo entities. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null
 

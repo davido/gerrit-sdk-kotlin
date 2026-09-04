@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param propertyValues 
- * @param defaultValue 
+ * @param propertyValues Map of the available values to their description.
+ * @param defaultValue The default value of this label.
  */
 
 
 data class LabelTypeInfo (
 
+    /* Map of the available values to their description. */
     @SerializedName("values")
     val propertyValues: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* The default value of this label. */
     @SerializedName("default_value")
     val defaultValue: kotlin.Int? = null
 

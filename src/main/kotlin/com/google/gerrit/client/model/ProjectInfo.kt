@@ -32,44 +32,53 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param name 
- * @param parent 
- * @param description 
- * @param state 
- * @param branches 
- * @param webLinks 
- * @param labels 
- * @param moreProjects 
+ * @param id The URL encoded project name.
+ * @param name The name of the project.
+ * @param parent The name of the parent project. + ?-<n> if the parent project is not visible (<n> is a number which is increased for each non-visible project).
+ * @param description The description of the project.
+ * @param state ACTIVE, READ_ONLY or HIDDEN.
+ * @param branches Map of branch names to HEAD revisions.
+ * @param webLinks Links to the project in external sites as a list of WebLinkInfo entries.
+ * @param labels Map of label names to LabelTypeInfo entries. This field is filled for Create Project and Get Project calls.
+ * @param moreProjects Whether the query would deliver more results if not limited. + Only set on the last project that is returned.
  */
 
 
 data class ProjectInfo (
 
+    /* The URL encoded project name. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The name of the project. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The name of the parent project. + ?-<n> if the parent project is not visible (<n> is a number which is increased for each non-visible project). */
     @SerializedName("parent")
     val parent: kotlin.String? = null,
 
+    /* The description of the project. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* ACTIVE, READ_ONLY or HIDDEN. */
     @SerializedName("state")
     val state: ProjectState? = null,
 
+    /* Map of branch names to HEAD revisions. */
     @SerializedName("branches")
     val branches: kotlin.collections.Map<kotlin.String, kotlin.String>? = null,
 
+    /* Links to the project in external sites as a list of WebLinkInfo entries. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null,
 
+    /* Map of label names to LabelTypeInfo entries. This field is filled for Create Project and Get Project calls. */
     @SerializedName("labels")
     val labels: kotlin.collections.Map<kotlin.String, LabelTypeInfo>? = null,
 
+    /* Whether the query would deliver more results if not limited. + Only set on the last project that is returned. */
     @SerializedName("_more_projects")
     val moreProjects: kotlin.Boolean? = null
 

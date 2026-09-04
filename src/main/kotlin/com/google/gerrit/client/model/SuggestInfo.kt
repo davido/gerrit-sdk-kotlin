@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param from 
+ * @param from The number of characters that a user must have typed before suggestions are provided.
  */
 
 
 data class SuggestInfo (
 
+    /* The number of characters that a user must have typed before suggestions are provided. */
     @SerializedName("from")
     val from: kotlin.Int? = null
 

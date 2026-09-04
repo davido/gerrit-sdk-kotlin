@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param rebasedChanges 
- * @param containsGitConflicts 
+ * @param rebasedChanges List of the unsubmitted ancestors, as ChangeInfo entities. Includes both rebased changes, and previously up-to-date ancestors. The list is ordered by ancestry, where the oldest ancestor is the first.
+ * @param containsGitConflicts Whether any of the rebased changes has conflicts due to rebasing.
  */
 
 
 data class RebaseChainInfo (
 
+    /* List of the unsubmitted ancestors, as ChangeInfo entities. Includes both rebased changes, and previously up-to-date ancestors. The list is ordered by ancestry, where the oldest ancestor is the first. */
     @SerializedName("rebased_changes")
     val rebasedChanges: kotlin.collections.List<ChangeInfo>? = null,
 
+    /* Whether any of the rebased changes has conflicts due to rebasing. */
     @SerializedName("contains_git_conflicts")
     val containsGitConflicts: kotlin.Boolean? = null
 
