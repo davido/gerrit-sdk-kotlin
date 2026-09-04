@@ -97,7 +97,7 @@ import com.google.gson.annotations.SerializedName
  * @param revisions All patch sets of this change as a map that maps the commit ID of the patch set to a RevisionInfo entity. + Only set if the current revision is requested (in which case it will only contain a key for the current revision) or if all revisions are requested.
  * @param moreChanges Whether the query would deliver more results if not limited. + Only set on the last change that is returned.
  * @param problems A list of ProblemInfo entities describing potential problems with this change. Only set if CHECK is set.
- * @param plugins 
+ * @param plugins Plugin-provided information about the change, as a list of PluginDefinedInfo entities. Only present if a plugin contributes data.
  * @param trackingIds A list of TrackingIdInfo entities describing references to external tracking systems. Only set if tracking ids are requested.
  * @param requirements List of the requirements to be met before this change can be submitted. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested.
  * @param submitRecords List of the SubmitRecordInfo containing the submit records for the change at the latest patchset. This field is deprecated in favour of submit_requirements. Only set if SUBMIT_REQUIREMENTS is requested.
@@ -318,6 +318,7 @@ data class ChangeInfo (
     @SerializedName("problems")
     val problems: kotlin.collections.List<ProblemInfo>? = null,
 
+    /* Plugin-provided information about the change, as a list of PluginDefinedInfo entities. Only present if a plugin contributes data. */
     @SerializedName("plugins")
     val plugins: kotlin.collections.List<PluginDefinedInfo>? = null,
 

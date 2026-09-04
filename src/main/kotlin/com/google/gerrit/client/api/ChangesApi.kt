@@ -3582,8 +3582,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/archive
-     * 
-     * 
+     * Get Archive
+     * Retrieves an archive of the files in a revision.
      * @param changeId 
      * @param revisionId 
      * @param format  (optional)
@@ -3616,8 +3616,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/archive
-     * 
-     * 
+     * Get Archive
+     * Retrieves an archive of the files in a revision.
      * @param changeId 
      * @param revisionId 
      * @param format  (optional)
@@ -5529,8 +5529,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/robotcomments
-     * 
-     * 
+     * List Robot Comments
+     * Lists the robot comments of a revision.
      * @param changeId 
      * @param revisionId 
      * @return kotlin.collections.Map<kotlin.String, kotlin.collections.List<RobotCommentInfo>>
@@ -5562,8 +5562,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/robotcomments
-     * 
-     * 
+     * List Robot Comments
+     * Lists the robot comments of a revision.
      * @param changeId 
      * @param revisionId 
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.List<RobotCommentInfo>>?>
@@ -5605,8 +5605,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/robotcomments/{robot-comment-id}
-     * 
-     * 
+     * Get Robot Comment
+     * Retrieves a robot comment of a revision.
      * @param changeId 
      * @param revisionId 
      * @param robotCommentId 
@@ -5639,8 +5639,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/robotcomments/{robot-comment-id}
-     * 
-     * 
+     * Get Robot Comment
+     * Retrieves a robot comment of a revision.
      * @param changeId 
      * @param revisionId 
      * @param robotCommentId 
@@ -5760,8 +5760,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/robotcomments
-     * 
-     * 
+     * List Change Robot Comments
+     * Lists the robot comments of all revisions of the change.
      * @param changeId 
      * @return kotlin.collections.Map<kotlin.String, kotlin.collections.List<RobotCommentInfo>>
      * @throws IllegalStateException If the request is not correctly configured
@@ -5792,8 +5792,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/robotcomments
-     * 
-     * 
+     * List Change Robot Comments
+     * Lists the robot comments of all revisions of the change.
      * @param changeId 
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, kotlin.collections.List<RobotCommentInfo>>?>
      * @throws IllegalStateException If the request is not correctly configured

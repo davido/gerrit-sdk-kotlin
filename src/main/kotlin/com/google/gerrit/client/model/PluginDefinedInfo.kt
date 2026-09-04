@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param message 
+ * @param name The name of the plugin that contributed the information.
+ * @param message A message from the plugin.
  */
 
 
 data class PluginDefinedInfo (
 
+    /* The name of the plugin that contributed the information. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* A message from the plugin. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

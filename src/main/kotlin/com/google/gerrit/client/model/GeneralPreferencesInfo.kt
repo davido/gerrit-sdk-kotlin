@@ -37,116 +37,143 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param changesPerPage 
- * @param downloadScheme 
- * @param theme 
- * @param dateFormat 
- * @param timeFormat 
- * @param expandInlineDiffs 
- * @param relativeDateInChangeTable 
- * @param diffView 
- * @param sizeBarInChangeTable 
- * @param legacycidInChangeTable 
- * @param muteCommonPathPrefixes 
- * @param signedOffBy 
- * @param emailStrategy 
- * @param emailFormat 
- * @param defaultBaseForMerges 
- * @param publishCommentsOnPush 
- * @param disableKeyboardShortcuts 
- * @param disableTokenHighlighting 
- * @param workInProgressByDefault 
- * @param my 
- * @param changeTable 
- * @param allowBrowserNotifications 
- * @param allowSuggestCodeWhileCommenting 
- * @param allowAutocompletingComments 
- * @param aiChatSelectedModel 
- * @param labelFilter 
- * @param diffPageSidebar 
+ * @param changesPerPage The number of changes to show on each page. Allowed values are 10, 25, 50, 100.
+ * @param downloadScheme The type of download URL the user prefers to use. May be any key from the schemes map in DownloadInfo.
+ * @param theme Which theme to use. Allowed values are AUTO or DARK or LIGHT.
+ * @param dateFormat The format to display the date in. Allowed values are STD, US, ISO, EURO, UK.
+ * @param timeFormat The format to display the time in. Allowed values are HHMM_12, HHMM_24.
+ * @param expandInlineDiffs Whether to expand diffs inline instead of opening as separate page (Gerrit web app UI only).
+ * @param relativeDateInChangeTable Whether to show relative dates in the changes table.
+ * @param diffView The type of diff view to show. Allowed values are SIDE_BY_SIDE, UNIFIED_DIFF.
+ * @param sizeBarInChangeTable Whether to show the change sizes as colored bars in the change table.
+ * @param legacycidInChangeTable Whether to show change number in the change table.
+ * @param muteCommonPathPrefixes Whether to mute common path prefixes in file names in the file table.
+ * @param signedOffBy Whether to insert Signed-off-by footer in changes created with the inline edit feature.
+ * @param emailStrategy The type of email strategy to use. On ENABLED, the user will receive emails from Gerrit. On CC_ON_OWN_COMMENTS the user will also receive emails for their own comments. On ATTENTION_SET_ONLY, on emails about changes, the user will receive emails only if they are in the attention set of that change.
+ * @param emailFormat The format to use for outgoing email. Allowed values are PLAINTEXT and HTML_PLAINTEXT.
+ * @param defaultBaseForMerges The base which should be pre-selected in the 'Diff Against' drop-down list when the change screen is opened for a merge commit. Allowed values are AUTO_MERGE and FIRST_PARENT.
+ * @param publishCommentsOnPush Whether to publish draft comments on push by default.
+ * @param disableKeyboardShortcuts Whether to disable all keyboard shortcuts.
+ * @param disableTokenHighlighting Whether to disable token highlighting on hover.
+ * @param workInProgressByDefault Whether to set work-in-progress on push or on create changes online by default.
+ * @param my The menu items of the MY top menu as a list of TopMenuItemInfo entities.
+ * @param changeTable The columns to display in the change table (Gerrit web app UI only). The default is empty, which will default columns as determined by the frontend.
+ * @param allowBrowserNotifications Whether to prompt user to enable browser notification in browser.
+ * @param allowSuggestCodeWhileCommenting Whether to receive suggested code while writing comments. This feature needs a plugin implementation.
+ * @param allowAutocompletingComments Whether to receive autocompletions while writing comments. This feature needs a plugin implementation.
+ * @param aiChatSelectedModel The name of the AI model selected for the AI chat. This feature needs a plugin implementation.
+ * @param labelFilter A comma-separated list of label names that limits which label columns are shown in the change table. If empty, all labels are shown.
+ * @param diffPageSidebar String indicating which sidebar should be open on the diff page. Set to \"NONE\" if no sidebars should be open. Plugin-supplied sidebars will be prefixed with \"plugin-\".
  */
 
 
 data class GeneralPreferencesInfo (
 
+    /* The number of changes to show on each page. Allowed values are 10, 25, 50, 100. */
     @SerializedName("changes_per_page")
     val changesPerPage: kotlin.Int? = null,
 
+    /* The type of download URL the user prefers to use. May be any key from the schemes map in DownloadInfo. */
     @SerializedName("download_scheme")
     val downloadScheme: kotlin.String? = null,
 
+    /* Which theme to use. Allowed values are AUTO or DARK or LIGHT. */
     @SerializedName("theme")
     val theme: Theme? = null,
 
+    /* The format to display the date in. Allowed values are STD, US, ISO, EURO, UK. */
     @SerializedName("date_format")
     val dateFormat: DateFormat? = null,
 
+    /* The format to display the time in. Allowed values are HHMM_12, HHMM_24. */
     @SerializedName("time_format")
     val timeFormat: TimeFormat? = null,
 
+    /* Whether to expand diffs inline instead of opening as separate page (Gerrit web app UI only). */
     @SerializedName("expand_inline_diffs")
     val expandInlineDiffs: kotlin.Boolean? = null,
 
+    /* Whether to show relative dates in the changes table. */
     @SerializedName("relative_date_in_change_table")
     val relativeDateInChangeTable: kotlin.Boolean? = null,
 
+    /* The type of diff view to show. Allowed values are SIDE_BY_SIDE, UNIFIED_DIFF. */
     @SerializedName("diff_view")
     val diffView: DiffView? = null,
 
+    /* Whether to show the change sizes as colored bars in the change table. */
     @SerializedName("size_bar_in_change_table")
     val sizeBarInChangeTable: kotlin.Boolean? = null,
 
+    /* Whether to show change number in the change table. */
     @SerializedName("legacycid_in_change_table")
     val legacycidInChangeTable: kotlin.Boolean? = null,
 
+    /* Whether to mute common path prefixes in file names in the file table. */
     @SerializedName("mute_common_path_prefixes")
     val muteCommonPathPrefixes: kotlin.Boolean? = null,
 
+    /* Whether to insert Signed-off-by footer in changes created with the inline edit feature. */
     @SerializedName("signed_off_by")
     val signedOffBy: kotlin.Boolean? = null,
 
+    /* The type of email strategy to use. On ENABLED, the user will receive emails from Gerrit. On CC_ON_OWN_COMMENTS the user will also receive emails for their own comments. On ATTENTION_SET_ONLY, on emails about changes, the user will receive emails only if they are in the attention set of that change. */
     @SerializedName("email_strategy")
     val emailStrategy: EmailStrategy? = null,
 
+    /* The format to use for outgoing email. Allowed values are PLAINTEXT and HTML_PLAINTEXT. */
     @SerializedName("email_format")
     val emailFormat: EmailFormat? = null,
 
+    /* The base which should be pre-selected in the 'Diff Against' drop-down list when the change screen is opened for a merge commit. Allowed values are AUTO_MERGE and FIRST_PARENT. */
     @SerializedName("default_base_for_merges")
     val defaultBaseForMerges: DefaultBase? = null,
 
+    /* Whether to publish draft comments on push by default. */
     @SerializedName("publish_comments_on_push")
     val publishCommentsOnPush: kotlin.Boolean? = null,
 
+    /* Whether to disable all keyboard shortcuts. */
     @SerializedName("disable_keyboard_shortcuts")
     val disableKeyboardShortcuts: kotlin.Boolean? = null,
 
+    /* Whether to disable token highlighting on hover. */
     @SerializedName("disable_token_highlighting")
     val disableTokenHighlighting: kotlin.Boolean? = null,
 
+    /* Whether to set work-in-progress on push or on create changes online by default. */
     @SerializedName("work_in_progress_by_default")
     val workInProgressByDefault: kotlin.Boolean? = null,
 
+    /* The menu items of the MY top menu as a list of TopMenuItemInfo entities. */
     @SerializedName("my")
     val my: kotlin.collections.List<MenuItem>? = null,
 
+    /* The columns to display in the change table (Gerrit web app UI only). The default is empty, which will default columns as determined by the frontend. */
     @SerializedName("change_table")
     val changeTable: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Whether to prompt user to enable browser notification in browser. */
     @SerializedName("allow_browser_notifications")
     val allowBrowserNotifications: kotlin.Boolean? = null,
 
+    /* Whether to receive suggested code while writing comments. This feature needs a plugin implementation. */
     @SerializedName("allow_suggest_code_while_commenting")
     val allowSuggestCodeWhileCommenting: kotlin.Boolean? = null,
 
+    /* Whether to receive autocompletions while writing comments. This feature needs a plugin implementation. */
     @SerializedName("allow_autocompleting_comments")
     val allowAutocompletingComments: kotlin.Boolean? = null,
 
+    /* The name of the AI model selected for the AI chat. This feature needs a plugin implementation. */
     @SerializedName("ai_chat_selected_model")
     val aiChatSelectedModel: kotlin.String? = null,
 
+    /* A comma-separated list of label names that limits which label columns are shown in the change table. If empty, all labels are shown. */
     @SerializedName("label_filter")
     val labelFilter: kotlin.String? = null,
 
+    /* String indicating which sidebar should be open on the diff page. Set to \"NONE\" if no sidebars should be open. Plugin-supplied sidebars will be prefixed with \"plugin-\". */
     @SerializedName("diff_page_sidebar")
     val diffPageSidebar: kotlin.String? = null
 

@@ -30,108 +30,133 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param description 
- * @param unit 
- * @param constant 
- * @param rate 
- * @param gauge 
- * @param cumulative 
- * @param count 
- * @param `value` 
- * @param rate1m 
- * @param rate5m 
- * @param rate15m 
- * @param rateMean 
- * @param p50 
- * @param p75 
- * @param p95 
- * @param p98 
- * @param p99 
- * @param p999 
- * @param min 
- * @param avg 
- * @param max 
- * @param sum 
- * @param stdDev 
- * @param fields 
- * @param buckets 
+ * @param description The description of the metric.
+ * @param unit The unit of measurement of the recorded values.
+ * @param constant Whether the metric reports a single constant value.
+ * @param rate Whether the metric reports a rate.
+ * @param gauge Whether the metric is a gauge that reports an instantaneous value.
+ * @param cumulative Whether the metric accumulates over time.
+ * @param count The number of recorded events.
+ * @param `value` The current value, for constant metrics and gauges.
+ * @param rate1m The one-minute moving average rate.
+ * @param rate5m The five-minute moving average rate.
+ * @param rate15m The fifteen-minute moving average rate.
+ * @param rateMean The mean rate since the metric was registered.
+ * @param p50 The median (50th percentile) of the recorded values.
+ * @param p75 The 75th percentile of the recorded values.
+ * @param p95 The 95th percentile of the recorded values.
+ * @param p98 The 98th percentile of the recorded values.
+ * @param p99 The 99th percentile of the recorded values.
+ * @param p999 The 99.9th percentile of the recorded values.
+ * @param min The minimum recorded value.
+ * @param avg The average of the recorded values.
+ * @param max The maximum recorded value.
+ * @param sum The sum of the recorded values.
+ * @param stdDev The standard deviation of the recorded values.
+ * @param fields The fields of the metric as a list of FieldJson entities.
+ * @param buckets The per-field-value breakdown of the metric, as a map of field values to the recorded value for that combination.
  */
 
 
 data class MetricJson (
 
+    /* The description of the metric. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The unit of measurement of the recorded values. */
     @SerializedName("unit")
     val unit: kotlin.String? = null,
 
+    /* Whether the metric reports a single constant value. */
     @SerializedName("constant")
     val constant: kotlin.Boolean? = null,
 
+    /* Whether the metric reports a rate. */
     @SerializedName("rate")
     val rate: kotlin.Boolean? = null,
 
+    /* Whether the metric is a gauge that reports an instantaneous value. */
     @SerializedName("gauge")
     val gauge: kotlin.Boolean? = null,
 
+    /* Whether the metric accumulates over time. */
     @SerializedName("cumulative")
     val cumulative: kotlin.Boolean? = null,
 
+    /* The number of recorded events. */
     @SerializedName("count")
     val count: kotlin.Int? = null,
 
+    /* The current value, for constant metrics and gauges. */
     @SerializedName("value")
     val `value`: kotlin.Any? = null,
 
+    /* The one-minute moving average rate. */
     @SerializedName("rate_1m")
     val rate1m: java.math.BigDecimal? = null,
 
+    /* The five-minute moving average rate. */
     @SerializedName("rate_5m")
     val rate5m: java.math.BigDecimal? = null,
 
+    /* The fifteen-minute moving average rate. */
     @SerializedName("rate_15m")
     val rate15m: java.math.BigDecimal? = null,
 
+    /* The mean rate since the metric was registered. */
     @SerializedName("rate_mean")
     val rateMean: java.math.BigDecimal? = null,
 
+    /* The median (50th percentile) of the recorded values. */
     @SerializedName("p50")
     val p50: java.math.BigDecimal? = null,
 
+    /* The 75th percentile of the recorded values. */
     @SerializedName("p75")
     val p75: java.math.BigDecimal? = null,
 
+    /* The 95th percentile of the recorded values. */
     @SerializedName("p95")
     val p95: java.math.BigDecimal? = null,
 
+    /* The 98th percentile of the recorded values. */
     @SerializedName("p98")
     val p98: java.math.BigDecimal? = null,
 
+    /* The 99th percentile of the recorded values. */
     @SerializedName("p99")
     val p99: java.math.BigDecimal? = null,
 
+    /* The 99.9th percentile of the recorded values. */
     @SerializedName("p99_9")
     val p999: java.math.BigDecimal? = null,
 
+    /* The minimum recorded value. */
     @SerializedName("min")
     val min: java.math.BigDecimal? = null,
 
+    /* The average of the recorded values. */
     @SerializedName("avg")
     val avg: java.math.BigDecimal? = null,
 
+    /* The maximum recorded value. */
     @SerializedName("max")
     val max: java.math.BigDecimal? = null,
 
+    /* The sum of the recorded values. */
     @SerializedName("sum")
     val sum: java.math.BigDecimal? = null,
 
+    /* The standard deviation of the recorded values. */
     @SerializedName("std_dev")
     val stdDev: java.math.BigDecimal? = null,
 
+    /* The fields of the metric as a list of FieldJson entities. */
     @SerializedName("fields")
     val fields: kotlin.collections.List<FieldJson>? = null,
 
+    /* The per-field-value breakdown of the metric, as a map of field values to the recorded value for that combination. */
     @SerializedName("buckets")
     val buckets: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
 

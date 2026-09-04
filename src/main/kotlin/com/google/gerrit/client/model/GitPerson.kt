@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param email 
- * @param date 
- * @param tz 
+ * @param name The name of the author/committer.
+ * @param email The email address of the author/committer.
+ * @param date The timestamp of when this identity was constructed.
+ * @param tz The timezone offset from UTC of when this identity was constructed.
  */
 
 
 data class GitPerson (
 
+    /* The name of the author/committer. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The email address of the author/committer. */
     @SerializedName("email")
     val email: kotlin.String? = null,
 
+    /* The timestamp of when this identity was constructed. */
     @SerializedName("date")
     val date: kotlin.String? = null,
 
+    /* The timezone offset from UTC of when this identity was constructed. */
     @SerializedName("tz")
     val tz: kotlin.Int? = null
 

@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param showProgress 
- * @param aggressive 
- * @param async 
+ * @param showProgress Whether progress information should be shown.
+ * @param aggressive Whether an aggressive garbage collection should be done.
+ * @param async Whether the garbage collection should run asynchronously.
  */
 
 
 data class GarbageCollectInput (
 
+    /* Whether progress information should be shown. */
     @SerializedName("show_progress")
     val showProgress: kotlin.Boolean? = null,
 
+    /* Whether an aggressive garbage collection should be done. */
     @SerializedName("aggressive")
     val aggressive: kotlin.Boolean? = null,
 
+    /* Whether the garbage collection should run asynchronously. */
     @SerializedName("async")
     val async: kotlin.Boolean? = null
 

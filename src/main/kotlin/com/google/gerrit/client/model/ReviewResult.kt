@@ -31,28 +31,33 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param labels 
- * @param reviewers 
- * @param ready 
- * @param error 
- * @param changeInfo 
+ * @param labels Map of labels to values after the review was posted. Null if any reviewer additions were rejected.
+ * @param reviewers Map of account or group identifier to ReviewerResult representing the outcome of adding/removing a reviewer. Absent if no reviewer additions were requested.
+ * @param ready If true, the change was moved from WIP to ready for review as a result of this action. Not set if false.
+ * @param error Error message for non-200 responses.
+ * @param changeInfo Post-update change information.
  */
 
 
 data class ReviewResult (
 
+    /* Map of labels to values after the review was posted. Null if any reviewer additions were rejected. */
     @SerializedName("labels")
     val labels: kotlin.collections.Map<kotlin.String, kotlin.Int>? = null,
 
+    /* Map of account or group identifier to ReviewerResult representing the outcome of adding/removing a reviewer. Absent if no reviewer additions were requested. */
     @SerializedName("reviewers")
     val reviewers: kotlin.collections.Map<kotlin.String, ReviewerResult>? = null,
 
+    /* If true, the change was moved from WIP to ready for review as a result of this action. Not set if false. */
     @SerializedName("ready")
     val ready: kotlin.Boolean? = null,
 
+    /* Error message for non-200 responses. */
     @SerializedName("error")
     val error: kotlin.String? = null,
 
+    /* Post-update change information. */
     @SerializedName("change_info")
     val changeInfo: ChangeInfo? = null
 

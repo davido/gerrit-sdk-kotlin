@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param fixReplacementInfos 
- * @param originalPatchsetForFix 
+ * @param fixReplacementInfos The replacements that make up the fix, as a list of FixReplacementInfo entities.
+ * @param originalPatchsetForFix Number of the patch set the fix was originally computed against.
  */
 
 
 data class ApplyProvidedFixInput (
 
+    /* The replacements that make up the fix, as a list of FixReplacementInfo entities. */
     @SerializedName("fix_replacement_infos")
     val fixReplacementInfos: kotlin.collections.List<FixReplacementInfo>? = null,
 
+    /* Number of the patch set the fix was originally computed against. */
     @SerializedName("original_patchset_for_fix")
     val originalPatchsetForFix: kotlin.Int? = null
 

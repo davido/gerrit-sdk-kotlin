@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param after 
- * @param ifMergeable 
- * @param message 
- * @param query 
+ * @param after Abandon all changes that weren't updated in the timespan given here
+ * @param ifMergeable Whether to also abandon changes that are mergeable
+ * @param message Message to post to changes abandoned by the cleanup
+ * @param query Additional query predicates appended to the base cleanup query. Can be used to limit the batch size, exclude changes, or both, e.g. age:4w limit:100 -project:some/repo -hashtag:keep-alive. By default unset.
  */
 
 
 data class CleanupChangesInput (
 
+    /* Abandon all changes that weren't updated in the timespan given here */
     @SerializedName("after")
     val after: kotlin.String? = null,
 
+    /* Whether to also abandon changes that are mergeable */
     @SerializedName("if_mergeable")
     val ifMergeable: kotlin.Boolean? = null,
 
+    /* Message to post to changes abandoned by the cleanup */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Additional query predicates appended to the base cleanup query. Can be used to limit the batch size, exclude changes, or both, e.g. age:4w limit:100 -project:some/repo -hashtag:keep-alive. By default unset. */
     @SerializedName("query")
     val query: kotlin.String? = null
 

@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param startLine 
- * @param startCharacter 
- * @param endLine 
- * @param endCharacter 
+ * @param startLine The start line number of the range. (1-based)
+ * @param startCharacter The character position in the start line. (0-based)
+ * @param endLine The end line number of the range. (1-based)
+ * @param endCharacter The character position in the end line. (0-based)
  */
 
 
 data class Range (
 
+    /* The start line number of the range. (1-based) */
     @SerializedName("start_line")
     val startLine: kotlin.Int? = null,
 
+    /* The character position in the start line. (0-based) */
     @SerializedName("start_character")
     val startCharacter: kotlin.Int? = null,
 
+    /* The end line number of the range. (1-based) */
     @SerializedName("end_line")
     val endLine: kotlin.Int? = null,
 
+    /* The character position in the end line. (0-based) */
     @SerializedName("end_character")
     val endCharacter: kotlin.Int? = null
 

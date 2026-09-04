@@ -23,6 +23,7 @@
 
 package com.google.gerrit.client.model
 
+import com.google.gerrit.client.model.ChangeStatus
 
 import com.google.gson.annotations.SerializedName
 
@@ -67,7 +68,7 @@ data class ParentInfo (
 
     /* If the parent commit is a patch-set of another gerrit change, this field will hold the change status of the parent change. Otherwise, will be null. */
     @SerializedName("change_status")
-    val changeStatus: kotlin.String? = null
+    val changeStatus: ChangeStatus? = null
 
 ) {
 

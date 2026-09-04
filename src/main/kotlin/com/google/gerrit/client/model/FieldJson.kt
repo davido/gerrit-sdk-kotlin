@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param type 
- * @param description 
+ * @param name The name of the field.
+ * @param type The type of the field, set only for enum-valued fields.
+ * @param description The description of the field.
  */
 
 
 data class FieldJson (
 
+    /* The name of the field. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The type of the field, set only for enum-valued fields. */
     @SerializedName("type")
     val type: kotlin.String? = null,
 
+    /* The description of the field. */
     @SerializedName("description")
     val description: kotlin.String? = null
 

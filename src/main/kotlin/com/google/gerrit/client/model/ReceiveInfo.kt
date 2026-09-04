@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param enableSignedPush 
+ * @param enableSignedPush Whether signed push validation support is enabled on the server; see the global configuration for details.
  */
 
 
 data class ReceiveInfo (
 
+    /* Whether signed push validation support is enabled on the server; see the global configuration for details. */
     @SerializedName("enable_signed_push")
     val enableSignedPush: kotlin.Boolean? = null
 

@@ -48,7 +48,7 @@ import com.google.gson.annotations.SerializedName
  * @param rejectImplicitMerges InheritedBooleanInfo that tells whether implicit merges should be rejected on changes pushed to or submitted in the project.
  * @param privateByDefault InheritedBooleanInfo that tells whether all new changes are set as private by default.
  * @param workInProgressByDefault InheritedBooleanInfo that tells whether all new changes are set as work-in-progress by default.
- * @param enableReviewerByEmail 
+ * @param enableReviewerByEmail InheritedBooleanInfo that tells whether reviewers and CCs that do not have a Gerrit account can be added to a change by their email address.
  * @param matchAuthorToCommitterDate InheritedBooleanInfo that indicates whether a change's author date will be changed to match its submitter date upon submit.
  * @param rejectEmptyCommit InheritedBooleanInfo that tells whether empty commits should be rejected when a change is merged. ActionInfo entities.
  * @param skipAddingAuthorAndCommitterAsReviewers Whether to skip adding the Git commit author and committer as reviewers for a new change.
@@ -59,7 +59,7 @@ import com.google.gson.annotations.SerializedName
  * @param pluginConfig Plugin configuration as map which maps the plugin name to a map of parameter names to ConfigParameterInfo entities. Only filled for users who have read access to refs/meta/config.
  * @param actions Actions the caller might be able to perform on this project. The information is a map of view names to
  * @param commentlinks Map with the comment link configurations of the project. The name of the comment link configuration is mapped to a CommentlinkInfo entity.
- * @param extensionPanelNames 
+ * @param extensionPanelNames Views that are shown as extension panels, as a map of panel section name to the list of panel names configured for the project.
  */
 
 
@@ -109,6 +109,7 @@ data class ConfigInfo (
     @SerializedName("work_in_progress_by_default")
     val workInProgressByDefault: InheritedBooleanInfo? = null,
 
+    /* InheritedBooleanInfo that tells whether reviewers and CCs that do not have a Gerrit account can be added to a change by their email address. */
     @SerializedName("enable_reviewer_by_email")
     val enableReviewerByEmail: InheritedBooleanInfo? = null,
 
@@ -152,6 +153,7 @@ data class ConfigInfo (
     @SerializedName("commentlinks")
     val commentlinks: kotlin.collections.Map<kotlin.String, CommentLinkInfo>? = null,
 
+    /* Views that are shown as extension panels, as a map of panel section name to the list of panel names configured for the project. */
     @SerializedName("extension_panel_names")
     val extensionPanelNames: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>? = null
 

@@ -32,68 +32,83 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param tag 
- * @param unresolved 
- * @param patchSet 
- * @param id 
- * @param path 
- * @param side 
- * @param parent 
- * @param line 
- * @param range 
- * @param inReplyTo 
- * @param updated 
- * @param message 
- * @param commitId 
- * @param fixSuggestions 
- * @param isAi 
+ * @param tag Value of the tag field from ReviewInput set while posting the review. NOTE: To apply different tags on different votes/comments multiple invocations of the REST call are required.
+ * @param unresolved Whether or not the comment must be addressed by the user. The state of resolution of a comment thread is stored in the last comment in that thread chronologically.
+ * @param patchSet The patch set number for the comment; only set in contexts where + comments may be returned for multiple patch sets.
+ * @param id The URL encoded UUID of the comment.
+ * @param path The file path for which the inline comment was done. + Not set if returned in a map where the key is the file path.
+ * @param side The side on which the comment was added. + Allowed values are REVISION and PARENT. + If not set, the default is REVISION.
+ * @param parent The 1-based parent number. Used only for merge commits when side == PARENT. When not set the comment is for the auto-merge tree.
+ * @param line The number of the line for which the comment was done. + If range is set, this equals the end line of the range. + If neither line nor range is set, it's a file comment.
+ * @param range The range of the comment as a CommentRange entity.
+ * @param inReplyTo The URL encoded UUID of the comment to which this comment is a reply.
+ * @param updated The timestamp of when this comment was written.
+ * @param message The comment message.
+ * @param commitId Hex commit SHA-1 (40 characters string) of the commit of the patchset to which this comment applies.
+ * @param fixSuggestions Suggested fixes for this comment as a list of FixSuggestionInfo entities.
+ * @param isAi Whether the comment was created by an AI agent. Not set if false.
  */
 
 
 data class DraftInput (
 
+    /* Value of the tag field from ReviewInput set while posting the review. NOTE: To apply different tags on different votes/comments multiple invocations of the REST call are required. */
     @SerializedName("tag")
     val tag: kotlin.String? = null,
 
+    /* Whether or not the comment must be addressed by the user. The state of resolution of a comment thread is stored in the last comment in that thread chronologically. */
     @SerializedName("unresolved")
     val unresolved: kotlin.Boolean? = null,
 
+    /* The patch set number for the comment; only set in contexts where + comments may be returned for multiple patch sets. */
     @SerializedName("patch_set")
     val patchSet: kotlin.Int? = null,
 
+    /* The URL encoded UUID of the comment. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* The file path for which the inline comment was done. + Not set if returned in a map where the key is the file path. */
     @SerializedName("path")
     val path: kotlin.String? = null,
 
+    /* The side on which the comment was added. + Allowed values are REVISION and PARENT. + If not set, the default is REVISION. */
     @SerializedName("side")
     val side: Side? = null,
 
+    /* The 1-based parent number. Used only for merge commits when side == PARENT. When not set the comment is for the auto-merge tree. */
     @SerializedName("parent")
     val parent: kotlin.Int? = null,
 
+    /* The number of the line for which the comment was done. + If range is set, this equals the end line of the range. + If neither line nor range is set, it's a file comment. */
     @SerializedName("line")
     val line: kotlin.Int? = null,
 
+    /* The range of the comment as a CommentRange entity. */
     @SerializedName("range")
     val range: Range? = null,
 
+    /* The URL encoded UUID of the comment to which this comment is a reply. */
     @SerializedName("in_reply_to")
     val inReplyTo: kotlin.String? = null,
 
+    /* The timestamp of when this comment was written. */
     @SerializedName("updated")
     val updated: kotlin.String? = null,
 
+    /* The comment message. */
     @SerializedName("message")
     val message: kotlin.String? = null,
 
+    /* Hex commit SHA-1 (40 characters string) of the commit of the patchset to which this comment applies. */
     @SerializedName("commit_id")
     val commitId: kotlin.String? = null,
 
+    /* Suggested fixes for this comment as a list of FixSuggestionInfo entities. */
     @SerializedName("fix_suggestions")
     val fixSuggestions: kotlin.collections.List<FixSuggestionInfo>? = null,
 
+    /* Whether the comment was created by an AI agent. Not set if false. */
     @SerializedName("is_ai")
     val isAi: kotlin.Boolean? = null
 

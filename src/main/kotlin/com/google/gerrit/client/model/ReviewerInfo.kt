@@ -32,17 +32,17 @@ import com.google.gson.annotations.SerializedName
  *
  * @param approvals The approvals of the reviewer as a map that maps the label names to the approval values (\"-2\", \"-1\", \"0\", \"+1\", \"+2\").
  * @param accountId This field is inherited from AccountInfo but is optional here if an unregistered reviewer was added by email. See add-reviewer for details.
- * @param name 
- * @param displayName 
- * @param email 
- * @param secondaryEmails 
- * @param username 
- * @param avatars 
- * @param moreAccounts 
- * @param status 
- * @param inactive 
- * @param deleted 
- * @param tags 
+ * @param name The full name of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries.
+ * @param displayName The display name of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries.
+ * @param email The email address the user prefers to be contacted through. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and options DETAILS and ALL_EMAILS for account queries.
+ * @param secondaryEmails A list of the secondary email addresses of the user. + Only set for account queries when the ALL_EMAILS option or the suggest parameter is set. + Secondary emails are only included if the calling user has the Modify Account, and hence is allowed to see secondary emails of other users.
+ * @param username The username of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries.
+ * @param avatars List of AvatarInfo + entities that provide information about avatar images of the account.
+ * @param moreAccounts Whether the query would deliver more results if not limited. + Only set on the last account that is returned.
+ * @param status Status message of the account.
+ * @param inactive Whether the account is inactive.
+ * @param deleted Whether the account is deleted. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS
+ * @param tags List of additional tags that this account has. The only + current tag an account can have is SERVICE_USER. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS
  */
 
 
@@ -56,36 +56,47 @@ data class ReviewerInfo (
     @SerializedName("_account_id")
     val accountId: kotlin.Int? = null,
 
+    /* The full name of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The display name of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries. */
     @SerializedName("display_name")
     val displayName: kotlin.String? = null,
 
+    /* The email address the user prefers to be contacted through. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and options DETAILS and ALL_EMAILS for account queries. */
     @SerializedName("email")
     val email: kotlin.String? = null,
 
+    /* A list of the secondary email addresses of the user. + Only set for account queries when the ALL_EMAILS option or the suggest parameter is set. + Secondary emails are only included if the calling user has the Modify Account, and hence is allowed to see secondary emails of other users. */
     @SerializedName("secondary_emails")
     val secondaryEmails: kotlin.collections.List<kotlin.String>? = null,
 
+    /* The username of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries. */
     @SerializedName("username")
     val username: kotlin.String? = null,
 
+    /* List of AvatarInfo + entities that provide information about avatar images of the account. */
     @SerializedName("avatars")
     val avatars: kotlin.collections.List<AvatarInfo>? = null,
 
+    /* Whether the query would deliver more results if not limited. + Only set on the last account that is returned. */
     @SerializedName("_more_accounts")
     val moreAccounts: kotlin.Boolean? = null,
 
+    /* Status message of the account. */
     @SerializedName("status")
     val status: kotlin.String? = null,
 
+    /* Whether the account is inactive. */
     @SerializedName("inactive")
     val inactive: kotlin.Boolean? = null,
 
+    /* Whether the account is deleted. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS */
     @SerializedName("deleted")
     val deleted: kotlin.Boolean? = null,
 
+    /* List of additional tags that this account has. The only + current tag an account can have is SERVICE_USER. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS */
     @SerializedName("tags")
     val tags: kotlin.collections.List<kotlin.String>? = null
 

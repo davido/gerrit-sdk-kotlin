@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param validationOptions 
+ * @param validationOptions The list of all possible validation options.
  */
 
 
 data class ValidationOptionInfos (
 
+    /* The list of all possible validation options. */
     @SerializedName("validation_options")
     val validationOptions: kotlin.collections.List<ValidationOptionInfo>? = null
 

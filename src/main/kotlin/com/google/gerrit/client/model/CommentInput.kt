@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param enableContext 
+ * @param enableContext Whether to include the source lines around the comment as context in the response.
  */
 
 
 data class CommentInput (
 
+    /* Whether to include the source lines around the comment as context in the response. */
     @SerializedName("enable_context")
     val enableContext: kotlin.Boolean? = null
 

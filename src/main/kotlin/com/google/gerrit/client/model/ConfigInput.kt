@@ -40,21 +40,21 @@ import com.google.gson.annotations.SerializedName
  * @param useSignedOffBy Whether each change must contain a Signed-off-by line from either the author or the uploader in the commit message. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param createNewChangeForAllNotInTarget Whether a new change will be created for every commit not in target branch. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param requireChangeId Whether a valid Change-Id footer in any commit uploaded for review is required. This does not apply to commits pushed directly to a branch or tag. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. This property is deprecated and will be removed in a future release.
- * @param enableSignedPush 
- * @param requireSignedPush 
+ * @param enableSignedPush Whether signed push validation is enabled on the project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param requireSignedPush Whether signed push validation is required on the project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param rejectImplicitMerges Whether a check for implicit merges will be performed when changes are pushed for review or submitted. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
- * @param privateByDefault 
- * @param workInProgressByDefault 
- * @param enableReviewerByEmail 
- * @param matchAuthorToCommitterDate 
+ * @param privateByDefault Whether all new changes in the project are set to private by default. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param workInProgressByDefault Whether all new changes in the project are set to work-in-progress by default. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param enableReviewerByEmail Whether reviewers and CCs that do not have a Gerrit account can be added to a change by their email address. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
+ * @param matchAuthorToCommitterDate Whether a change's author date is changed to match its submit date when the change is submitted. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param rejectEmptyCommit Whether empty commits should be rejected when a change is merged. Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
- * @param skipAddingAuthorAndCommitterAsReviewers 
+ * @param skipAddingAuthorAndCommitterAsReviewers Whether to skip adding the Git commit author and committer as reviewers of a new change. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated.
  * @param maxObjectSizeLimit The max object size limit of this project as a MaxObjectSizeLimitInfo entity. + If set to 0, the max object size limit is removed. + If not set, this setting is not updated.
  * @param submitType The default submit type of the project, can be MERGE_IF_NECESSARY, FAST_FORWARD_ONLY, REBASE_IF_NECESSARY, REBASE_ALWAYS, MERGE_ALWAYS or CHERRY_PICK. + If not set, the submit type is not updated.
  * @param state The state of the project, can be ACTIVE, READ_ONLY or HIDDEN. + Not set if the project state is ACTIVE. + If not set, the project state is not updated.
  * @param pluginConfigValues Plugin configuration values as map which maps the plugin name to a map of parameter names to values.
- * @param commentLinks 
- * @param commitMessage 
+ * @param commentLinks Map of commentlink names to CommentLinkInput entities to add or update on the project. If the given commentlink already exists, it will be updated with the given values, otherwise it will be created. If the value is null, that entry is deleted.
+ * @param commitMessage A commit message for this change.
  */
 
 
@@ -84,9 +84,11 @@ data class ConfigInput (
     @SerializedName("require_change_id")
     val requireChangeId: InheritableBoolean? = null,
 
+    /* Whether signed push validation is enabled on the project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("enable_signed_push")
     val enableSignedPush: InheritableBoolean? = null,
 
+    /* Whether signed push validation is required on the project. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("require_signed_push")
     val requireSignedPush: InheritableBoolean? = null,
 
@@ -94,15 +96,19 @@ data class ConfigInput (
     @SerializedName("reject_implicit_merges")
     val rejectImplicitMerges: InheritableBoolean? = null,
 
+    /* Whether all new changes in the project are set to private by default. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("private_by_default")
     val privateByDefault: InheritableBoolean? = null,
 
+    /* Whether all new changes in the project are set to work-in-progress by default. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("work_in_progress_by_default")
     val workInProgressByDefault: InheritableBoolean? = null,
 
+    /* Whether reviewers and CCs that do not have a Gerrit account can be added to a change by their email address. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("enable_reviewer_by_email")
     val enableReviewerByEmail: InheritableBoolean? = null,
 
+    /* Whether a change's author date is changed to match its submit date when the change is submitted. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("match_author_to_committer_date")
     val matchAuthorToCommitterDate: InheritableBoolean? = null,
 
@@ -110,6 +116,7 @@ data class ConfigInput (
     @SerializedName("reject_empty_commit")
     val rejectEmptyCommit: InheritableBoolean? = null,
 
+    /* Whether to skip adding the Git commit author and committer as reviewers of a new change. + Can be TRUE, FALSE or INHERIT. + If not set, this setting is not updated. */
     @SerializedName("skip_adding_author_and_committer_as_reviewers")
     val skipAddingAuthorAndCommitterAsReviewers: InheritableBoolean? = null,
 
@@ -129,9 +136,11 @@ data class ConfigInput (
     @SerializedName("plugin_config_values")
     val pluginConfigValues: kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, ConfigValue>>? = null,
 
+    /* Map of commentlink names to CommentLinkInput entities to add or update on the project. If the given commentlink already exists, it will be updated with the given values, otherwise it will be created. If the value is null, that entry is deleted. */
     @SerializedName("comment_links")
     val commentLinks: kotlin.collections.Map<kotlin.String, CommentLinkInput>? = null,
 
+    /* A commit message for this change. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null
 

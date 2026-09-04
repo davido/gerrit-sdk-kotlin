@@ -29,40 +29,48 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param ab 
- * @param a 
- * @param b 
- * @param editA 
- * @param editB 
- * @param dueToRebase 
- * @param common 
- * @param skip 
+ * @param ab Content in the file on both sides (unchanged).
+ * @param a Content only in the file on side A (deleted in B).
+ * @param b Content only in the file on side B (added in B).
+ * @param editA Text sections deleted from side A as a DiffIntralineInfo entity.
+ * @param editB Text sections inserted in side B as a DiffIntralineInfo entity.
+ * @param dueToRebase Indicates whether this entry was introduced by a rebase.
+ * @param common Set to true if the region is common according to the requested ignore-whitespace parameter, but a and b contain differing amounts of whitespace. When present and true a and b are used instead of ab.
+ * @param skip count of lines skipped on both sides when the file is too large to include all common lines.
  */
 
 
 data class ContentEntry (
 
+    /* Content in the file on both sides (unchanged). */
     @SerializedName("ab")
     val ab: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Content only in the file on side A (deleted in B). */
     @SerializedName("a")
     val a: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Content only in the file on side B (added in B). */
     @SerializedName("b")
     val b: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Text sections deleted from side A as a DiffIntralineInfo entity. */
     @SerializedName("edit_a")
     val editA: kotlin.collections.List<kotlin.collections.List<kotlin.Int>>? = null,
 
+    /* Text sections inserted in side B as a DiffIntralineInfo entity. */
     @SerializedName("edit_b")
     val editB: kotlin.collections.List<kotlin.collections.List<kotlin.Int>>? = null,
 
+    /* Indicates whether this entry was introduced by a rebase. */
     @SerializedName("due_to_rebase")
     val dueToRebase: kotlin.Boolean? = null,
 
+    /* Set to true if the region is common according to the requested ignore-whitespace parameter, but a and b contain differing amounts of whitespace. When present and true a and b are used instead of ab. */
     @SerializedName("common")
     val common: kotlin.Boolean? = null,
 
+    /* count of lines skipped on both sides when the file is too large to include all common lines. */
     @SerializedName("skip")
     val skip: kotlin.Int? = null
 

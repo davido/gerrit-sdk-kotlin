@@ -29,53 +29,64 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param oldMode 
- * @param newMode 
- * @param oldSha 
- * @param newSha 
- * @param binary 
- * @param oldPath 
- * @param linesInserted 
- * @param linesDeleted 
- * @param sizeDelta 
- * @param propertySize 
+ * @param status The status of the file (\"A\"=Added, \"D\"=Deleted, \"R\"=Renamed, \"C\"=Copied, \"W\"=Rewritten). + Not set if the file was Modified (\"M\").
+ * @param oldMode File mode in octal (e.g. 100644) at the old commit. The first three digits indicate the file type and the last three digits contain the file permission bits. For added files, this field will not be present.
+ * @param newMode File mode in octal (e.g. 100644) at the new commit. The first three digits indicate the file type and the last three digits contain the file permission bits. For deleted files, this field will not be present.
+ * @param oldSha SHA-1 of the file content at the old commit. For added files, this field will not be present.
+ * @param newSha SHA-1 of the file content at the new commit. For deleted files, this field will not be present.
+ * @param binary Whether the file is binary.
+ * @param oldPath The old file path. + Only set if the file was renamed or copied.
+ * @param linesInserted Number of inserted lines. + Not set for binary files or if no lines were inserted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo.
+ * @param linesDeleted Number of deleted lines. + Not set for binary files or if no lines were deleted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo.
+ * @param sizeDelta Number of bytes by which the file size increased/decreased.
+ * @param propertySize File size in bytes.
  * @param diffsTooExpensiveToCompute 
  */
 
 
 data class CommonFileInfo (
 
+    /* The status of the file (\"A\"=Added, \"D\"=Deleted, \"R\"=Renamed, \"C\"=Copied, \"W\"=Rewritten). + Not set if the file was Modified (\"M\"). */
     @SerializedName("status")
     val status: kotlin.String? = null,
 
+    /* File mode in octal (e.g. 100644) at the old commit. The first three digits indicate the file type and the last three digits contain the file permission bits. For added files, this field will not be present. */
     @SerializedName("old_mode")
     val oldMode: kotlin.Int? = null,
 
+    /* File mode in octal (e.g. 100644) at the new commit. The first three digits indicate the file type and the last three digits contain the file permission bits. For deleted files, this field will not be present. */
     @SerializedName("new_mode")
     val newMode: kotlin.Int? = null,
 
+    /* SHA-1 of the file content at the old commit. For added files, this field will not be present. */
     @SerializedName("old_sha")
     val oldSha: kotlin.String? = null,
 
+    /* SHA-1 of the file content at the new commit. For deleted files, this field will not be present. */
     @SerializedName("new_sha")
     val newSha: kotlin.String? = null,
 
+    /* Whether the file is binary. */
     @SerializedName("binary")
     val binary: kotlin.Boolean? = null,
 
+    /* The old file path. + Only set if the file was renamed or copied. */
     @SerializedName("old_path")
     val oldPath: kotlin.String? = null,
 
+    /* Number of inserted lines. + Not set for binary files or if no lines were inserted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo. */
     @SerializedName("lines_inserted")
     val linesInserted: kotlin.Int? = null,
 
+    /* Number of deleted lines. + Not set for binary files or if no lines were deleted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo. */
     @SerializedName("lines_deleted")
     val linesDeleted: kotlin.Int? = null,
 
+    /* Number of bytes by which the file size increased/decreased. */
     @SerializedName("size_delta")
     val sizeDelta: kotlin.Int? = null,
 
+    /* File size in bytes. */
     @SerializedName("size")
     val propertySize: kotlin.Int? = null,
 

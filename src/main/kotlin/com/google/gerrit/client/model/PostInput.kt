@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param restorePath 
- * @param oldPath 
- * @param newPath 
+ * @param restorePath Path to file to restore.
+ * @param oldPath Old path to file to rename.
+ * @param newPath New path to file to rename.
  */
 
 
 data class PostInput (
 
+    /* Path to file to restore. */
     @SerializedName("restore_path")
     val restorePath: kotlin.String? = null,
 
+    /* Old path to file to rename. */
     @SerializedName("old_path")
     val oldPath: kotlin.String? = null,
 
+    /* New path to file to rename. */
     @SerializedName("new_path")
     val newPath: kotlin.String? = null
 

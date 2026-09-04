@@ -30,10 +30,10 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param total Total number of current tasks.
- * @param stopping 
+ * @param stopping Number of currently stopping tasks.
  * @param running Number of currently running tasks.
- * @param parked 
- * @param starting 
+ * @param parked Number of currently parked tasks.
+ * @param starting Number of currently starting tasks.
  * @param ready Number of currently ready tasks.
  * @param sleeping Number of currently sleeping tasks.
  */
@@ -45,6 +45,7 @@ data class TaskSummaryInfo (
     @SerializedName("total")
     val total: kotlin.Int? = null,
 
+    /* Number of currently stopping tasks. */
     @SerializedName("stopping")
     val stopping: kotlin.Int? = null,
 
@@ -52,9 +53,11 @@ data class TaskSummaryInfo (
     @SerializedName("running")
     val running: kotlin.Int? = null,
 
+    /* Number of currently parked tasks. */
     @SerializedName("parked")
     val parked: kotlin.Int? = null,
 
+    /* Number of currently starting tasks. */
     @SerializedName("starting")
     val starting: kotlin.Int? = null,
 

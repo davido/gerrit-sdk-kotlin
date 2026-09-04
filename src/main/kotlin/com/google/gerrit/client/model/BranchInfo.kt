@@ -31,7 +31,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param actions 
+ * @param actions Actions the caller might be able to perform on this branch, as a map of action name to ActionInfo entities.
  * @param webLinks Links to the branch in external sites as a list of WebLinkInfo entries.
  * @param ref The ref of the branch.
  * @param revision The revision to which the branch points.
@@ -41,6 +41,7 @@ import com.google.gson.annotations.SerializedName
 
 data class BranchInfo (
 
+    /* Actions the caller might be able to perform on this branch, as a map of action name to ActionInfo entities. */
     @SerializedName("actions")
     val actions: kotlin.collections.Map<kotlin.String, ActionInfo>? = null,
 

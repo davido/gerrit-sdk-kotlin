@@ -32,7 +32,7 @@ import com.google.gson.annotations.SerializedName
  * @param status Whether the change matches the change query expression.
  * @param passingAtoms List of passing leaf atoms (atoms that match the change).
  * @param failingAtoms List of failing leaf atoms (atoms that do not match the change).
- * @param atomExplanations 
+ * @param atomExplanations Explanations for why atoms pass or fail. Explanations are only available for a few atoms, for most atoms no explanation is provided. Not set if none of the atoms has an explanation.
  */
 
 
@@ -50,6 +50,7 @@ data class EvaluateChangeQueryExpressionResultInfo (
     @SerializedName("failing_atoms")
     val failingAtoms: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Explanations for why atoms pass or fail. Explanations are only available for a few atoms, for most atoms no explanation is provided. Not set if none of the atoms has an explanation. */
     @SerializedName("atom_explanations")
     val atomExplanations: kotlin.collections.Map<kotlin.String, kotlin.String>? = null
 

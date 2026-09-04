@@ -31,7 +31,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param waitForMerge 
+ * @param waitForMerge Deprecated and no longer used. Kept for backwards compatibility.
  * @param onBehalfOf If set, submit the change on behalf of the given user. The value may take any format accepted by the accounts REST API. Using this option requires Submit (On Behalf Of) permission on the branch.
  * @param notify Notify handling that defines to whom email notifications should be sent after the change is submitted. + Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. + If not set, the default is ALL. + Ignored if a post approval diff is present (i.e.
  * @param notifyDetails Additional information about whom to notify about the update as a map of recipient type to NotifyInfo entity.
@@ -40,6 +40,7 @@ import com.google.gson.annotations.SerializedName
 
 data class SubmitInput (
 
+    /* Deprecated and no longer used. Kept for backwards compatibility. */
     @SerializedName("wait_for_merge")
     val waitForMerge: kotlin.Boolean? = null,
 

@@ -31,7 +31,7 @@ import com.google.gson.annotations.SerializedName
  *
  * @param email The email address.
  * @param preferred Whether this is the preferred email address of the user.
- * @param avatar 
+ * @param avatar Whether this email address is the one used to display the user's avatar.
  * @param pendingConfirmation Set true if the user must confirm control of the email address by following a verification link before Gerrit will permit use of this address.
  */
 
@@ -46,6 +46,7 @@ data class EmailInfo (
     @SerializedName("preferred")
     val preferred: kotlin.Boolean? = null,
 
+    /* Whether this email address is the one used to display the user's avatar. */
     @SerializedName("avatar")
     val avatar: kotlin.Boolean? = null,
 

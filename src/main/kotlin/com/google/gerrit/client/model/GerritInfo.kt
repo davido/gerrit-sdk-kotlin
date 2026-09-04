@@ -29,13 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param allProjects 
- * @param allUsers 
+ * @param allProjects The name of the All-Projects root project.
+ * @param allUsers The name of the All-Users project, in which per-user data such as account preferences and watched projects is stored.
  * @param docSearch Whether documentation search is available.
  * @param docUrl Custom base URL where Gerrit server documentation is located. (Documentation may still be available at /Documentation relative to the Gerrit base path even if this value is unset.)
  * @param editGpgKeys Whether to enable the web UI for editing GPG keys.
  * @param reportBugUrl URL to report bugs.
- * @param primaryWeblinkName 
+ * @param primaryWeblinkName The name of the configured primary web link (gerrit.primaryWeblinkName), if one is set.
  * @param instanceId Short identifier for this Gerrit installation.
  * @param defaultBranch Name of the default branch to use on the project creation.
  * @param projectStatePredicateEnabled Whether the instance supports filtering projects by state.
@@ -44,9 +44,11 @@ import com.google.gson.annotations.SerializedName
 
 data class GerritInfo (
 
+    /* The name of the All-Projects root project. */
     @SerializedName("all_projects")
     val allProjects: kotlin.String? = null,
 
+    /* The name of the All-Users project, in which per-user data such as account preferences and watched projects is stored. */
     @SerializedName("all_users")
     val allUsers: kotlin.String? = null,
 
@@ -66,6 +68,7 @@ data class GerritInfo (
     @SerializedName("report_bug_url")
     val reportBugUrl: kotlin.String? = null,
 
+    /* The name of the configured primary web link (gerrit.primaryWeblinkName), if one is set. */
     @SerializedName("primary_weblink_name")
     val primaryWeblinkName: kotlin.String? = null,
 

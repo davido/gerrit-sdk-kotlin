@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param content 
- * @param fileMode 
- * @param delete 
- * @param renameFrom 
+ * @param content The new file content, base64-encoded, for a create or update. For a 120000 (symlink) entry, the decoded content is the symlink target path.
+ * @param fileMode The file mode in octal format (100644 regular file, 100755 executable, 120000 symlink). If not set, new files are created as 100644 and existing files keep their mode.
+ * @param delete If true, deletes the file at this path.
+ * @param renameFrom Source path to rename from. The file at rename_from is moved to this entry's path.
  */
 
 
 data class FileChange (
 
+    /* The new file content, base64-encoded, for a create or update. For a 120000 (symlink) entry, the decoded content is the symlink target path. */
     @SerializedName("content")
     val content: kotlin.String? = null,
 
+    /* The file mode in octal format (100644 regular file, 100755 executable, 120000 symlink). If not set, new files are created as 100644 and existing files keep their mode. */
     @SerializedName("file_mode")
     val fileMode: kotlin.Int? = null,
 
+    /* If true, deletes the file at this path. */
     @SerializedName("delete")
     val delete: kotlin.Boolean? = null,
 
+    /* Source path to rename from. The file at rename_from is moved to this entry's path. */
     @SerializedName("rename_from")
     val renameFrom: kotlin.String? = null
 

@@ -46,15 +46,15 @@ import com.google.gson.annotations.SerializedName
  * @param hideTopMenu If true the top menu header and site header are hidden.
  * @param autoHideDiffTableHeader If true the diff table header is automatically hidden when scrolling down more than half of a page.
  * @param hideLineNumbers If true the line numbers are hidden.
- * @param renderEntireFile 
- * @param hideEmptyPane 
+ * @param renderEntireFile Whether the whole file should be rendered instead of only the changed parts.
+ * @param hideEmptyPane Whether empty panes should be hidden. The left pane is empty when a file was added; the right pane is empty when a file was deleted.
  * @param matchBrackets Whether matching brackets should be highlighted.
  * @param lineWrapping Whether to enable line wrapping or not.
- * @param responsiveMode 
+ * @param responsiveMode The responsive-rendering mode of the diff view. Allowed values are NONE, SHRINK_ONLY and FULL_RESPONSIVE.
  * @param ignoreWhitespace Whether whitespace changes should be ignored and if yes, which whitespace changes should be ignored. + Allowed values are IGNORE_NONE, IGNORE_TRAILING, IGNORE_LEADING_AND_TRAILING, IGNORE_ALL.
  * @param retainHeader Whether the header that is displayed above the patch (that either shows the commit message, the diff preferences, the patch sets or the files) should be retained on file switch.
  * @param skipDeleted Whether deleted files should be skipped on file switch.
- * @param skipUnchanged 
+ * @param skipUnchanged Whether files without changes are skipped when switching between files.
  * @param skipUncommented Whether uncommented files should be skipped on file switch.
  */
 
@@ -121,9 +121,11 @@ data class DiffPreferencesInfo (
     @SerializedName("hide_line_numbers")
     val hideLineNumbers: kotlin.Boolean? = null,
 
+    /* Whether the whole file should be rendered instead of only the changed parts. */
     @SerializedName("render_entire_file")
     val renderEntireFile: kotlin.Boolean? = null,
 
+    /* Whether empty panes should be hidden. The left pane is empty when a file was added; the right pane is empty when a file was deleted. */
     @SerializedName("hide_empty_pane")
     val hideEmptyPane: kotlin.Boolean? = null,
 
@@ -135,6 +137,7 @@ data class DiffPreferencesInfo (
     @SerializedName("line_wrapping")
     val lineWrapping: kotlin.Boolean? = null,
 
+    /* The responsive-rendering mode of the diff view. Allowed values are NONE, SHRINK_ONLY and FULL_RESPONSIVE. */
     @SerializedName("responsive_mode")
     val responsiveMode: ResponsiveMode? = null,
 
@@ -150,6 +153,7 @@ data class DiffPreferencesInfo (
     @SerializedName("skip_deleted")
     val skipDeleted: kotlin.Boolean? = null,
 
+    /* Whether files without changes are skipped when switching between files. */
     @SerializedName("skip_unchanged")
     val skipUnchanged: kotlin.Boolean? = null,
 

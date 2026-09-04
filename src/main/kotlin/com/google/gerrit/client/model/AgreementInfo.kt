@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param description 
- * @param url 
- * @param autoVerifyGroup 
+ * @param name The unique name of the contributor agreement.
+ * @param description The description of the contributor agreement.
+ * @param url The URL of the contributor agreement.
+ * @param autoVerifyGroup The group to which a user that signs the contributor agreement online is added automatically as a GroupInfo entity. If not set, users cannot sign the contributor agreement online.
  */
 
 
 data class AgreementInfo (
 
+    /* The unique name of the contributor agreement. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The description of the contributor agreement. */
     @SerializedName("description")
     val description: kotlin.String? = null,
 
+    /* The URL of the contributor agreement. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* The group to which a user that signs the contributor agreement online is added automatically as a GroupInfo entity. If not set, users cannot sign the contributor agreement online. */
     @SerializedName("auto_verify_group")
     val autoVerifyGroup: GroupInfo? = null
 

@@ -29,24 +29,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param url 
- * @param name 
- * @param target 
- * @param id 
+ * @param url The URL of the menu item link.
+ * @param name The name of the menu item.
+ * @param target Target attribute of the menu item link.
+ * @param id The id attribute of the menu item link.
  */
 
 
 data class MenuItem (
 
+    /* The URL of the menu item link. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* The name of the menu item. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Target attribute of the menu item link. */
     @SerializedName("target")
     val target: kotlin.String? = null,
 
+    /* The id attribute of the menu item link. */
     @SerializedName("id")
     val id: kotlin.String? = null
 

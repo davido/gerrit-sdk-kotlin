@@ -31,32 +31,38 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param input 
- * @param error 
- * @param confirm 
- * @param reviewers 
- * @param ccs 
- * @param removed 
+ * @param input Value of the reviewer field from ReviewerInput set while adding the reviewer.
+ * @param error Error message explaining why the reviewer could not be added. + If a group was specified in the input and an error is returned, it means that none of the members were added as reviewer.
+ * @param confirm Whether adding the reviewer requires confirmation.
+ * @param reviewers The newly added reviewers as a list of ReviewerInfo entities.
+ * @param ccs The newly CCed accounts as a list of AccountInfo entities. This field will only appear if the requested state for the reviewer was CC.
+ * @param removed The newly removed accounts as a list of AccountInfo entities. This field will only appear if the requested state for the reviewer was REMOVED.
  */
 
 
 data class ReviewerResult (
 
+    /* Value of the reviewer field from ReviewerInput set while adding the reviewer. */
     @SerializedName("input")
     val input: kotlin.String? = null,
 
+    /* Error message explaining why the reviewer could not be added. + If a group was specified in the input and an error is returned, it means that none of the members were added as reviewer. */
     @SerializedName("error")
     val error: kotlin.String? = null,
 
+    /* Whether adding the reviewer requires confirmation. */
     @SerializedName("confirm")
     val confirm: kotlin.Boolean? = null,
 
+    /* The newly added reviewers as a list of ReviewerInfo entities. */
     @SerializedName("reviewers")
     val reviewers: kotlin.collections.List<ReviewerInfo>? = null,
 
+    /* The newly CCed accounts as a list of AccountInfo entities. This field will only appear if the requested state for the reviewer was CC. */
     @SerializedName("ccs")
     val ccs: kotlin.collections.List<AccountInfo>? = null,
 
+    /* The newly removed accounts as a list of AccountInfo entities. This field will only appear if the requested state for the reviewer was REMOVED. */
     @SerializedName("removed")
     val removed: AccountInfo? = null
 

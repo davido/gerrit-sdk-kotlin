@@ -30,7 +30,7 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param name The name of the action.
- * @param parametersPlaceholder 
+ * @param parametersPlaceholder Placeholder text shown for the action's parameters in the UI.
  */
 
 
@@ -40,6 +40,7 @@ data class FlowActionTypeInfo (
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* Placeholder text shown for the action's parameters in the UI. */
     @SerializedName("parameters_placeholder")
     val parametersPlaceholder: kotlin.String? = null
 

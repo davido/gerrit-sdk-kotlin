@@ -33,7 +33,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param authType 
+ * @param authType The authentication type that is configured on the server; see auth.type.
  * @param useContributorAgreements Whether contributor agreements are required.
  * @param contributorAgreements List of contributor agreements as ContributorAgreementInfo entities.
  * @param editableAccountFields List of account fields that are editable. Possible values are FULL_NAME, USER_NAME and REGISTER_NEW_EMAIL.
@@ -51,6 +51,7 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthInfo (
 
+    /* The authentication type that is configured on the server; see auth.type. */
     @SerializedName("auth_type")
     val authType: AuthType? = null,
 

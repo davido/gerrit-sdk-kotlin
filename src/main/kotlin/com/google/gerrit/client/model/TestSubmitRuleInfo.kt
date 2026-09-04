@@ -30,36 +30,43 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param errorMessage 
- * @param ok 
- * @param reject 
- * @param need 
- * @param may 
- * @param impossible 
+ * @param status OK, the change can be submitted. + NOT_READY, additional labels are required before submit. + CLOSED, closed changes cannot be submitted. + RULE_ERROR, rule code failed with an error.
+ * @param errorMessage When status is RULE_ERROR this message provides some text describing the failure of the rule predicate.
+ * @param ok Map of labels that are approved; an AccountInfo identifies the voter chosen by the rule.
+ * @param reject Map of labels that are preventing submit; AccountInfo identifies voter.
+ * @param need Map of labels that need to be given to submit. The value is currently an empty object.
+ * @param may Map of labels that can be used, but do not affect submit. AccountInfo identifies voter, if the label has been applied.
+ * @param impossible Map of labels that should have been in need but cannot be used by any user because of access restrictions. The value is currently an empty object.
  */
 
 
 data class TestSubmitRuleInfo (
 
+    /* OK, the change can be submitted. + NOT_READY, additional labels are required before submit. + CLOSED, closed changes cannot be submitted. + RULE_ERROR, rule code failed with an error. */
     @SerializedName("status")
     val status: kotlin.String? = null,
 
+    /* When status is RULE_ERROR this message provides some text describing the failure of the rule predicate. */
     @SerializedName("error_message")
     val errorMessage: kotlin.String? = null,
 
+    /* Map of labels that are approved; an AccountInfo identifies the voter chosen by the rule. */
     @SerializedName("ok")
     val ok: kotlin.collections.Map<kotlin.String, AccountInfo>? = null,
 
+    /* Map of labels that are preventing submit; AccountInfo identifies voter. */
     @SerializedName("reject")
     val reject: kotlin.collections.Map<kotlin.String, AccountInfo>? = null,
 
+    /* Map of labels that need to be given to submit. The value is currently an empty object. */
     @SerializedName("need")
     val need: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
 
+    /* Map of labels that can be used, but do not affect submit. AccountInfo identifies voter, if the label has been applied. */
     @SerializedName("may")
     val may: kotlin.collections.Map<kotlin.String, AccountInfo>? = null,
 
+    /* Map of labels that should have been in need but cannot be used by any user because of access restrictions. The value is currently an empty object. */
     @SerializedName("impossible")
     val impossible: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null
 

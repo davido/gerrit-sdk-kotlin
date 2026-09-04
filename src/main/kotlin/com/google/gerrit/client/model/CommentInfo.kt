@@ -52,7 +52,7 @@ import com.google.gson.annotations.SerializedName
  * @param message The comment message.
  * @param commitId Hex commit SHA-1 (40 characters string) of the commit of the patchset to which this comment applies.
  * @param fixSuggestions Suggested fixes for this comment as a list of FixSuggestionInfo entities.
- * @param isAi 
+ * @param isAi Whether the comment was created by an AI agent. Not set if false.
  */
 
 
@@ -130,6 +130,7 @@ data class CommentInfo (
     @SerializedName("fix_suggestions")
     val fixSuggestions: kotlin.collections.List<FixSuggestionInfo>? = null,
 
+    /* Whether the comment was created by an AI agent. Not set if false. */
     @SerializedName("is_ai")
     val isAi: kotlin.Boolean? = null
 

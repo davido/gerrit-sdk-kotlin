@@ -962,8 +962,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/metrics
-     * 
-     * 
+     * List Metrics
+     * Lists the metrics of the server, returning a map of metric name to a MetricJson entity.
      * @param dataOnly  (optional)
      * @param prefix  (optional)
      * @return kotlin.collections.Map<kotlin.String, MetricJson>
@@ -995,8 +995,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/metrics
-     * 
-     * 
+     * List Metrics
+     * Lists the metrics of the server, returning a map of metric name to a MetricJson entity.
      * @param dataOnly  (optional)
      * @param prefix  (optional)
      * @return ApiResponse<kotlin.collections.Map<kotlin.String, MetricJson>?>
@@ -1046,8 +1046,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/metrics/{metric-id}
-     * 
-     * 
+     * Get Metric
+     * Retrieves a single metric of the server. The metric name is used as the \\{metric-id\\} and must be URL-encoded because it may contain slashes.
      * @param metricId 
      * @param dataOnly  (optional)
      * @return MetricJson
@@ -1079,8 +1079,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/metrics/{metric-id}
-     * 
-     * 
+     * Get Metric
+     * Retrieves a single metric of the server. The metric name is used as the \\{metric-id\\} and must be URL-encoded because it may contain slashes.
      * @param metricId 
      * @param dataOnly  (optional)
      * @return ApiResponse<MetricJson?>

@@ -30,24 +30,28 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param contentType 
- * @param lines 
- * @param webLinks 
+ * @param name The name of the file.
+ * @param contentType The content type of the file. For the commit message and merge list the value is text/x-gerrit-commit-message and text/x-gerrit-merge-list respectively. For git links the value is x-git/gitlink. For symlinks the value is x-git/symlink. For regular files the value is the file mime type (e.g.
+ * @param lines The total number of lines in the file.
+ * @param webLinks Links to the file in external sites as a list of WebLinkInfo entries.
  */
 
 
 data class FileMeta (
 
+    /* The name of the file. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The content type of the file. For the commit message and merge list the value is text/x-gerrit-commit-message and text/x-gerrit-merge-list respectively. For git links the value is x-git/gitlink. For symlinks the value is x-git/symlink. For regular files the value is the file mime type (e.g. */
     @SerializedName("content_type")
     val contentType: kotlin.String? = null,
 
+    /* The total number of lines in the file. */
     @SerializedName("lines")
     val lines: kotlin.Int? = null,
 
+    /* Links to the file in external sites as a list of WebLinkInfo entries. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<WebLinkInfo>? = null
 

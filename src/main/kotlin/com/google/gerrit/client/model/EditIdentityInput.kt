@@ -30,20 +30,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param email 
- * @param type 
+ * @param name The name of the author/committer. If not specified, the existing name will be used.
+ * @param email The email of the author/committer. If not specified, the existing email will be used.
+ * @param type Type of the identity being edited. Must be either AUTHOR or COMMITTER.
  */
 
 
 data class EditIdentityInput (
 
+    /* The name of the author/committer. If not specified, the existing name will be used. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* The email of the author/committer. If not specified, the existing email will be used. */
     @SerializedName("email")
     val email: kotlin.String? = null,
 
+    /* Type of the identity being edited. Must be either AUTHOR or COMMITTER. */
     @SerializedName("type")
     val type: ChangeEditIdentityType? = null
 
