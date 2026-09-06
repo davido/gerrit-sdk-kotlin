@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param oneGroup 
- * @param groups 
+ * @param oneGroup The id of one group that should be included or deleted.
+ * @param groups A list of group ids that identify the groups that should be included or deleted.
  */
 
 
 data class AddSubgroupsInput (
 
+    /* The id of one group that should be included or deleted. */
     @SerializedName("_one_group")
     val oneGroup: kotlin.String? = null,
 
+    /* A list of group ids that identify the groups that should be included or deleted. */
     @SerializedName("groups")
     val groups: kotlin.collections.List<kotlin.String>? = null
 

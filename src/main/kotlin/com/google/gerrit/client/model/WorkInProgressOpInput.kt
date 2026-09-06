@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param notify 
- * @param message 
+ * @param notify Notify handling that defines to whom email notifications should be sent after the change is set to WorkInProgress/ReadyForReview. Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL.
+ * @param message Message to be added as a review comment to the change being set WorkInProgress/ReadyForReview.
  */
 
 
 data class WorkInProgressOpInput (
 
+    /* Notify handling that defines to whom email notifications should be sent after the change is set to WorkInProgress/ReadyForReview. Allowed values are NONE, OWNER, OWNER_REVIEWERS and ALL. */
     @SerializedName("notify")
     val notify: NotifyHandling? = null,
 
+    /* Message to be added as a review comment to the change being set WorkInProgress/ReadyForReview. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
+ * @param name The new full name of the account. + If not set or if set to an empty string, the account name is deleted.
  */
 
 
 data class NameInput (
 
+    /* The new full name of the account. + If not set or if set to an empty string, the account name is deleted. */
     @SerializedName("name")
     val name: kotlin.String? = null
 

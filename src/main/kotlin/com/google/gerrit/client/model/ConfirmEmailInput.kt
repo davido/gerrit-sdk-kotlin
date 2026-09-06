@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param token 
+ * @param token The token that was sent by mail to a newly registered email address.
  */
 
 
 data class ConfirmEmailInput (
 
+    /* The token that was sent by mail to a newly registered email address. */
     @SerializedName("token")
     val token: kotlin.String? = null
 

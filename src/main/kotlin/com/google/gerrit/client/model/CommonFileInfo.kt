@@ -40,7 +40,7 @@ import com.google.gson.annotations.SerializedName
  * @param linesDeleted Number of deleted lines. + Not set for binary files or if no lines were deleted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo.
  * @param sizeDelta Number of bytes by which the file size increased/decreased.
  * @param propertySize File size in bytes.
- * @param diffsTooExpensiveToCompute 
+ * @param diffsTooExpensiveToCompute Whether the diff of the file is too expensive to compute; when set the diff content is omitted.
  */
 
 
@@ -90,6 +90,7 @@ data class CommonFileInfo (
     @SerializedName("size")
     val propertySize: kotlin.Int? = null,
 
+    /* Whether the diff of the file is too expensive to compute; when set the diff content is omitted. */
     @SerializedName("diffs_too_expensive_to_compute")
     val diffsTooExpensiveToCompute: kotlin.Boolean? = null
 

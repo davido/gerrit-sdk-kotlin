@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param `value` 
- * @param propertyValues 
+ * @param `value` The new single value for the configuration parameter.
+ * @param propertyValues The new list of values for a multi-valued configuration parameter.
  */
 
 
 data class ConfigValue (
 
+    /* The new single value for the configuration parameter. */
     @SerializedName("value")
     val `value`: kotlin.String? = null,
 
+    /* The new list of values for a multi-valued configuration parameter. */
     @SerializedName("values")
     val propertyValues: kotlin.collections.List<kotlin.String>? = null
 

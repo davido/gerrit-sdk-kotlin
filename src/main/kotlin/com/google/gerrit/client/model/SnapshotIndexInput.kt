@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
+ * @param id A string ID that will be used as the folder name containing the snapshots. Defaults to current timestamp.
  */
 
 
 data class SnapshotIndexInput (
 
+    /* A string ID that will be used as the folder name containing the snapshots. Defaults to current timestamp. */
     @SerializedName("id")
     val id: kotlin.String? = null
 

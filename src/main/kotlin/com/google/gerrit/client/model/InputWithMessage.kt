@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
+ * @param message The message to use.
  */
 
 
 data class InputWithMessage (
 
+    /* The message to use. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param oneMember 
- * @param members 
+ * @param oneMember The id of one account that should be added or deleted.
+ * @param members A list of account ids that identify the accounts that should be added or deleted.
  */
 
 
 data class AddMembersInput (
 
+    /* The id of one account that should be added or deleted. */
     @SerializedName("_one_member")
     val oneMember: kotlin.String? = null,
 
+    /* A list of account ids that identify the accounts that should be added or deleted. */
     @SerializedName("members")
     val members: kotlin.collections.List<kotlin.String>? = null
 

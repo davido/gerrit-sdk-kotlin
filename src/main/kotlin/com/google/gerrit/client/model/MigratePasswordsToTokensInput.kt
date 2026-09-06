@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param lifetime 
+ * @param lifetime Lifetime of the migrated token.
  */
 
 
 data class MigratePasswordsToTokensInput (
 
+    /* Lifetime of the migrated token. */
     @SerializedName("lifetime")
     val lifetime: kotlin.String? = null
 

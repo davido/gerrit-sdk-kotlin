@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param enableDeleteGroup 
+ * @param enableDeleteGroup gerrit.config.
  */
 
 
 data class GroupsInfo (
 
+    /* gerrit.config. */
     @SerializedName("enable_delete_group")
     val enableDeleteGroup: kotlin.Boolean? = null
 

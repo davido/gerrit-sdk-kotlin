@@ -62,7 +62,7 @@ import com.google.gson.annotations.SerializedName
  * @param submitted The timestamp of when the change was submitted.
  * @param submitter The user who submitted the change, as an AccountInfo entity.
  * @param starred Whether the calling user has starred this change. Only set if requested.
- * @param stars 
+ * @param stars List of star labels that are applied by the calling user to this change.
  * @param reviewed Whether the change was reviewed by the calling user. Only set if reviewed is requested.
  * @param submitType The submit type of the change. + Not set for merged changes.
  * @param mergeable Whether the change is mergeable. + Only set for open changes if change.mergeabilityComputationBehavior is API_REF_UPDATED_AND_CHANGE_REINDEX.
@@ -179,6 +179,7 @@ data class ChangeInfo (
     @SerializedName("starred")
     val starred: kotlin.Boolean? = null,
 
+    /* List of star labels that are applied by the calling user to this change. */
     @SerializedName("stars")
     val stars: kotlin.collections.List<kotlin.String>? = null,
 

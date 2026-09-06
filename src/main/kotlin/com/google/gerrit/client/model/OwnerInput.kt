@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param owner 
+ * @param owner The id of the group that should own this group.
  */
 
 
 data class OwnerInput (
 
+    /* The id of the group that should own this group. */
     @SerializedName("owner")
     val owner: kotlin.String? = null
 

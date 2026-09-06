@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param tags 
+ * @param tags A list of tag names that identify the tags that should be deleted.
  */
 
 
 data class DeleteTagsInput (
 
+    /* A list of tag names that identify the tags that should be deleted. */
     @SerializedName("tags")
     val tags: kotlin.collections.List<kotlin.String>? = null
 

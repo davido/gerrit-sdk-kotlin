@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param url 
- * @param raw 
+ * @param url URL to the plugin jar.
+ * @param raw The raw plugin content (the plugin jar) uploaded in the request body, as an alternative to url.
  */
 
 
 data class InstallPluginInput (
 
+    /* URL to the plugin jar. */
     @SerializedName("url")
     val url: kotlin.String? = null,
 
+    /* The raw plugin content (the plugin jar) uploaded in the request body, as an alternative to url. */
     @SerializedName("raw")
     val raw: kotlin.Any? = null
 

@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param lineNumber 
- * @param contextLine 
+ * @param lineNumber The line number of the source line.
+ * @param contextLine The text of the context line.
  */
 
 
 data class ContextLineInfo (
 
+    /* The line number of the source line. */
     @SerializedName("line_number")
     val lineNumber: kotlin.Int? = null,
 
+    /* The text of the context line. */
     @SerializedName("context_line")
     val contextLine: kotlin.String? = null
 

@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commits 
- * @param reason 
+ * @param commits List of commits to be banned.
+ * @param reason Reason for banning the commits.
  */
 
 
 data class BanCommitInput (
 
+    /* List of commits to be banned. */
     @SerializedName("commits")
     val commits: kotlin.collections.List<kotlin.String>? = null,
 
+    /* Reason for banning the commits. */
     @SerializedName("reason")
     val reason: kotlin.String? = null
 

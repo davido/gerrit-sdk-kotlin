@@ -31,16 +31,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param visibility 
- * @param defaultDisplayName 
+ * @param visibility Visibility setting for accounts.
+ * @param defaultDisplayName The default strategy for choosing the display name in the UI, see also gerrit.config.
  */
 
 
 data class AccountsInfo (
 
+    /* Visibility setting for accounts. */
     @SerializedName("visibility")
     val visibility: AccountVisibility? = null,
 
+    /* The default strategy for choosing the display name in the UI, see also gerrit.config. */
     @SerializedName("default_display_name")
     val defaultDisplayName: AccountDefaultDisplayName? = null
 

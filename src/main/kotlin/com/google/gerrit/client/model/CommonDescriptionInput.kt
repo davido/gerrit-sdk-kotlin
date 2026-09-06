@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param description 
+ * @param description The description text.
  */
 
 
 data class CommonDescriptionInput (
 
+    /* The description text. */
     @SerializedName("description")
     val description: kotlin.String? = null
 

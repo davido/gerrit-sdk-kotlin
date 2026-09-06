@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param message 
+ * @param message New commit message.
  */
 
 
 data class EditMessageInput (
 
+    /* New commit message. */
     @SerializedName("message")
     val message: kotlin.String? = null
 

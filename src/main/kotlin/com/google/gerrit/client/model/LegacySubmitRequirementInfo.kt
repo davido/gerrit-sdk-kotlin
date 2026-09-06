@@ -29,20 +29,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
- * @param fallbackText 
- * @param type 
+ * @param status The status of the submit requirement, for example OK or NOT_READY.
+ * @param fallbackText A human readable description of the submit requirement.
+ * @param type The type of the submit requirement.
  */
 
 
 data class LegacySubmitRequirementInfo (
 
+    /* The status of the submit requirement, for example OK or NOT_READY. */
     @SerializedName("status")
     val status: kotlin.String? = null,
 
+    /* A human readable description of the submit requirement. */
     @SerializedName("fallback_text")
     val fallbackText: kotlin.String? = null,
 
+    /* The type of the submit requirement. */
     @SerializedName("type")
     val type: kotlin.String? = null
 

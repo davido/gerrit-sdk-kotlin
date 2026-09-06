@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param reuse 
- * @param notifyListeners 
+ * @param reuse Whether existing documents may be reused instead of being recomputed while reindexing.
+ * @param notifyListeners Whether index listeners should be notified about the reindex progress.
  */
 
 
 data class ReindexIndexVersionInput (
 
+    /* Whether existing documents may be reused instead of being recomputed while reindexing. */
     @SerializedName("reuse")
     val reuse: kotlin.Boolean? = null,
 
+    /* Whether index listeners should be notified about the reindex progress. */
     @SerializedName("notify_listeners")
     val notifyListeners: kotlin.Boolean? = null
 

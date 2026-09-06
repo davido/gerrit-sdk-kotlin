@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param changes 
+ * @param changes A list of changes (Change-Id or Change-Number) that identify the changes that should be deleted.
  */
 
 
 data class DeleteChangesInput (
 
+    /* A list of changes (Change-Id or Change-Number) that identify the changes that should be deleted. */
     @SerializedName("changes")
     val changes: kotlin.collections.List<kotlin.String>? = null
 

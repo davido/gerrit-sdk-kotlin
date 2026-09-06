@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param branches 
+ * @param branches A list of branch names that identify the branches that should be deleted.
  */
 
 
 data class DeleteBranchesInput (
 
+    /* A list of branch names that identify the branches that should be deleted. */
     @SerializedName("branches")
     val branches: kotlin.collections.List<kotlin.String>? = null
 

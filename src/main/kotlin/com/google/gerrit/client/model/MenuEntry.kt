@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
- * @param items 
+ * @param name Name of the top menu entry.
+ * @param items List of menu items.
  */
 
 
 data class MenuEntry (
 
+    /* Name of the top menu entry. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
+    /* List of menu items. */
     @SerializedName("items")
     val items: kotlin.collections.List<MenuItem>? = null
 

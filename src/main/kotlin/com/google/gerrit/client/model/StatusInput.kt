@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param status 
+ * @param status The new status of the account. + If not set or if set to an empty string, the account status is deleted.
  */
 
 
 data class StatusInput (
 
+    /* The new status of the account. + If not set or if set to an empty string, the account status is deleted. */
     @SerializedName("status")
     val status: kotlin.String? = null
 

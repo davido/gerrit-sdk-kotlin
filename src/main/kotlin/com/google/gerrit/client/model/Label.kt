@@ -31,20 +31,23 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param label 
- * @param status 
- * @param appliedBy 
+ * @param label The name of the label.
+ * @param status The status of the label, one of OK, REJECT, NEED, MAY or IMPOSSIBLE.
+ * @param appliedBy The AccountInfo of the user that applied the vote to the label.
  */
 
 
 data class Label (
 
+    /* The name of the label. */
     @SerializedName("label")
     val label: kotlin.String? = null,
 
+    /* The status of the label, one of OK, REJECT, NEED, MAY or IMPOSSIBLE. */
     @SerializedName("status")
     val status: LabelStatus? = null,
 
+    /* The AccountInfo of the user that applied the vote to the label. */
     @SerializedName("applied_by")
     val appliedBy: AccountInfo? = null
 

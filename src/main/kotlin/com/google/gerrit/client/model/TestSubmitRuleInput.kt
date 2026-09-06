@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param rule 
- * @param filters 
+ * @param rule Prolog code to execute instead of the code in refs/meta/config.
+ * @param filters When RUN filter rules in the parent projects are called to post-process the results of the project specific rule. This behavior matches how the rule will execute if installed. + If SKIP the parent filters are not called, allowing the test to return results from the input rule.
  */
 
 
 data class TestSubmitRuleInput (
 
+    /* Prolog code to execute instead of the code in refs/meta/config. */
     @SerializedName("rule")
     val rule: kotlin.String? = null,
 
+    /* When RUN filter rules in the parent projects are called to post-process the results of the project specific rule. This behavior matches how the rule will execute if installed. + If SKIP the parent filters are not called, allowing the test to return results from the input rule. */
     @SerializedName("filters")
     val filters: Filters? = null
 

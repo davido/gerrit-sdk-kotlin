@@ -30,16 +30,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param operation 
- * @param caches 
+ * @param operation The cache operation that should be executed: FLUSH_ALL: Flushes all caches, except the web_sessions cache. FLUSH: Flushes the specified caches.
+ * @param caches A list of cache names. This list defines the caches on which the specified operation should be executed. Whether this list must be specified depends on the operation being executed.
  */
 
 
 data class PostCachesInput (
 
+    /* The cache operation that should be executed: FLUSH_ALL: Flushes all caches, except the web_sessions cache. FLUSH: Flushes the specified caches. */
     @SerializedName("operation")
     val operation: Operation? = null,
 
+    /* A list of cache names. This list defines the caches on which the specified operation should be executed. Whether this list must be specified depends on the operation being executed. */
     @SerializedName("caches")
     val caches: kotlin.collections.List<kotlin.String>? = null
 

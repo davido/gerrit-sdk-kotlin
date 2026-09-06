@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param lifetime 
+ * @param lifetime The new maximum lifetime that will be applied to authentication tokens.
  */
 
 
 data class ReduceMaxTokenLifetimeInput (
 
+    /* The new maximum lifetime that will be applied to authentication tokens. */
     @SerializedName("lifetime")
     val lifetime: kotlin.String? = null
 

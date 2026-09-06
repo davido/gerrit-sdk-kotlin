@@ -2434,7 +2434,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/indexes/{index-id}/versions/{index-version-id}/reindex
      * Reindex an Index Version
-     * This endpoint allows to trigger background reindexing of an index version. It is also supported to specify whether to reuse existing up-to-date (non-stale) index documents and whether to notifyListeners or not.
+     * This endpoint allows to trigger background reindexing of an index version. It is also supported to specify whether to reuse existing up-to-date (non-stale) index documents and whether to notifyListeners or not. The options are provided in the request body as a ReindexIndexVersion.Input entity.
      * @param indexId 
      * @param indexVersionId 
      * @param reindexIndexVersionInput  (optional)
@@ -2468,7 +2468,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/indexes/{index-id}/versions/{index-version-id}/reindex
      * Reindex an Index Version
-     * This endpoint allows to trigger background reindexing of an index version. It is also supported to specify whether to reuse existing up-to-date (non-stale) index documents and whether to notifyListeners or not.
+     * This endpoint allows to trigger background reindexing of an index version. It is also supported to specify whether to reuse existing up-to-date (non-stale) index documents and whether to notifyListeners or not. The options are provided in the request body as a ReindexIndexVersion.Input entity.
      * @param indexId 
      * @param indexVersionId 
      * @param reindexIndexVersionInput  (optional)
@@ -2514,7 +2514,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/indexes/{index-id}/versions/{index-version-id}/snapshot
      * Create Snapshot of one Index Version
-     * This creates a snapshot of one index version of the specified index.
+     * This creates a snapshot of one index version of the specified index. The snapshot id may be provided in the request body as a SnapshotIndexVersion.Input entity.
      * @param indexId 
      * @param indexVersionId 
      * @param snapshotIndexVersionInput  (optional)
@@ -2548,7 +2548,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/indexes/{index-id}/versions/{index-version-id}/snapshot
      * Create Snapshot of one Index Version
-     * This creates a snapshot of one index version of the specified index.
+     * This creates a snapshot of one index version of the specified index. The snapshot id may be provided in the request body as a SnapshotIndexVersion.Input entity.
      * @param indexId 
      * @param indexVersionId 
      * @param snapshotIndexVersionInput  (optional)
@@ -2812,7 +2812,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/snapshot.indexes
      * Create Snapshot of All Indexes
-     * 
+     * This creates a snapshot of all write index versions. The snapshot id may be provided in the request body as a SnapshotIndexes.Input entity.
      * @param snapshotIndexesInput  (optional)
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
@@ -2844,7 +2844,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * POST /config/server/snapshot.indexes
      * Create Snapshot of All Indexes
-     * 
+     * This creates a snapshot of all write index versions. The snapshot id may be provided in the request body as a SnapshotIndexes.Input entity.
      * @param snapshotIndexesInput  (optional)
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured

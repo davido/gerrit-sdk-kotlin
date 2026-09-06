@@ -30,12 +30,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param webLinks 
+ * @param webLinks Links to the file in external sites as a list of DiffWebLinkInfo entities.
  */
 
 
 data class GetMetaFileInfo (
 
+    /* Links to the file in external sites as a list of DiffWebLinkInfo entities. */
     @SerializedName("web_links")
     val webLinks: kotlin.collections.List<DiffWebLinkInfo>? = null
 

@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param id 
- * @param commitMessage 
+ * @param id URL encoded ID of a dashboard to which this dashboard should link to.
+ * @param commitMessage Message that should be used to commit the change of the dashboard.
  */
 
 
 data class SetDashboardInput (
 
+    /* URL encoded ID of a dashboard to which this dashboard should link to. */
     @SerializedName("id")
     val id: kotlin.String? = null,
 
+    /* Message that should be used to commit the change of the dashboard. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null
 

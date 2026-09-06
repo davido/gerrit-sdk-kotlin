@@ -29,16 +29,18 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param parent 
- * @param commitMessage 
+ * @param parent The name of the parent project.
+ * @param commitMessage Message that should be used to commit the change of the project parent in the project.config file to the refs/meta/config branch.
  */
 
 
 data class ParentInput (
 
+    /* The name of the parent project. */
     @SerializedName("parent")
     val parent: kotlin.String? = null,
 
+    /* Message that should be used to commit the change of the project parent in the project.config file to the refs/meta/config branch. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null
 

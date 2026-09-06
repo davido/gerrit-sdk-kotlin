@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param name 
+ * @param name The name of the agreement.
  */
 
 
 data class AgreementInput (
 
+    /* The name of the agreement. */
     @SerializedName("name")
     val name: kotlin.String? = null
 

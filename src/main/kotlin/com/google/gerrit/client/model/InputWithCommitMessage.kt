@@ -29,12 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param commitMessage 
+ * @param commitMessage The commit message to use.
  */
 
 
 data class InputWithCommitMessage (
 
+    /* The commit message to use. */
     @SerializedName("commit_message")
     val commitMessage: kotlin.String? = null
 
