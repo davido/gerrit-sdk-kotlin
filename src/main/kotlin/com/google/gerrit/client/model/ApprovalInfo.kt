@@ -35,6 +35,7 @@ import com.google.gson.annotations.SerializedName
  * @param `value` The vote that the user has given for the label. If present and zero, the user is permitted to vote on the label. If absent, the user is not permitted to vote on that label.
  * @param date The time and date describing when the approval was made.
  * @param postSubmit If true, this vote was made after the change was submitted.
+ * @param isAi If true, this vote was created by an AI agent.
  * @param permittedVotingRange The VotingRangeInfo the user is authorized to vote on that label. If present, the user is permitted to vote on the label regarding the range values. If absent, the user is not permitted to vote on that label.
  * @param accountId The numeric ID of the account.
  * @param name The full name of the user. + Only set if detailed account information is requested. + See option DETAILED_ACCOUNTS for change queries + and option DETAILS for account queries.
@@ -68,6 +69,10 @@ data class ApprovalInfo (
     /* If true, this vote was made after the change was submitted. */
     @SerializedName("post_submit")
     val postSubmit: kotlin.Boolean? = null,
+
+    /* If true, this vote was created by an AI agent. */
+    @SerializedName("is_ai")
+    val isAi: kotlin.Boolean? = null,
 
     /* The VotingRangeInfo the user is authorized to vote on that label. If present, the user is permitted to vote on the label regarding the range values. If absent, the user is not permitted to vote on that label. */
     @SerializedName("permitted_voting_range")

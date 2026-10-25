@@ -311,7 +311,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /plugins/{plugin-id}/gerrit~disable
      * Disable Plugin
-     * 
+     * Disables a plugin on the Gerrit server.
      * @param pluginId 
      * @return PluginInfo
      * @throws IllegalStateException If the request is not correctly configured
@@ -343,7 +343,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     /**
      * POST /plugins/{plugin-id}/gerrit~disable
      * Disable Plugin
-     * 
+     * Disables a plugin on the Gerrit server.
      * @param pluginId 
      * @return ApiResponse<PluginInfo?>
      * @throws IllegalStateException If the request is not correctly configured

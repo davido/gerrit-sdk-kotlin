@@ -3766,8 +3766,8 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * PUT /accounts/{account-id}/emails/{email-id}/avatar
-     * 
-     * 
+     * Set Avatar Email
+     * Sets an email address as the avatar email address for an account. The avatar email address is used for avatar lookup, e.g. via Gravatar.
      * @param accountId 
      * @param emailId 
      * @return kotlin.String
@@ -3799,8 +3799,8 @@ open class AccountsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * PUT /accounts/{account-id}/emails/{email-id}/avatar
-     * 
-     * 
+     * Set Avatar Email
+     * Sets an email address as the avatar email address for an account. The avatar email address is used for avatar lookup, e.g. via Gravatar.
      * @param accountId 
      * @param emailId 
      * @return ApiResponse<kotlin.String?>

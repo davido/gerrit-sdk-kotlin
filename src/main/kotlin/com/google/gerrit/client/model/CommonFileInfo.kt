@@ -40,7 +40,7 @@ import com.google.gson.annotations.SerializedName
  * @param linesDeleted Number of deleted lines. + Not set for binary files or if no lines were deleted. + An empty last line is not included in the count and hence this number can differ by one from details provided in DiffInfo.
  * @param sizeDelta Number of bytes by which the file size increased/decreased.
  * @param propertySize File size in bytes.
- * @param diffsTooExpensiveToCompute Whether the diff of the file is too expensive to compute; when set the diff content is omitted.
+ * @param diffsTooExpensiveToCompute Whether Gerrit skipped expensive diff data for this file because diff computation timed out. This can only be set when the GerritBackendFeature__timeout_file_diff_computation experiment is enabled; when the experiment is disabled, file diffs are computed without this timeout and the field is not set.
  */
 
 
@@ -90,7 +90,7 @@ data class CommonFileInfo (
     @SerializedName("size")
     val propertySize: kotlin.Int? = null,
 
-    /* Whether the diff of the file is too expensive to compute; when set the diff content is omitted. */
+    /* Whether Gerrit skipped expensive diff data for this file because diff computation timed out. This can only be set when the GerritBackendFeature__timeout_file_diff_computation experiment is enabled; when the experiment is disabled, file diffs are computed without this timeout and the field is not set. */
     @SerializedName("diffs_too_expensive_to_compute")
     val diffsTooExpensiveToCompute: kotlin.Boolean? = null
 

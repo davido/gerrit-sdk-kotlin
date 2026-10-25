@@ -31,7 +31,7 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param id The ID of the task.
- * @param state The state of the task, can be DONE, CANCELLED, RUNNING, READY, SLEEPING and OTHER.
+ * @param state The state of the task, can be DONE, CANCELLED, STOPPING, RUNNING, STARTING, PARKED, READY, SLEEPING and OTHER.
  * @param startTime The start time of the task.
  * @param delay The remaining delay of the task.
  * @param command The command of the task.
@@ -47,7 +47,7 @@ data class TaskInfo (
     @SerializedName("id")
     val id: kotlin.String? = null,
 
-    /* The state of the task, can be DONE, CANCELLED, RUNNING, READY, SLEEPING and OTHER. */
+    /* The state of the task, can be DONE, CANCELLED, STOPPING, RUNNING, STARTING, PARKED, READY, SLEEPING and OTHER. */
     @SerializedName("state")
     val state: State? = null,
 

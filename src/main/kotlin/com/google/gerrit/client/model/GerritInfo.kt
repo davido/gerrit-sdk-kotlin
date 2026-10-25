@@ -39,6 +39,7 @@ import com.google.gson.annotations.SerializedName
  * @param instanceId Short identifier for this Gerrit installation.
  * @param defaultBranch Name of the default branch to use on the project creation.
  * @param projectStatePredicateEnabled Whether the instance supports filtering projects by state.
+ * @param submitCommitUrl 
  */
 
 
@@ -82,7 +83,10 @@ data class GerritInfo (
 
     /* Whether the instance supports filtering projects by state. */
     @SerializedName("project_state_predicate_enabled")
-    val projectStatePredicateEnabled: kotlin.Boolean? = null
+    val projectStatePredicateEnabled: kotlin.Boolean? = null,
+
+    @SerializedName("submit_commit_url")
+    val submitCommitUrl: kotlin.String? = null
 
 ) {
 

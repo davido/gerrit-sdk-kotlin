@@ -1106,8 +1106,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/diff
-     * 
-     * 
+     * Get Diff for File
+     * Gets the diff for a single file between two commits. The base query parameter is required (same as Diff Between Commits).
      * @param projectId 
      * @param branchId 
      * @param fileId 
@@ -1143,8 +1143,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * GET /projects/{project-id}/branches/{branch-id}/files/{file-id}/diff
-     * 
-     * 
+     * Get Diff for File
+     * Gets the diff for a single file between two commits. The base query parameter is required (same as Diff Between Commits).
      * @param projectId 
      * @param branchId 
      * @param fileId 
@@ -3267,6 +3267,155 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
     }
 
     /**
+     * GET /projects/{project-id}/submit_requirements_templates
+     * Get Submit Requirement Templates
+     * Retrieves submit requirement templates configured in project.config and in its parent projects.
+     * @param projectId 
+     * @return kotlin.collections.List<SubmitRequirementInfo>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getProjectsProjectIdSubmitRequirementsTemplates(projectId: kotlin.String) : kotlin.collections.List<SubmitRequirementInfo> {
+        val localVarResponse = getProjectsProjectIdSubmitRequirementsTemplatesWithHttpInfo(projectId = projectId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<SubmitRequirementInfo>
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /projects/{project-id}/submit_requirements_templates
+     * Get Submit Requirement Templates
+     * Retrieves submit requirement templates configured in project.config and in its parent projects.
+     * @param projectId 
+     * @return ApiResponse<kotlin.collections.List<SubmitRequirementInfo>?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getProjectsProjectIdSubmitRequirementsTemplatesWithHttpInfo(projectId: kotlin.String) : ApiResponse<kotlin.collections.List<SubmitRequirementInfo>?> {
+        val localVariableConfig = getProjectsProjectIdSubmitRequirementsTemplatesRequestConfig(projectId = projectId)
+
+        return request<Unit, kotlin.collections.List<SubmitRequirementInfo>>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getProjectsProjectIdSubmitRequirementsTemplates
+     *
+     * @param projectId 
+     * @return RequestConfig
+     */
+    fun getProjectsProjectIdSubmitRequirementsTemplatesRequestConfig(projectId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/projects/{project-id}/submit_requirements_templates".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * GET /projects/{project-id}/submit_requirements_templates/{submit-requirement-template-id}
+     * Get Submit Requirement Template
+     * Retrieves a single effective submit requirement template for a project. The returned template may be defined in the project itself or inherited from one of its parent projects.
+     * @param projectId 
+     * @param submitRequirementTemplateId 
+     * @return SubmitRequirementInfo
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateId(projectId: kotlin.String, submitRequirementTemplateId: kotlin.String) : SubmitRequirementInfo {
+        val localVarResponse = getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateIdWithHttpInfo(projectId = projectId, submitRequirementTemplateId = submitRequirementTemplateId)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as SubmitRequirementInfo
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * GET /projects/{project-id}/submit_requirements_templates/{submit-requirement-template-id}
+     * Get Submit Requirement Template
+     * Retrieves a single effective submit requirement template for a project. The returned template may be defined in the project itself or inherited from one of its parent projects.
+     * @param projectId 
+     * @param submitRequirementTemplateId 
+     * @return ApiResponse<SubmitRequirementInfo?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateIdWithHttpInfo(projectId: kotlin.String, submitRequirementTemplateId: kotlin.String) : ApiResponse<SubmitRequirementInfo?> {
+        val localVariableConfig = getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateIdRequestConfig(projectId = projectId, submitRequirementTemplateId = submitRequirementTemplateId)
+
+        return request<Unit, SubmitRequirementInfo>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateId
+     *
+     * @param projectId 
+     * @param submitRequirementTemplateId 
+     * @return RequestConfig
+     */
+    fun getProjectsProjectIdSubmitRequirementsTemplatesSubmitRequirementTemplateIdRequestConfig(projectId: kotlin.String, submitRequirementTemplateId: kotlin.String) : RequestConfig<Unit> {
+        val localVariableBody = null
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.GET,
+            path = "/projects/{project-id}/submit_requirements_templates/{submit-requirement-template-id}".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"submit-requirement-template-id"+"}", encodeURIComponent(submitRequirementTemplateId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
      * GET /projects/{project-id}/tags
      * List Tags
      * List the tags of a project.
@@ -3764,8 +3913,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/check
-     * 
-     * 
+     * Check project consistency
+     * Performs consistency checks on the project.
      * @param projectId 
      * @param checkProjectInput  (optional)
      * @return CheckProjectResultInfo
@@ -3797,8 +3946,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/check
-     * 
-     * 
+     * Check project consistency
+     * Performs consistency checks on the project.
      * @param projectId 
      * @param checkProjectInput  (optional)
      * @return ApiResponse<CheckProjectResultInfo?>
@@ -3921,8 +4070,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/create.change
-     * 
-     * 
+     * Create Change for review
+     * This endpoint is functionally equivalent to create change in the change API, but it has the project name in the URL, which is easier to route in sharded deployments.
      * @param projectId 
      * @param changeInput  (optional)
      * @return ChangeInfo
@@ -3954,8 +4103,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/create.change
-     * 
-     * 
+     * Create Change for review
+     * This endpoint is functionally equivalent to create change in the change API, but it has the project name in the URL, which is easier to route in sharded deployments.
      * @param projectId 
      * @param changeInput  (optional)
      * @return ApiResponse<ChangeInfo?>
@@ -4075,8 +4224,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/index
-     * 
-     * 
+     * Index project
+     * Adds or updates the current project (and children, if specified) in the secondary index. The indexing task is executed asynchronously in background and this command returns immediately if async is specified in the input.
      * @param projectId 
      * @param indexProjectInput  (optional)
      * @return kotlin.Any
@@ -4108,8 +4257,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/index
-     * 
-     * 
+     * Index project
+     * Adds or updates the current project (and children, if specified) in the secondary index. The indexing task is executed asynchronously in background and this command returns immediately if async is specified in the input.
      * @param projectId 
      * @param indexProjectInput  (optional)
      * @return ApiResponse<kotlin.Any?>
@@ -4152,8 +4301,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/index.changes
-     * 
-     * 
+     * Index all changes in a project
+     * Adds or updates all the changes belonging to a project in the secondary index. The indexing task is executed asynchronously in background, so this command returns immediately.
      * @param projectId 
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
@@ -4184,8 +4333,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * POST /projects/{project-id}/index.changes
-     * 
-     * 
+     * Index all changes in a project
+     * Adds or updates all the changes belonging to a project in the secondary index. The indexing task is executed asynchronously in background, so this command returns immediately.
      * @param projectId 
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -4831,8 +4980,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * PUT /projects/{project-id}/access:review
-     * 
-     * 
+     * Create Access Rights Change for review
+     * Sets access rights for the project using the diff schema provided by ProjectAccessInput
      * @param projectId 
      * @param projectAccessInput  (optional)
      * @return ChangeInfo
@@ -4864,8 +5013,8 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
 
     /**
      * PUT /projects/{project-id}/access:review
-     * 
-     * 
+     * Create Access Rights Change for review
+     * Sets access rights for the project using the diff schema provided by ProjectAccessInput
      * @param projectId 
      * @param projectAccessInput  (optional)
      * @return ApiResponse<ChangeInfo?>

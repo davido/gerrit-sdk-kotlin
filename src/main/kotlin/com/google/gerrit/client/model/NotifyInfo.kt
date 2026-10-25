@@ -29,13 +29,13 @@ import com.google.gson.annotations.SerializedName
 /**
  * 
  *
- * @param accounts A list of account IDs that identify the accounts that should be should be notified.
+ * @param accounts A list of account IDs that identify the accounts that should be notified.
  */
 
 
 data class NotifyInfo (
 
-    /* A list of account IDs that identify the accounts that should be should be notified. */
+    /* A list of account IDs that identify the accounts that should be notified. */
     @SerializedName("accounts")
     val accounts: kotlin.collections.List<kotlin.String>? = null
 

@@ -29,7 +29,6 @@ import okhttp3.HttpUrl
 
 import com.google.gerrit.client.model.CacheInfo
 import com.google.gerrit.client.model.CapabilityInfo
-import com.google.gerrit.client.model.CleanupChangesInput
 import com.google.gerrit.client.model.ConfigUpdateEntryInfo
 import com.google.gerrit.client.model.ConfirmEmailInput
 import com.google.gerrit.client.model.ConsistencyCheckInfo
@@ -42,7 +41,7 @@ import com.google.gerrit.client.model.GetConfigServerIndexes200ResponseInner
 import com.google.gerrit.client.model.IndexChangesInput
 import com.google.gerrit.client.model.LabelDefinitionInfo
 import com.google.gerrit.client.model.MenuEntry
-import com.google.gerrit.client.model.MetricJson
+import com.google.gerrit.client.model.MetricInfo
 import com.google.gerrit.client.model.MigratePasswordsToTokensInput
 import com.google.gerrit.client.model.PostCachesInput
 import com.google.gerrit.client.model.ReduceMaxTokenLifetimeInput
@@ -457,8 +456,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/experiments/{experiment-id}
-     * 
-     * 
+     * Get Experiment
+     * Retrieves the details of the experiment with the given name.
      * @param experimentId 
      * @return ExperimentInfo
      * @throws IllegalStateException If the request is not correctly configured
@@ -489,8 +488,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * GET /config/server/experiments/{experiment-id}
-     * 
-     * 
+     * Get Experiment
+     * Retrieves the details of the experiment with the given name.
      * @param experimentId 
      * @return ApiResponse<ExperimentInfo?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -893,7 +892,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/labels
      * List Global Labels
-     * Lists the globally defined labels (labels that are added programatically via the LabelType extension point).
+     * Lists the globally defined labels (labels that are added programmatically via the LabelType extension point).
      * @return kotlin.collections.List<LabelDefinitionInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -924,7 +923,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/labels
      * List Global Labels
-     * Lists the globally defined labels (labels that are added programatically via the LabelType extension point).
+     * Lists the globally defined labels (labels that are added programmatically via the LabelType extension point).
      * @return ApiResponse<kotlin.collections.List<LabelDefinitionInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -963,10 +962,10 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/metrics
      * List Metrics
-     * Lists the metrics of the server, returning a map of metric name to a MetricJson entity.
+     * Lists the metrics of the server, returning a map of metric name to a MetricInfo entity.
      * @param dataOnly  (optional)
      * @param prefix  (optional)
-     * @return kotlin.collections.Map<kotlin.String, MetricJson>
+     * @return kotlin.collections.Map<kotlin.String, MetricInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -975,11 +974,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerMetrics(dataOnly: kotlin.Boolean? = null, prefix: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.Map<kotlin.String, MetricJson> {
+    fun getConfigServerMetrics(dataOnly: kotlin.Boolean? = null, prefix: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.Map<kotlin.String, MetricInfo> {
         val localVarResponse = getConfigServerMetricsWithHttpInfo(dataOnly = dataOnly, prefix = prefix)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, MetricJson>
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.Map<kotlin.String, MetricInfo>
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -996,19 +995,19 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/metrics
      * List Metrics
-     * Lists the metrics of the server, returning a map of metric name to a MetricJson entity.
+     * Lists the metrics of the server, returning a map of metric name to a MetricInfo entity.
      * @param dataOnly  (optional)
      * @param prefix  (optional)
-     * @return ApiResponse<kotlin.collections.Map<kotlin.String, MetricJson>?>
+     * @return ApiResponse<kotlin.collections.Map<kotlin.String, MetricInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerMetricsWithHttpInfo(dataOnly: kotlin.Boolean?, prefix: kotlin.collections.List<kotlin.String>?) : ApiResponse<kotlin.collections.Map<kotlin.String, MetricJson>?> {
+    fun getConfigServerMetricsWithHttpInfo(dataOnly: kotlin.Boolean?, prefix: kotlin.collections.List<kotlin.String>?) : ApiResponse<kotlin.collections.Map<kotlin.String, MetricInfo>?> {
         val localVariableConfig = getConfigServerMetricsRequestConfig(dataOnly = dataOnly, prefix = prefix)
 
-        return request<Unit, kotlin.collections.Map<kotlin.String, MetricJson>>(
+        return request<Unit, kotlin.collections.Map<kotlin.String, MetricInfo>>(
             localVariableConfig
         )
     }
@@ -1050,7 +1049,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Retrieves a single metric of the server. The metric name is used as the \\{metric-id\\} and must be URL-encoded because it may contain slashes.
      * @param metricId 
      * @param dataOnly  (optional)
-     * @return MetricJson
+     * @return MetricInfo
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      * @throws UnsupportedOperationException If the API returns an informational or redirection response
@@ -1059,11 +1058,11 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerMetricsMetricId(metricId: kotlin.String, dataOnly: kotlin.Boolean? = null) : MetricJson {
+    fun getConfigServerMetricsMetricId(metricId: kotlin.String, dataOnly: kotlin.Boolean? = null) : MetricInfo {
         val localVarResponse = getConfigServerMetricsMetricIdWithHttpInfo(metricId = metricId, dataOnly = dataOnly)
 
         return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as MetricJson
+            ResponseType.Success -> (localVarResponse as Success<*>).data as MetricInfo
             ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
             ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
             ResponseType.ClientError -> {
@@ -1083,16 +1082,16 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * Retrieves a single metric of the server. The metric name is used as the \\{metric-id\\} and must be URL-encoded because it may contain slashes.
      * @param metricId 
      * @param dataOnly  (optional)
-     * @return ApiResponse<MetricJson?>
+     * @return ApiResponse<MetricInfo?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerMetricsMetricIdWithHttpInfo(metricId: kotlin.String, dataOnly: kotlin.Boolean?) : ApiResponse<MetricJson?> {
+    fun getConfigServerMetricsMetricIdWithHttpInfo(metricId: kotlin.String, dataOnly: kotlin.Boolean?) : ApiResponse<MetricInfo?> {
         val localVariableConfig = getConfigServerMetricsMetricIdRequestConfig(metricId = metricId, dataOnly = dataOnly)
 
-        return request<Unit, MetricJson>(
+        return request<Unit, MetricInfo>(
             localVariableConfig
         )
     }
@@ -1338,7 +1337,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/submit-requirements
      * List Global Submit Requirements
-     * Lists the globally defined submit requirements (submit requirements that are added programatically via the SubmitRequirement extension point).
+     * Lists the globally defined submit requirements (submit requirements that are added programmatically via the SubmitRequirement extension point).
      * @return kotlin.collections.List<SubmitRequirementInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1369,7 +1368,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * GET /config/server/submit-requirements
      * List Global Submit Requirements
-     * Lists the globally defined submit requirements (submit requirements that are added programatically via the SubmitRequirement extension point).
+     * Lists the globally defined submit requirements (submit requirements that are added programmatically via the SubmitRequirement extension point).
      * @return ApiResponse<kotlin.collections.List<SubmitRequirementInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1487,6 +1486,7 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /config/server/tasks
      * List Tasks
      * Lists the tasks from the background work queues that the Gerrit daemon is currently performing, or will perform in the near future.
+     * @param state  (optional)
      * @return kotlin.collections.List<TaskInfo>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -1496,8 +1496,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun getConfigServerTasks() : kotlin.collections.List<TaskInfo> {
-        val localVarResponse = getConfigServerTasksWithHttpInfo()
+    fun getConfigServerTasks(state: kotlin.collections.List<kotlin.String>? = null) : kotlin.collections.List<TaskInfo> {
+        val localVarResponse = getConfigServerTasksWithHttpInfo(state = state)
 
         return when (localVarResponse.responseType) {
             ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.collections.List<TaskInfo>
@@ -1518,14 +1518,15 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
      * GET /config/server/tasks
      * List Tasks
      * Lists the tasks from the background work queues that the Gerrit daemon is currently performing, or will perform in the near future.
+     * @param state  (optional)
      * @return ApiResponse<kotlin.collections.List<TaskInfo>?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
      */
     @Suppress("UNCHECKED_CAST")
     @Throws(IllegalStateException::class, IOException::class)
-    fun getConfigServerTasksWithHttpInfo() : ApiResponse<kotlin.collections.List<TaskInfo>?> {
-        val localVariableConfig = getConfigServerTasksRequestConfig()
+    fun getConfigServerTasksWithHttpInfo(state: kotlin.collections.List<kotlin.String>?) : ApiResponse<kotlin.collections.List<TaskInfo>?> {
+        val localVariableConfig = getConfigServerTasksRequestConfig(state = state)
 
         return request<Unit, kotlin.collections.List<TaskInfo>>(
             localVariableConfig
@@ -1535,11 +1536,17 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     /**
      * To obtain the request config of the operation getConfigServerTasks
      *
+     * @param state  (optional)
      * @return RequestConfig
      */
-    fun getConfigServerTasksRequestConfig() : RequestConfig<Unit> {
+    fun getConfigServerTasksRequestConfig(state: kotlin.collections.List<kotlin.String>?) : RequestConfig<Unit> {
         val localVariableBody = null
-        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableQuery: MultiValueMap = mutableMapOf<kotlin.String, kotlin.collections.List<kotlin.String>>()
+            .apply {
+                if (state != null) {
+                    put("state", toMultiValue(state.toList(), "multi"))
+                }
+            }
         val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
         localVariableHeaders["Accept"] = "application/json"
 
@@ -1996,83 +2003,9 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
     }
 
     /**
-     * POST /config/server/cleanup.changes
-     * 
-     * 
-     * @param cleanupChangesInput  (optional)
-     * @return kotlin.Any
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     * @throws UnsupportedOperationException If the API returns an informational or redirection response
-     * @throws ClientException If the API returns a client error response
-     * @throws ServerException If the API returns a server error response
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
-    fun postConfigServerCleanupChanges(cleanupChangesInput: CleanupChangesInput? = null) : kotlin.Any {
-        val localVarResponse = postConfigServerCleanupChangesWithHttpInfo(cleanupChangesInput = cleanupChangesInput)
-
-        return when (localVarResponse.responseType) {
-            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.Any
-            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
-            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
-            ResponseType.ClientError -> {
-                val localVarError = localVarResponse as ClientError<*>
-                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
-            }
-            ResponseType.ServerError -> {
-                val localVarError = localVarResponse as ServerError<*>
-                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
-            }
-        }
-    }
-
-    /**
-     * POST /config/server/cleanup.changes
-     * 
-     * 
-     * @param cleanupChangesInput  (optional)
-     * @return ApiResponse<kotlin.Any?>
-     * @throws IllegalStateException If the request is not correctly configured
-     * @throws IOException Rethrows the OkHttp execute method exception
-     */
-    @Suppress("UNCHECKED_CAST")
-    @Throws(IllegalStateException::class, IOException::class)
-    fun postConfigServerCleanupChangesWithHttpInfo(cleanupChangesInput: CleanupChangesInput?) : ApiResponse<kotlin.Any?> {
-        val localVariableConfig = postConfigServerCleanupChangesRequestConfig(cleanupChangesInput = cleanupChangesInput)
-
-        return request<CleanupChangesInput, kotlin.Any>(
-            localVariableConfig
-        )
-    }
-
-    /**
-     * To obtain the request config of the operation postConfigServerCleanupChanges
-     *
-     * @param cleanupChangesInput  (optional)
-     * @return RequestConfig
-     */
-    fun postConfigServerCleanupChangesRequestConfig(cleanupChangesInput: CleanupChangesInput?) : RequestConfig<CleanupChangesInput> {
-        val localVariableBody = cleanupChangesInput
-        val localVariableQuery: MultiValueMap = mutableMapOf()
-        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
-        localVariableHeaders["Content-Type"] = "application/json"
-        localVariableHeaders["Accept"] = "application/json"
-
-        return RequestConfig(
-            method = RequestMethod.POST,
-            path = "/config/server/cleanup.changes",
-            query = localVariableQuery,
-            headers = localVariableHeaders,
-            requiresAuthentication = true,
-            body = localVariableBody
-        )
-    }
-
-    /**
      * POST /config/server/cleanup.draft.comments
-     * 
-     * 
+     * Cleanup of already published draft comments
+     * This endpoint allows Gerrit administrators to cleanup already published draft comments that were not deleted.
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -2102,8 +2035,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/cleanup.draft.comments
-     * 
-     * 
+     * Cleanup of already published draft comments
+     * This endpoint allows Gerrit administrators to cleanup already published draft comments that were not deleted.
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
      * @throws IOException Rethrows the OkHttp execute method exception
@@ -2211,8 +2144,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/index.changes
-     * 
-     * 
+     * Index a set of changes
+     * This endpoint allows Gerrit admins to index a set of changes with one request by providing a IndexChangesInput entity.
      * @param indexChangesInput  (optional)
      * @return kotlin.String
      * @throws IllegalStateException If the request is not correctly configured
@@ -2243,8 +2176,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/index.changes
-     * 
-     * 
+     * Index a set of changes
+     * This endpoint allows Gerrit admins to index a set of changes with one request by providing a IndexChangesInput entity.
      * @param indexChangesInput  (optional)
      * @return ApiResponse<kotlin.String?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -2593,8 +2526,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/passwords.to.tokens
-     * 
-     * 
+     * Migration of HTTP passwords to authentication tokens
+     * This endpoint allows Gerrit administrators to migrate remaining HTTP passwords to authentication tokens. For the user the migration is invisible, i.e. the same credential is still valid.
      * @param migratePasswordsToTokensInput  (optional)
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
@@ -2625,8 +2558,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/passwords.to.tokens
-     * 
-     * 
+     * Migration of HTTP passwords to authentication tokens
+     * This endpoint allows Gerrit administrators to migrate remaining HTTP passwords to authentication tokens. For the user the migration is invisible, i.e. the same credential is still valid.
      * @param migratePasswordsToTokensInput  (optional)
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured
@@ -2667,8 +2600,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/reduce.token.lifetime
-     * 
-     * 
+     * Apply maximum lifetime to authentication tokens
+     * This endpoint allows Gerrit administrators to apply a shorter maximum lifetime to existing authentication tokens. This is required, when a shorter maximum lifetime is enforced. Changing the configuration will not apply that maximum to existing tokens.
      * @param reduceMaxTokenLifetimeInput  (optional)
      * @return kotlin.Any
      * @throws IllegalStateException If the request is not correctly configured
@@ -2699,8 +2632,8 @@ open class ConfigApi(basePath: kotlin.String = defaultBasePath, client: Call.Fac
 
     /**
      * POST /config/server/reduce.token.lifetime
-     * 
-     * 
+     * Apply maximum lifetime to authentication tokens
+     * This endpoint allows Gerrit administrators to apply a shorter maximum lifetime to existing authentication tokens. This is required, when a shorter maximum lifetime is enforced. Changing the configuration will not apply that maximum to existing tokens.
      * @param reduceMaxTokenLifetimeInput  (optional)
      * @return ApiResponse<kotlin.Any?>
      * @throws IllegalStateException If the request is not correctly configured

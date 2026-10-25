@@ -35,7 +35,7 @@ import com.google.gson.annotations.SerializedName
  */
 
 
-data class FieldJson (
+data class MetricFieldInfo (
 
     /* The name of the field. */
     @SerializedName("name")

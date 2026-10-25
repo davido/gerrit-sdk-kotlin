@@ -23,7 +23,7 @@
 
 package com.google.gerrit.client.model
 
-import com.google.gerrit.client.model.FieldJson
+import com.google.gerrit.client.model.MetricFieldInfo
 
 import com.google.gson.annotations.SerializedName
 
@@ -53,12 +53,12 @@ import com.google.gson.annotations.SerializedName
  * @param max The maximum recorded value.
  * @param sum The sum of the recorded values.
  * @param stdDev The standard deviation of the recorded values.
- * @param fields The fields of the metric as a list of FieldJson entities.
+ * @param fields The fields of the metric as a list of MetricFieldInfo entities.
  * @param buckets The per-field-value breakdown of the metric, as a map of field values to the recorded value for that combination.
  */
 
 
-data class MetricJson (
+data class MetricInfo (
 
     /* The description of the metric. */
     @SerializedName("description")
@@ -152,9 +152,9 @@ data class MetricJson (
     @SerializedName("std_dev")
     val stdDev: java.math.BigDecimal? = null,
 
-    /* The fields of the metric as a list of FieldJson entities. */
+    /* The fields of the metric as a list of MetricFieldInfo entities. */
     @SerializedName("fields")
-    val fields: kotlin.collections.List<FieldJson>? = null,
+    val fields: kotlin.collections.List<MetricFieldInfo>? = null,
 
     /* The per-field-value breakdown of the metric, as a map of field values to the recorded value for that combination. */
     @SerializedName("buckets")

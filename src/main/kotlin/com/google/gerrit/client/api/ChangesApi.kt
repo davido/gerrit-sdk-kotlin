@@ -1020,8 +1020,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * DELETE /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}
-     * 
-     * 
+     * Delete Reviewer
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/delete&#39; --
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -1053,8 +1053,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * DELETE /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}
-     * 
-     * 
+     * Delete Reviewer
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/delete&#39; --
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -1097,8 +1097,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * DELETE /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}/votes/{vote-id}
-     * 
-     * 
+     * Delete Vote
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/votes/\\{label-id\\}/delete&#39; --
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -1131,8 +1131,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * DELETE /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}/votes/{vote-id}
-     * 
-     * 
+     * Delete Vote
+     * &#39;POST /changes/\\{change-id\\}/reviewers/\\{account-id\\}/votes/\\{label-id\\}/delete&#39; --
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -2034,8 +2034,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit/{change-edit-id}
-     * 
-     * 
+     * Retrieve file content from Change Edit
+     * Retrieves content of a file from a change edit.
      * @param changeId 
      * @param changeEditId 
      * @param base  (optional)
@@ -2068,8 +2068,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit/{change-edit-id}
-     * 
-     * 
+     * Retrieve file content from Change Edit
+     * Retrieves content of a file from a change edit.
      * @param changeId 
      * @param changeEditId 
      * @param base  (optional)
@@ -2118,8 +2118,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit/{change-edit-id}/meta
-     * 
-     * 
+     * Retrieve meta data of a file from Change Edit
+     * Retrieves meta data of a file from a change edit. Currently only web links are returned.
      * @param changeId 
      * @param changeEditId 
      * @return GetMetaFileInfo
@@ -2151,8 +2151,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit/{change-edit-id}/meta
-     * 
-     * 
+     * Retrieve meta data of a file from Change Edit
+     * Retrieves meta data of a file from a change edit. Currently only web links are returned.
      * @param changeId 
      * @param changeEditId 
      * @return ApiResponse<GetMetaFileInfo?>
@@ -2194,8 +2194,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit:message
-     * 
-     * 
+     * Retrieve commit message from Change Edit or current patch set of the change
+     * Retrieves commit message from change edit.
      * @param changeId 
      * @param base  (optional)
      * @return java.io.File
@@ -2227,8 +2227,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/edit:message
-     * 
-     * 
+     * Retrieve commit message from Change Edit or current patch set of the change
+     * Retrieves commit message from change edit.
      * @param changeId 
      * @param base  (optional)
      * @return ApiResponse<java.io.File?>
@@ -5371,8 +5371,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}
-     * 
-     * 
+     * Get Reviewer
+     * Retrieves a reviewer of a change.
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -5405,8 +5405,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * GET /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}
-     * 
-     * 
+     * Get Reviewer
+     * Retrieves a reviewer of a change.
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -6785,8 +6785,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/edit:publish
-     * 
-     * 
+     * Publish Change Edit
+     * Promotes change edit to a regular patch set.
      * @param changeId 
      * @param publishChangeEditInput  (optional)
      * @return void
@@ -6817,8 +6817,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/edit:publish
-     * 
-     * 
+     * Publish Change Edit
+     * Promotes change edit to a regular patch set.
      * @param changeId 
      * @param publishChangeEditInput  (optional)
      * @return ApiResponse<Unit?>
@@ -7550,8 +7550,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/private.delete
-     * 
-     * 
+     * Unmark Private
+     * Marks the change to be non-private. Note users can only unmark own private changes.
      * @param changeId 
      * @param inputWithMessage  (optional)
      * @return void
@@ -7582,8 +7582,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/private.delete
-     * 
-     * 
+     * Unmark Private
+     * Marks the change to be non-private. Note users can only unmark own private changes.
      * @param changeId 
      * @param inputWithMessage  (optional)
      * @return ApiResponse<Unit?>
@@ -8885,8 +8885,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/revisions/{revision-id}/reviewers
-     * 
-     * 
+     * Add Reviewer
+     * Adds one user or all members of one group as reviewer to the change.
      * @param changeId 
      * @param revisionId 
      * @param reviewerInput  (optional)
@@ -8919,8 +8919,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/revisions/{revision-id}/reviewers
-     * 
-     * 
+     * Add Reviewer
+     * Adds one user or all members of one group as reviewer to the change.
      * @param changeId 
      * @param revisionId 
      * @param reviewerInput  (optional)
@@ -8965,8 +8965,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}/delete
-     * 
-     * 
+     * Delete Reviewer
+     * Deletes a reviewer from a change. Deleting a reviewer also removes that user from the attention set.
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
@@ -8999,8 +8999,8 @@ open class ChangesApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
     /**
      * POST /changes/{change-id}/revisions/{revision-id}/reviewers/{reviewer-id}/delete
-     * 
-     * 
+     * Delete Reviewer
+     * Deletes a reviewer from a change. Deleting a reviewer also removes that user from the attention set.
      * @param changeId 
      * @param revisionId 
      * @param reviewerId 
