@@ -128,7 +128,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /plugins
+     * GET /plugins/
      * List Plugins
      * Lists the plugins installed on the Gerrit server. Only the enabled plugins are returned unless the all option is specified.
      * @param all  (optional)
@@ -165,7 +165,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
     }
 
     /**
-     * GET /plugins
+     * GET /plugins/
      * List Plugins
      * Lists the plugins installed on the Gerrit server. Only the enabled plugins are returned unless the all option is specified.
      * @param all  (optional)
@@ -227,7 +227,7 @@ open class PluginsApi(basePath: kotlin.String = defaultBasePath, client: Call.Fa
 
         return RequestConfig(
             method = RequestMethod.GET,
-            path = "/plugins",
+            path = "/plugins/",
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

@@ -35,6 +35,7 @@ import com.google.gson.annotations.SerializedName
  * @param indexUrl URL of the plugin's default page.
  * @param filename The plugin's filename.
  * @param disabled Whether the plugin is disabled.
+ * @param capabilities List of capabilities the plugin advertises in its manifest (the Gerrit-Capabilities header), for example openapi when the plugin serves an OpenAPI document at Documentation/rest-api-openapi.json. Not set when the plugin declares no capabilities.
  */
 
 
@@ -62,7 +63,11 @@ data class PluginInfo (
 
     /* Whether the plugin is disabled. */
     @SerializedName("disabled")
-    val disabled: kotlin.Boolean? = null
+    val disabled: kotlin.Boolean? = null,
+
+    /* List of capabilities the plugin advertises in its manifest (the Gerrit-Capabilities header), for example openapi when the plugin serves an OpenAPI document at Documentation/rest-api-openapi.json. Not set when the plugin declares no capabilities. */
+    @SerializedName("capabilities")
+    val capabilities: kotlin.collections.List<kotlin.String>? = null
 
 ) {
 
