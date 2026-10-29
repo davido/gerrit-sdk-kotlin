@@ -37,4 +37,14 @@ npx --yes @openapitools/openapi-generator-cli@2.41.0 generate \
 echo "3/3 restore hand-written XSSI interceptor"
 cp GerritXssiInterceptor.kt src/main/kotlin/com/google/gerrit/client/GerritXssiInterceptor.kt
 
-echo "done: src/ regenerated from $SPEC; XSSI via GerritXssiInterceptor; Gradle (maven-publish for JitPack); jvmTarget 21; okhttp 5.4 / gson 2.14"
+# README is protected by .openapi-generator-ignore, so the generator never rewrites it.
+# Sync ONLY the Gerrit-version tokens (the SDK coordinate / git-tag strings) to $VERSION,
+# the same version derived above from the spec's info.version -- so the 3.15->3.16 class
+# of README drift cannot recur. Anchored to the "gerrit-sdk-kotlin:" artifact-coordinate
+# prefix (optional leading "v" preserved) so it NEVER touches the unrelated Kotlin / OkHttp
+# / Gson / Gradle versions.
+sed -E -i.bak \
+  "s#(gerrit-sdk-kotlin:v?)[0-9]+\.[0-9]+\.[0-9]+(-SNAPSHOT)?#\1${VERSION}#g" README.md
+rm -f README.md.bak
+
+echo "done: src/ regenerated from $SPEC; XSSI via GerritXssiInterceptor; README Gerrit version synced to $VERSION; Gradle (maven-publish for JitPack); jvmTarget 21; okhttp 5.4 / gson 2.14"

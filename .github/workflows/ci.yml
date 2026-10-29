@@ -1,0 +1,38 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The openapi-generator is Java-based and invoked via npx, so we need Node
+      # (for npx) AND a JDK. JDK 21 satisfies both the generator and this repo's
+      # Gradle build (jvmTarget 21).
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      # Regen-drift gate: regenerate the SDK from the committed, self-contained spec
+      # (generate.sh defaults to ./rest-api-openapi.json -- no spec fetch) and fail if
+      # the working tree drifts from what is committed.
+      - name: Regenerate SDK from the committed spec
+        run: ./generate.sh
+
+      - name: Fail on regeneration drift
+        run: git diff --exit-code
+
+      # Build using this repo's own toolchain: the committed Gradle wrapper. There are
+      # no test sources, but `build` runs the (empty) test task too.
+      - name: Build
+        run: ./gradlew --no-daemon build
