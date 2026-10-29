@@ -30,7 +30,7 @@ Demonstrates feasibility for Gerrit issue
 - **Kotlin 2.4.0**, **JVM target 21** (Gerrit's language level), **OkHttp 5.4.0**,
   **Gson 2.14.0** — the generator's own pins (already current).
 - **Gradle** build (`maven-publish` so JitPack can build the tag). Coordinates:
-  **`com.github.davido:gerrit-sdk-kotlin:3.15.0-SNAPSHOT`** — the git tag mirrors the
+  **`com.github.davido:gerrit-sdk-kotlin:3.16.0-SNAPSHOT`** — the git tag mirrors the
   Gerrit version.
 
 ## What's in this repo
@@ -85,13 +85,13 @@ JitPack builds the git tag into a Maven artifact **on demand** (`./gradlew build
 Gradle:
 ```groovy
 repositories { maven { url 'https://jitpack.io' } }
-dependencies { implementation 'com.github.davido:gerrit-sdk-kotlin:v3.15.0-SNAPSHOT' }
+dependencies { implementation 'com.github.davido:gerrit-sdk-kotlin:v3.16.0-SNAPSHOT' }
 ```
 
 Bazel (`rules_jvm_external`):
 ```python
 maven.install(
-    artifacts = ["com.github.davido:gerrit-sdk-kotlin:v3.15.0-SNAPSHOT"],
+    artifacts = ["com.github.davido:gerrit-sdk-kotlin:v3.16.0-SNAPSHOT"],
     repositories = ["https://jitpack.io", "https://repo1.maven.org/maven2"],
 )
 ```
