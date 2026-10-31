@@ -64,6 +64,7 @@ import com.google.gerrit.client.model.ProjectAccessInput
 import com.google.gerrit.client.model.ProjectInfo
 import com.google.gerrit.client.model.ProjectInput
 import com.google.gerrit.client.model.ProjectsDescriptionInput
+import com.google.gerrit.client.model.RefStorageInput
 import com.google.gerrit.client.model.ReflogEntryInfo
 import com.google.gerrit.client.model.SetDashboardInput
 import com.google.gerrit.client.model.SubmitRequirementInfo
@@ -4061,6 +4062,83 @@ open class ProjectsApi(basePath: kotlin.String = defaultBasePath, client: Call.F
         return RequestConfig(
             method = RequestMethod.POST,
             path = "/projects/{project-id}/commits/{commit-id}/cherrypick".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())).replace("{"+"commit-id"+"}", encodeURIComponent(commitId.toString())),
+            query = localVariableQuery,
+            headers = localVariableHeaders,
+            requiresAuthentication = true,
+            body = localVariableBody
+        )
+    }
+
+    /**
+     * POST /projects/{project-id}/convert-ref-storage
+     * Convert Ref Storage
+     * Converts the ref storage of a project&#39;s repository between FILES and REFTABLE.
+     * @param projectId 
+     * @param refStorageInput  (optional)
+     * @return kotlin.String
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     * @throws UnsupportedOperationException If the API returns an informational or redirection response
+     * @throws ClientException If the API returns a client error response
+     * @throws ServerException If the API returns a server error response
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class, UnsupportedOperationException::class, ClientException::class, ServerException::class)
+    fun postProjectsProjectIdConvertRefStorage(projectId: kotlin.String, refStorageInput: RefStorageInput? = null) : kotlin.String {
+        val localVarResponse = postProjectsProjectIdConvertRefStorageWithHttpInfo(projectId = projectId, refStorageInput = refStorageInput)
+
+        return when (localVarResponse.responseType) {
+            ResponseType.Success -> (localVarResponse as Success<*>).data as kotlin.String
+            ResponseType.Informational -> throw UnsupportedOperationException("Client does not support Informational responses.")
+            ResponseType.Redirection -> throw UnsupportedOperationException("Client does not support Redirection responses.")
+            ResponseType.ClientError -> {
+                val localVarError = localVarResponse as ClientError<*>
+                throw ClientException("Client error : ${localVarError.statusCode} ${localVarError.message.orEmpty()}", localVarError.statusCode, localVarResponse)
+            }
+            ResponseType.ServerError -> {
+                val localVarError = localVarResponse as ServerError<*>
+                throw ServerException("Server error : ${localVarError.statusCode} ${localVarError.message.orEmpty()} ${localVarError.body}", localVarError.statusCode, localVarResponse)
+            }
+        }
+    }
+
+    /**
+     * POST /projects/{project-id}/convert-ref-storage
+     * Convert Ref Storage
+     * Converts the ref storage of a project&#39;s repository between FILES and REFTABLE.
+     * @param projectId 
+     * @param refStorageInput  (optional)
+     * @return ApiResponse<kotlin.String?>
+     * @throws IllegalStateException If the request is not correctly configured
+     * @throws IOException Rethrows the OkHttp execute method exception
+     */
+    @Suppress("UNCHECKED_CAST")
+    @Throws(IllegalStateException::class, IOException::class)
+    fun postProjectsProjectIdConvertRefStorageWithHttpInfo(projectId: kotlin.String, refStorageInput: RefStorageInput?) : ApiResponse<kotlin.String?> {
+        val localVariableConfig = postProjectsProjectIdConvertRefStorageRequestConfig(projectId = projectId, refStorageInput = refStorageInput)
+
+        return request<RefStorageInput, kotlin.String>(
+            localVariableConfig
+        )
+    }
+
+    /**
+     * To obtain the request config of the operation postProjectsProjectIdConvertRefStorage
+     *
+     * @param projectId 
+     * @param refStorageInput  (optional)
+     * @return RequestConfig
+     */
+    fun postProjectsProjectIdConvertRefStorageRequestConfig(projectId: kotlin.String, refStorageInput: RefStorageInput?) : RequestConfig<RefStorageInput> {
+        val localVariableBody = refStorageInput
+        val localVariableQuery: MultiValueMap = mutableMapOf()
+        val localVariableHeaders: MutableMap<String, String> = mutableMapOf()
+        localVariableHeaders["Content-Type"] = "application/json"
+        localVariableHeaders["Accept"] = "application/json"
+
+        return RequestConfig(
+            method = RequestMethod.POST,
+            path = "/projects/{project-id}/convert-ref-storage".replace("{"+"project-id"+"}", encodeURIComponent(projectId.toString())),
             query = localVariableQuery,
             headers = localVariableHeaders,
             requiresAuthentication = true,

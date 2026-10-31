@@ -35,8 +35,8 @@ Demonstrates feasibility for Gerrit issue
 
 ## What's in this repo
 
-- `src/main/kotlin/com/google/gerrit/client/**` — the generated client: **338 operations**
-  across the API classes (`api/`) and **279 models** (`model/`), over OkHttp + Gson.
+- `src/main/kotlin/com/google/gerrit/client/**` — the generated client: **339 operations**
+  across the API classes (`api/`) and **281 models** (`model/`), over OkHttp + Gson.
 - `GerritXssiInterceptor.kt` — a hand-written OkHttp `Interceptor` that strips Gerrit's
   `)]}'` XSSI guard (the one Gerrit-specific step; see below). `generate.sh` copies it
   into the invoker package after each regeneration; ktfmt-formatted.

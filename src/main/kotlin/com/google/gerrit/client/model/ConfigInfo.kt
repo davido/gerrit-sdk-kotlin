@@ -29,6 +29,7 @@ import com.google.gerrit.client.model.ConfigParameterInfo
 import com.google.gerrit.client.model.InheritedBooleanInfo
 import com.google.gerrit.client.model.MaxObjectSizeLimitInfo
 import com.google.gerrit.client.model.ProjectState
+import com.google.gerrit.client.model.RefStorage
 import com.google.gerrit.client.model.SubmitType
 import com.google.gerrit.client.model.SubmitTypeInfo
 
@@ -56,6 +57,7 @@ import com.google.gson.annotations.SerializedName
  * @param submitType Deprecated; equivalent to value in default_submit_type.
  * @param defaultSubmitType SubmitTypeInfo that describes the default submit type of the project, when not overridden at the change level.
  * @param state The state of the project, can be ACTIVE, READ_ONLY or HIDDEN. + Not set if the project state is ACTIVE.
+ * @param refStorage The ref storage format of the project's repository (FILES or REFTABLE). The request fails if the repository cannot be opened.
  * @param pluginConfig Plugin configuration as map which maps the plugin name to a map of parameter names to ConfigParameterInfo entities. Only filled for users who have read access to refs/meta/config.
  * @param actions Actions the caller might be able to perform on this project. The information is a map of view names to
  * @param commentlinks Map with the comment link configurations of the project. The name of the comment link configuration is mapped to a CommentlinkInfo entity.
@@ -140,6 +142,10 @@ data class ConfigInfo (
     /* The state of the project, can be ACTIVE, READ_ONLY or HIDDEN. + Not set if the project state is ACTIVE. */
     @SerializedName("state")
     val state: ProjectState? = null,
+
+    /* The ref storage format of the project's repository (FILES or REFTABLE). The request fails if the repository cannot be opened. */
+    @SerializedName("ref_storage")
+    val refStorage: RefStorage? = null,
 
     /* Plugin configuration as map which maps the plugin name to a map of parameter names to ConfigParameterInfo entities. Only filled for users who have read access to refs/meta/config. */
     @SerializedName("plugin_config")

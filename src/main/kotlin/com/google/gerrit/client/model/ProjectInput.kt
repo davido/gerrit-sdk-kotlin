@@ -25,6 +25,7 @@ package com.google.gerrit.client.model
 
 import com.google.gerrit.client.model.ConfigValue
 import com.google.gerrit.client.model.InheritableBoolean
+import com.google.gerrit.client.model.RefStorage
 import com.google.gerrit.client.model.SubmitType
 
 import com.google.gson.annotations.SerializedName
@@ -37,6 +38,7 @@ import com.google.gson.annotations.SerializedName
  * @param description The description of the project.
  * @param permissionsOnly Whether a permission-only project should be created.
  * @param createEmptyCommit Whether an empty initial commit should be created.
+ * @param refStorage The ref storage format for the project's repository (FILES, REFTABLE). + If not set, the repository manager selects the format. Local disk storage uses JGit's init defaults, falling back to FILES.
  * @param submitType The submit type that should be set for the project (MERGE_IF_NECESSARY, REBASE_IF_NECESSARY, REBASE_ALWAYS, FAST_FORWARD_ONLY, MERGE_ALWAYS, CHERRY_PICK). + If not set, MERGE_IF_NECESSARY is set as submit type unless repository.<name>.defaultSubmitType is set to a different value.
  * @param branches A list of branches that should be initially created. + For the branch names the refs/heads/ prefix can be omitted. + The first entry of the list will be the default branch. + If the list is empty, host-level default is used.
  * @param owners A list of groups that should be assigned as project owner. + Each group in the list must be specified as group-id. + If not set, the groups that are configured as default owners are set as project owners.
@@ -75,6 +77,10 @@ data class ProjectInput (
     /* Whether an empty initial commit should be created. */
     @SerializedName("create_empty_commit")
     val createEmptyCommit: kotlin.Boolean? = null,
+
+    /* The ref storage format for the project's repository (FILES, REFTABLE). + If not set, the repository manager selects the format. Local disk storage uses JGit's init defaults, falling back to FILES. */
+    @SerializedName("ref_storage")
+    val refStorage: RefStorage? = null,
 
     /* The submit type that should be set for the project (MERGE_IF_NECESSARY, REBASE_IF_NECESSARY, REBASE_ALWAYS, FAST_FORWARD_ONLY, MERGE_ALWAYS, CHERRY_PICK). + If not set, MERGE_IF_NECESSARY is set as submit type unless repository.<name>.defaultSubmitType is set to a different value. */
     @SerializedName("submit_type")
