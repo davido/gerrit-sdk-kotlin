@@ -47,4 +47,13 @@ sed -E -i.bak \
   "s#(gerrit-sdk-kotlin:v?)[0-9]+\.[0-9]+\.[0-9]+(-SNAPSHOT)?#\1${VERSION}#g" README.md
 rm -f README.md.bak
 
-echo "done: src/ regenerated from $SPEC; XSSI via GerritXssiInterceptor; README Gerrit version synced to $VERSION; Gradle (maven-publish for JitPack); jvmTarget 21; okhttp 5.4 / gson 2.14"
+# Also re-derive the surface counts from the freshly generated sources so they cannot
+# rot: operations = per-op *WithHttpInfo functions across api/*.kt; models = model/*.kt.
+OPS=$(grep -rhoE 'fun [A-Za-z0-9]+WithHttpInfo' src/main/kotlin/com/google/gerrit/client/api/*.kt | wc -l | tr -d ' ')
+MODELS=$(ls src/main/kotlin/com/google/gerrit/client/model/*.kt | wc -l | tr -d ' ')
+sed -E -i.bak \
+  -e "s#\*\*[0-9]+ operations\*\*#**${OPS} operations**#" \
+  -e "s#\*\*[0-9]+ models\*\*#**${MODELS} models**#" README.md
+rm -f README.md.bak
+
+echo "done: src/ regenerated from $SPEC; XSSI via GerritXssiInterceptor; README Gerrit version + surface counts synced; Gradle (maven-publish for JitPack); jvmTarget 21; okhttp 5.4 / gson 2.14"
