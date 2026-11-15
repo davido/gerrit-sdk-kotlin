@@ -32,7 +32,8 @@ import com.google.gson.annotations.SerializedName
  * @param allowBlame Whether blame on side by side diff is allowed.
  * @param disablePrivateChanges Returns true if private changes are disabled.
  * @param updateDelay How often in seconds the web interface should poll for updates to the currently open change.
- * @param submitWholeTopic A configuration if the whole topic is submitted.
+ * @param submitWholeTopic Configuration that enforces the whole topic to be submitted. Deprecated; use enforce_whole_topic_submit.
+ * @param enforceWholeTopicSubmit Configuration that enforces the whole topic to be submitted.
  * @param mergeabilityComputationBehavior Value of the configuration parameter that controls whether the mergeability bit in ChangeInfo will never be set and if the bit is indexed.
  * @param conflictsPredicateEnabled Are conflicts enabled?.
  * @param allowMarkdownBase64ImagesInComments Are markdown base64 images in comments allowed?.
@@ -53,9 +54,13 @@ data class ChangeConfigInfo (
     @SerializedName("update_delay")
     val updateDelay: kotlin.Int? = null,
 
-    /* A configuration if the whole topic is submitted. */
+    /* Configuration that enforces the whole topic to be submitted. Deprecated; use enforce_whole_topic_submit. */
     @SerializedName("submit_whole_topic")
     val submitWholeTopic: kotlin.Boolean? = null,
+
+    /* Configuration that enforces the whole topic to be submitted. */
+    @SerializedName("enforce_whole_topic_submit")
+    val enforceWholeTopicSubmit: kotlin.Boolean? = null,
 
     /* Value of the configuration parameter that controls whether the mergeability bit in ChangeInfo will never be set and if the bit is indexed. */
     @SerializedName("mergeability_computation_behavior")
