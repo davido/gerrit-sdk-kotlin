@@ -36,7 +36,9 @@ class GerritXssiInterceptor : Interceptor {
     val response = chain.proceed(chain.request())
     val body = response.body ?: return response
     val contentType = body.contentType()
-    if (contentType?.subtype != "json") return response // leave text/binary untouched
+    if (!"json".equals(contentType?.subtype, ignoreCase = true)) {
+      return response // leave text/binary untouched
+    }
     return response.newBuilder().body(strip(body.string()).toResponseBody(contentType)).build()
   }
 
