@@ -23,21 +23,89 @@
 
 package com.google.gerrit.client.model
 
+import com.google.gerrit.client.model.FixSuggestionInfo
+import com.google.gerrit.client.model.Range
+import com.google.gerrit.client.model.Side
 
 import com.google.gson.annotations.SerializedName
 
 /**
  * 
  *
- * @param enableContext Whether to include the source lines around the comment as context in the response.
+ * @param unresolved Whether or not the comment must be addressed by the user. This value will default to false if the comment is an orphan, or the value of the in_reply_to comment if it is supplied.
+ * @param patchSet The patch set number for the comment; only set in contexts where + comments may be returned for multiple patch sets.
+ * @param id The URL encoded UUID of the comment if an existing draft comment should be updated.
+ * @param path The file path for which the inline comment should be added. + Doesn't need to be set if contained in a map where the key is the file path.
+ * @param side The side on which the comment should be added. + Allowed values are REVISION and PARENT. + If not set, the default is REVISION.
+ * @param parent The 1-based parent number. Used only for merge commits when side == PARENT. When not set the comment is for the auto-merge tree.
+ * @param line The number of the line for which the comment should be added. + 0 if it is a file comment. + If neither line nor range is set, a file comment is added. + If range is set, this value is ignored in favor of the end_line of the range. + When updating a draft without path, the draft keeps its line.
+ * @param range The range of the comment as a CommentRange entity.
+ * @param inReplyTo The URL encoded UUID of the comment to which this comment is a reply.
+ * @param updated The timestamp of this comment. + Accepted but ignored.
+ * @param message The comment message. + If not set and an existing draft comment is updated, the existing draft comment is deleted.
+ * @param commitId Hex commit SHA-1 (40 characters string) of the commit of the patchset to which this comment applies.
+ * @param fixSuggestions Suggested fixes for this comment as a list of FixSuggestionInfo entities.
+ * @param isAi Whether the comment was created by an AI agent. Not set if false.
  */
 
 
 data class CommentInput (
 
-    /* Whether to include the source lines around the comment as context in the response. */
-    @SerializedName("enable_context")
-    val enableContext: kotlin.Boolean? = null
+    /* Whether or not the comment must be addressed by the user. This value will default to false if the comment is an orphan, or the value of the in_reply_to comment if it is supplied. */
+    @SerializedName("unresolved")
+    val unresolved: kotlin.Boolean? = null,
+
+    /* The patch set number for the comment; only set in contexts where + comments may be returned for multiple patch sets. */
+    @SerializedName("patch_set")
+    val patchSet: kotlin.Int? = null,
+
+    /* The URL encoded UUID of the comment if an existing draft comment should be updated. */
+    @SerializedName("id")
+    val id: kotlin.String? = null,
+
+    /* The file path for which the inline comment should be added. + Doesn't need to be set if contained in a map where the key is the file path. */
+    @SerializedName("path")
+    val path: kotlin.String? = null,
+
+    /* The side on which the comment should be added. + Allowed values are REVISION and PARENT. + If not set, the default is REVISION. */
+    @SerializedName("side")
+    val side: Side? = null,
+
+    /* The 1-based parent number. Used only for merge commits when side == PARENT. When not set the comment is for the auto-merge tree. */
+    @SerializedName("parent")
+    val parent: kotlin.Int? = null,
+
+    /* The number of the line for which the comment should be added. + 0 if it is a file comment. + If neither line nor range is set, a file comment is added. + If range is set, this value is ignored in favor of the end_line of the range. + When updating a draft without path, the draft keeps its line. */
+    @SerializedName("line")
+    val line: kotlin.Int? = null,
+
+    /* The range of the comment as a CommentRange entity. */
+    @SerializedName("range")
+    val range: Range? = null,
+
+    /* The URL encoded UUID of the comment to which this comment is a reply. */
+    @SerializedName("in_reply_to")
+    val inReplyTo: kotlin.String? = null,
+
+    /* The timestamp of this comment. + Accepted but ignored. */
+    @SerializedName("updated")
+    val updated: kotlin.String? = null,
+
+    /* The comment message. + If not set and an existing draft comment is updated, the existing draft comment is deleted. */
+    @SerializedName("message")
+    val message: kotlin.String? = null,
+
+    /* Hex commit SHA-1 (40 characters string) of the commit of the patchset to which this comment applies. */
+    @SerializedName("commit_id")
+    val commitId: kotlin.String? = null,
+
+    /* Suggested fixes for this comment as a list of FixSuggestionInfo entities. */
+    @SerializedName("fix_suggestions")
+    val fixSuggestions: kotlin.collections.List<FixSuggestionInfo>? = null,
+
+    /* Whether the comment was created by an AI agent. Not set if false. */
+    @SerializedName("is_ai")
+    val isAi: kotlin.Boolean? = null
 
 ) {
 

@@ -31,10 +31,10 @@ import com.google.gson.annotations.SerializedName
  *
  * @param showOnSideBySideDiffView Whether the web link should be shown on the side-by-side diff screen.
  * @param showOnUnifiedDiffView Whether the web link should be shown on the unified diff screen.
- * @param name See WebLinkInfo
- * @param tooltip See WebLinkInfo
- * @param imageUrl See WebLinkInfo
- * @param url See WebLinkInfo
+ * @param name The text to be linkified.
+ * @param tooltip Tooltip to show when hovering over the link. Using \"Open in $NAME_OF_EXTERNAL_TOOL\" is a good option here.
+ * @param imageUrl URL to the icon of the link.
+ * @param url The link URL.
  */
 
 
@@ -48,19 +48,19 @@ data class DiffWebLinkInfo (
     @SerializedName("show_on_unified_diff_view")
     val showOnUnifiedDiffView: kotlin.Boolean? = null,
 
-    /* See WebLinkInfo */
+    /* The text to be linkified. */
     @SerializedName("name")
     val name: kotlin.String? = null,
 
-    /* See WebLinkInfo */
+    /* Tooltip to show when hovering over the link. Using \"Open in $NAME_OF_EXTERNAL_TOOL\" is a good option here. */
     @SerializedName("tooltip")
     val tooltip: kotlin.String? = null,
 
-    /* See WebLinkInfo */
+    /* URL to the icon of the link. */
     @SerializedName("image_url")
     val imageUrl: kotlin.String? = null,
 
-    /* See WebLinkInfo */
+    /* The link URL. */
     @SerializedName("url")
     val url: kotlin.String? = null
 

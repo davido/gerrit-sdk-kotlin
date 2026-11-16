@@ -30,6 +30,7 @@ import com.google.gson.annotations.SerializedName
  * 
  *
  * @param commitMessage Message that should be used to commit the change of the project description in the project.config file to the refs/meta/config branch.
+ * @param description The project description. + The project description will be deleted if not set.
  */
 
 
@@ -37,7 +38,11 @@ data class ProjectsDescriptionInput (
 
     /* Message that should be used to commit the change of the project description in the project.config file to the refs/meta/config branch. */
     @SerializedName("commit_message")
-    val commitMessage: kotlin.String? = null
+    val commitMessage: kotlin.String? = null,
+
+    /* The project description. + The project description will be deleted if not set. */
+    @SerializedName("description")
+    val description: kotlin.String? = null
 
 ) {
 
